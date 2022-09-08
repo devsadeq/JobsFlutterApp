@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'button_with_text.dart';
+import '../../widgets/button_with_text.dart';
 import 'login_form.dart';
-import 'welcoming_msg.dart';
+import '../../widgets/welcoming_msg.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -16,11 +16,19 @@ class Body extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(height: 118.h),
-          const WelcomingMsg(),
+          const WelcomingMsg(
+            title: "Welcome Back",
+            subTitle:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+          ),
           SizedBox(height: 93.h),
           const LoginForm(),
           SizedBox(height: 77.h),
-          const ButtonWithText(),
+          const ButtonWithText(
+            btnLabel: 'LOGIN',
+            firstTextSpan: "You don't have an account yet? ",
+            secondTextSpan: "Sign up",
+          ),
         ],
       ),
     );

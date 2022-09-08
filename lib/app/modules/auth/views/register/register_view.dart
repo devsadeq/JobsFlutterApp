@@ -11,6 +11,7 @@ class RegisterView extends GetView {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         body: Body(),
       ),
     );
