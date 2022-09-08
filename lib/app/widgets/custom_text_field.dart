@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -33,7 +32,7 @@ class CustomTextField extends StatelessWidget {
     this.title,
     this.isRequired = false,
     this.isPassword = false,
-    this.isVisible = false,
+    this.isVisible = true,
   }) : super(key: key);
 
   @override

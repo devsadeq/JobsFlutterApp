@@ -2,17 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../widgets/custom_button.dart';
+import '../../../../widgets/custom_button.dart';
 
 class ButtonWithText extends StatelessWidget {
-  const ButtonWithText({Key? key}) : super(key: key);
+  const ButtonWithText({
+    Key? key,
+    required this.btnLabel,
+    required this.firstTextSpan,
+    required this.secondTextSpan,
+  }) : super(key: key);
+  final String btnLabel;
+  final String firstTextSpan;
+  final String secondTextSpan;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CustomButton(
-          title: 'LOGIN',
+          title: btnLabel,
           onTap: () {},
         ),
         SizedBox(height: 20.h),
@@ -20,7 +28,7 @@ class ButtonWithText extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: "You don't have an account yet? ",
+                text: firstTextSpan,
                 style: GoogleFonts.poppins(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
@@ -28,7 +36,7 @@ class ButtonWithText extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: "Sign up",
+                text: secondTextSpan,
                 style: GoogleFonts.poppins(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,

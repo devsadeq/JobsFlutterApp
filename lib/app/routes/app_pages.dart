@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/auth/views/register/register_view.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login/login_view.dart';
@@ -10,7 +11,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.AUTH;
+  static const INITIAL = Routes.REGISTER;
 
   static final routes = [
     GetPage(
@@ -19,8 +20,13 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.AUTH,
+      name: _Paths.LOGIN,
       page: () => const LoginView(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => const RegisterView(),
       binding: AuthBinding(),
     ),
   ];
