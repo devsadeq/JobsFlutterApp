@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobs_flutter_app/app/core/values/strings.dart';
 
 import '../../../../../widgets/custom_text_field.dart';
 
@@ -12,16 +13,16 @@ class EmployerForm extends StatelessWidget {
       child: Column(
         children: [
           const CustomTextField(
-            title: "Company name",
-            hintText: "Facebook co.",
+            title: AppStrings.companyName,
+            hintText: AppStrings.companyNameHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            title: "Business number",
-            hintText: "+9647712345678",
+            title: AppStrings.businessNumber,
+            hintText: AppStrings.phoneNumberHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
@@ -29,8 +30,8 @@ class EmployerForm extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            title: "Business email",
-            hintText: "example@company.com",
+            title: AppStrings.businessEmail,
+            hintText: AppStrings.emailHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
@@ -38,8 +39,8 @@ class EmployerForm extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            title: "Country",
-            hintText: "Iraq",
+            title: AppStrings.countryLabel,
+            hintText: AppStrings.countryHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
@@ -47,8 +48,8 @@ class EmployerForm extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            title: "Company address",
-            hintText: "Baghdad, Karada",
+            title: AppStrings.companyAddress,
+            hintText: AppStrings.companyAddressHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
@@ -56,8 +57,8 @@ class EmployerForm extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            hintText: "Password",
-            title: "Password",
+            hintText: AppStrings.password,
+            title: AppStrings.password,
             autofocus: false,
             isPassword: true,
             isVisible: false,

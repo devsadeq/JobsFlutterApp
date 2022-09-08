@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobs_flutter_app/app/core/values/strings.dart';
 
 import '../../../../../widgets/custom_text_field.dart';
 
@@ -12,16 +13,16 @@ class EmployeeForm extends StatelessWidget {
       child: Column(
         children: [
           const CustomTextField(
-            title: "Full name",
-            hintText: "Sadeq S. Mhana",
+            title: AppStrings.fullName,
+            hintText: AppStrings.fullNameHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            title: "Phone number",
-            hintText: "+9647712345678",
+            title: AppStrings.phoneNumber,
+            hintText: AppStrings.phoneNumberHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
@@ -29,8 +30,8 @@ class EmployeeForm extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            title: "Email",
-            hintText: "example@example.com",
+            title: AppStrings.email,
+            hintText: AppStrings.emailHint,
             autofocus: false,
             maxLines: 1,
             isRequired: true,
@@ -38,8 +39,8 @@ class EmployeeForm extends StatelessWidget {
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            hintText: "Password",
-            title: "Password",
+            hintText: AppStrings.password,
+            title: AppStrings.password,
             autofocus: false,
             isPassword: true,
             isVisible: false,

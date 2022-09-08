@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobs_flutter_app/app/core/values/strings.dart';
 
 import '../../../../../widgets/custom_text_field.dart';
 
@@ -12,15 +13,15 @@ class LoginForm extends StatelessWidget {
       child: Column(
         children: [
           const CustomTextField(
-            hintText: "example@example.com",
-            title: "Email, Phone Number or username",
+            hintText: AppStrings.emailHint,
+            title: AppStrings.emailLabel,
             autofocus: false,
             maxLines: 1,
           ),
           SizedBox(height: 15.h),
           const CustomTextField(
-            hintText: "Password",
-            title: "Password",
+            hintText: AppStrings.password,
+            title: AppStrings.password,
             autofocus: false,
             isPassword: true,
             isVisible: false,
