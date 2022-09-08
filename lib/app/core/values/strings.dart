@@ -9,7 +9,7 @@ class AppStrings {
   static const signup = "Sign up";
   static const youDoNotHaveAnAccountYet = "You don't have an account yet? ";
   static const emailHint = "example@example.com";
-  static const emailLabel = "Email, Phone Number or username";
+  static const emailLabel = "Email, phone number or username";
   static const password = "Password";
 
   /*
