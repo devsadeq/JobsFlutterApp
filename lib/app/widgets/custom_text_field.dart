@@ -79,54 +79,15 @@ class CustomTextField extends StatelessWidget {
           enableSuggestions: !isPassword,
           autocorrect: !isPassword,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(16.w),
-            counterStyle: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 13.sp,
-            ),
             hintText: hintText,
-            hintStyle: GoogleFonts.poppins(
-              fontSize: 13.sp,
-              fontWeight: FontWeight.w400,
-              color: const Color(0xffAAB8C2),
-            ),
-            fillColor: Colors.white,
-            filled: true,
             suffixIcon: isPassword
                 ? IconButton(
                     onPressed: () {},
                     icon: HeroIcon(
                       isVisible ? HeroIcons.eye : HeroIcons.eyeOff,
-                      color: const Color(0xff657786),
                     ),
                   )
                 : null,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14.r),
-              borderSide: const BorderSide(
-                color: Color(0xffF2F2F2),
-                width: 1.0,
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14.r),
-              borderSide: const BorderSide(
-                color: Color(0xffF2F2F2),
-                width: 1.0,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14.r),
-              borderSide: const BorderSide(
-                color: Color(0xffF2F2F2),
-                width: 1.0,
-              ),
-            ),
-            errorStyle: TextStyle(
-              color: Get.theme.errorColor,
-              fontSize: 13.sp,
-            ),
-            errorMaxLines: 3,
           ),
           validator: validator,
           autovalidateMode: AutovalidateMode.onUserInteraction,
