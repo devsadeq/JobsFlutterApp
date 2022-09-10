@@ -1,4 +1,6 @@
 class AppStrings {
+  static const appName = "Jobspot";
+
   /*
   * Login Strings
   * */
@@ -29,8 +31,8 @@ class AppStrings {
   static const companyNameHint = "Facebook co.";
   static const businessNumber = "Business number";
   static const businessEmail = "Business email";
-  static const countryLabel ="Country";
-  static const countryHint ="Iraq";
-  static const companyAddress ="Company address";
-  static const companyAddressHint ="Baghdad, Karada";
+  static const countryLabel = "Country";
+  static const countryHint = "Iraq";
+  static const companyAddress = "Company address";
+  static const companyAddressHint = "Baghdad, Karada";
 }
