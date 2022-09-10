@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobs_flutter_app/app/core/values/strings.dart';
 
 import '../../widgets/button_with_text.dart';
 import 'login_form.dart';
@@ -17,17 +18,16 @@ class Body extends StatelessWidget {
         children: [
           SizedBox(height: 118.h),
           const WelcomingMsg(
-            title: "Welcome Back",
-            subTitle:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+            title: AppStrings.welcomeBack,
+            subTitle: AppStrings.loginSubtitle,
           ),
           SizedBox(height: 93.h),
           const LoginForm(),
           SizedBox(height: 77.h),
           const ButtonWithText(
-            btnLabel: 'LOGIN',
-            firstTextSpan: "You don't have an account yet? ",
-            secondTextSpan: "Sign up",
+            btnLabel: AppStrings.loginBtn,
+            firstTextSpan: AppStrings.youDoNotHaveAnAccountYet,
+            secondTextSpan: AppStrings.signup,
           ),
         ],
       ),
