@@ -35,4 +35,11 @@ class AppStrings {
   static const countryHint = "Iraq";
   static const companyAddress = "Company address";
   static const companyAddressHint = "Baghdad, Karada";
+
+  /*
+  * Choose Screen Strings
+  * */
+static const whatAreYouLookingFor = "What are you looking for?";
+static const iWantAJob = "I want a job";
+static const iWantAnEmployee = "I want an employee";
 }
