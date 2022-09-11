@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobs_flutter_app/app/core/values/strings.dart';
-import 'package:jobs_flutter_app/app/modules/auth/views/register/widgets/emoployer_form.dart';
-import 'package:jobs_flutter_app/app/modules/auth/views/widgets/button_with_text.dart';
-import 'package:jobs_flutter_app/app/modules/auth/views/widgets/welcoming_msg.dart';
+
+import '../../../../../core/values/strings.dart';
+import '../../widgets/button_with_text.dart';
+import '../../widgets/welcoming_msg.dart';
+
+import 'employee_form.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -22,7 +24,7 @@ class Body extends StatelessWidget {
               subTitle: AppStrings.registerSubtitle,
             ),
             SizedBox(height: 48.h),
-            const EmployerForm(),
+            const EmployeeForm(),
             SizedBox(height: 50.h),
             ButtonWithText(
               btnLabel: AppStrings.signup.toUpperCase(),

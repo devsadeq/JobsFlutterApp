@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:jobs_flutter_app/app/modules/auth/views/register/register_view.dart';
-import 'package:jobs_flutter_app/app/modules/choos/bindings/choos_binding.dart';
-import 'package:jobs_flutter_app/app/modules/choos/views/choos_view.dart';
+import 'package:jobs_flutter_app/app/modules/choose/bindings/choose_binding.dart';
+import 'package:jobs_flutter_app/app/modules/choose/views/choose_view.dart';
 import 'package:jobs_flutter_app/app/modules/splash/bindings/splash_binding.dart';
 import 'package:jobs_flutter_app/app/modules/splash/views/splash_view.dart';
 import 'package:jobs_flutter_app/app/modules/waiting/bindings/waiting_binding.dart';
@@ -17,7 +17,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.WAITTING;
 
   static final routes = [
     GetPage(
@@ -42,8 +42,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CHOOSE,
-      page: () => const ChoosView(),
-      binding: ChoosBinding(),
+      page: () => const ChooseView(),
+      binding: ChooseBinding(),
     ),
     GetPage(
       name: _Paths.WAITTING,
