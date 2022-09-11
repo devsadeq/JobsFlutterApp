@@ -39,7 +39,17 @@ class AppStrings {
   /*
   * Choose Screen Strings
   * */
-static const whatAreYouLookingFor = "What are you looking for?";
-static const iWantAJob = "I want a job";
-static const iWantAnEmployee = "I want an employee";
+  static const whatAreYouLookingFor = "What are you looking for?";
+  static const iWantAJob = "I want a job";
+  static const iWantAnEmployee = "I want an employee";
+
+/*
+* Waiting Screen Strings
+* */
+  static const thankYou = 'THANK YOU!';
+  static const forYourSubmission = "For your Submission";
+  static const exit = "EXIT";
+
+  static const willGetInTouch =
+      "We are currently processing your request \n    and will get in touch with you shortly!";
 }
