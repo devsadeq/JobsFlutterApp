@@ -10,7 +10,11 @@ dependencies:
   get: 4.6.5
   google_fonts: 3.0.1
   flutter_screenutil: 5.5.4
-  heroicons: any
+  heroicons: ^0.6.0
+  cached_network_image: 3.2.2
+  flutter_svg: 1.1.5
+  lottie: 1.4.2
+  modal_bottom_sheet: 2.1.2
   flutter: 
     sdk: flutter
 
@@ -20,5 +24,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
+  assets: 
+    - assets/
   uses-material-design: true
 

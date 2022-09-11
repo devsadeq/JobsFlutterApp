@@ -1,4 +1,6 @@
 class AppStrings {
+  static const appName = "Jobspot";
+
   /*
   * Login Strings
   * */
@@ -29,8 +31,25 @@ class AppStrings {
   static const companyNameHint = "Facebook co.";
   static const businessNumber = "Business number";
   static const businessEmail = "Business email";
-  static const countryLabel ="Country";
-  static const countryHint ="Iraq";
-  static const companyAddress ="Company address";
-  static const companyAddressHint ="Baghdad, Karada";
+  static const countryLabel = "Country";
+  static const countryHint = "Iraq";
+  static const companyAddress = "Company address";
+  static const companyAddressHint = "Baghdad, Karada";
+
+  /*
+  * Choose Screen Strings
+  * */
+  static const whatAreYouLookingFor = "What are you looking for?";
+  static const iWantAJob = "I want a job";
+  static const iWantAnEmployee = "I want an employee";
+
+/*
+* Waiting Screen Strings
+* */
+  static const thankYou = 'THANK YOU!';
+  static const forYourSubmission = "For your Submission";
+  static const exit = "EXIT";
+
+  static const willGetInTouch =
+      "We are currently processing your request \n    and will get in touch with you shortly!";
 }
