@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobs_flutter_app/app/modules/home/views/widgets/custom_job_card.dart';
 
+import 'custom_job_card.dart';
 import 'section_header.dart';
 
 class RecentJobs extends StatelessWidget {
@@ -13,7 +13,16 @@ class RecentJobs extends StatelessWidget {
       children: [
         const SectionHeader(title: "Recent Jobs"),
         SizedBox(height: 16.h),
-        const CustomJobCard(),
+        ListView.builder(
+          itemCount: 10,
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
+          itemBuilder: (context, index) => Padding(
+            padding: EdgeInsets.only(bottom: 16.w),
+            child: const CustomJobCard(),
+          ),
+        )
       ],
     );
   }
