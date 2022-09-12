@@ -5,13 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       leading: Padding(
-        padding: EdgeInsets.only(left: 16.w, top: 16.w),
+        padding: EdgeInsets.only(left: 16.w, bottom: 8.w, top: 8.w),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(25.r),
           child: Image.network(
@@ -20,15 +21,12 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
         ),
       ),
-      title: Padding(
-        padding: EdgeInsets.only(top: 16.w),
-        child: Text(
-          "Jobs Finder",
-          style: GoogleFonts.poppins(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w700,
-            color: Get.theme.primaryColor,
-          ),
+      title: Text(
+        "Jobs Finder",
+        style: GoogleFonts.poppins(
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w700,
+          color: Get.theme.primaryColor,
         ),
       ),
       centerTitle: true,
