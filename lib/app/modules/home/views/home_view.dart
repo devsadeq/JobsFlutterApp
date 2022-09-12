@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../widgets/custom_appbar.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/body.dart';
 
@@ -10,9 +11,11 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: Body(),
+        backgroundColor: Get.theme.backgroundColor,
+        appBar: const CustomAppBar(),
+        body: const Body(),
       ),
     );
   }

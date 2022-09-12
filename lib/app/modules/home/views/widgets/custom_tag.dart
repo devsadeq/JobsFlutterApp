@@ -27,29 +27,31 @@ class CustomTag extends StatelessWidget {
             : Get.theme.backgroundColor,
         borderRadius: BorderRadius.circular(10.r),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          HeroIcon(
-            icon,
-            color: isFeatured
-                ? Get.theme.backgroundColor
-                : Get.theme.colorScheme.tertiary,
-            size: 16.w,
-          ),
-          SizedBox(width: 5.w),
-          Text(
-            title,
-            style: GoogleFonts.poppins(
-              fontSize: 13.sp,
-              fontWeight: FontWeight.w500,
+      child: FittedBox(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            HeroIcon(
+              icon,
               color: isFeatured
                   ? Get.theme.backgroundColor
                   : Get.theme.colorScheme.tertiary,
+              size: 16.w,
             ),
-          )
-        ],
+            SizedBox(width: 5.w),
+            Text(
+              title,
+              style: GoogleFonts.poppins(
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w500,
+                color: isFeatured
+                    ? Get.theme.backgroundColor
+                    : Get.theme.colorScheme.tertiary,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

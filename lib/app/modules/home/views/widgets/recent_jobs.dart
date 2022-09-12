@@ -12,7 +12,7 @@ class RecentJobs extends StatelessWidget {
     return Column(
       children: [
         const SectionHeader(title: "Recent Jobs"),
-        SizedBox(height: 15.h),
+        SizedBox(height: 16.h),
         const CustomJobCard(),
       ],
     );
