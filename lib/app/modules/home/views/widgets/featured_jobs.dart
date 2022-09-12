@@ -3,11 +3,12 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/home/controllers/home_controller.dart';
 import 'package:jobs_flutter_app/app/modules/home/views/widgets/custom_job_card.dart';
 
 import 'section_header.dart';
 
-class FeaturedJobs extends StatelessWidget {
+class FeaturedJobs extends GetView<HomeController> {
   const FeaturedJobs({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +17,6 @@ class FeaturedJobs extends StatelessWidget {
       children: [
         const SectionHeader(title: "Featured Jobs"),
         SizedBox(height: 16.h),
-        // const CustomJobCard(isFeatured: true),
         CarouselSlider(
           items: const [
             CustomJobCard(isFeatured: true),
@@ -28,6 +28,7 @@ class FeaturedJobs extends StatelessWidget {
             aspectRatio: 16 / 9,
             viewportFraction: 1,
             initialPage: 0,
+            onPageChanged: controller.updateIndicatorValue,
             enableInfiniteScroll: true,
             reverse: false,
             autoPlay: false,
@@ -39,17 +40,19 @@ class FeaturedJobs extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8.h),
-        DotsIndicator(
-          dotsCount: 3,
-          position: 0,
-          decorator: DotsDecorator(
-            size: Size.square(8.w),
-            activeSize: Size(20.w, 8.w),
-            activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(26.r),
+        Obx(
+          () => DotsIndicator(
+            dotsCount: 3,
+            position: controller.indicatorIndex.toDouble(),
+            decorator: DotsDecorator(
+              size: Size.square(8.w),
+              activeSize: Size(20.w, 8.w),
+              activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(26.r),
+              ),
+              activeColor: Get.theme.colorScheme.secondary,
+              color: const Color(0xffE4E5E7),
             ),
-            activeColor: Get.theme.colorScheme.secondary,
-            color: const Color(0xffE4E5E7),
           ),
         ),
       ],
