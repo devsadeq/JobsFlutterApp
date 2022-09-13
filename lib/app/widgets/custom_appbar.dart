@@ -3,38 +3,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomAppbar extends StatelessWidget with PreferredSizeWidget {
-  const CustomAppbar({Key? key, this.avatarUrl, required this.title})
-      : super(key: key);
-  final String? avatarUrl;
-  final String title;
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+  const CustomAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.transparent,
       elevation: 0.0,
-      backgroundColor: Get.theme.backgroundColor,
-      leadingWidth: 50.w,
-      leading: TextButton(
-        style: ButtonStyle(
-          overlayColor:
-              MaterialStateColor.resolveWith((states) => Colors.transparent),
-          padding: MaterialStateProperty.resolveWith(
-            (states) => EdgeInsets.only(left: 16.w),
-          ),
-        ),
-        onPressed: () {},
+      leading: Padding(
+        padding: EdgeInsets.only(left: 16.w, bottom: 8.w, top: 8.w),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(25.r),
           child: Image.network(
-            avatarUrl!,
-            height: 32.h,
+            "https://api.lorem.space/image/face?w=150&h=150",
             fit: BoxFit.cover,
           ),
         ),
       ),
       title: Text(
-        title,
+        "Jobs Finder",
         style: GoogleFonts.poppins(
           fontSize: 18.sp,
           fontWeight: FontWeight.w700,
