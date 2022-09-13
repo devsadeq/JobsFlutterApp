@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  final RxInt _indicatorIndex = 0.obs;
 
-  final count = 0.obs;
+  int get indicatorIndex => _indicatorIndex.value;
+
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +20,9 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  updateIndicatorValue(newIndex, _) {
+    Get.printError(info: newIndex.toString());
+    _indicatorIndex.value = newIndex;
+    Get.printError(info: _indicatorIndex.value.toString());
+  }
 }
