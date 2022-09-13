@@ -3,9 +3,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/home/controllers/home_controller.dart';
-import 'package:jobs_flutter_app/app/modules/home/views/widgets/custom_job_card.dart';
 
+import '../../controllers/home_controller.dart';
+import 'custom_job_card.dart';
 import 'section_header.dart';
 
 class FeaturedJobs extends GetView<HomeController> {

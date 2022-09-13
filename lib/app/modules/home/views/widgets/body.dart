@@ -10,16 +10,18 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        SizedBox(height: 16.h),
-        const ChipsList(),
-        SizedBox(height: 16.h),
-        const FeaturedJobs(),
-        SizedBox(height: 16.h),
-        const RecentJobs(),
-      ],
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        children: [
+          SizedBox(height: 16.h),
+          const ChipsList(),
+          SizedBox(height: 16.h),
+          const FeaturedJobs(),
+          SizedBox(height: 16.h),
+          const RecentJobs(),
+        ],
+      ),
     );
   }
 }

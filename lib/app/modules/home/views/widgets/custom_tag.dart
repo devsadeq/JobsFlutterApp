@@ -18,7 +18,6 @@ class CustomTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 32.h,
       margin: EdgeInsets.only(right: 8.w),
       padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
@@ -27,31 +26,29 @@ class CustomTag extends StatelessWidget {
             : Get.theme.backgroundColor,
         borderRadius: BorderRadius.circular(10.r),
       ),
-      child: FittedBox(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            HeroIcon(
-              icon,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          HeroIcon(
+            icon,
+            color: isFeatured
+                ? Get.theme.backgroundColor
+                : Get.theme.colorScheme.tertiary,
+            size: 16.w,
+          ),
+          SizedBox(width: 5.w),
+          Text(
+            title,
+            style: GoogleFonts.poppins(
+              fontSize: 13.sp,
+              fontWeight: FontWeight.w500,
               color: isFeatured
                   ? Get.theme.backgroundColor
                   : Get.theme.colorScheme.tertiary,
-              size: 16.w,
             ),
-            SizedBox(width: 5.w),
-            Text(
-              title,
-              style: GoogleFonts.poppins(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w500,
-                color: isFeatured
-                    ? Get.theme.backgroundColor
-                    : Get.theme.colorScheme.tertiary,
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

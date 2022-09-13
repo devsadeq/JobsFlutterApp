@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
+import '../../../../core/values/strings.dart';
 
 import 'custom_tag.dart';
 
@@ -15,28 +16,36 @@ class CustomJobCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Container(
-        padding: EdgeInsets.all(20.w),
-        decoration: BoxDecoration(
-          color: isFeatured ? Get.theme.colorScheme.secondary : Colors.white,
-          borderRadius: BorderRadius.circular(14.r),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _CardTile(isFeatured: isFeatured),
-            SizedBox(height: 10.h),
-            _CardJobPosition(isFeatured: isFeatured),
-            if (!isFeatured) SizedBox(height: 5.h),
-            if (!isFeatured) const _CardJobDescription(),
-            SizedBox(height: 10.h),
-            _CardTags(
-              isFeatured: isFeatured,
-            )
-          ],
-        ),
+    return Container(
+      padding: EdgeInsets.all(20.w),
+      margin: EdgeInsets.symmetric(horizontal: 16.w),
+      decoration: BoxDecoration(
+        color: isFeatured ? Get.theme.colorScheme.secondary : Colors.white,
+        borderRadius: BorderRadius.circular(14.r),
+        gradient: isFeatured
+            ? LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Get.theme.colorScheme.secondary,
+                  const Color(0xff36ABF2),
+                ],
+              )
+            : null,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _CardTile(isFeatured: isFeatured),
+          SizedBox(height: 10.h),
+          _CardJobPosition(isFeatured: isFeatured),
+          if (!isFeatured) SizedBox(height: 5.h),
+          if (!isFeatured) const _CardJobDescription(),
+          SizedBox(height: 10.h),
+          _CardTags(
+            isFeatured: isFeatured,
+          )
+        ],
       ),
     );
   }
@@ -62,7 +71,7 @@ class _CardTile extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(50.r),
           child: Image.network(
-            "https://api.lorem.space/image/album?w=150&h=150",
+            AppStrings.avatarUrl,
             height: 46.w,
           ),
         ),
@@ -89,7 +98,7 @@ class _CardTile extends StatelessWidget {
                       ? Get.theme.backgroundColor
                       : Get.theme.colorScheme.tertiary,
                 ),
-                SizedBox(width: 8.w),
+                SizedBox(width: 5.w),
                 Text(
                   "1 day",
                   style: GoogleFonts.poppins(
@@ -149,7 +158,7 @@ class _CardJobDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Are you a developer passionate about web3 and sustainability? Join our growing team of technologists developing a blockchain platform...",
+      AppStrings.jobDescription,
       style: GoogleFonts.poppins(
           fontSize: 13.sp,
           fontWeight: FontWeight.w400,
