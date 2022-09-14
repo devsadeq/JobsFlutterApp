@@ -73,6 +73,7 @@ class AppTheme {
     errorMaxLines: 3,
     counterStyle: _lightTextTheme.caption,
     suffixIconColor: darkGrayColor,
+    prefixIconColor: lightGrayColor1,
     enabledBorder: _outlineInputBorder,
     border: _outlineInputBorder,
     focusedBorder: _outlineInputBorder,
