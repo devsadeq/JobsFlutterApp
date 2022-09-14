@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/search/views/widgets/body.dart';
 
-import '../../../widgets/custom_appbar.dart';
-import '../controllers/home_controller.dart';
-import 'widgets/body.dart';
+import '../controllers/search_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+class SearchView extends GetView<SearchController> {
+  const SearchView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Get.theme.backgroundColor,
-        appBar: const CustomAppBar(),
         body: const Body(),
       ),
     );

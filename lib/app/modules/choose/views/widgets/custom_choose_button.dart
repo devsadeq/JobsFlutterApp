@@ -20,8 +20,8 @@ class CustomChooseButton extends StatelessWidget {
         onPressed: () {},
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.all(10.w),
-          backgroundColor: Get.theme.cardColor,
-          foregroundColor: Get.theme.colorScheme.secondary,
+          primary: Get.theme.cardColor,
+          onPrimary: Get.theme.colorScheme.secondary,
           side: BorderSide(
             color: Get.theme.colorScheme.secondary,
             width: 1.5,

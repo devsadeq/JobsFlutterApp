@@ -16,7 +16,12 @@ class CustomTextField extends StatelessWidget {
   final String? title;
   final bool isRequired;
   final bool isPassword;
-  final bool isVisible;
+  final bool isSearchBar;
+  final bool obscureText;
+  final HeroIcons? suffixIcon;
+  final double suffixIconSize;
+  final HeroIcons? prefixIcon;
+  final double prefixIconSize;
 
   const CustomTextField({
     Key? key,
@@ -26,13 +31,18 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.onSaved,
     this.validator,
-    this.autofocus = true,
+    this.autofocus = false,
     this.textInputType,
     this.onFieldSubmitted,
     this.title,
     this.isRequired = false,
     this.isPassword = false,
-    this.isVisible = true,
+    this.isSearchBar = false,
+    this.obscureText = false,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.suffixIconSize = 24,
+    this.prefixIconSize = 24,
   }) : super(key: key);
 
   @override
@@ -40,30 +50,31 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: title!,
-                style: GoogleFonts.poppins(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w600,
-                  color: const Color(0xff14171A),
-                ),
-              ),
-              if (isRequired)
+        if (!isSearchBar)
+          RichText(
+            text: TextSpan(
+              children: [
                 TextSpan(
-                  text: "*",
+                  text: title!,
                   style: GoogleFonts.poppins(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xffFB4747),
+                    color: const Color(0xff14171A),
                   ),
                 ),
-            ],
+                if (isRequired)
+                  TextSpan(
+                    text: "*",
+                    style: GoogleFonts.poppins(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xffFB4747),
+                    ),
+                  ),
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: 8.h),
+        if (!isSearchBar) SizedBox(height: 8.h),
         TextFormField(
           controller: controller,
           style: GoogleFonts.poppins(
@@ -74,18 +85,22 @@ class CustomTextField extends StatelessWidget {
           maxLength: maxLength,
           maxLines: isPassword ? 1 : maxLines,
           keyboardType: textInputType,
-          obscureText: !isVisible,
+          obscureText: obscureText,
           enableSuggestions: !isPassword,
           autocorrect: !isPassword,
           decoration: InputDecoration(
             hintText: hintText,
-            suffixIcon: isPassword
+            contentPadding:
+                isSearchBar ? EdgeInsets.symmetric(vertical: 10.w) : null,
+            suffixIcon: suffixIcon != null
                 ? IconButton(
                     onPressed: () {},
-                    icon: HeroIcon(
-                      isVisible ? HeroIcons.eye : HeroIcons.eyeOff,
-                    ),
-                  )
+                    icon: HeroIcon(suffixIcon!, size: suffixIconSize))
+                : null,
+            prefixIcon: prefixIcon != null
+                ? IconButton(
+                    onPressed: () {},
+                    icon: HeroIcon(prefixIcon!, size: prefixIconSize))
                 : null,
           ),
           validator: validator,
