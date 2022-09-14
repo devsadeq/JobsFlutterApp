@@ -14,13 +14,14 @@ class Body extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(
         children: [
-          SizedBox(height: 50.h),
+          SizedBox(height: 30.h),
           const CustomTextField(
             hintText: "Search",
             isSearchBar: true,
             prefixIcon: HeroIcons.search,
             suffixIcon: HeroIcons.x,
           ),
+          SizedBox(height: 20.h),
           const SearchResults(),
         ],
       ),
