@@ -22,7 +22,7 @@ class CustomChip extends StatelessWidget {
           color: isActive ? Colors.white : Get.theme.colorScheme.tertiary,
         ),
         elevation: 0.0,
-        disabledColor: Colors.red,
+
         side: BorderSide(
             color: isActive
                 ? Get.theme.colorScheme.secondary
