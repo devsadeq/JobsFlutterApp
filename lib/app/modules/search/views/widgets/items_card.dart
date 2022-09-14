@@ -1,65 +1,48 @@
-
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/values/strings.dart';
 
-class itemcard extends StatelessWidget {
-  const itemcard({Key? key}) : super(key: key);
+class SearchItem extends StatelessWidget {
+  const SearchItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      padding: EdgeInsets.only(left: 16),
-      child:Row(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
+    return Row(
+      children: [
+        SizedBox(
+          width: 35.w,
+          height: 35.h,
+          child: const CircleAvatar(
+            backgroundImage: NetworkImage(
+              "https://api.lorem.space/image?w=150&h=180",
             ),
-            child: SvgPicture.asset('assets/google.svg',
-              height: 30.h,
-              width: 30.w,
-              fit: BoxFit.cover,),
           ),
-
-          Column(
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 10.w),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-
-
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(AppStrings.companysName,
-                  style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400 ),
+              Text(
+                AppStrings.companysName,
+                style: GoogleFonts.poppins(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-
-
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(AppStrings.companysField,
-                    style: GoogleFonts.poppins(
-                        fontSize: 13,
-                        color: Color(0xffAAA6B9))
-
+              Text(
+                AppStrings.companysField,
+                style: GoogleFonts.poppins(
+                  fontSize: 13.sp,
+                  color: const Color(0xffAAA6B9),
                 ),
-
               )
-
             ],
-          )
-
-        ],
-
-      ) ,
-
+          ),
+        )
+      ],
     );
   }
 }

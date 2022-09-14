@@ -7,11 +7,14 @@ import '../controllers/search_controller.dart';
 
 class SearchView extends GetView<SearchController> {
   const SearchView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Get.theme.backgroundColor,
-      body: const body(),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Get.theme.backgroundColor,
+        body: const Body(),
+      ),
     );
   }
 }
