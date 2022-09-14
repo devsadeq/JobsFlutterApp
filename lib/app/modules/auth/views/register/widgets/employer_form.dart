@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:jobs_flutter_app/app/core/values/strings.dart';
 
 import '../../../../../widgets/custom_text_field.dart';
@@ -61,7 +62,7 @@ class EmployerForm extends StatelessWidget {
             title: AppStrings.password,
             autofocus: false,
             isPassword: true,
-            isVisible: false,
+            suffixIcon: HeroIcons.eyeOff,
             isRequired: true,
           ),
         ],
