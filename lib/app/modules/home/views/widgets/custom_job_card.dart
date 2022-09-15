@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 import '../../../../core/values/strings.dart';
 
-import 'custom_tag.dart';
+import '../../../../widgets/custom_tag.dart';
 
 class CustomJobCard extends StatelessWidget {
   const CustomJobCard({
@@ -184,17 +184,32 @@ class _CardTags extends StatelessWidget {
         CustomTag(
           title: "Remote",
           icon: HeroIcons.briefcase,
-          isFeatured: isFeatured,
+          backgroundColor: isFeatured
+              ? Colors.white.withOpacity(0.15)
+              : Get.theme.backgroundColor,
+          titleColor: isFeatured
+              ? Get.theme.backgroundColor
+              : Get.theme.colorScheme.tertiary,
         ),
         CustomTag(
           title: "Full Time",
           icon: HeroIcons.fire,
-          isFeatured: isFeatured,
+          backgroundColor: isFeatured
+              ? Colors.white.withOpacity(0.15)
+              : Get.theme.backgroundColor,
+          titleColor: isFeatured
+              ? Get.theme.backgroundColor
+              : Get.theme.colorScheme.tertiary,
         ),
         CustomTag(
           title: "Baghdad",
           icon: HeroIcons.locationMarker,
-          isFeatured: isFeatured,
+          backgroundColor: isFeatured
+              ? Colors.white.withOpacity(0.15)
+              : Get.theme.backgroundColor,
+          titleColor: isFeatured
+              ? Get.theme.backgroundColor
+              : Get.theme.colorScheme.tertiary,
         ),
       ],
     );
