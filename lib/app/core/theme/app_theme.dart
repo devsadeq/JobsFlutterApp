@@ -12,6 +12,7 @@ class AppTheme {
   static Color blackColor = const Color(0xff14171A);
   static Color darkGrayColor = const Color(0xff657786);
   static Color lightGrayColor = const Color(0xffAAB8C2);
+
   // static Color lightGrayColor2 = const Color(0xffE1E8ED);
   static Color errorColor = const Color(0xffFB4747);
   static Color whiteColor = const Color(0xffffffff);
@@ -45,7 +46,7 @@ class AppTheme {
 
   static final _lightColorScheme = ColorScheme.fromSwatch().copyWith(
     background: backgroundColor,
-    onBackground: blackColor,
+    onBackground: whiteColor,
     ///////////////////////////////
     primary: blueColor,
     onPrimary: backgroundColor,
@@ -77,7 +78,7 @@ class AppTheme {
     errorMaxLines: 3,
     counterStyle: _lightTextTheme.caption,
     suffixIconColor: darkGrayColor,
-    prefixIconColor: lightGrayColor1,
+    prefixIconColor: lightGrayColor,
     enabledBorder: _outlineInputBorder,
     border: _outlineInputBorder,
     focusedBorder: _outlineInputBorder,
