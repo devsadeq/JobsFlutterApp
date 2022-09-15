@@ -9,11 +9,15 @@ class CustomTag extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.title,
-    required this.isFeatured,
+    this.isFeatured = false,
+    required this.titleColor,
+    required this.backgroundColor,
   }) : super(key: key);
   final HeroIcons icon;
   final String title;
   final bool isFeatured;
+  final Color titleColor;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +25,7 @@ class CustomTag extends StatelessWidget {
       margin: EdgeInsets.only(right: 8.w),
       padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
-        color: isFeatured
-            ? Colors.white.withOpacity(0.15)
-            : Get.theme.backgroundColor,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -32,9 +34,7 @@ class CustomTag extends StatelessWidget {
         children: [
           HeroIcon(
             icon,
-            color: isFeatured
-                ? Get.theme.backgroundColor
-                : Get.theme.colorScheme.tertiary,
+            color: titleColor,
             size: 16.w,
           ),
           SizedBox(width: 5.w),
@@ -43,9 +43,7 @@ class CustomTag extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 13.sp,
               fontWeight: FontWeight.w500,
-              color: isFeatured
-                  ? Get.theme.backgroundColor
-                  : Get.theme.colorScheme.tertiary,
+              color: titleColor,
             ),
           )
         ],
