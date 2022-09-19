@@ -11,6 +11,8 @@ abstract class Routes {
   static const CHOOSE = _Paths.CHOOSE;
   static const WAITTING = _Paths.WAITTING;
   static const SEARCH = _Paths.SEARCH;
+  static const SAVED = _Paths.SAVED;
+  static const JOB_DETAILS = _Paths.JOB_DETAILS;
 }
 
 abstract class _Paths {
@@ -23,4 +25,6 @@ abstract class _Paths {
   static const CHOOSE = '/choose';
   static const WAITTING = '/waiting';
   static const SEARCH = '/search';
+  static const SAVED = '/saved';
+  static const JOB_DETAILS = '/job_details';
 }
