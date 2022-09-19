@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:jobs_flutter_app/app/core/values/strings.dart';
-import 'package:jobs_flutter_app/app/widgets/custom_button.dart';
 
+import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_tag.dart';
 
 class Body extends StatelessWidget {
@@ -61,7 +62,14 @@ class Body extends StatelessWidget {
               ),
             ],
           ),
-          const Spacer(),
+          SizedBox(height: 10.w),
+          const Expanded(
+            child: Markdown(
+              data: AppStrings.markdownDemo,
+              selectable: true,
+              physics: PageScrollPhysics(),
+            ),
+          ),
           CustomButton(title: "APPLY NOW", onTap: () {}),
         ],
       ),
