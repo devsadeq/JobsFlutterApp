@@ -27,7 +27,7 @@ class CustomJobCard extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Get.theme.colorScheme.secondary,
+                  Get.theme.colorScheme.primary,
                   const Color(0xff36ABF2),
                 ],
               )
@@ -86,7 +86,7 @@ class _CardTile extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 color: isFeatured
                     ? Get.theme.backgroundColor
-                    : Get.theme.primaryColor,
+                    : Get.theme.colorScheme.onBackground,
               ),
             ),
             Row(
@@ -96,7 +96,7 @@ class _CardTile extends StatelessWidget {
                   size: 15.w,
                   color: isFeatured
                       ? Get.theme.backgroundColor
-                      : Get.theme.colorScheme.tertiary,
+                      : Get.theme.colorScheme.secondary,
                 ),
                 SizedBox(width: 5.w),
                 Text(
@@ -106,7 +106,7 @@ class _CardTile extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: isFeatured
                         ? Get.theme.backgroundColor
-                        : Get.theme.colorScheme.tertiary,
+                        : Get.theme.colorScheme.secondary,
                   ),
                 ),
               ],
@@ -119,7 +119,7 @@ class _CardTile extends StatelessWidget {
           size: 24.w,
           color: isFeatured
               ? Get.theme.backgroundColor
-              : Get.theme.colorScheme.tertiary,
+              : Get.theme.colorScheme.secondary,
         )
       ],
     );
@@ -143,7 +143,7 @@ class _CardJobPosition extends StatelessWidget {
       style: GoogleFonts.poppins(
         fontSize: 13.sp,
         fontWeight: FontWeight.w600,
-        color: isFeatured ? Get.theme.backgroundColor : Get.theme.primaryColor,
+        color: isFeatured ? Get.theme.backgroundColor : Get.theme.colorScheme.onBackground,
       ),
     );
   }
@@ -162,7 +162,7 @@ class _CardJobDescription extends StatelessWidget {
       style: GoogleFonts.poppins(
           fontSize: 13.sp,
           fontWeight: FontWeight.w400,
-          color: Get.theme.primaryColor.withOpacity(0.75)),
+          color: Get.theme.colorScheme.onBackground.withOpacity(0.75)),
     );
   }
 }
@@ -189,7 +189,7 @@ class _CardTags extends StatelessWidget {
               : Get.theme.backgroundColor,
           titleColor: isFeatured
               ? Get.theme.backgroundColor
-              : Get.theme.colorScheme.tertiary,
+              : Get.theme.colorScheme.secondary,
         ),
         CustomTag(
           title: "Full Time",
@@ -199,7 +199,7 @@ class _CardTags extends StatelessWidget {
               : Get.theme.backgroundColor,
           titleColor: isFeatured
               ? Get.theme.backgroundColor
-              : Get.theme.colorScheme.tertiary,
+              : Get.theme.colorScheme.secondary,
         ),
         CustomTag(
           title: "Baghdad",
@@ -209,7 +209,7 @@ class _CardTags extends StatelessWidget {
               : Get.theme.backgroundColor,
           titleColor: isFeatured
               ? Get.theme.backgroundColor
-              : Get.theme.colorScheme.tertiary,
+              : Get.theme.colorScheme.secondary,
         ),
       ],
     );
