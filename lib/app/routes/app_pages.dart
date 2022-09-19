@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import '../modules/JobDetails/bindings/job_details_binding.dart';
-import '../modules/JobDetails/views/job_details_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login/login_view.dart';
 import '../modules/auth/views/register/register_view.dart';
@@ -21,7 +19,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.JOB_DETAILS;
+  static const INITIAL = Routes.SEARCH;
 
   static final routes = [
     GetPage(
@@ -58,11 +56,6 @@ class AppPages {
       name: _Paths.SEARCH,
       page: () => const SearchView(),
       binding: SearchBinding(),
-    ),
-    GetPage(
-      name: _Paths.JOB_DETAILS,
-      page: () => const JobDetailsView(),
-      binding: JobDetailsBinding(),
     ),
   ];
 }
