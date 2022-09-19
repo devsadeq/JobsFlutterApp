@@ -24,7 +24,7 @@ class SectionHeader extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
-              color: Get.theme.primaryColor,
+              color: Get.theme.colorScheme.onBackground,
             ),
           ),
           Text(
@@ -32,7 +32,7 @@ class SectionHeader extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 13.sp,
               fontWeight: FontWeight.w400,
-              color: Get.theme.colorScheme.tertiary,
+              color: Get.theme.colorScheme.secondary,
             ),
           ),
         ],

@@ -19,14 +19,14 @@ class CustomChip extends StatelessWidget {
         labelStyle: GoogleFonts.poppins(
           fontSize: 13.sp,
           fontWeight: FontWeight.w500,
-          color: isActive ? Colors.white : Get.theme.colorScheme.tertiary,
+          color: isActive ? Colors.white : Get.theme.colorScheme.secondary,
         ),
         elevation: 0.0,
 
         side: BorderSide(
             color: isActive
-                ? Get.theme.colorScheme.secondary
-                : Get.theme.colorScheme.tertiary,
+                ? Get.theme.colorScheme.primary
+                : Get.theme.colorScheme.secondary,
             width: 1.w),
         labelPadding: EdgeInsets.symmetric(vertical: 1.w, horizontal: 15.w),
         shape: RoundedRectangleBorder(
@@ -34,7 +34,7 @@ class CustomChip extends StatelessWidget {
         ),
         onPressed: () {},
         backgroundColor: isActive
-            ? Get.theme.colorScheme.secondary
+            ? Get.theme.colorScheme.primary
             : Get.theme.backgroundColor,
       ),
     );

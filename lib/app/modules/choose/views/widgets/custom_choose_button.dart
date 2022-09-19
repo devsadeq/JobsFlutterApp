@@ -14,16 +14,16 @@ class CustomChooseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width:150.w,
+      width: 150.w,
       height: 95.h,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.all(10.w),
-          primary: Get.theme.cardColor,
-          onPrimary: Get.theme.colorScheme.secondary,
+          backgroundColor: Get.theme.cardColor,
+          foregroundColor: Get.theme.colorScheme.primary,
           side: BorderSide(
-            color: Get.theme.colorScheme.secondary,
+            color: Get.theme.colorScheme.primary,
             width: 1.5,
           ),
         ),
@@ -36,7 +36,7 @@ class CustomChooseButton extends StatelessWidget {
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.r),
-                  color: Get.theme.colorScheme.secondary.withOpacity(0.1)),
+                  color: Get.theme.colorScheme.primary.withOpacity(0.1)),
               child: HeroIcon(
                 icon,
                 solid: true,

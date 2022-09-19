@@ -7,8 +7,6 @@ import '../modules/choose/bindings/choose_binding.dart';
 import '../modules/choose/views/choose_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/saved/bindings/saved_binding.dart';
-import '../modules/saved/views/saved_view.dart';
 import '../modules/search/bindings/search_binding.dart';
 import '../modules/search/views/search_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -21,7 +19,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SAVED;
+  static const INITIAL = Routes.SEARCH;
 
   static final routes = [
     GetPage(
@@ -58,11 +56,6 @@ class AppPages {
       name: _Paths.SEARCH,
       page: () => const SearchView(),
       binding: SearchBinding(),
-    ),
-    GetPage(
-      name: _Paths.SAVED,
-      page: () => const SavedView(),
-      binding: SavedBinding(),
     ),
   ];
 }

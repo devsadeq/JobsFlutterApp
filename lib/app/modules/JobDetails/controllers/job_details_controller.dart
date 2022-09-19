@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:jobs_flutter_app/app/utils/functions.dart';
 
-import '../views/widgets/choose_bottom_sheet.dart';
+import '../views/widgets/apply_bottom_sheet.dart';
 
-class ChooseController extends GetxController {
+class JobDetailsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
@@ -12,7 +12,7 @@ class ChooseController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    popupBottomSheet(const ChooseBottomSheetBody());
+    popupBottomSheet(const ApplyBottomSheetBody());
   }
 
   @override

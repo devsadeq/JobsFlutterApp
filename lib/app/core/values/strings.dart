@@ -61,17 +61,12 @@ class AppStrings {
   static const avatarUrl = "https://api.lorem.space/image/album?w=150&h=150";
 
   /*
-  *  search screen Strings
+  * Choose search Strings
   * */
   static const search = 'Search';
   static const companysName = 'Google';
   static const companysField = 'Company.Internet';
 
-/*
-  * saved screen Strings
-  * */
-
-static const NoSaved = "You don't have any jobs saved,\n please find it in search to save\n jobs";
 
 
 }

@@ -50,7 +50,7 @@ class FeaturedJobs extends GetView<HomeController> {
               activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(26.r),
               ),
-              activeColor: Get.theme.colorScheme.secondary,
+              activeColor: Get.theme.colorScheme.primary,
               color: const Color(0xffE4E5E7),
             ),
           ),

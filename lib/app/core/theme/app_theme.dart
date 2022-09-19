@@ -46,7 +46,7 @@ class AppTheme {
 
   static final _lightColorScheme = ColorScheme.fromSwatch().copyWith(
     background: backgroundColor,
-    onBackground: whiteColor,
+    onBackground: blackColor,
     ///////////////////////////////
     primary: blueColor,
     onPrimary: backgroundColor,

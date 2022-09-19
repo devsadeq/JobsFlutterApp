@@ -4,31 +4,30 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  const CustomAppBar({
+    Key? key,
+    required this.leading,
+    this.title,
+  }) : super(key: key);
+  final Widget leading;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0.0,
-      leading: Padding(
-        padding: EdgeInsets.only(left: 16.w, bottom: 8.w, top: 8.w),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(25.r),
-          child: Image.network(
-            "https://api.lorem.space/image/face?w=150&h=150",
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-      title: Text(
-        "Jobs Finder",
-        style: GoogleFonts.poppins(
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w700,
-          color: Get.theme.primaryColor,
-        ),
-      ),
+      leading: leading,
+      title: title != null
+          ? Text(
+              title!,
+              style: GoogleFonts.poppins(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w700,
+                color: Get.theme.colorScheme.onBackground,
+              ),
+            )
+          : null,
       centerTitle: true,
     );
   }
