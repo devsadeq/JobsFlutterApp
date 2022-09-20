@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/home_controller.dart';
-import 'custom_job_card.dart';
+import '../../../../widgets/custom_job_card.dart';
 import 'section_header.dart';
 
 class FeaturedJobs extends GetView<HomeController> {

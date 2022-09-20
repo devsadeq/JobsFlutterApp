@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'custom_job_card.dart';
+import '../../../../widgets/custom_job_card.dart';
 import 'section_header.dart';
 
 class RecentJobs extends StatelessWidget {
