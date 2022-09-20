@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/Company_Profile/bindings/company_profile_binding.dart';
+import '../modules/Company_Profile/views/company_profile_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login/login_view.dart';
 import '../modules/auth/views/register/register_view.dart';
@@ -21,7 +23,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SAVED;
+  static const INITIAL = Routes.COMPANY_PROFILE;
 
   static final routes = [
     GetPage(
@@ -63,6 +65,11 @@ class AppPages {
       name: _Paths.SAVED,
       page: () => const SavedView(),
       binding: SavedBinding(),
+    ),
+    GetPage(
+      name: _Paths.COMPANY_PROFILE,
+      page: () => const CompanyProfileView(),
+      binding: CompanyProfileBinding(),
     ),
   ];
 }

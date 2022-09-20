@@ -12,6 +12,7 @@ abstract class Routes {
   static const WAITTING = _Paths.WAITTING;
   static const SEARCH = _Paths.SEARCH;
   static const SAVED = _Paths.SAVED;
+  static const COMPANY_PROFILE = _Paths.COMPANY_PROFILE;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const WAITTING = '/waiting';
   static const SEARCH = '/search';
   static const SAVED = '/saved';
+  static const COMPANY_PROFILE = '/company-profile';
 }
