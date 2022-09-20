@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
-import '../../../../core/values/strings.dart';
+import '../core/values/strings.dart';
 
-import '../../../../widgets/custom_tag.dart';
+import 'custom_tag.dart';
 
 class CustomJobCard extends StatelessWidget {
   const CustomJobCard({

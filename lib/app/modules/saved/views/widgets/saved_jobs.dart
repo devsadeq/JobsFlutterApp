@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../home/views/widgets/custom_job_card.dart';
+import '../../../../widgets/custom_job_card.dart';
 
 class SavedJobs extends StatelessWidget {
   const SavedJobs({Key? key}) : super(key: key);
