@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:jobs_flutter_app/app/core/values/strings.dart';
+import 'package:jobs_flutter_app/app/modules/JobDetails/views/widgets/apply_bottom_sheet.dart';
+import 'package:jobs_flutter_app/app/utils/functions.dart';
 
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_tag.dart';
@@ -55,7 +57,7 @@ class Body extends StatelessWidget {
               ),
               CustomTag(
                 title: "Baghdad",
-                icon: HeroIcons.locationMarker,
+                icon: HeroIcons.lockOpen,
                 backgroundColor:
                     Get.theme.colorScheme.tertiary.withOpacity(0.25),
                 titleColor: Get.theme.colorScheme.secondary,
@@ -67,10 +69,14 @@ class Body extends StatelessWidget {
             child: Markdown(
               data: AppStrings.markdownDemo,
               selectable: true,
-              physics: PageScrollPhysics(),
             ),
           ),
-          CustomButton(title: "APPLY NOW", onTap: () {}),
+          CustomButton(
+            title: "APPLY NOW",
+            onTap: () => popupBottomSheet(
+              bottomSheetBody: const ApplyBottomSheetBody(),
+            ),
+          ),
         ],
       ),
     );
