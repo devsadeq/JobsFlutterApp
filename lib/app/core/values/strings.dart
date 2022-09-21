@@ -1,3 +1,5 @@
+import 'package:jobs_flutter_app/app/modules/Company_Profile/views/widgets/profile_header.dart';
+
 class AppStrings {
   static const appName = "Jobspot";
 
@@ -218,4 +220,18 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 *here be dragons*
 :::
   """;
+
+/*
+  * company profile screen Strings
+  * */
+  static const Email = 'example@company.com';
+  static const CompanysField = 'Technology Company';
+  static const aboutUs = "About us";
+  static const jobs = "Jobs";
+  static const abtco = "About The Company";
+  static const AboutTheCompanyText =
+      "Lorem ipsum dolor sit amet, consectetur \n adipiscing elit. Lectus id commodo \n egestas metus interdum dolor.";
+  static const Location = "Location";
+  static const nation = "Iraq";
+  static const theLocation = 'Baghdad - Street';
 }
