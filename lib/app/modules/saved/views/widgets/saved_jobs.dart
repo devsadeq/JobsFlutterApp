@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../../home/views/widgets/custom_job_card.dart';
-
+import '../../../../widgets/custom_job_card.dart';
 
 class SavedJobs extends StatelessWidget {
   const SavedJobs({Key? key}) : super(key: key);
@@ -11,12 +9,7 @@ class SavedJobs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 32.h),
-        Text('Saved Jobs' , style: GoogleFonts.poppins(
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w700
-        )),
-        SizedBox(height: 30.h),
+        SizedBox(height: 20.h),
         ListView.builder(
           itemCount: 2,
           shrinkWrap: true,

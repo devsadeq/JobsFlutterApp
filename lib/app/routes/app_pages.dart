@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/Company_Profile/bindings/company_profile_binding.dart';
 import '../modules/Company_Profile/views/company_profile_view.dart';
+import '../modules/JobDetails/bindings/job_details_binding.dart';
+import '../modules/JobDetails/views/job_details_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login/login_view.dart';
 import '../modules/auth/views/register/register_view.dart';
@@ -9,6 +11,8 @@ import '../modules/choose/bindings/choose_binding.dart';
 import '../modules/choose/views/choose_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/root/bindings/root_binding.dart';
+import '../modules/root/views/root_view.dart';
 import '../modules/saved/bindings/saved_binding.dart';
 import '../modules/saved/views/saved_view.dart';
 import '../modules/search/bindings/search_binding.dart';
@@ -70,6 +74,16 @@ class AppPages {
       name: _Paths.COMPANY_PROFILE,
       page: () => const CompanyProfileView(),
       binding: CompanyProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.JOB_DETAILS,
+      page: () => const JobDetailsView(),
+      binding: JobDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ROOT,
+      page: () => const RootView(),
+      binding: RootBinding(),
     ),
   ];
 }

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/home_controller.dart';
-import 'custom_job_card.dart';
+import '../../../../widgets/custom_job_card.dart';
 import 'section_header.dart';
 
 class FeaturedJobs extends GetView<HomeController> {
@@ -50,7 +50,7 @@ class FeaturedJobs extends GetView<HomeController> {
               activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(26.r),
               ),
-              activeColor: Get.theme.colorScheme.secondary,
+              activeColor: Get.theme.colorScheme.primary,
               color: const Color(0xffE4E5E7),
             ),
           ),
