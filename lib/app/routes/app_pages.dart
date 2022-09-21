@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import '../modules/Company_Profile/bindings/company_profile_binding.dart';
-import '../modules/Company_Profile/views/company_profile_view.dart';
 import '../modules/JobDetails/bindings/job_details_binding.dart';
 import '../modules/JobDetails/views/job_details_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
@@ -9,6 +7,8 @@ import '../modules/auth/views/login/login_view.dart';
 import '../modules/auth/views/register/register_view.dart';
 import '../modules/choose/bindings/choose_binding.dart';
 import '../modules/choose/views/choose_view.dart';
+import '../modules/companyProfile/bindings/company_profile_binding.dart';
+import '../modules/companyProfile/views/company_profile_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/root/bindings/root_binding.dart';

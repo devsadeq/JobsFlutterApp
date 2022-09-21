@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobs_flutter_app/app/modules/home/views/widgets/custom_job_card.dart';
+
+import '../../../../widgets/custom_job_card.dart';
 
 class Jobs extends StatelessWidget {
   const Jobs({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class Jobs extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) => Padding(
             padding: EdgeInsets.only(bottom: 22.h),
-            child: CustomJobCard() ,
+            child: const CustomJobCard() ,
           ),
         )
       ],

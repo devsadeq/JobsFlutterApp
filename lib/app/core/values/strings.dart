@@ -1,5 +1,3 @@
-import 'package:jobs_flutter_app/app/modules/Company_Profile/views/widgets/profile_header.dart';
-
 class AppStrings {
   static const appName = "Jobspot";
 
