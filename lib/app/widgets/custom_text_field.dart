@@ -4,9 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String hintText;
+  final String? hintText;
   final bool autofocus;
   final int? maxLines;
+  final int? minLines;
   final int? maxLength;
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
@@ -25,8 +26,9 @@ class CustomTextField extends StatelessWidget {
 
   const CustomTextField({
     Key? key,
-    required this.hintText,
+    this.hintText,
     this.maxLines,
+    this.minLines,
     this.maxLength,
     this.controller,
     this.onSaved,
@@ -55,7 +57,7 @@ class CustomTextField extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: title!,
+                  text: title ?? "",
                   style: GoogleFonts.poppins(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w600,
@@ -84,6 +86,7 @@ class CustomTextField extends StatelessWidget {
           ),
           maxLength: maxLength,
           maxLines: isPassword ? 1 : maxLines,
+          minLines: minLines,
           keyboardType: textInputType,
           obscureText: obscureText,
           enableSuggestions: !isPassword,
