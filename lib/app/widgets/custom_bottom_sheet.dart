@@ -8,12 +8,17 @@ class CustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 304.h,
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: Get.mediaQuery.viewInsets.bottom,
+        left: 29.w,
+        right: 29.w,
+      ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            margin: EdgeInsets.only(top: 28.h, bottom: 43.h),
+            margin: EdgeInsets.only(top: 28.h, bottom: 50.h),
             width: 30.w,
             height: 4.h,
             decoration: BoxDecoration(
@@ -22,6 +27,7 @@ class CustomBottomSheet extends StatelessWidget {
             ),
           ),
           body,
+          SizedBox(height: 50.h)
         ],
       ),
     );

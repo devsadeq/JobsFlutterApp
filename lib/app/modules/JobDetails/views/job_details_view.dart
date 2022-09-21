@@ -15,6 +15,7 @@ class JobDetailsView extends GetView<JobDetailsController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: CustomAppBar(
           leading: IconButton(
             onPressed: () {},

@@ -12,7 +12,11 @@ class ChooseController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    popupBottomSheet(const ChooseBottomSheetBody());
+    popupBottomSheet(
+      bottomSheetBody: const ChooseBottomSheetBody(),
+      isDismissible: false,
+      enableDrag: false,
+    );
   }
 
   @override

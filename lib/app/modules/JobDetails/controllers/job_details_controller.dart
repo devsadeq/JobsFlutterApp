@@ -12,7 +12,6 @@ class JobDetailsController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    popupBottomSheet(const ApplyBottomSheetBody());
   }
 
   @override
