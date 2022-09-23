@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heroicons/heroicons.dart';
 
 class CustomChooseButton extends StatelessWidget {
   const CustomChooseButton({Key? key, required this.title, required this.icon})
       : super(key: key);
 
   final String title;
-  final HeroIcons icon;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +37,8 @@ class CustomChooseButton extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.r),
                   color: Get.theme.colorScheme.primary.withOpacity(0.1)),
-              child: HeroIcon(
+              child: FaIcon(
                 icon,
-                solid: true,
                 size: 24,
               ),
             ),

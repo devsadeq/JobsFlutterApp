@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:heroicons/heroicons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jobs_flutter_app/app/core/values/strings.dart';
 
 import '../../../../../widgets/custom_text_field.dart';
@@ -25,7 +25,7 @@ class LoginForm extends StatelessWidget {
             title: AppStrings.password,
             autofocus: false,
             isPassword: true,
-            suffixIcon: HeroIcons.eyeOff,
+            suffixIcon: FontAwesomeIcons.eyeSlash,
           ),
         ],
       ),

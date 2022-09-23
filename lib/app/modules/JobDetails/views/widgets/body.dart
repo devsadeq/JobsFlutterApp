@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heroicons/heroicons.dart';
-import 'package:jobs_flutter_app/app/core/values/strings.dart';
-import 'package:jobs_flutter_app/app/modules/JobDetails/views/widgets/apply_bottom_sheet.dart';
-import 'package:jobs_flutter_app/app/utils/functions.dart';
 
+import '../../../../core/values/strings.dart';
+import '../../../../utils/functions.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_tag.dart';
+import 'apply_bottom_sheet.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -43,21 +43,21 @@ class Body extends StatelessWidget {
             children: [
               CustomTag(
                 title: "Remote",
-                icon: HeroIcons.briefcase,
+                icon: FontAwesomeIcons.briefcase,
                 backgroundColor:
                     Get.theme.colorScheme.tertiary.withOpacity(0.25),
                 titleColor: Get.theme.colorScheme.secondary,
               ),
               CustomTag(
                 title: "Full Time",
-                icon: HeroIcons.fire,
+                icon: FontAwesomeIcons.fire,
                 backgroundColor:
                     Get.theme.colorScheme.tertiary.withOpacity(0.25),
                 titleColor: Get.theme.colorScheme.secondary,
               ),
               CustomTag(
                 title: "Baghdad",
-                icon: HeroIcons.lockOpen,
+                icon: FontAwesomeIcons.locationDot,
                 backgroundColor:
                     Get.theme.colorScheme.tertiary.withOpacity(0.25),
                 titleColor: Get.theme.colorScheme.secondary,

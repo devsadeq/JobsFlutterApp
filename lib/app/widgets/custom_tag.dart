@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heroicons/heroicons.dart';
 
 class CustomTag extends StatelessWidget {
   const CustomTag({
@@ -13,7 +12,7 @@ class CustomTag extends StatelessWidget {
     required this.titleColor,
     required this.backgroundColor,
   }) : super(key: key);
-  final HeroIcons icon;
+  final IconData icon;
   final String title;
   final bool isFeatured;
   final Color titleColor;
@@ -32,7 +31,7 @@ class CustomTag extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          HeroIcon(
+          FaIcon(
             icon,
             color: titleColor,
             size: 16.w,

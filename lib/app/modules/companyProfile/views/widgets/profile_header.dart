@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heroicons/heroicons.dart';
 import '../../../../core/values/strings.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -16,8 +16,8 @@ class ProfileHeader extends StatelessWidget {
 
         children: [
           IconButton(onPressed: (){},
-              icon: HeroIcon(
-                  HeroIcons.arrowLeft
+              icon: FaIcon(
+                  FontAwesomeIcons.chevronLeft
               )
           ),
           Row(

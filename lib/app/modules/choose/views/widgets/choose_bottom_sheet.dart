@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heroicons/heroicons.dart';
 
 import '../../../../core/values/strings.dart';
 import 'custom_choose_button.dart';
@@ -28,12 +28,12 @@ class ChooseBottomSheetBody extends StatelessWidget {
           children: [
             const CustomChooseButton(
               title: AppStrings.iWantAJob,
-              icon: HeroIcons.briefcase,
+              icon: FontAwesomeIcons.briefcase,
             ),
             SizedBox(width: 15.w),
             const CustomChooseButton(
               title: AppStrings.iWantAnEmployee,
-              icon: HeroIcons.user,
+              icon: FontAwesomeIcons.user,
             ),
           ],
         )
