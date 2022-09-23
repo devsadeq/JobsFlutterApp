@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:heroicons/heroicons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'search_items.dart';
 import '../../../../widgets/custom_text_field.dart';
@@ -18,8 +18,8 @@ class Body extends StatelessWidget {
           const CustomTextField(
             hintText: "Search",
             isSearchBar: true,
-            prefixIcon: HeroIcons.search,
-            suffixIcon: HeroIcons.x,
+            prefixIcon: FontAwesomeIcons.magnifyingGlass,
+            suffixIcon: FontAwesomeIcons.x,
           ),
           SizedBox(height: 20.h),
           const SearchResults(),

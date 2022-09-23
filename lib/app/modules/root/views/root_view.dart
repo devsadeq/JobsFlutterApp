@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heroicons/heroicons.dart';
 import 'package:jobs_flutter_app/app/modules/home/views/home_view.dart';
 import 'package:jobs_flutter_app/app/modules/saved/views/saved_view.dart';
 import 'package:jobs_flutter_app/app/modules/search/views/search_view.dart';
@@ -47,15 +47,15 @@ class RootView extends GetView<RootController> {
 
   List<PersistentBottomNavBarItem> _getNavBarItems() {
     return [
-      _getNavBarItem("Home", HeroIcons.home),
-      _getNavBarItem("Search", HeroIcons.search),
-      _getNavBarItem("Saved", HeroIcons.bookmark),
+      _getNavBarItem("Home", FontAwesomeIcons.house),
+      _getNavBarItem("Search", FontAwesomeIcons.magnifyingGlass),
+      _getNavBarItem("Saved", FontAwesomeIcons.bookmark),
     ];
   }
 
-  PersistentBottomNavBarItem _getNavBarItem(String title, HeroIcons icon) {
+  PersistentBottomNavBarItem _getNavBarItem(String title, IconData icon) {
     return PersistentBottomNavBarItem(
-      icon: HeroIcon(icon),
+      icon: FaIcon(icon),
       title: title,
       activeColorPrimary: Get.theme.primaryColor,
       inactiveColorPrimary: Get.theme.colorScheme.secondary,

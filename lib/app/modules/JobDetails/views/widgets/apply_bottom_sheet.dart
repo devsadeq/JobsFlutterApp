@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heroicons/heroicons.dart';
 import 'package:get/get.dart';
 import 'package:jobs_flutter_app/app/widgets/custom_button.dart';
 import 'package:jobs_flutter_app/app/widgets/custom_text_field.dart';
@@ -31,8 +31,8 @@ class ApplyBottomSheetBody extends StatelessWidget {
         SizedBox(height: 15.h),
         Row(
           children: [
-            HeroIcon(
-              HeroIcons.checkCircle,
+            FaIcon(
+              FontAwesomeIcons.circleCheck,
               color: Get.theme.primaryColor,
             ),
             SizedBox(width: 5.w),
