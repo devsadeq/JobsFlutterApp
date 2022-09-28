@@ -5,13 +5,28 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../core/values/strings.dart';
 import 'custom_tag.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomJobCard extends StatelessWidget {
   const CustomJobCard({
     Key? key,
     this.isFeatured = false,
+    required this.avatar,
+    required this.companyName,
+    required this.publishTime,
+    required this.jobPosition,
+    required this.workplace,
+    required this.employmentType,
+    required this.location,
   }) : super(key: key);
   final bool isFeatured;
+  final String avatar;
+  final String companyName;
+  final String publishTime;
+  final String jobPosition;
+  final String workplace;
+  final String employmentType;
+  final String location;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +50,24 @@ class CustomJobCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _CardTile(isFeatured: isFeatured),
+          _CardTile(
+              isFeatured: isFeatured,
+              avatar: avatar,
+              companyName: companyName,
+              publishTime: publishTime),
           SizedBox(height: 10.h),
-          _CardJobPosition(isFeatured: isFeatured),
+          _CardJobPosition(
+            isFeatured: isFeatured,
+            jobPosition: jobPosition,
+          ),
           if (!isFeatured) SizedBox(height: 5.h),
           if (!isFeatured) const _CardJobDescription(),
           SizedBox(height: 10.h),
           _CardTags(
             isFeatured: isFeatured,
+            employmentType: employmentType,
+            location: location,
+            workplace: workplace,
           )
         ],
       ),
@@ -59,8 +84,14 @@ class _CardTile extends StatelessWidget {
   const _CardTile({
     Key? key,
     required this.isFeatured,
+    required this.avatar,
+    required this.companyName,
+    required this.publishTime,
   }) : super(key: key);
   final bool isFeatured;
+  final String avatar;
+  final String companyName;
+  final String publishTime;
 
   @override
   Widget build(BuildContext context) {
@@ -69,17 +100,23 @@ class _CardTile extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(50.r),
-          child: Image.network(
-            AppStrings.avatarUrl,
-            height: 46.w,
+          child: CachedNetworkImage(
+            imageUrl: avatar,
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+            height: 46.h,
           ),
+          // child: Image.network(
+          //   avatar,
+          //   height: 46.w,
+          // ),
         ),
         SizedBox(width: 5.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Facebook Company",
+              companyName,
               style: GoogleFonts.poppins(
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w600,
@@ -99,7 +136,7 @@ class _CardTile extends StatelessWidget {
                 ),
                 SizedBox(width: 5.w),
                 Text(
-                  "1 day",
+                  publishTime,
                   style: GoogleFonts.poppins(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w400,
@@ -131,13 +168,15 @@ class _CardJobPosition extends StatelessWidget {
   const _CardJobPosition({
     Key? key,
     required this.isFeatured,
+    required this.jobPosition,
   }) : super(key: key);
   final bool isFeatured;
+  final String jobPosition;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Full-Stack Developer",
+      jobPosition,
       style: GoogleFonts.poppins(
         fontSize: 13.sp,
         fontWeight: FontWeight.w600,
@@ -174,15 +213,21 @@ class _CardTags extends StatelessWidget {
   const _CardTags({
     Key? key,
     required this.isFeatured,
+    required this.workplace,
+    required this.employmentType,
+    required this.location,
   }) : super(key: key);
   final bool isFeatured;
+  final String workplace;
+  final String employmentType;
+  final String location;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CustomTag(
-          title: "Remote",
+          title: workplace,
           icon: FontAwesomeIcons.briefcase,
           backgroundColor: isFeatured
               ? Colors.white.withOpacity(0.15)
@@ -192,7 +237,7 @@ class _CardTags extends StatelessWidget {
               : Get.theme.colorScheme.secondary,
         ),
         CustomTag(
-          title: "Full Time",
+          title: employmentType,
           icon: FontAwesomeIcons.fire,
           backgroundColor: isFeatured
               ? Colors.white.withOpacity(0.15)
@@ -202,7 +247,7 @@ class _CardTags extends StatelessWidget {
               : Get.theme.colorScheme.secondary,
         ),
         CustomTag(
-          title: "Baghdad",
+          title: location,
           icon: FontAwesomeIcons.locationDot,
           backgroundColor: isFeatured
               ? Colors.white.withOpacity(0.15)

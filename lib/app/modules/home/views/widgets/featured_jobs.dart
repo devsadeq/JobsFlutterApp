@@ -19,9 +19,9 @@ class FeaturedJobs extends GetView<HomeController> {
         SizedBox(height: 16.h),
         CarouselSlider(
           items: const [
-            CustomJobCard(isFeatured: true),
-            CustomJobCard(isFeatured: true),
-            CustomJobCard(isFeatured: true),
+            // CustomJobCard(isFeatured: true),
+            // CustomJobCard(isFeatured: true),
+            // CustomJobCard(isFeatured: true),
           ],
           options: CarouselOptions(
             height: 170.h,
