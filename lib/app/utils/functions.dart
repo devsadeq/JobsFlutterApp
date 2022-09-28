@@ -25,17 +25,5 @@ popupBottomSheet({
     isScrollControlled: true,
     backgroundColor: Colors.white,
   );
-  // return showMaterialModalBottomSheet(
-  //   context: Get.context!,
-  //   builder: (context) => CustomBottomSheet(body: bottomSheetBody),
-  //   enableDrag: enableDrag ?? true,
-  //   isDismissible: isDismissible ?? true,
-  //   bounce: true,
-  //   shape: RoundedRectangleBorder(
-  //     borderRadius: BorderRadius.only(
-  //       topRight: Radius.circular(22.r),
-  //       topLeft: Radius.circular(22.r),
-  //     ),
-  //   ),
-  // );
 }
+
