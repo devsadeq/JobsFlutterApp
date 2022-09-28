@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
           SizedBox(height: 16.h),
           const ChipsList(),
           SizedBox(height: 16.h),
-          const FeaturedJobs(),
+          // const FeaturedJobs(),
           SizedBox(height: 16.h),
           const RecentJobs(),
         ],

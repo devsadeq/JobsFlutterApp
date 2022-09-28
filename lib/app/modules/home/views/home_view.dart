@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/core/values/strings.dart';
+import 'package:jobs_flutter_app/app/data/remote/services/job_service.dart';
 
 import '../../../widgets/custom_appbar.dart';
 import '../controllers/home_controller.dart';
@@ -21,7 +23,7 @@ class HomeView extends GetView<HomeController> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(25.r),
               child: Image.network(
-                "https://api.lorem.space/image/face?w=150&h=150",
+                AppStrings.avatarUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -29,6 +31,8 @@ class HomeView extends GetView<HomeController> {
           title: "Job Finder",
         ),
         body: const Body(),
+        floatingActionButton:
+            FloatingActionButton(onPressed: () => controller.getJobs()),
       ),
     );
   }
