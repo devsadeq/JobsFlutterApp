@@ -19,6 +19,7 @@ class Body extends GetView<SearchController> {
           SizedBox(height: 30.h),
           CustomTextField(
             controller: controller.searchController,
+            autofocus: false,
             hintText: "Search",
             isSearchBar: true,
             prefixIcon: FontAwesomeIcons.magnifyingGlass,

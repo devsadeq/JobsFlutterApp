@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/utils/functions.dart';
 import 'package:jobs_flutter_app/app/widgets/custom_button.dart';
 import 'package:jobs_flutter_app/app/widgets/custom_text_field.dart';
+
+import 'submit_bottom_sheet.dart';
 
 class ApplyBottomSheetBody extends StatelessWidget {
   const ApplyBottomSheetBody({Key? key}) : super(key: key);
@@ -13,7 +16,6 @@ class ApplyBottomSheetBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // SizedBox(height: 500.h),
         Text(
           "Why Are You Applying for This Position?",
           style: GoogleFonts.poppins(
@@ -22,7 +24,6 @@ class ApplyBottomSheetBody extends StatelessWidget {
             color: Get.theme.colorScheme.onBackground,
           ),
         ),
-        // SizedBox(height: 15.h),
         const CustomTextField(
           minLines: 3,
           maxLines: 5,
@@ -47,7 +48,12 @@ class ApplyBottomSheetBody extends StatelessWidget {
           ],
         ),
         SizedBox(height: 30.h),
-        CustomButton(title: "SUBMIT", onTap: () {})
+        CustomButton(
+            title: "SUBMIT",
+            onTap: () {
+              Navigator.pop(context);
+              popupBottomSheet(bottomSheetBody: const SubmitBottomSheet());
+            })
       ],
     );
   }
