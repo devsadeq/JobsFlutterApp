@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/root/controllers/root_controller.dart';
 
 class SavedController extends GetxController {
-  //TODO: Implement SavedController
+  final rootController = Get.find<RootController>();
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +19,7 @@ class SavedController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  jumpToHome() {
+    rootController.persistentTabController.jumpToTab(0);
+  }
 }
