@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../core/values/strings.dart';
 import 'custom_tag.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -18,6 +17,8 @@ class CustomJobCard extends StatelessWidget {
     required this.workplace,
     required this.employmentType,
     required this.location,
+    required this.onTap,
+    this.description,
   }) : super(key: key);
   final bool isFeatured;
   final String avatar;
@@ -27,49 +28,54 @@ class CustomJobCard extends StatelessWidget {
   final String workplace;
   final String employmentType;
   final String location;
+  final String? description;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20.w),
-      margin: EdgeInsets.symmetric(horizontal: 16.w),
-      decoration: BoxDecoration(
-        color: isFeatured ? Get.theme.colorScheme.secondary : Colors.white,
-        borderRadius: BorderRadius.circular(14.r),
-        gradient: isFeatured
-            ? LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Get.theme.colorScheme.primary,
-                  const Color(0xff36ABF2),
-                ],
-              )
-            : null,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _CardTile(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(20.w),
+        margin: EdgeInsets.symmetric(horizontal: 16.w),
+        decoration: BoxDecoration(
+          color: isFeatured ? Get.theme.colorScheme.secondary : Colors.white,
+          borderRadius: BorderRadius.circular(14.r),
+          gradient: isFeatured
+              ? LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Get.theme.colorScheme.primary,
+                    const Color(0xff36ABF2),
+                  ],
+                )
+              : null,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _CardTile(
+                isFeatured: isFeatured,
+                avatar: avatar,
+                companyName: companyName,
+                publishTime: publishTime),
+            SizedBox(height: 10.h),
+            _CardJobPosition(
               isFeatured: isFeatured,
-              avatar: avatar,
-              companyName: companyName,
-              publishTime: publishTime),
-          SizedBox(height: 10.h),
-          _CardJobPosition(
-            isFeatured: isFeatured,
-            jobPosition: jobPosition,
-          ),
-          if (!isFeatured) SizedBox(height: 5.h),
-          if (!isFeatured) const _CardJobDescription(),
-          SizedBox(height: 10.h),
-          _CardTags(
-            isFeatured: isFeatured,
-            employmentType: employmentType,
-            location: location,
-            workplace: workplace,
-          )
-        ],
+              jobPosition: jobPosition,
+            ),
+            if (!isFeatured) SizedBox(height: 5.h),
+            if (!isFeatured) _CardJobDescription(description: description!),
+            SizedBox(height: 10.h),
+            _CardTags(
+              isFeatured: isFeatured,
+              employmentType: employmentType,
+              location: location,
+              workplace: workplace,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -192,12 +198,14 @@ class _CardJobPosition extends StatelessWidget {
 * Job Description Text
 * */
 class _CardJobDescription extends StatelessWidget {
-  const _CardJobDescription({Key? key}) : super(key: key);
+  const _CardJobDescription({Key? key, required this.description})
+      : super(key: key);
+  final String description;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      AppStrings.jobDescription,
+      description,
       style: GoogleFonts.poppins(
           fontSize: 13.sp,
           fontWeight: FontWeight.w400,

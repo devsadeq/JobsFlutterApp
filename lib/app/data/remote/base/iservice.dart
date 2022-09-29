@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 abstract class IService<T> {
   Future<Response> create({required T dto});
 
-  Future<Response> getAll({int? limit, int? offset});
+  Future<Response> getAll({int? limit, int? offset, String? q});
 
   Future<Response> get({required String uuid});
 
