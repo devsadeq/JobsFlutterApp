@@ -4,10 +4,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomChip extends StatelessWidget {
-  const CustomChip({Key? key, required this.title, this.isActive = false})
-      : super(key: key);
+  const CustomChip({
+    Key? key,
+    required this.title,
+    this.isActive = false,
+    required this.onPressed,
+  }) : super(key: key);
   final String title;
   final bool isActive;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,6 @@ class CustomChip extends StatelessWidget {
           color: isActive ? Colors.white : Get.theme.colorScheme.secondary,
         ),
         elevation: 0.0,
-
         side: BorderSide(
             color: isActive
                 ? Get.theme.colorScheme.primary
@@ -32,7 +36,7 @@ class CustomChip extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14.r),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         backgroundColor: isActive
             ? Get.theme.colorScheme.primary
             : Get.theme.backgroundColor,
