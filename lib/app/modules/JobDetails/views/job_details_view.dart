@@ -17,7 +17,7 @@ class JobDetailsView extends GetView<JobDetailsController> {
         resizeToAvoidBottomInset: false,
         appBar: CustomAppBar(
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () => Get.back(),
             icon: FaIcon(
               FontAwesomeIcons.chevronLeft,
               size: 24.w,

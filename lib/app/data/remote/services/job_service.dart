@@ -20,7 +20,7 @@ class JobService extends IService<IDto> {
   }
 
   @override
-  Future<Response> getAll({int? limit, int? offset}) async {
+  Future<Response> getAll({int? limit, int? offset, String? q}) async {
     try {
       return await dioClient.get(AppConstants.JOBS_ROUTE, queryParameters: {
         "limit": limit ?? 20,

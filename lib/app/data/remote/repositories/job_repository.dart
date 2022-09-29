@@ -24,7 +24,7 @@ class JobRepository implements IRepository<JobOutDto> {
   }
 
   @override
-  Future<bool?> deleteJob({required String uuid}) async {
+  Future<bool?> delete({required String uuid}) async {
     try {
       final response = await service.delete(uuid: uuid);
       if (response.statusCode == 200) return true;
@@ -36,7 +36,7 @@ class JobRepository implements IRepository<JobOutDto> {
   }
 
   @override
-  Future<State<List<JobOutDto>>> getAllJobs({int? limit, int? offset}) async {
+  Future<State<List<JobOutDto>>> getAll({int? limit, int? offset}) async {
     try {
       final response = await service.getAll(limit: limit, offset: offset);
       final jobs = (response.data['items'] as List)
@@ -51,18 +51,22 @@ class JobRepository implements IRepository<JobOutDto> {
   }
 
   @override
-  Future<JobOutDto?> getJob({required String uuid}) async {
+  Future<State<JobOutDto>> get({required String uuid}) async {
     try {
       final response = await service.get(uuid: uuid);
-      return JobOutDto.fromJson(response.data);
+      if (response.statusCode == 200) {
+        final JobOutDto job = JobOutDto.fromJson(response.data);
+        return State.success(data: job);
+      }
+      return const State.failure(reason: "Something went wrong!");
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
-      throw errMsg;
+      return State.failure(reason: errMsg);
     }
   }
 
   @override
-  Future<bool?> updateJob({required String uuid, required IDto dto}) async {
+  Future<bool?> update({required String uuid, required IDto dto}) async {
     try {
       final response = await service.update(uuid: uuid, dto: dto);
       if (response.statusCode == 200) return true;
