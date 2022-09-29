@@ -12,6 +12,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
   final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
   final TextEditingController? controller;
   final TextInputType? textInputType;
   final String? title;
@@ -44,7 +45,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.suffixIconSize = 24,
-    this.prefixIconSize = 24,
+    this.prefixIconSize = 24, this.onChanged,
   }) : super(key: key);
 
   @override
@@ -79,6 +80,7 @@ class CustomTextField extends StatelessWidget {
         if (!isSearchBar) SizedBox(height: 8.h),
         TextFormField(
           controller: controller,
+          onChanged: onChanged,
           style: GoogleFonts.poppins(
             fontSize: 13.sp,
             fontWeight: FontWeight.w400,
