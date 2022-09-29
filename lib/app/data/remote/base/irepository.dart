@@ -4,11 +4,11 @@ import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
 abstract class IRepository<T> {
   Future<bool?> create({required IDto dto});
 
-  Future<State<List<T>>?> getAllJobs({int? limit, int? offset});
+  Future<State<List<T>>?> getAll({int? limit, int? offset});
 
-  Future<T?> getJob({required String uuid});
+  Future<State<T?>> get({required String uuid});
 
-  Future<bool?> updateJob({required String uuid, required IDto dto});
+  Future<bool?> update({required String uuid, required IDto dto});
 
-  Future<bool?> deleteJob({required String uuid});
+  Future<bool?> delete({required String uuid});
 }
