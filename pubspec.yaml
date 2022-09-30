@@ -23,6 +23,9 @@ dependencies:
   freezed_annotation: ^2.1.0
   json_annotation: ^4.7.0
   liquid_pull_to_refresh: 3.0.1
+  flutter_zoom_drawer: 3.0.3
+  kf_drawer: 1.2.1
+  intl: 0.17.0
   flutter: 
     sdk: flutter
 
