@@ -20,7 +20,7 @@ abstract class IChoiceRepository<T> implements IRepository<T> {
   }
 
   @override
-  Future<State<T?>> get({required String uuid}) {
+  Future<State<T>> get({required String uuid}) {
     // TODO: implement get
     throw UnimplementedError();
   }
