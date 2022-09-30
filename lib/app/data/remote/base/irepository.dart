@@ -6,7 +6,7 @@ abstract class IRepository<T> {
 
   Future<State<List<T>>?> getAll({int? limit, int? offset});
 
-  Future<State<T?>> get({required String uuid});
+  Future<State<T>> get({required String uuid});
 
   Future<bool?> update({required String uuid, required IDto dto});
 

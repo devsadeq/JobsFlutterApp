@@ -12,4 +12,6 @@ abstract class State<T> with _$State<T> {
   const factory State.success({@required T? data}) = Success<T>;
 
   const factory State.failure({@required String? reason}) = Failure<T>;
+
+// T? toData() => (this is Success) ? (this as Success).data : null;
 }

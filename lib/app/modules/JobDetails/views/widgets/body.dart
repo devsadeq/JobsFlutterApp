@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:jobs_flutter_app/app/modules/JobDetails/controllers/job_details_controller.dart';
 import 'package:jobs_flutter_app/app/utils/constants.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../../../../utils/functions.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_tag.dart';
@@ -26,12 +27,18 @@ class Body extends GetView<JobDetailsController> {
           success: (job) => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 100.w,
-                height: 100.w,
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "${AppConstants.BASE_URL}${job!.company!.image}"),
+              GestureDetector(
+                onTap: () => Get.toNamed(
+                  Routes.COMPANY_PROFILE,
+                  arguments: job!.company!.id,
+                ),
+                child: SizedBox(
+                  width: 100.w,
+                  height: 100.w,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "${AppConstants.BASE_URL}${job!.company!.image}"),
+                  ),
                 ),
               ),
               SizedBox(height: 10.h),

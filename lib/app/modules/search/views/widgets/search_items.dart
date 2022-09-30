@@ -6,6 +6,7 @@ import 'package:jobs_flutter_app/app/modules/search/controllers/search_controlle
 import 'package:jobs_flutter_app/app/utils/constants.dart';
 
 import 'items_card.dart';
+import '../../../../routes/app_pages.dart';
 
 class SearchResults extends GetView<SearchController> {
   const SearchResults({Key? key}) : super(key: key);
@@ -27,6 +28,8 @@ class SearchResults extends GetView<SearchController> {
               avatar: "${AppConstants.BASE_URL}${results[index].image}",
               title: results[index].name!,
               subtitle: "Internet company",
+              onTap: () => Get.toNamed(Routes.COMPANY_PROFILE,
+                  arguments: results[index].id!),
             ),
           ),
         ),
