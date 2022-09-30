@@ -14,7 +14,7 @@ class Body extends GetView<CompanyProfileController> {
   Widget build(BuildContext context) {
     return Obx(() => controller.rxCompany.when(
         idle: () => Container(),
-        loading: () => const CircularProgressIndicator(),
+        loading: () => const Center(child: CircularProgressIndicator()),
         success: (company) => Column(
               children: [
                 ProfileHeader(

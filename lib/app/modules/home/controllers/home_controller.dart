@@ -66,4 +66,9 @@ class HomeController extends GetxController {
         await _positionRepository.getAll();
     _rxPositions.value = state;
   }
+
+  Future<void> onRefresh() async {
+    getPositions();
+    getJobs();
+  }
 }
