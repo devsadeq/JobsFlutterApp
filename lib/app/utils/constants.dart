@@ -6,4 +6,5 @@ class AppConstants {
   static const JOBS_ROUTE = "$_API/jobs/";
   static const POSITIONS_ROUTE = "$_API/meta/get_all_job_titles";
   static const SEARCH_ROUTE = "$_API/companies/search_company/";
+  static const COMPANIES_ROUTE = "$_API/companies/";
 }
