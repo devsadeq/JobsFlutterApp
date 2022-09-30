@@ -22,6 +22,7 @@ class RootView extends GetView<RootController> {
       screens: _getNavBarScreens(),
       items: _getNavBarItems(),
       confineInSafeArea: true,
+      navBarHeight: 56.h,
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       itemAnimationProperties: const ItemAnimationProperties(
@@ -60,7 +61,7 @@ class RootView extends GetView<RootController> {
       activeColorPrimary: Get.theme.primaryColor,
       inactiveColorPrimary: Get.theme.colorScheme.secondary,
       textStyle: GoogleFonts.poppins(
-        fontSize: 12.sp,
+        fontSize: 10.sp,
         fontWeight: FontWeight.normal,
       ),
     );
