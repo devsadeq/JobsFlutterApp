@@ -6,9 +6,12 @@ import 'package:jobs_flutter_app/app/data/remote/repositories/job_repository.dar
 import 'package:jobs_flutter_app/app/data/remote/repositories/position_repository.dart';
 import 'package:jobs_flutter_app/app/di/locator.dart';
 
+import '../../root/controllers/root_controller.dart';
+
 class HomeController extends GetxController {
   final _jobRepository = getIt.get<JobRepository>();
   final _positionRepository = getIt.get<PositionRepository>();
+  final _rootController = Get.find<RootController>();
 
   final RxInt _indicatorIndex = 0.obs;
 
@@ -70,5 +73,9 @@ class HomeController extends GetxController {
   Future<void> onRefresh() async {
     getPositions();
     getJobs();
+  }
+
+  void toggleDrawer() {
+    _rootController.toggleDrawer();
   }
 }
