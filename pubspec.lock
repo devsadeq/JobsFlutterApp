@@ -284,6 +284,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_zoom_drawer:
+    dependency: "direct main"
+    description:
+      name: flutter_zoom_drawer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.3"
   font_awesome_flutter:
     dependency: "direct main"
     description:
@@ -368,6 +375,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:
@@ -396,6 +410,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.4.0"
+  kf_drawer:
+    dependency: "direct main"
+    description:
+      name: kf_drawer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.1"
   lints:
     dependency: transitive
     description:

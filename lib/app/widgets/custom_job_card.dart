@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'custom_tag.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -17,8 +18,10 @@ class CustomJobCard extends StatelessWidget {
     required this.workplace,
     required this.employmentType,
     required this.location,
-    required this.onTap,
+    this.onAvatarTap,
     this.description,
+    this.onRightButtonTap,
+    this.onTap,
   }) : super(key: key);
   final bool isFeatured;
   final String avatar;
@@ -29,12 +32,17 @@ class CustomJobCard extends StatelessWidget {
   final String employmentType;
   final String location;
   final String? description;
-  final void Function() onTap;
+  final void Function()? onAvatarTap;
+  final void Function()? onRightButtonTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
+    final datetime = DateTime.parse(publishTime);
+    final strDate = DateFormat.yMMMMd().format(datetime);
+
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap ?? () {},
       child: Container(
         padding: EdgeInsets.all(20.w),
         margin: EdgeInsets.symmetric(horizontal: 16.w),
@@ -56,10 +64,13 @@ class CustomJobCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _CardTile(
-                isFeatured: isFeatured,
-                avatar: avatar,
-                companyName: companyName,
-                publishTime: publishTime),
+              isFeatured: isFeatured,
+              avatar: avatar,
+              companyName: companyName,
+              publishTime: strDate,
+              onAvatarTap: onAvatarTap,
+              onRightButtonTap: onRightButtonTap,
+            ),
             SizedBox(height: 10.h),
             _CardJobPosition(
               isFeatured: isFeatured,
@@ -93,29 +104,34 @@ class _CardTile extends StatelessWidget {
     required this.avatar,
     required this.companyName,
     required this.publishTime,
+    this.onAvatarTap,
+    this.onRightButtonTap,
   }) : super(key: key);
   final bool isFeatured;
   final String avatar;
   final String companyName;
   final String publishTime;
+  final void Function()? onAvatarTap;
+  final void Function()? onRightButtonTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(50.r),
-          child: CachedNetworkImage(
-            imageUrl: avatar,
-            placeholder: (context, url) => CircularProgressIndicator(),
-            errorWidget: (context, url, error) => Icon(Icons.error),
-            height: 46.h,
+        GestureDetector(
+          onTap: onAvatarTap ?? () {},
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50.r),
+            child: CachedNetworkImage(
+              imageUrl: avatar,
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) =>
+                  const Icon(FontAwesomeIcons.circleExclamation),
+              height: 46.h,
+            ),
           ),
-          // child: Image.network(
-          //   avatar,
-          //   height: 46.w,
-          // ),
         ),
         SizedBox(width: 5.w),
         Column(
@@ -135,7 +151,7 @@ class _CardTile extends StatelessWidget {
               children: [
                 FaIcon(
                   FontAwesomeIcons.clock,
-                  size: 15.w,
+                  size: 14.w,
                   color: isFeatured
                       ? Get.theme.backgroundColor
                       : Get.theme.colorScheme.secondary,
@@ -156,11 +172,14 @@ class _CardTile extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        FaIcon(
-          FontAwesomeIcons.bookmark,
-          color: isFeatured
-              ? Get.theme.backgroundColor
-              : Get.theme.colorScheme.secondary,
+        IconButton(
+          onPressed: onRightButtonTap ?? () {},
+          icon: FaIcon(
+            FontAwesomeIcons.bookmark,
+            color: isFeatured
+                ? Get.theme.backgroundColor
+                : Get.theme.colorScheme.secondary,
+          ),
         )
       ],
     );
