@@ -19,11 +19,14 @@ class HomeView extends GetView<HomeController> {
         appBar: CustomAppBar(
           leading: Padding(
             padding: EdgeInsets.only(left: 16.w, bottom: 8.w, top: 8.w),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(25.r),
-              child: Image.network(
-                AppStrings.avatarUrl,
-                fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: controller.toggleDrawer,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25.r),
+                child: Image.network(
+                  AppStrings.avatarUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
