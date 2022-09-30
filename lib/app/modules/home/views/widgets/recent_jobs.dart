@@ -41,14 +41,18 @@ class RecentJobs extends GetView<HomeController> {
                   employmentType: jobs[index].employmentType,
                   isFeatured: false,
                   description: jobs[index].description!,
-                  onTap: () => Get.toNamed(Routes.JOB_DETAILS,
-                      arguments: jobs[index].id),
+                  onTap: () => Get.toNamed(
+                    Routes.JOB_DETAILS,
+                    arguments: jobs[index].id,
+                  ),
+                  onAvatarTap: () => Get.toNamed(
+                    Routes.COMPANY_PROFILE,
+                    arguments: jobs[index].company!.id,
+                  ),
                 ),
               ),
             ),
-            failure: (String? reason) => Center(
-              child: Text(reason!),
-            ),
+            failure: (String? reason) => Center(child: Text(reason!)),
           ),
         )
       ],

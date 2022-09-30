@@ -25,6 +25,7 @@ class Body extends GetView<SearchController> {
             prefixIcon: FontAwesomeIcons.magnifyingGlass,
             suffixIcon: FontAwesomeIcons.x,
             onChanged: (_) => controller.getSearchResult(),
+            onSuffixTap: () => controller.clearSearch(),
           ),
           SizedBox(height: 20.h),
           const SearchResults(),

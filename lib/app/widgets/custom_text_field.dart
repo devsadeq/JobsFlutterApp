@@ -23,6 +23,7 @@ class CustomTextField extends StatelessWidget {
   final IconData? suffixIcon;
   final double suffixIconSize;
   final IconData? prefixIcon;
+  final void Function()? onSuffixTap;
   final double prefixIconSize;
 
   const CustomTextField({
@@ -45,7 +46,9 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.suffixIconSize = 24,
-    this.prefixIconSize = 24, this.onChanged,
+    this.prefixIconSize = 24,
+    this.onChanged,
+    this.onSuffixTap,
   }) : super(key: key);
 
   @override
@@ -99,7 +102,7 @@ class CustomTextField extends StatelessWidget {
                 isSearchBar ? EdgeInsets.symmetric(vertical: 10.w) : null,
             suffixIcon: suffixIcon != null
                 ? IconButton(
-                    onPressed: () {},
+                    onPressed: onSuffixTap ?? () {},
                     icon: FaIcon(suffixIcon!, size: suffixIconSize))
                 : null,
             prefixIcon: prefixIcon != null
