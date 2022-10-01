@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:jobs_flutter_app/app/core/values/strings.dart';
+import 'package:jobs_flutter_app/app/modules/auth/controllers/auth_controller.dart';
 
 import '../../../../../widgets/custom_text_field.dart';
 
-class EmployerForm extends StatelessWidget {
+class EmployerForm extends GetView<AuthController> {
   const EmployerForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: controller.companyFormKey,
       child: Column(
         children: [
-          const CustomTextField(
+          CustomTextField(
+            controller: controller.companyNameController,
             title: AppStrings.companyName,
             hintText: AppStrings.companyNameHint,
             autofocus: false,
@@ -21,7 +25,8 @@ class EmployerForm extends StatelessWidget {
             isRequired: true,
           ),
           SizedBox(height: 15.h),
-          const CustomTextField(
+          CustomTextField(
+            controller: controller.companyBusinessNumberController,
             title: AppStrings.businessNumber,
             hintText: AppStrings.phoneNumberHint,
             autofocus: false,
@@ -30,7 +35,8 @@ class EmployerForm extends StatelessWidget {
             textInputType: TextInputType.phone,
           ),
           SizedBox(height: 15.h),
-          const CustomTextField(
+          CustomTextField(
+            controller: controller.companyBusinessEmailController,
             title: AppStrings.businessEmail,
             hintText: AppStrings.emailHint,
             autofocus: false,
@@ -39,7 +45,8 @@ class EmployerForm extends StatelessWidget {
             textInputType: TextInputType.emailAddress,
           ),
           SizedBox(height: 15.h),
-          const CustomTextField(
+          CustomTextField(
+            controller: controller.companyCountryController,
             title: AppStrings.countryLabel,
             hintText: AppStrings.countryHint,
             autofocus: false,
@@ -48,7 +55,8 @@ class EmployerForm extends StatelessWidget {
             textInputType: TextInputType.text,
           ),
           SizedBox(height: 15.h),
-          const CustomTextField(
+          CustomTextField(
+            controller: controller.companyAddressController,
             title: AppStrings.companyAddress,
             hintText: AppStrings.companyAddressHint,
             autofocus: false,
@@ -57,13 +65,15 @@ class EmployerForm extends StatelessWidget {
             textInputType: TextInputType.text,
           ),
           SizedBox(height: 15.h),
-          const CustomTextField(
+          CustomTextField(
+            controller: controller.companyPasswordController,
             hintText: AppStrings.password,
             title: AppStrings.password,
             autofocus: false,
             isPassword: true,
             suffixIcon: FontAwesomeIcons.eyeSlash,
             isRequired: true,
+            obscureText: true,
           ),
         ],
       ),

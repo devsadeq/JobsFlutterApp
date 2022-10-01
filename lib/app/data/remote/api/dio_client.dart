@@ -9,7 +9,8 @@ class DioClient {
       ..options.baseUrl = AppConstants.BASE_URL
       ..options.connectTimeout = 15000
       ..options.receiveTimeout = 15000
-      ..options.responseType = ResponseType.json;
+      ..options.responseType = ResponseType.json
+      ..options.contentType = 'application/json';
   }
 
   Future<Response> get(

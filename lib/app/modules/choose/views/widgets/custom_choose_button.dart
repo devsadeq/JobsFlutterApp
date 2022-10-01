@@ -5,11 +5,16 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomChooseButton extends StatelessWidget {
-  const CustomChooseButton({Key? key, required this.title, required this.icon})
-      : super(key: key);
+  const CustomChooseButton({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  }) : super(key: key);
 
   final String title;
   final IconData icon;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,7 @@ class CustomChooseButton extends StatelessWidget {
       width: 150.w,
       height: 95.h,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.all(10.w),
           backgroundColor: Get.theme.cardColor,
@@ -37,9 +42,11 @@ class CustomChooseButton extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.r),
                   color: Get.theme.colorScheme.primary.withOpacity(0.1)),
-              child: FaIcon(
-                icon,
-                size: 24,
+              child: Center(
+                child: FaIcon(
+                  icon,
+                  // size: 24,
+                ),
               ),
             ),
             SizedBox(height: 5.h),

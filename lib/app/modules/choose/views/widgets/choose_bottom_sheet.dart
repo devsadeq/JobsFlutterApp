@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jobs_flutter_app/app/core/values/strings.dart';
+import 'package:jobs_flutter_app/app/modules/choose/controllers/choose_controller.dart';
 
-import '../../../../core/values/strings.dart';
+import '../../../../domain/enums/user_type.dart';
 import 'custom_choose_button.dart';
 
-class ChooseBottomSheetBody extends StatelessWidget {
+class ChooseBottomSheetBody extends GetView<ChooseController> {
   const ChooseBottomSheetBody({Key? key}) : super(key: key);
 
   @override
@@ -26,14 +28,16 @@ class ChooseBottomSheetBody extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const CustomChooseButton(
+            CustomChooseButton(
               title: AppStrings.iWantAJob,
               icon: FontAwesomeIcons.briefcase,
+              onTap: () => controller.updateType(UserType.CUSTOMER),
             ),
             SizedBox(width: 15.w),
-            const CustomChooseButton(
+            CustomChooseButton(
               title: AppStrings.iWantAnEmployee,
               icon: FontAwesomeIcons.user,
+              onTap: () => controller.updateType(UserType.COMPANY),
             ),
           ],
         )

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,10 +11,14 @@ class ButtonWithText extends StatelessWidget {
     required this.btnLabel,
     required this.firstTextSpan,
     required this.secondTextSpan,
+    required this.onTap,
+    required this.onTextTap,
   }) : super(key: key);
   final String btnLabel;
   final String firstTextSpan;
   final String secondTextSpan;
+  final void Function() onTap;
+  final void Function() onTextTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class ButtonWithText extends StatelessWidget {
       children: [
         CustomButton(
           title: btnLabel,
-          onTap: () {},
+          onTap: onTap,
         ),
         SizedBox(height: 20.h),
         RichText(
@@ -37,6 +42,7 @@ class ButtonWithText extends StatelessWidget {
               ),
               TextSpan(
                 text: secondTextSpan,
+                recognizer: TapGestureRecognizer()..onTap = onTextTap,
                 style: GoogleFonts.poppins(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
