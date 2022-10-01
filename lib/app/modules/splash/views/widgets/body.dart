@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jobs_flutter_app/app/modules/splash/controllers/splash_controller.dart';
 
 import '../../../../core/values/strings.dart';
 
-class Body extends StatelessWidget {
+class Body extends GetView<SplashController> {
   const Body({Key? key}) : super(key: key);
 
   @override

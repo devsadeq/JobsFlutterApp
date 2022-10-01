@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/choose/controllers/choose_controller.dart';
 import 'package:lottie/lottie.dart';
-
-import '../../controllers/choose_controller.dart';
 
 class Body extends GetView<ChooseController> {
   const Body({Key? key}) : super(key: key);
