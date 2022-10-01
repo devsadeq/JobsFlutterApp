@@ -47,7 +47,7 @@ class FeaturedJobs extends GetView<HomeController> {
             SizedBox(height: 8.h),
             Obx(
               () => DotsIndicator(
-                dotsCount: jobs.length,
+                dotsCount: _getItems(jobs).length,
                 position: controller.indicatorIndex.toDouble(),
                 decorator: DotsDecorator(
                   size: Size.square(8.w),
@@ -82,6 +82,8 @@ class FeaturedJobs extends GetView<HomeController> {
               location: job.location,
               onTap: () => Get.toNamed(Routes.JOB_DETAILS, arguments: job.id),
             ))
+        .toList()
+        .getRange(0, 4)
         .toList();
   }
 }

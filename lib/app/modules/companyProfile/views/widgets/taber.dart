@@ -32,7 +32,7 @@ class Taber extends GetView<CompanyProfileController> {
           ],
         ),
         SizedBox(
-          height: 350.h,
+          height: 400.h,
           child: TabBarView(
             controller: controller.tabController,
             children: const [
