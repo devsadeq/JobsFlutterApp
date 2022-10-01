@@ -82,6 +82,13 @@ class Body extends GetView<JobDetailsController> {
                 child: Markdown(
                   data: job.description!,
                   selectable: true,
+                  styleSheet: MarkdownStyleSheet(
+                    p: GoogleFonts.poppins(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w400,
+                      color: Get.theme.colorScheme.onBackground,
+                    ),
+                  ),
                 ),
               ),
               CustomButton(

@@ -51,8 +51,14 @@ class ApplyBottomSheetBody extends StatelessWidget {
         CustomButton(
             title: "SUBMIT",
             onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
               Navigator.pop(context);
-              popupBottomSheet(bottomSheetBody: const SubmitBottomSheet());
+              Future.delayed(
+                const Duration(milliseconds: 500),
+                () => popupBottomSheet(
+                  bottomSheetBody: const SubmitBottomSheet(),
+                ),
+              );
             })
       ],
     );
