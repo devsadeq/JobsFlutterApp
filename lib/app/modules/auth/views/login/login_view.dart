@@ -10,11 +10,11 @@ class LoginView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xffF5F8FA),
+        backgroundColor: Get.theme.backgroundColor,
         resizeToAvoidBottomInset: false,
-        body: Body(),
+        body: const Body(),
       ),
     );
   }

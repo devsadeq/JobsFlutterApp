@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class RootController extends GetxController {
+  static RootController get to => Get.find();
   final persistentTabController = PersistentTabController(initialIndex: 0);
   final zoomDrawerController = ZoomDrawerController();
 

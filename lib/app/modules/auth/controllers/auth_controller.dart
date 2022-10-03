@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/routes/app_pages.dart';
 
-import '../../../data/remote/dto/auth/login_out_dto.dart';
-import '../../../data/remote/dto/auth/register_company_dto.dart';
-import '../../../data/remote/dto/auth/register_customer_dto.dart';
-import '../../../data/remote/repositories/auth_repository.dart';
-import '../../../di/locator.dart';
 import '../../../data/remote/base/state.dart' as base;
 import '../../../data/remote/dto/auth/login_in_dto.dart';
+import '../../../data/remote/dto/auth/login_out_dto.dart';
+import '../../../data/remote/dto/auth/register_company_dto.dart';
+import '../../../data/remote/dto/auth/register_company_out_dto.dart';
+import '../../../data/remote/dto/auth/register_customer_dto.dart';
+import '../../../data/remote/dto/auth/register_customer_out_dto.dart';
+import '../../../data/remote/repositories/auth_repository.dart';
+import '../../../di/locator.dart';
 import '../../../domain/enums/user_type.dart';
 
 class AuthController extends GetxController {
+  static AuthController get to => Get.find();
   final _authRepository = getIt.get<AuthRepository>();
 
   /*
@@ -40,19 +44,34 @@ class AuthController extends GetxController {
   final loginEmailController = TextEditingController();
   final loginPasswordController = TextEditingController();
 
-  final Rx<base.State<dynamic>> _rxRegisterState =
-      Rx<base.State<dynamic>>(const base.State.idle());
+  /*
+  * Rx
+  * */
+  final RxBool _rxIsLoggedIn = RxBool(false);
 
-  base.State<dynamic> get registerCustomerState => _rxRegisterState.value;
+  bool get isLoggedIn => _rxIsLoggedIn.value;
+
+  final Rx<base.State<RegisterCustomerOutDto>> _rxRegisterCustomerState =
+      Rx<base.State<RegisterCustomerOutDto>>(const base.State.idle());
+
+  base.State<RegisterCustomerOutDto> get registerCustomerState =>
+      _rxRegisterCustomerState.value;
+
+  final Rx<base.State<RegisterCompanyOutDto>> _rxRegisterCompanyState =
+      Rx<base.State<RegisterCompanyOutDto>>(const base.State.idle());
+
+  base.State<RegisterCompanyOutDto> get registerCompanyState =>
+      _rxRegisterCompanyState.value;
 
   final Rx<base.State<LoginOutDto>> _rxLoginState =
       Rx<base.State<LoginOutDto>>(const base.State.idle());
 
-  base.State get loginState => _rxLoginState.value;
+  base.State<LoginOutDto> get loginState => _rxLoginState.value;
 
   @override
   void onInit() {
     super.onInit();
+    checkIsLogged();
   }
 
   @override
@@ -63,6 +82,8 @@ class AuthController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    loginEmailController.dispose();
+    loginPasswordController.dispose();
     customerFullNameController.dispose();
     customerPhoneNumController.dispose();
     customerEmailController.dispose();
@@ -75,17 +96,54 @@ class AuthController extends GetxController {
     companyPasswordController.dispose();
   }
 
-  login() async {
+  void checkIsLogged() async {
+    final result = await _authRepository.readStorage(key: 'user');
+    result.whenOrNull(success: (data) {
+      if (data['id'] != null) _rxIsLoggedIn.value = true;
+    });
+  }
+
+  void onLoginSubmit() {
+    if (loginFormKey.currentState!.validate()) {
+      _login();
+    }
+  }
+
+  void onRegisterSubmit(UserType userType) {
+    if (userType == UserType.CUSTOMER &&
+        customerFormKey.currentState!.validate()) {
+      _registerCustomer();
+    } else if (companyFormKey.currentState!.validate()) {
+      _registerCompany();
+    }
+  }
+
+  void logout() async {
+    final result = await _authRepository.removeStorage(key: 'user');
+    result.whenOrNull(success: (data) => Get.offAllNamed(Routes.LOGIN));
+  }
+
+  void _login() async {
     _rxLoginState.value = await _authRepository.login(
       dto: LoginInDto(
         email: loginEmailController.text,
         password: loginPasswordController.text,
       ),
     );
+    loginState.whenOrNull(success: (data) {
+      _saveUserInStorage(
+        id: data!.id,
+        email: data.email,
+        name: data.name,
+        token: data.token!.access,
+      );
+      Get.offAllNamed(Routes.ROOT);
+      _clearTextControllers();
+    });
   }
 
-  registerCustomer() async {
-    _rxRegisterState.value = await _authRepository.registerCustomer(
+  void _registerCustomer() async {
+    _rxRegisterCustomerState.value = await _authRepository.registerCustomer(
       dto: RegisterCustomerDto(
         name: customerFullNameController.text,
         email: customerEmailController.text,
@@ -93,10 +151,19 @@ class AuthController extends GetxController {
         phone: customerPhoneNumController.text,
       ),
     );
+    registerCustomerState.whenOrNull(success: (data) {
+      _saveUserInStorage(
+        id: data!.customer!.id,
+        token: data.token!.access,
+        name: data.customer!.name,
+        email: data.customer!.email,
+      );
+      Get.offAllNamed(Routes.ROOT);
+    });
   }
 
-  registerCompany() async {
-    _rxRegisterState.value = await _authRepository.registerCompany(
+  void _registerCompany() async {
+    _rxRegisterCompanyState.value = await _authRepository.registerCompany(
       dto: RegisterCompanyDto(
         name: companyNameController.text,
         country: companyCountryController.text,
@@ -106,18 +173,43 @@ class AuthController extends GetxController {
         password: companyPasswordController.text,
       ),
     );
+    registerCompanyState.whenOrNull(success: (data) {
+      _saveUserInStorage(
+        id: data!.company!.id,
+        token: data.token!.access,
+        name: data.company!.name,
+        email: data.company!.email,
+      );
+      Get.offAllNamed(Routes.ROOT);
+    });
   }
 
-  onRegisterSubmit(UserType userType) {
-    if (userType == UserType.CUSTOMER &&
-        customerFormKey.currentState!.validate()) {
-      registerCustomer();
-    } else if (companyFormKey.currentState!.validate()) {
-      registerCompany();
-    }
+  void _saveUserInStorage({
+    String? id,
+    String? email,
+    String? name,
+    String? token,
+  }) async {
+    await _authRepository.writeStorage(key: 'user', value: {
+      'id': id,
+      'email': email,
+      'name': name,
+      'token': token,
+    });
   }
 
-  onLoginSubmit() {
-    if (loginFormKey.currentState!.validate()) {}
+  void _clearTextControllers() {
+    loginEmailController.clear();
+    loginPasswordController.clear();
+    customerFullNameController.clear();
+    customerPhoneNumController.clear();
+    customerEmailController.clear();
+    customerPasswordController.clear();
+    companyNameController.clear();
+    companyBusinessEmailController.clear();
+    companyBusinessNumberController.clear();
+    companyCountryController.clear();
+    companyAddressController.clear();
+    companyPasswordController.clear();
   }
 }
