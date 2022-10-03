@@ -26,6 +26,7 @@ dependencies:
   flutter_zoom_drawer: 3.0.3
   kf_drawer: 1.2.1
   intl: 0.17.0
+  get_storage: 2.0.3
   flutter: 
     sdk: flutter
 
@@ -34,8 +35,20 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   freezed: ^2.1.1
   json_serializable: ^6.4.0
+  flutter_native_splash: ^2.2.10+1
   flutter_test: 
     sdk: flutter
+
+flutter_native_splash: 
+  color: '#03A9F4'
+  image: assets/logo.png
+  image_dark: assets/logo.png
+  android_12: 
+    image: assets/logo.png
+    icon_background_color: '#ffffff'
+    image_dark: assets/logo.png
+    icon_background_color_dark: '#121212'
+  web: false
 
 flutter: 
   assets: 
