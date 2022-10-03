@@ -17,8 +17,6 @@ import '../modules/saved/bindings/saved_binding.dart';
 import '../modules/saved/views/saved_view.dart';
 import '../modules/search/bindings/search_binding.dart';
 import '../modules/search/views/search_view.dart';
-import '../modules/splash/bindings/splash_binding.dart';
-import '../modules/splash/views/splash_view.dart';
 import '../modules/waiting/bindings/waiting_binding.dart';
 import '../modules/waiting/views/waiting_view.dart';
 
@@ -44,11 +42,6 @@ class AppPages {
       name: _Paths.REGISTER,
       page: () => const RegisterView(),
       binding: AuthBinding(),
-    ),
-    GetPage(
-      name: _Paths.SPLASH,
-      page: () => const SplashView(),
-      binding: SplashBinding(),
     ),
     GetPage(
       name: _Paths.CHOOSE,

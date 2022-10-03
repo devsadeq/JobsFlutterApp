@@ -1,6 +1,6 @@
 import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
 import 'package:jobs_flutter_app/app/data/remote/base/irepository.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/state.dart';
+import 'package:jobs_flutter_app/app/data/remote/base/status.dart';
 
 abstract class ISearchRepository<T> implements IRepository<T> {
   @override
@@ -16,7 +16,7 @@ abstract class ISearchRepository<T> implements IRepository<T> {
   }
 
   @override
-  Future<State<T>> get({required String uuid}) {
+  Future<Status<T>> get({required String uuid}) {
     // TODO: implement get
     throw UnimplementedError();
   }

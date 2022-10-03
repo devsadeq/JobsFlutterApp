@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../data/remote/base/state.dart';
+import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/choices/Position_out_dto.dart';
 import '../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../data/remote/repositories/job_repository.dart';
@@ -19,15 +19,15 @@ class HomeController extends GetxController {
 
   int get selectedChipIndex => _selectedChipIndex.value;
 
-  final Rx<State<List<JobOutDto>>> _rxJobs =
-      Rx<State<List<JobOutDto>>>(const State.loading());
+  final Rx<Status<List<JobOutDto>>> _rxJobs =
+      Rx<Status<List<JobOutDto>>>(const Status.loading());
 
-  State<List<JobOutDto>> get rxJobs => _rxJobs.value;
+  Status<List<JobOutDto>> get rxJobs => _rxJobs.value;
 
-  final Rx<State<List<PositionOutDto>>> _rxPositions =
-      Rx<State<List<PositionOutDto>>>(const State.loading());
+  final Rx<Status<List<PositionOutDto>>> _rxPositions =
+      Rx<Status<List<PositionOutDto>>>(const Status.loading());
 
-  State<List<PositionOutDto>> get rxPositions => _rxPositions.value;
+  Status<List<PositionOutDto>> get rxPositions => _rxPositions.value;
 
   @override
   void onInit() {
@@ -58,12 +58,12 @@ class HomeController extends GetxController {
   }
 
   Future<void> getJobs() async {
-    final State<List<JobOutDto>> state = await _jobRepository.getAll();
+    final Status<List<JobOutDto>> state = await _jobRepository.getAll();
     _rxJobs.value = state;
   }
 
   Future<void> getPositions() async {
-    final State<List<PositionOutDto>> state =
+    final Status<List<PositionOutDto>> state =
         await _positionRepository.getAll();
     _rxPositions.value = state;
   }

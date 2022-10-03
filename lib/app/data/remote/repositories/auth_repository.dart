@@ -3,14 +3,14 @@ import 'package:dio/dio.dart';
 import '../../local/services/storage_service.dart';
 import '../base/iauth_repository.dart';
 import '../base/idto.dart';
-import '../base/state.dart';
+import '../base/status.dart';
 import '../dto/auth/login_out_dto.dart';
 import '../dto/auth/register_company_out_dto.dart';
 import '../dto/auth/register_customer_out_dto.dart';
 import '../exceptions/dio_exceptions.dart';
 import '../services/auth_service.dart';
 
-class AuthRepository implements IAuthRepository<State<dynamic>> {
+class AuthRepository implements IAuthRepository<Status<dynamic>> {
   final AuthService authService;
   final StorageService storageService;
 
@@ -20,15 +20,15 @@ class AuthRepository implements IAuthRepository<State<dynamic>> {
   });
 
   @override
-  Future<State<LoginOutDto>> login({required IDto dto}) async {
+  Future<Status<LoginOutDto>> login({required IDto dto}) async {
     try {
       final response = await authService.login(dto: dto);
       if (response.statusCode == 200) {
-        return State.success(data: LoginOutDto.fromJson(response.data));
+        return Status.success(data: LoginOutDto.fromJson(response.data));
       } else if (response.statusCode == 400 || response.statusCode == 404) {
-        return State.failure(reason: response.data['error']);
+        return Status.failure(reason: response.data['error']);
       }
-      return const State.failure(reason: "Something went wrong!");
+      return const Status.failure(reason: "Something went wrong!");
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
       throw errMsg;
@@ -36,17 +36,17 @@ class AuthRepository implements IAuthRepository<State<dynamic>> {
   }
 
   @override
-  Future<State<RegisterCompanyOutDto>> registerCompany(
+  Future<Status<RegisterCompanyOutDto>> registerCompany(
       {required IDto dto}) async {
     try {
       final response = await authService.registerCompany(dto: dto);
       if (response.statusCode == 201) {
-        return State.success(
+        return Status.success(
             data: RegisterCompanyOutDto.fromJson(response.data));
       } else if (response.statusCode == 400 || response.statusCode == 403) {
-        return State.failure(reason: response.data['error']);
+        return Status.failure(reason: response.data['error']);
       }
-      return const State.failure(reason: "Something went wrong!");
+      return const Status.failure(reason: "Something went wrong!");
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
       throw errMsg;
@@ -54,17 +54,17 @@ class AuthRepository implements IAuthRepository<State<dynamic>> {
   }
 
   @override
-  Future<State<RegisterCustomerOutDto>> registerCustomer(
+  Future<Status<RegisterCustomerOutDto>> registerCustomer(
       {required IDto dto}) async {
     try {
       final response = await authService.registerCustomer(dto: dto);
       if (response.statusCode == 201) {
-        return State.success(
+        return Status.success(
             data: RegisterCustomerOutDto.fromJson(response.data));
       } else if (response.statusCode == 400 || response.statusCode == 403) {
-        return State.failure(reason: response.data['error']);
+        return Status.failure(reason: response.data['error']);
       }
-      return const State.failure(reason: "Something went wrong!");
+      return const Status.failure(reason: "Something went wrong!");
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
       throw errMsg;
@@ -75,33 +75,33 @@ class AuthRepository implements IAuthRepository<State<dynamic>> {
   * Local Storage
   * */
   @override
-  Future<State<dynamic>> readStorage({required String key}) async {
+  Future<Status<dynamic>> readStorage({required String key}) async {
     try {
       final result = await storageService.read(key: key);
-      if (result != null) return State.success(data: result);
-      return const State.failure(reason: "Not Found!");
+      if (result != null) return Status.success(data: result);
+      return const Status.failure(reason: "Not Found!");
     } catch (e) {
-      return State.failure(reason: e.toString());
+      return Status.failure(reason: e.toString());
     }
   }
 
   @override
-  Future<State> writeStorage({required String key, required value}) async {
+  Future<Status> writeStorage({required String key, required value}) async {
     try {
       await storageService.write(key: key, value: value);
-      return const State.success(data: "User has been saved successfully.");
+      return const Status.success(data: "User has been saved successfully.");
     } catch (e) {
-      return State.failure(reason: e.toString());
+      return Status.failure(reason: e.toString());
     }
   }
 
   @override
-  Future<State> removeStorage({required String key}) async {
+  Future<Status> removeStorage({required String key}) async {
     try {
       await storageService.write(key: key);
-      return const State.success(data: "User has been removed successfully.");
+      return const Status.success(data: "User has been removed successfully.");
     } catch (e) {
-      return State.failure(reason: e.toString());
+      return Status.failure(reason: e.toString());
     }
   }
 }

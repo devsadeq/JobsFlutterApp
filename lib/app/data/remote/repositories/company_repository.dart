@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
 import 'package:jobs_flutter_app/app/data/remote/base/irepository.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/state.dart';
+import 'package:jobs_flutter_app/app/data/remote/base/status.dart';
 import 'package:jobs_flutter_app/app/data/remote/dto/company/Company_out_dto.dart';
 
 import '../base/iservice.dart';
@@ -25,22 +25,22 @@ class CompanyRepository implements IRepository<CompanyOutDto> {
   }
 
   @override
-  Future<State<CompanyOutDto>> get({required String uuid}) async {
+  Future<Status<CompanyOutDto>> get({required String uuid}) async {
     try {
       final response = await service.get(uuid: uuid);
       if (response.statusCode == 200) {
         final CompanyOutDto job = CompanyOutDto.fromJson(response.data);
-        return State.success(data: job);
+        return Status.success(data: job);
       }
-      return const State.failure(reason: "Something went wrong!");
+      return const Status.failure(reason: "Something went wrong!");
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
-      return State.failure(reason: errMsg);
+      return Status.failure(reason: errMsg);
     }
   }
 
   @override
-  Future<State<List<CompanyOutDto>>?> getAll({int? limit, int? offset}) {
+  Future<Status<List<CompanyOutDto>>?> getAll({int? limit, int? offset}) {
     // TODO: implement getAll
     throw UnimplementedError();
   }

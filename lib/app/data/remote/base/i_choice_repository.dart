@@ -1,11 +1,11 @@
 import 'package:jobs_flutter_app/app/data/remote/base/irepository.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/state.dart';
+import 'package:jobs_flutter_app/app/data/remote/base/status.dart';
 
 import 'idto.dart';
 
 abstract class IChoiceRepository<T> implements IRepository<T> {
   @override
-  Future<State<List<T>>> getAll({int? limit, int? offset});
+  Future<Status<List<T>>> getAll({int? limit, int? offset});
 
   @override
   Future<bool?> create({required IDto dto}) {
@@ -20,13 +20,13 @@ abstract class IChoiceRepository<T> implements IRepository<T> {
   }
 
   @override
-  Future<State<T>> get({required String uuid}) {
+  Future<Status<T>> get({required String uuid}) {
     // TODO: implement get
     throw UnimplementedError();
   }
 
   @override
-  Future<State<List<T>>?> getAllChoices({int? limit, int? offset}) {
+  Future<Status<List<T>>?> getAllChoices({int? limit, int? offset}) {
     // TODO: implement getAllChoices
     throw UnimplementedError();
   }

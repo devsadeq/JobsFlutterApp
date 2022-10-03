@@ -1,18 +1,19 @@
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/irepository.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/state.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
-import 'package:jobs_flutter_app/app/data/remote/repositories/job_repository.dart';
-import 'package:jobs_flutter_app/app/di/locator.dart';
+
+import '../../../data/remote/base/irepository.dart';
+import '../../../data/remote/base/status.dart';
+import '../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../data/remote/repositories/job_repository.dart';
+import '../../../di/locator.dart';
 
 class JobDetailsController extends GetxController {
   final String uuid = Get.arguments;
   final IRepository _jobRepository = getIt.get<JobRepository>();
 
-  final Rx<State<JobOutDto>> _rxJob =
-      Rx<State<JobOutDto>>(const State.loading());
+  final Rx<Status<JobOutDto>> _rxJob =
+      Rx<Status<JobOutDto>>(const Status.loading());
 
-  State<JobOutDto> get rxJob => _rxJob.value;
+  Status<JobOutDto> get rxJob => _rxJob.value;
 
   @override
   void onInit() {
@@ -31,8 +32,8 @@ class JobDetailsController extends GetxController {
   }
 
   Future<void> getJobDetails() async {
-    final State<JobOutDto> state =
-        await _jobRepository.get(uuid: uuid) as State<JobOutDto>;
+    final Status<JobOutDto> state =
+        await _jobRepository.get(uuid: uuid) as Status<JobOutDto>;
     _rxJob.value = state;
   }
 }
