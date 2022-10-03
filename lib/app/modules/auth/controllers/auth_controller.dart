@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/routes/app_pages.dart';
 
-import '../../../data/remote/base/state.dart' as base;
+import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/auth/login_in_dto.dart';
 import '../../../data/remote/dto/auth/login_out_dto.dart';
 import '../../../data/remote/dto/auth/register_company_dto.dart';
@@ -12,6 +11,7 @@ import '../../../data/remote/dto/auth/register_customer_out_dto.dart';
 import '../../../data/remote/repositories/auth_repository.dart';
 import '../../../di/locator.dart';
 import '../../../domain/enums/user_type.dart';
+import '../../../routes/app_pages.dart';
 
 class AuthController extends GetxController {
   static AuthController get to => Get.find();
@@ -51,22 +51,22 @@ class AuthController extends GetxController {
 
   bool get isLoggedIn => _rxIsLoggedIn.value;
 
-  final Rx<base.State<RegisterCustomerOutDto>> _rxRegisterCustomerState =
-      Rx<base.State<RegisterCustomerOutDto>>(const base.State.idle());
+  final Rx<Status<RegisterCustomerOutDto>> _rxRegisterCustomerState =
+      Rx<Status<RegisterCustomerOutDto>>(const Status.idle());
 
-  base.State<RegisterCustomerOutDto> get registerCustomerState =>
+  Status<RegisterCustomerOutDto> get registerCustomerState =>
       _rxRegisterCustomerState.value;
 
-  final Rx<base.State<RegisterCompanyOutDto>> _rxRegisterCompanyState =
-      Rx<base.State<RegisterCompanyOutDto>>(const base.State.idle());
+  final Rx<Status<RegisterCompanyOutDto>> _rxRegisterCompanyState =
+      Rx<Status<RegisterCompanyOutDto>>(const Status.idle());
 
-  base.State<RegisterCompanyOutDto> get registerCompanyState =>
+  Status<RegisterCompanyOutDto> get registerCompanyState =>
       _rxRegisterCompanyState.value;
 
-  final Rx<base.State<LoginOutDto>> _rxLoginState =
-      Rx<base.State<LoginOutDto>>(const base.State.idle());
+  final Rx<Status<LoginOutDto>> _rxLoginState =
+      Rx<Status<LoginOutDto>>(const Status.idle());
 
-  base.State<LoginOutDto> get loginState => _rxLoginState.value;
+  Status<LoginOutDto> get loginState => _rxLoginState.value;
 
   @override
   void onInit() {

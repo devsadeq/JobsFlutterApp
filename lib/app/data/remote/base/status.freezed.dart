@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'state.dart';
+part of 'status.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -70,7 +70,7 @@ mixin _$State<T> {
 
 /// @nodoc
 abstract class $StateCopyWith<T, $Res> {
-  factory $StateCopyWith(State<T> value, $Res Function(State<T>) then) =
+  factory $StateCopyWith(Status<T> value, $Res Function(Status<T>) then) =
       _$StateCopyWithImpl<T, $Res>;
 }
 
@@ -78,9 +78,9 @@ abstract class $StateCopyWith<T, $Res> {
 class _$StateCopyWithImpl<T, $Res> implements $StateCopyWith<T, $Res> {
   _$StateCopyWithImpl(this._value, this._then);
 
-  final State<T> _value;
+  final Status<T> _value;
   // ignore: unused_field
-  final $Res Function(State<T>) _then;
+  final $Res Function(Status<T>) _then;
 }
 
 /// @nodoc
@@ -199,7 +199,7 @@ class _$Idle<T> with DiagnosticableTreeMixin implements Idle<T> {
   }
 }
 
-abstract class Idle<T> implements State<T> {
+abstract class Idle<T> implements Status<T> {
   const factory Idle() = _$Idle<T>;
 }
 
@@ -321,7 +321,7 @@ class _$Loading<T> with DiagnosticableTreeMixin implements Loading<T> {
   }
 }
 
-abstract class Loading<T> implements State<T> {
+abstract class Loading<T> implements Status<T> {
   const factory Loading() = _$Loading<T>;
 }
 
@@ -469,7 +469,7 @@ class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
   }
 }
 
-abstract class Success<T> implements State<T> {
+abstract class Success<T> implements Status<T> {
   const factory Success({final T? data}) = _$Success<T>;
 
   T? get data;
@@ -622,7 +622,7 @@ class _$Failure<T> with DiagnosticableTreeMixin implements Failure<T> {
   }
 }
 
-abstract class Failure<T> implements State<T> {
+abstract class Failure<T> implements Status<T> {
   const factory Failure({final String? reason}) = _$Failure<T>;
 
   String? get reason;

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/utils/functions.dart';
 
 import '../../../domain/enums/user_type.dart';
 import '../../../routes/app_pages.dart';
+import '../../../utils/functions.dart';
 import '../views/widgets/choose_bottom_sheet.dart';
 
 class ChooseController extends GetxController {

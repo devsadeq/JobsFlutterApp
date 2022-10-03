@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/state.dart' as base;
-import 'package:jobs_flutter_app/app/data/remote/dto/company/Company_out_dto.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
-import 'package:jobs_flutter_app/app/data/remote/repositories/company_repository.dart';
 
+import '../../../data/remote/base/status.dart';
+import '../../../data/remote/dto/company/Company_out_dto.dart';
+import '../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../data/remote/repositories/company_repository.dart';
 import '../../../data/remote/repositories/job_repository.dart';
 import '../../../di/locator.dart';
 
@@ -16,15 +16,15 @@ class CompanyProfileController extends GetxController
   final String uuid = Get.arguments;
   late TabController tabController;
 
-  final Rx<base.State<CompanyOutDto>> _rxCompany =
-      Rx<base.State<CompanyOutDto>>(const base.State.loading());
+  final Rx<Status<CompanyOutDto>> _rxCompany =
+      Rx<Status<CompanyOutDto>>(const Status.loading());
 
-  base.State<CompanyOutDto> get rxCompany => _rxCompany.value;
+  Status<CompanyOutDto> get rxCompany => _rxCompany.value;
 
-  final Rx<base.State<List<JobOutDto>>> _rxJobs =
-      Rx<base.State<List<JobOutDto>>>(const base.State.loading());
+  final Rx<Status<List<JobOutDto>>> _rxJobs =
+      Rx<Status<List<JobOutDto>>>(const Status.loading());
 
-  base.State<List<JobOutDto>> get rxJobs => _rxJobs.value;
+  Status<List<JobOutDto>> get rxJobs => _rxJobs.value;
 
   @override
   void onInit() {
@@ -45,12 +45,12 @@ class CompanyProfileController extends GetxController
   }
 
   getCompany() async {
-    base.State<CompanyOutDto> state = await _companyRepository.get(uuid: uuid);
+    Status<CompanyOutDto> state = await _companyRepository.get(uuid: uuid);
     _rxCompany.value = state;
   }
 
   getCompanyJobs() async {
-    final base.State<List<JobOutDto>> jobs = await _jobsRepository.getAll();
+    final Status<List<JobOutDto>> jobs = await _jobsRepository.getAll();
     _rxJobs.value = jobs;
   }
 }

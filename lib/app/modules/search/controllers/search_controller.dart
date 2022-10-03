@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/company/Company_out_dto.dart';
-import 'package:jobs_flutter_app/app/data/remote/repositories/search_repository.dart';
 
-import '../../../data/remote/base/state.dart' as base;
+import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/search/search_out_dto.dart';
+import '../../../data/remote/repositories/search_repository.dart';
 import '../../../di/locator.dart';
 
 class SearchController extends GetxController {
   final _searchRepository = getIt.get<SearchRepository>();
   final searchController = TextEditingController();
 
-  final Rx<base.State<List<SearchOutDto>>> _rxResults =
-      Rx<base.State<List<SearchOutDto>>>(const base.State.idle());
+  final Rx<Status<List<SearchOutDto>>> _rxResults =
+      Rx<Status<List<SearchOutDto>>>(const Status.idle());
 
-  base.State<List<SearchOutDto>> get rxResults => _rxResults.value;
+  Status<List<SearchOutDto>> get rxResults => _rxResults.value;
 
   @override
   void onInit() {
@@ -32,13 +31,13 @@ class SearchController extends GetxController {
   }
 
   getSearchResult() async {
-    final base.State<List<SearchOutDto>> results =
+    final Status<List<SearchOutDto>> results =
         await _searchRepository.getAll(q: searchController.text);
     _rxResults.value = results;
   }
 
   clearSearch() {
     searchController.clear();
-    _rxResults.value = const base.State.idle();
+    _rxResults.value = const Status.idle();
   }
 }
