@@ -13,10 +13,6 @@ class MenuView extends StatelessWidget {
           onPressed: () => AuthController.to.logout(),
           icon: const FaIcon(FontAwesomeIcons.rightFromBracket),
         ),
-        IconButton(
-          onPressed: () => AuthController.to.checkIsLogged(),
-          icon: const FaIcon(FontAwesomeIcons.chair),
-        )
       ],
     );
   }

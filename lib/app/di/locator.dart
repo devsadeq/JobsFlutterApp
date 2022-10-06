@@ -13,7 +13,9 @@ import 'package:jobs_flutter_app/app/data/remote/services/job_service.dart';
 import 'package:jobs_flutter_app/app/data/remote/services/position_choice_service.dart';
 import 'package:jobs_flutter_app/app/data/remote/services/search_service.dart';
 
+import '../data/remote/repositories/customer/customer_repository.dart';
 import '../data/remote/repositories/position_repository.dart';
+import '../data/remote/services/customer/customer_service.dart';
 
 final getIt = GetIt.instance;
 
@@ -37,6 +39,10 @@ Future<void> setupLocator() async {
   // Company
   getIt.registerSingleton(CompanyService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(CompanyRepository(service: getIt<CompanyService>()));
+  // Customer
+  getIt.registerSingleton(CustomerService(dioClient: getIt<DioClient>()));
+  getIt
+      .registerSingleton(CustomerRepository(service: getIt<CustomerService>()));
   // Auth
   getIt.registerSingleton(AuthService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(AuthRepository(
