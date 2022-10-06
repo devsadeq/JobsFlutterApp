@@ -20,7 +20,7 @@ class Body extends GetView<CompanyProfileController> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ProfileHeader(
-                  avatar: "${AppConstants.BASE_URL}${company!.image!}",
+                  avatar: "${ApiRoutes.BASE_URL}${company!.image!}",
                   name: company.name!,
                   email: company.email!,
                 ),
