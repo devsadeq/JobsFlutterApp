@@ -225,6 +225,7 @@ class _CardJobDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       description,
+      overflow: TextOverflow.ellipsis,
       maxLines: 5,
       style: GoogleFonts.poppins(
           fontSize: 13.sp,
