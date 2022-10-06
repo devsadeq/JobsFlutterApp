@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobs_flutter_app/app/modules/companyProfile/controllers/company_profile_controller.dart';
+
 import '../../../../core/values/strings.dart';
+import '../../controllers/company_profile_controller.dart';
 
 class ProfileHeader extends GetView<CompanyProfileController> {
   const ProfileHeader({
@@ -19,13 +22,17 @@ class ProfileHeader extends GetView<CompanyProfileController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 50.h),
+      padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircleAvatar(
-            radius: 52.w,
-            backgroundImage: NetworkImage(avatar),
+          CachedNetworkImage(
+            imageUrl: avatar,
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) =>
+                const Icon(FontAwesomeIcons.circleExclamation),
+            height: 104.h,
           ),
           SizedBox(height: 10.h),
           Text(

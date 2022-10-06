@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/companyProfile/controllers/company_profile_controller.dart';
-import 'package:jobs_flutter_app/app/modules/companyProfile/views/widgets/profile_header.dart';
-import 'package:jobs_flutter_app/app/utils/constants.dart';
 
-import 'taber.dart';
+import '../../../../utils/constants.dart';
+import '../../controllers/company_profile_controller.dart';
+import 'company_tab_view.dart';
+import 'company_tap_bar.dart';
+import 'profile_header.dart';
 
 class Body extends GetView<CompanyProfileController> {
   const Body({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class Body extends GetView<CompanyProfileController> {
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
         success: (company) => Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 ProfileHeader(
                   avatar: "${AppConstants.BASE_URL}${company!.image!}",
@@ -23,7 +25,8 @@ class Body extends GetView<CompanyProfileController> {
                   email: company.email!,
                 ),
                 SizedBox(height: 10.h),
-                const Taber(),
+                const CompanyTabBar(),
+                const CompanyTabView(),
               ],
             ),
         failure: (e) => Text(e!)));
