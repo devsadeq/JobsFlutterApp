@@ -32,7 +32,7 @@ class SearchController extends GetxController {
 
   getSearchResult() async {
     final Status<List<SearchOutDto>> results =
-        await _searchRepository.getAll(q: searchController.text);
+        await _searchRepository.getAll(q: searchController.text.trim());
     _rxResults.value = results;
   }
 
