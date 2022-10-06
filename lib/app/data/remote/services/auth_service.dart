@@ -13,7 +13,7 @@ class AuthService implements IAuthService<IDto> {
   @override
   Future<Response> login({required IDto dto}) async {
     try {
-      return await dioClient.post(AppConstants.LOGIN_ROUTE, data: dto.toJson());
+      return await dioClient.post(ApiRoutes.LOGIN, data: dto.toJson());
     } catch (e) {
       rethrow;
     }
@@ -22,7 +22,7 @@ class AuthService implements IAuthService<IDto> {
   @override
   Future<Response> registerCompany({required IDto dto}) async {
     try {
-      return await dioClient.post(AppConstants.COMPANY_REGISTER_ROUTE,
+      return await dioClient.post(ApiRoutes.COMPANY_REGISTER,
           data: dto.toJson());
     } catch (e) {
       rethrow;
@@ -32,7 +32,7 @@ class AuthService implements IAuthService<IDto> {
   @override
   Future<Response> registerCustomer({required IDto dto}) async {
     try {
-      return await dioClient.post(AppConstants.CUSTOMER_REGISTER_ROUTE,
+      return await dioClient.post(ApiRoutes.CUSTOMER_REGISTER,
           data: dto.toJson());
     } catch (e) {
       rethrow;

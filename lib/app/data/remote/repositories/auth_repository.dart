@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../local/base/i_entity.dart';
 import '../../local/services/storage_service.dart';
 import '../base/iauth_repository.dart';
 import '../base/idto.dart';
@@ -86,9 +87,12 @@ class AuthRepository implements IAuthRepository<Status<dynamic>> {
   }
 
   @override
-  Future<Status> writeStorage({required String key, required value}) async {
+  Future<Status> writeStorage({
+    required String key,
+    required IEntity entity,
+  }) async {
     try {
-      await storageService.write(key: key, value: value);
+      await storageService.write(key: key, entity: entity);
       return const Status.success(data: "User has been saved successfully.");
     } catch (e) {
       return Status.failure(reason: e.toString());
@@ -98,7 +102,7 @@ class AuthRepository implements IAuthRepository<Status<dynamic>> {
   @override
   Future<Status> removeStorage({required String key}) async {
     try {
-      await storageService.write(key: key);
+      await storageService.remove(key: key);
       return const Status.success(data: "User has been removed successfully.");
     } catch (e) {
       return Status.failure(reason: e.toString());

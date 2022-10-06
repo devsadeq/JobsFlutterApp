@@ -13,7 +13,7 @@ class JobService extends IService<IDto> {
   @override
   Future<Response> get({required String uuid}) async {
     try {
-      return await dioClient.get('${AppConstants.JOBS_ROUTE}/$uuid');
+      return await dioClient.get('${ApiRoutes.JOBS}/$uuid');
     } catch (e) {
       rethrow;
     }
@@ -22,7 +22,7 @@ class JobService extends IService<IDto> {
   @override
   Future<Response> getAll({int? limit, int? offset, String? q}) async {
     try {
-      return await dioClient.get(AppConstants.JOBS_ROUTE, queryParameters: {
+      return await dioClient.get(ApiRoutes.JOBS, queryParameters: {
         "limit": limit ?? 20,
         "offset": offset ?? 0,
       });
@@ -34,7 +34,7 @@ class JobService extends IService<IDto> {
   @override
   Future<Response> delete({required String uuid}) async {
     try {
-      return await dioClient.delete('${AppConstants.JOBS_ROUTE}/$uuid');
+      return await dioClient.delete('${ApiRoutes.JOBS}/$uuid');
     } catch (e) {
       rethrow;
     }
@@ -44,7 +44,7 @@ class JobService extends IService<IDto> {
   Future<Response> update({required String uuid, required IDto dto}) async {
     try {
       return await dioClient.put(
-        '${AppConstants.JOBS_ROUTE}/$uuid',
+        '${ApiRoutes.JOBS}/$uuid',
         data: dto.toJson(),
       );
     } catch (e) {
@@ -55,7 +55,7 @@ class JobService extends IService<IDto> {
   @override
   Future<Response> create({required IDto dto}) async {
     try {
-      return await dioClient.post(AppConstants.JOBS_ROUTE, data: dto.toJson());
+      return await dioClient.post(ApiRoutes.JOBS, data: dto.toJson());
     } catch (e) {
       rethrow;
     }

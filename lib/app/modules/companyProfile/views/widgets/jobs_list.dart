@@ -32,7 +32,7 @@ class JobsList extends GetView<CompanyProfileController> {
                   location: jobs[index].location!,
                   workplace: jobs[index].workplace!,
                   avatar:
-                      "${AppConstants.BASE_URL}${jobs[index].company!.image!}",
+                      "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
                   description: jobs[index].description!,
                   onTap: () => Get.toNamed(
                     Routes.JOB_DETAILS,

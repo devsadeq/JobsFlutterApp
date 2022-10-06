@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../data/local/entities/user_entity.dart';
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/auth/login_in_dto.dart';
 import '../../../data/remote/dto/auth/login_out_dto.dart';
@@ -47,9 +48,10 @@ class AuthController extends GetxController {
   /*
   * Rx
   * */
-  final RxBool _rxIsLoggedIn = RxBool(false);
 
-  bool get isLoggedIn => _rxIsLoggedIn.value;
+  final Rxn<UserEntity> _rxnCurrentUser = Rxn<UserEntity>();
+
+  UserEntity? get currentUser => _rxnCurrentUser.value;
 
   final Rx<Status<RegisterCustomerOutDto>> _rxRegisterCustomerState =
       Rx<Status<RegisterCustomerOutDto>>(const Status.idle());
@@ -71,7 +73,8 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    checkIsLogged();
+    // checkIsLogged();
+    _getCurrentUser();
   }
 
   @override
@@ -96,11 +99,11 @@ class AuthController extends GetxController {
     companyPasswordController.dispose();
   }
 
-  void checkIsLogged() async {
+  void _getCurrentUser() async {
     final result = await _authRepository.readStorage(key: 'user');
-    result.whenOrNull(success: (data) {
-      if (data['id'] != null) _rxIsLoggedIn.value = true;
-    });
+    result.whenOrNull(
+      success: (data) => _rxnCurrentUser.value = UserEntity.fromMap(data),
+    );
   }
 
   void onLoginSubmit() {
@@ -157,6 +160,7 @@ class AuthController extends GetxController {
         token: data.token!.access,
         name: data.customer!.name,
         email: data.customer!.email,
+        phone: data.customer!.phone,
       );
       Get.offAllNamed(Routes.ROOT);
     });
@@ -179,6 +183,7 @@ class AuthController extends GetxController {
         token: data.token!.access,
         name: data.company!.name,
         email: data.company!.email,
+        phone: data.company!.phone,
       );
       Get.offAllNamed(Routes.ROOT);
     });
@@ -188,14 +193,19 @@ class AuthController extends GetxController {
     String? id,
     String? email,
     String? name,
+    String? phone,
     String? token,
   }) async {
-    await _authRepository.writeStorage(key: 'user', value: {
-      'id': id,
-      'email': email,
-      'name': name,
-      'token': token,
-    });
+    await _authRepository.writeStorage(
+      key: 'user',
+      entity: UserEntity(
+        id: id,
+        name: name,
+        email: email,
+        phoneNumber: phone,
+        token: token,
+      ),
+    );
   }
 
   void _clearTextControllers() {

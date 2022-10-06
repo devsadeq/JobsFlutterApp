@@ -12,7 +12,7 @@ class PositionChoiceService extends IChoiceService {
   @override
   Future<Response> getAll({int? limit, int? offset, String? q}) async {
     try {
-      return await dioClient.get(AppConstants.POSITIONS_ROUTE);
+      return await dioClient.get(ApiRoutes.POSITIONS);
     } catch (e) {
       rethrow;
     }
