@@ -107,6 +107,8 @@ class CustomTextField extends StatelessWidget {
                       isSearchBar ? EdgeInsets.symmetric(vertical: 10.w) : null,
                   suffixIcon: suffixIcon != null
                       ? IconButton(
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onPressed: onSuffixTap ?? () {},
                           icon: HeroIcon(suffixIcon!, size: suffixIconSize))
                       : null,

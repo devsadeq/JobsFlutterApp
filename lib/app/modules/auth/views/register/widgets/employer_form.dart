@@ -69,15 +69,19 @@ class EmployerForm extends GetView<AuthController> {
             validator: Validators.address,
           ),
           SizedBox(height: 15.h),
-          CustomTextField(
-            controller: controller.companyPasswordController,
-            hintText: AppStrings.password,
-            title: AppStrings.password,
-            autofocus: false,
-            isPassword: true,
-            suffixIcon: HeroIcons.eyeSlash,
-            isRequired: true,
-            obscureText: true,
+          Obx(
+            () => CustomTextField(
+              controller: controller.companyPasswordController,
+              hintText: AppStrings.password,
+              title: AppStrings.password,
+              autofocus: false,
+              isPassword: true,
+              isRequired: true,
+              obscureText: controller.isObscure,
+              onSuffixTap: controller.toggleObscurePassword,
+              suffixIcon:
+                  controller.isObscure ? HeroIcons.eyeSlash : HeroIcons.eye,
+            ),
           ),
         ],
       ),
