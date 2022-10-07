@@ -32,6 +32,6 @@ class ChooseController extends GetxController {
 
   updateType(UserType type) {
     _rxUserType.value = type;
-    Get.toNamed(Routes.REGISTER, arguments: userType);
+    Get.offAllNamed(Routes.REGISTER, arguments: userType);
   }
 }

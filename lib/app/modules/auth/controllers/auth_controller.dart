@@ -183,7 +183,7 @@ class AuthController extends GetxController {
         email: data.company!.email,
         phone: data.company!.phone,
       );
-      Get.offAllNamed(Routes.ROOT);
+      Get.offAllNamed(Routes.WAITTING);
     });
   }
 

@@ -47,10 +47,8 @@ class AppTheme {
   static final _lightColorScheme = ColorScheme.fromSwatch().copyWith(
     background: backgroundColor,
     onBackground: blackColor,
-    ///////////////////////////////
     primary: blueColor,
     onPrimary: backgroundColor,
-    ///////////////////////////////
     secondary: darkGrayColor,
     tertiary: lightGrayColor,
   );
@@ -72,11 +70,14 @@ class AppTheme {
   static final _inputDecorationTheme = InputDecorationTheme(
     contentPadding: EdgeInsets.all(16.w),
     hintStyle: _lightTextTheme.caption,
-    errorStyle: _lightTextTheme.caption?.copyWith(color: errorColor),
+    errorStyle: _lightTextTheme.caption?.copyWith(
+      color: errorColor,
+      fontSize: 10.sp,
+    ),
     fillColor: whiteColor,
     filled: true,
     errorMaxLines: 3,
-    counterStyle: _lightTextTheme.caption,
+    counterStyle: _lightTextTheme.caption?.copyWith(fontSize: 10.sp),
     suffixIconColor: darkGrayColor,
     prefixIconColor: lightGrayColor,
     enabledBorder: _outlineInputBorder,
