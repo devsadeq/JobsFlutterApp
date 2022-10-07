@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:jobs_flutter_app/app/data/remote/api/dio_Interceptor.dart';
-import 'package:jobs_flutter_app/app/utils/constants.dart';
+
+import '../../../utils/constants.dart';
+import 'dio_Interceptor.dart';
 
 class DioClient {
   final Dio _dio;

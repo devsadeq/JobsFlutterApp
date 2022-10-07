@@ -450,13 +450,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.4.0"
-  kf_drawer:
-    dependency: "direct main"
-    description:
-      name: kf_drawer
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.1"
   lints:
     dependency: transitive
     description:
@@ -471,6 +464,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
+  logger:
+    dependency: "direct dev"
+    description:
+      name: logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   logging:
     dependency: transitive
     description:
