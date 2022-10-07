@@ -19,7 +19,7 @@ class CustomerService implements ICustomerService {
       return await dioClient.post(ApiRoutes.SAVED_JOBS, queryParameters: {
         "limit": limit ?? 20,
         "offset": offset ?? 0,
-        "customer_id ": customerUuid,
+        "customer_id": customerUuid,
       });
     } catch (e) {
       rethrow;

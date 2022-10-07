@@ -10,7 +10,7 @@ import '../../root/controllers/root_controller.dart';
 class SavedController extends GetxController {
   final _customerRepository = getIt.get<CustomerRepository>();
   final _rootController = Get.find<RootController>();
-  final _authController = Get.find<AuthController>();
+  final _authController = AuthController.to;
 
   final Rx<Status<List<JobOutDto>>> _rxSavedJobs =
       Rx<Status<List<JobOutDto>>>(const Status.idle());
@@ -20,13 +20,12 @@ class SavedController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getSavedJobs();
-
   }
 
   @override
   void onReady() {
     super.onReady();
+    getSavedJobs();
   }
 
   @override

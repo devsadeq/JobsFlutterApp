@@ -73,7 +73,6 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // checkIsLogged();
     _getCurrentUser();
   }
 
@@ -102,8 +101,7 @@ class AuthController extends GetxController {
   void _getCurrentUser() async {
     final result = await _authRepository.readStorage(key: 'user');
     result.whenOrNull(
-      success: (data) => _rxnCurrentUser.value = UserEntity.fromMap(data),
-    );
+        success: (data) => _rxnCurrentUser.value = UserEntity.fromMap(data));
   }
 
   void onLoginSubmit() {
