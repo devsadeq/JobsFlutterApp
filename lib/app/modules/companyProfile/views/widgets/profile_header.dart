@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 
 import '../../../../core/values/strings.dart';
 import '../../controllers/company_profile_controller.dart';
@@ -31,7 +31,7 @@ class ProfileHeader extends GetView<CompanyProfileController> {
             placeholder: (context, url) =>
                 const Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) =>
-                const Icon(FontAwesomeIcons.circleExclamation),
+                const HeroIcon(HeroIcons.exclamationCircle),
             height: 104.h,
           ),
           SizedBox(height: 10.h),

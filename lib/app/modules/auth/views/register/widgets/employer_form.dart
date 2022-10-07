@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/core/values/strings.dart';
-import 'package:jobs_flutter_app/app/modules/auth/controllers/auth_controller.dart';
+import 'package:heroicons/heroicons.dart';
 
+import '../../../../../core/values/strings.dart';
 import '../../../../../widgets/custom_text_field.dart';
+import '../../../controllers/auth_controller.dart';
 
 class EmployerForm extends GetView<AuthController> {
   const EmployerForm({Key? key}) : super(key: key);
@@ -71,7 +71,7 @@ class EmployerForm extends GetView<AuthController> {
             title: AppStrings.password,
             autofocus: false,
             isPassword: true,
-            suffixIcon: FontAwesomeIcons.eyeSlash,
+            suffixIcon: HeroIcons.eyeSlash,
             isRequired: true,
             obscureText: true,
           ),

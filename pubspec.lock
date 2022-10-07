@@ -310,13 +310,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.3"
-  font_awesome_flutter:
-    dependency: "direct main"
-    description:
-      name: font_awesome_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "10.2.1"
   freezed:
     dependency: "direct dev"
     description:
@@ -380,6 +373,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  heroicons:
+    dependency: "direct main"
+    description:
+      name: heroicons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.0"
   html:
     dependency: transitive
     description:

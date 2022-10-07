@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/search/controllers/search_controller.dart';
+import 'package:heroicons/heroicons.dart';
 
-import 'search_items.dart';
 import '../../../../widgets/custom_text_field.dart';
+import '../../controllers/search_controller.dart';
+import 'search_items.dart';
 
 class Body extends GetView<SearchController> {
   const Body({Key? key}) : super(key: key);
@@ -22,8 +22,8 @@ class Body extends GetView<SearchController> {
             autofocus: false,
             hintText: "Search",
             isSearchBar: true,
-            prefixIcon: FontAwesomeIcons.magnifyingGlass,
-            suffixIcon: FontAwesomeIcons.x,
+            prefixIcon: HeroIcons.magnifyingGlass,
+            suffixIcon: HeroIcons.xMark,
             onChanged: (_) => controller.getSearchResult(),
             onSuffixTap: () => controller.clearSearch(),
           ),

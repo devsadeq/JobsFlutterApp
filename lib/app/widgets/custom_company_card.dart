@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 
 class CustomCompanyCard extends StatelessWidget {
   const CustomCompanyCard({
@@ -12,7 +12,7 @@ class CustomCompanyCard extends StatelessWidget {
     required this.title,
   }) : super(key: key);
   final Widget body;
-  final IconData icon;
+  final HeroIcons icon;
   final String title;
 
   @override
@@ -28,7 +28,7 @@ class CustomCompanyCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              FaIcon(
+              HeroIcon(
                 icon,
                 size: 24,
                 color: Get.theme.colorScheme.primary,

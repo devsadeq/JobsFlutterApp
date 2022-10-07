@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/utils/functions.dart';
-import 'package:jobs_flutter_app/app/widgets/custom_button.dart';
-import 'package:jobs_flutter_app/app/widgets/custom_text_field.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 
+import '../../../../utils/functions.dart';
+import '../../../../widgets/custom_button.dart';
+import '../../../../widgets/custom_text_field.dart';
 import 'submit_bottom_sheet.dart';
 
 class ApplyBottomSheetBody extends StatelessWidget {
@@ -32,8 +32,8 @@ class ApplyBottomSheetBody extends StatelessWidget {
         SizedBox(height: 15.h),
         Row(
           children: [
-            FaIcon(
-              FontAwesomeIcons.circleCheck,
+            HeroIcon(
+              HeroIcons.checkCircle,
               color: Get.theme.primaryColor,
             ),
             SizedBox(width: 5.w),
@@ -49,17 +49,18 @@ class ApplyBottomSheetBody extends StatelessWidget {
         ),
         SizedBox(height: 30.h),
         CustomButton(
-            title: "SUBMIT",
-            onTap: () {
-              FocusManager.instance.primaryFocus?.unfocus();
-              Navigator.pop(context);
-              Future.delayed(
-                const Duration(milliseconds: 500),
-                () => popupBottomSheet(
-                  bottomSheetBody: const SubmitBottomSheet(),
-                ),
-              );
-            })
+          title: "SUBMIT",
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+            Navigator.pop(context);
+            Future.delayed(
+              const Duration(milliseconds: 500),
+              () => popupBottomSheet(
+                bottomSheetBody: const SubmitBottomSheet(),
+              ),
+            );
+          },
+        )
       ],
     );
   }
