@@ -8,7 +8,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 class CustomTextField extends StatelessWidget {
   final String? hintText;
   final bool autofocus;
-  final int? maxLines;
+  final int maxLines;
   final int? minLines;
   final int? maxLength;
   final void Function(String?)? onSaved;
@@ -32,7 +32,7 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     this.hintText,
-    this.maxLines,
+    this.maxLines = 1,
     this.minLines,
     this.maxLength,
     this.controller,
@@ -95,7 +95,7 @@ class CustomTextField extends StatelessWidget {
                   color: const Color(0xff657786),
                 ),
                 maxLength: maxLength,
-                maxLines: isPassword ? 1 : maxLines,
+                maxLines: maxLines,
                 minLines: minLines,
                 keyboardType: textInputType,
                 obscureText: obscureText,
@@ -128,10 +128,6 @@ class CustomTextField extends StatelessWidget {
                 controller: controller,
                 autofocus: autofocus,
                 initialCountryCode: Get.deviceLocale!.countryCode.toString(),
-                // decoration: InputDecoration(
-                //   hintText: hintText,
-                // ),
-
                 style: GoogleFonts.poppins(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,
@@ -142,7 +138,6 @@ class CustomTextField extends StatelessWidget {
                 dropdownTextStyle: GoogleFonts.poppins(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,
-                  // color: const Color(0xff657786),
                 ),
               ),
       ],

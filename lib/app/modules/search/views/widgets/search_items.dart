@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/search/controllers/search_controller.dart';
-import 'package:jobs_flutter_app/app/utils/constants.dart';
 
-import 'items_card.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../../utils/constants.dart';
+import '../../../../widgets/animation_widget.dart';
+import '../../controllers/search_controller.dart';
+import 'items_card.dart';
 
 class SearchResults extends GetView<SearchController> {
   const SearchResults({Key? key}) : super(key: key);
@@ -17,22 +17,32 @@ class SearchResults extends GetView<SearchController> {
       () => controller.rxResults.when(
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
-        success: (results) => ListView.builder(
-          itemCount: results!.length,
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) => Padding(
-            padding: EdgeInsets.only(bottom: 22.h),
-            child: SearchItem(
-              avatar: "${ApiRoutes.BASE_URL}${results[index].image}",
-              title: results[index].name!,
-              subtitle: "Internet company",
-              onTap: () => Get.toNamed(Routes.COMPANY_PROFILE,
-                  arguments: results[index].id!),
-            ),
-          ),
-        ),
+        success: (results) => results!.isEmpty
+            ? Padding(
+                padding: EdgeInsets.only(top: 0.2.sh - 56.h),
+                child: const AnimationWidget(
+                  title: "No matching company found.",
+                  asset: "assets/empty.json",
+                  subtitle:
+                      "Please make sure your keywords are spelled correctly.",
+                ),
+              )
+            : ListView.builder(
+                itemCount: results.length,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) => Padding(
+                  padding: EdgeInsets.only(bottom: 22.h),
+                  child: SearchItem(
+                    avatar: "${ApiRoutes.BASE_URL}${results[index].image}",
+                    title: results[index].name!,
+                    subtitle: "Internet company",
+                    onTap: () => Get.toNamed(Routes.COMPANY_PROFILE,
+                        arguments: results[index].id!),
+                  ),
+                ),
+              ),
         failure: (e) => Center(child: Text(e!)),
       ),
     );
