@@ -7,7 +7,7 @@ import '../../../../../domain/enums/user_type.dart';
 import '../../../../../routes/app_pages.dart';
 import '../../../controllers/auth_controller.dart';
 import '../../widgets/button_with_text.dart';
-import '../../widgets/welcoming_msg.dart';
+import '../../widgets/header.dart';
 import 'employee_form.dart';
 import 'employer_form.dart';
 
@@ -24,11 +24,8 @@ class Body extends GetView<AuthController> {
         child: Column(
           children: [
             SizedBox(height: 50.h),
-            const WelcomingMsg(
-              title: AppStrings.createAnAccount,
-              subTitle: AppStrings.registerSubtitle,
-            ),
-            SizedBox(height: 48.h),
+            const Header(title: AppStrings.createAnAccount),
+            SizedBox(height: 30.h),
             if (userType == UserType.CUSTOMER) const EmployeeForm(),
             if (userType == UserType.COMPANY) const EmployerForm(),
             SizedBox(height: 50.h),

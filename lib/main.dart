@@ -20,6 +20,7 @@ void main() async {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => GetMaterialApp(
+        locale: Get.locale,
         debugShowCheckedModeBanner: false,
         initialBinding: AuthBinding(),
         home: Obx(

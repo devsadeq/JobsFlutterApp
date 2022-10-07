@@ -6,7 +6,7 @@ import '../../../../../core/values/strings.dart';
 import '../../../../../routes/app_pages.dart';
 import '../../../controllers/auth_controller.dart';
 import '../../widgets/button_with_text.dart';
-import '../../widgets/welcoming_msg.dart';
+import '../../widgets/header.dart';
 import 'login_form.dart';
 
 class Body extends GetView<AuthController> {
@@ -20,11 +20,8 @@ class Body extends GetView<AuthController> {
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(height: 118.h),
-          const WelcomingMsg(
-            title: AppStrings.welcomeBack,
-            subTitle: AppStrings.loginSubtitle,
-          ),
-          SizedBox(height: 93.h),
+          const Header(title: AppStrings.welcomeBack),
+          SizedBox(height: 77.h),
           const LoginForm(),
           SizedBox(height: 77.h),
           ButtonWithText(

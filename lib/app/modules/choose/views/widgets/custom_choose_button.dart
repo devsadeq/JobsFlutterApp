@@ -44,8 +44,8 @@ class CustomChooseButton extends StatelessWidget {
                   color: Get.theme.colorScheme.primary.withOpacity(0.1)),
               child: Center(
                 child: HeroIcon(
+                  style: HeroIconStyle.solid,
                   icon,
-                  // size: 24,
                 ),
               ),
             ),
