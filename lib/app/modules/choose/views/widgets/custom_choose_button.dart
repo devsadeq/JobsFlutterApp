@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 
 class CustomChooseButton extends StatelessWidget {
   const CustomChooseButton({
@@ -13,7 +13,7 @@ class CustomChooseButton extends StatelessWidget {
   }) : super(key: key);
 
   final String title;
-  final IconData icon;
+  final HeroIcons icon;
   final void Function() onTap;
 
   @override
@@ -43,7 +43,7 @@ class CustomChooseButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50.r),
                   color: Get.theme.colorScheme.primary.withOpacity(0.1)),
               child: Center(
-                child: FaIcon(
+                child: HeroIcon(
                   icon,
                   // size: 24,
                 ),

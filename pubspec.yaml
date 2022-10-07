@@ -17,7 +17,6 @@ dependencies:
   dots_indicator: 2.1.0
   flutter_markdown: 0.6.12
   persistent_bottom_nav_bar_v2: 4.2.5
-  font_awesome_flutter: 10.2.1
   dio: 4.0.6
   get_it: 7.2.0
   freezed_annotation: ^2.1.0
@@ -26,7 +25,8 @@ dependencies:
   flutter_zoom_drawer: 3.0.3
   intl: 0.17.0
   get_storage: 2.0.3
-  flutter:
+  heroicons: 0.7.0
+  flutter: 
     sdk: flutter
 
 dev_dependencies: 

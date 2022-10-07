@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? hintText;
@@ -20,9 +20,9 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final bool isSearchBar;
   final bool obscureText;
-  final IconData? suffixIcon;
+  final HeroIcons? suffixIcon;
   final double suffixIconSize;
-  final IconData? prefixIcon;
+  final HeroIcons? prefixIcon;
   final void Function()? onSuffixTap;
   final double prefixIconSize;
 
@@ -103,12 +103,12 @@ class CustomTextField extends StatelessWidget {
             suffixIcon: suffixIcon != null
                 ? IconButton(
                     onPressed: onSuffixTap ?? () {},
-                    icon: FaIcon(suffixIcon!, size: suffixIconSize))
+                    icon: HeroIcon(suffixIcon!, size: suffixIconSize))
                 : null,
             prefixIcon: prefixIcon != null
                 ? IconButton(
                     onPressed: () {},
-                    icon: FaIcon(prefixIcon!, size: prefixIconSize))
+                    icon: HeroIcon(prefixIcon!, size: prefixIconSize))
                 : null,
           ),
           validator: validator,

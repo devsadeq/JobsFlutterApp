@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 
 import '../../../../widgets/custom_company_card.dart';
 import '../../controllers/company_profile_controller.dart';
@@ -25,13 +25,13 @@ class AboutUs extends GetView<CompanyProfileController> {
                 SizedBox(height: 15.h),
                 CustomCompanyCard(
                   title: "About us",
-                  icon: FontAwesomeIcons.circleUser,
+                  icon: HeroIcons.userCircle,
                   body: Text(company!.description!),
                 ),
                 SizedBox(height: 15.h),
                 CustomCompanyCard(
                   title: "Location",
-                  icon: FontAwesomeIcons.locationDot,
+                  icon: HeroIcons.mapPin,
                   body: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

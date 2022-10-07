@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobs_flutter_app/app/routes/app_pages.dart';
-import 'package:jobs_flutter_app/app/widgets/custom_button.dart';
+import 'package:heroicons/heroicons.dart';
+
+import '../../../../routes/app_pages.dart';
+import '../../../../widgets/custom_button.dart';
 
 class SubmitBottomSheet extends StatelessWidget {
   const SubmitBottomSheet({Key? key}) : super(key: key);
@@ -13,10 +14,11 @@ class SubmitBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FaIcon(
-          FontAwesomeIcons.circleCheck,
-          size: 90.w,
+        HeroIcon(
+          HeroIcons.checkBadge,
+          size: 100.w,
           color: Get.theme.primaryColor,
+          style: HeroIconStyle.solid,
         ),
         SizedBox(height: 25.h),
         Text(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:intl/intl.dart';
 import 'custom_tag.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -128,7 +128,7 @@ class _CardTile extends StatelessWidget {
               placeholder: (context, url) =>
                   const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) =>
-                  const Icon(FontAwesomeIcons.circleExclamation),
+                  const HeroIcon(HeroIcons.exclamationCircle),
               height: 46.h,
             ),
           ),
@@ -149,9 +149,9 @@ class _CardTile extends StatelessWidget {
             ),
             Row(
               children: [
-                FaIcon(
-                  FontAwesomeIcons.clock,
-                  size: 14.w,
+                HeroIcon(
+                  HeroIcons.clock,
+                  size: 16.w,
                   color: isFeatured
                       ? Get.theme.backgroundColor
                       : Get.theme.colorScheme.secondary,
@@ -174,8 +174,9 @@ class _CardTile extends StatelessWidget {
         const Spacer(),
         IconButton(
           onPressed: onRightButtonTap ?? () {},
-          icon: FaIcon(
-            FontAwesomeIcons.bookmark,
+          icon: HeroIcon(
+            HeroIcons.bookmark,
+            size: 24.w,
             color: isFeatured
                 ? Get.theme.backgroundColor
                 : Get.theme.colorScheme.secondary,
@@ -257,7 +258,7 @@ class _CardTags extends StatelessWidget {
       children: [
         CustomTag(
           title: workplace,
-          icon: FontAwesomeIcons.briefcase,
+          icon: HeroIcons.briefcase,
           backgroundColor: isFeatured
               ? Colors.white.withOpacity(0.15)
               : Get.theme.backgroundColor,
@@ -267,7 +268,7 @@ class _CardTags extends StatelessWidget {
         ),
         CustomTag(
           title: employmentType,
-          icon: FontAwesomeIcons.fire,
+          icon: HeroIcons.fire,
           backgroundColor: isFeatured
               ? Colors.white.withOpacity(0.15)
               : Get.theme.backgroundColor,
@@ -277,7 +278,7 @@ class _CardTags extends StatelessWidget {
         ),
         CustomTag(
           title: location,
-          icon: FontAwesomeIcons.locationDot,
+          icon: HeroIcons.mapPin,
           backgroundColor: isFeatured
               ? Colors.white.withOpacity(0.15)
               : Get.theme.backgroundColor,

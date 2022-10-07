@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobs_flutter_app/app/modules/JobDetails/controllers/job_details_controller.dart';
-import 'package:jobs_flutter_app/app/utils/constants.dart';
+import 'package:heroicons/heroicons.dart';
 
 import '../../../../routes/app_pages.dart';
+import '../../../../utils/constants.dart';
 import '../../../../utils/functions.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_tag.dart';
+import '../../controllers/job_details_controller.dart';
 import 'apply_bottom_sheet.dart';
 
 class Body extends GetView<JobDetailsController> {
@@ -56,21 +56,21 @@ class Body extends GetView<JobDetailsController> {
                 children: [
                   CustomTag(
                     title: job.workplace,
-                    icon: FontAwesomeIcons.briefcase,
+                    icon: HeroIcons.briefcase,
                     backgroundColor:
                         Get.theme.colorScheme.tertiary.withOpacity(0.25),
                     titleColor: Get.theme.colorScheme.secondary,
                   ),
                   CustomTag(
                     title: job.employmentType,
-                    icon: FontAwesomeIcons.fire,
+                    icon: HeroIcons.fire,
                     backgroundColor:
                         Get.theme.colorScheme.tertiary.withOpacity(0.25),
                     titleColor: Get.theme.colorScheme.secondary,
                   ),
                   CustomTag(
                     title: job.location,
-                    icon: FontAwesomeIcons.locationDot,
+                    icon: HeroIcons.mapPin,
                     backgroundColor:
                         Get.theme.colorScheme.tertiary.withOpacity(0.25),
                     titleColor: Get.theme.colorScheme.secondary,
