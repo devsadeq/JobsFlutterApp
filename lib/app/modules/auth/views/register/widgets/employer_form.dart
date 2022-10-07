@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 
 import '../../../../../core/values/strings.dart';
+import '../../../../../utils/validators.dart';
 import '../../../../../widgets/custom_text_field.dart';
 import '../../../controllers/auth_controller.dart';
 
@@ -23,6 +24,7 @@ class EmployerForm extends GetView<AuthController> {
             autofocus: false,
             maxLines: 1,
             isRequired: true,
+            validator: Validators.name,
           ),
           SizedBox(height: 15.h),
           CustomTextField(
@@ -33,6 +35,7 @@ class EmployerForm extends GetView<AuthController> {
             maxLines: 1,
             isRequired: true,
             textInputType: TextInputType.phone,
+            isPhoneNumber: true,
           ),
           SizedBox(height: 15.h),
           CustomTextField(
@@ -63,6 +66,7 @@ class EmployerForm extends GetView<AuthController> {
             maxLines: 1,
             isRequired: true,
             textInputType: TextInputType.text,
+            validator: Validators.address,
           ),
           SizedBox(height: 15.h),
           CustomTextField(
