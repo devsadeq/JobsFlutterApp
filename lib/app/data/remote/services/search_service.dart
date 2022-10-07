@@ -13,7 +13,7 @@ class SearchService extends ISearchService<IDto> {
   @override
   Future<Response> getAll({int? limit, int? offset, String? q}) async {
     try {
-      return await dioClient.post("${AppConstants.SEARCH_ROUTE}$q");
+      return await dioClient.post("${ApiRoutes.SEARCH}$q");
     } catch (e) {
       rethrow;
     }

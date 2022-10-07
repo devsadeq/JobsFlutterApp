@@ -73,7 +73,7 @@ class FeaturedJobs extends GetView<HomeController> {
     return items
         .map((job) => CustomJobCard(
               isFeatured: true,
-              avatar: "${AppConstants.BASE_URL}${job.company!.image!}",
+              avatar: "${ApiRoutes.BASE_URL}${job.company!.image!}",
               companyName: job.company!.name!,
               publishTime: job.created!,
               jobPosition: job.position,

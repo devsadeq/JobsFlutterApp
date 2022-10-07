@@ -25,7 +25,7 @@ class SearchResults extends GetView<SearchController> {
           itemBuilder: (context, index) => Padding(
             padding: EdgeInsets.only(bottom: 22.h),
             child: SearchItem(
-              avatar: "${AppConstants.BASE_URL}${results[index].image}",
+              avatar: "${ApiRoutes.BASE_URL}${results[index].image}",
               title: results[index].name!,
               subtitle: "Internet company",
               onTap: () => Get.toNamed(Routes.COMPANY_PROFILE,

@@ -1,16 +1,19 @@
 import 'package:dio/dio.dart';
-import 'package:jobs_flutter_app/app/utils/constants.dart';
+
+import '../../../utils/constants.dart';
+import 'dio_Interceptor.dart';
 
 class DioClient {
   final Dio _dio;
 
   DioClient(this._dio) {
     _dio
-      ..options.baseUrl = AppConstants.BASE_URL
+      ..options.baseUrl = ApiRoutes.BASE_URL
       ..options.connectTimeout = 15000
       ..options.receiveTimeout = 15000
       ..options.responseType = ResponseType.json
-      ..options.contentType = 'application/json';
+      ..options.contentType = 'application/json'
+      ..interceptors.add(DioInterceptor());
   }
 
   Future<Response> get(

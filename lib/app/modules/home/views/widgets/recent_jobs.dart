@@ -32,7 +32,7 @@ class RecentJobs extends GetView<HomeController> {
                 padding: EdgeInsets.only(bottom: 16.w),
                 child: CustomJobCard(
                   avatar:
-                      "${AppConstants.BASE_URL}${jobs[index].company!.image!}",
+                      "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
                   companyName: jobs[index].company!.name!,
                   publishTime: jobs[index].created!,
                   jobPosition: jobs[index].position,

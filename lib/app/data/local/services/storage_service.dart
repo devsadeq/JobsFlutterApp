@@ -1,6 +1,8 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:jobs_flutter_app/app/data/local/base/iservice.dart';
 
+import '../base/i_entity.dart';
+
 class StorageService implements IService {
   final GetStorage _storage;
 
@@ -16,9 +18,9 @@ class StorageService implements IService {
   }
 
   @override
-  Future<void> write({required String key, value}) async {
+  Future<void> write({required String key, required IEntity entity}) async {
     try {
-      await _storage.write(key, value);
+      await _storage.write(key, entity.toMap());
     } catch (e) {
       rethrow;
     }

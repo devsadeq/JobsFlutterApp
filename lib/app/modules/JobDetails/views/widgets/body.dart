@@ -37,7 +37,7 @@ class Body extends GetView<JobDetailsController> {
                   height: 100.w,
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(
-                        "${AppConstants.BASE_URL}${job!.company!.image}"),
+                        "${ApiRoutes.BASE_URL}${job!.company!.image}"),
                   ),
                 ),
               ),

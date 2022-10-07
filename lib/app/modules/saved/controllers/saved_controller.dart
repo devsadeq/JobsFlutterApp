@@ -1,8 +1,21 @@
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/root/controllers/root_controller.dart';
+
+import '../../../data/remote/base/status.dart';
+import '../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../data/remote/repositories/customer/customer_repository.dart';
+import '../../../di/locator.dart';
+import '../../auth/controllers/auth_controller.dart';
+import '../../root/controllers/root_controller.dart';
 
 class SavedController extends GetxController {
-  final rootController = Get.find<RootController>();
+  final _customerRepository = getIt.get<CustomerRepository>();
+  final _rootController = Get.find<RootController>();
+  final _authController = AuthController.to;
+
+  final Rx<Status<List<JobOutDto>>> _rxSavedJobs =
+      Rx<Status<List<JobOutDto>>>(const Status.idle());
+
+  Status<List<JobOutDto>> get savedJobs => _rxSavedJobs.value;
 
   @override
   void onInit() {
@@ -12,6 +25,7 @@ class SavedController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    getSavedJobs();
   }
 
   @override
@@ -20,6 +34,13 @@ class SavedController extends GetxController {
   }
 
   jumpToHome() {
-    rootController.persistentTabController.jumpToTab(0);
+    _rootController.persistentTabController.jumpToTab(0);
+  }
+
+  Future<void> getSavedJobs() async {
+    final result = await _customerRepository.getAllSavedJobs(
+        customerUuid: _authController.currentUser!.id!);
+
+    _rxSavedJobs.value = result;
   }
 }

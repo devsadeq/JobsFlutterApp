@@ -25,7 +25,7 @@ class CompanyService implements IService<IDto> {
   @override
   Future<Response> get({required String uuid}) async {
     try {
-      return await dioClient.get('${AppConstants.COMPANIES_ROUTE}/$uuid');
+      return await dioClient.get('${ApiRoutes.COMPANIES}/$uuid');
     } catch (e) {
       rethrow;
     }

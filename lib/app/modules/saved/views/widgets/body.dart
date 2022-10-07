@@ -1,11 +1,26 @@
-import 'package:flutter/cupertino.dart';
-import 'package:jobs_flutter_app/app/modules/saved/views/widgets/no_saving.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Body extends StatelessWidget {
+import '../../controllers/saved_controller.dart';
+import 'no_saving.dart';
+import 'saved_jobs.dart';
+
+class Body extends GetView<SavedController> {
   const Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const NoSaving();
+    return Obx(
+      () => Center(
+          child: controller.savedJobs.when(
+        idle: () => Container(),
+        loading: () => const CircularProgressIndicator(),
+        success: (data) {
+          if (data!.isEmpty) return const NoSaving();
+          return SavedJobs(jobs: data);
+        },
+        failure: (e) => Text(e!),
+      )),
+    );
   }
 }
