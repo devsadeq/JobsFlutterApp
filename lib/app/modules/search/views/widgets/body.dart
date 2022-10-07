@@ -22,6 +22,7 @@ class Body extends GetView<SearchController> {
             autofocus: false,
             hintText: "Search",
             isSearchBar: true,
+            maxLines: 1,
             prefixIcon: HeroIcons.magnifyingGlass,
             suffixIcon: HeroIcons.xMark,
             onChanged: (_) => controller.getSearchResult(),

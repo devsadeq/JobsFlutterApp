@@ -26,13 +26,16 @@ class ProfileHeader extends GetView<CompanyProfileController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CachedNetworkImage(
-            imageUrl: avatar,
-            placeholder: (context, url) =>
-                const Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) =>
-                const HeroIcon(HeroIcons.exclamationCircle),
-            height: 104.h,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10000.0),
+            child: CachedNetworkImage(
+              imageUrl: avatar,
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) =>
+                  const HeroIcon(HeroIcons.exclamationCircle),
+              height: 104.h,
+            ),
           ),
           SizedBox(height: 10.h),
           Text(

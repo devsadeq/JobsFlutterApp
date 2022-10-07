@@ -55,6 +55,7 @@ class CustomChooseButton extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w700,
+                color: Get.theme.colorScheme.primary
               ),
             ),
           ],

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,12 +33,15 @@ class Body extends GetView<JobDetailsController> {
                   Routes.COMPANY_PROFILE,
                   arguments: job!.company!.id,
                 ),
-                child: SizedBox(
-                  width: 100.w,
-                  height: 100.w,
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "${ApiRoutes.BASE_URL}${job!.company!.image}"),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10000.0),
+                  child: CachedNetworkImage(
+                    imageUrl: "${ApiRoutes.BASE_URL}${job!.company!.image}",
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const HeroIcon(HeroIcons.exclamationCircle),
+                    height: 104.h,
                   ),
                 ),
               ),

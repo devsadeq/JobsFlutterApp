@@ -70,6 +70,10 @@ class AuthController extends GetxController {
 
   Status<LoginOutDto> get loginState => _rxLoginState.value;
 
+  final RxBool _rxIsObscure = RxBool(true);
+
+  bool get isObscure => _rxIsObscure.value;
+
   @override
   void onInit() {
     super.onInit();
@@ -204,6 +208,11 @@ class AuthController extends GetxController {
         token: token,
       ),
     );
+  }
+
+  void toggleObscurePassword() {
+    print("tootle");
+    _rxIsObscure.value = !isObscure;
   }
 
   void _clearTextControllers() {

@@ -16,7 +16,6 @@ class AppTheme {
   // static Color lightGrayColor2 = const Color(0xffE1E8ED);
   static Color errorColor = const Color(0xffFB4747);
   static Color whiteColor = const Color(0xffffffff);
-  static Color strokeColor = const Color(0xfff2f2f2);
 
   static final lightTheme = Get.theme.copyWith(
     visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -91,7 +90,7 @@ class AppTheme {
   static final _outlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(14.r),
     borderSide: BorderSide(
-      color: strokeColor,
+      color: blackColor.withOpacity(0.1),
       width: 1.0,
     ),
   );

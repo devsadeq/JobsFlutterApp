@@ -24,13 +24,18 @@ class LoginForm extends GetView<AuthController> {
             maxLines: 1,
           ),
           SizedBox(height: 15.h),
-          CustomTextField(
-            controller: controller.loginPasswordController,
-            hintText: AppStrings.password,
-            title: AppStrings.password,
-            autofocus: false,
-            isPassword: true,
-            suffixIcon: HeroIcons.eyeSlash,
+          Obx(
+            () => CustomTextField(
+              controller: controller.loginPasswordController,
+              hintText: AppStrings.password,
+              title: AppStrings.password,
+              autofocus: false,
+              isPassword: true,
+              suffixIcon:
+                  controller.isObscure ? HeroIcons.eyeSlash : HeroIcons.eye,
+              obscureText: controller.isObscure,
+              onSuffixTap: controller.toggleObscurePassword,
+            ),
           ),
         ],
       ),

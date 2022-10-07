@@ -13,6 +13,7 @@ class SearchView extends GetView<SearchController> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Get.theme.backgroundColor,
+        resizeToAvoidBottomInset: true,
         body: const Body(),
       ),
     );
