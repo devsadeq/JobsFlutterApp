@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/widgets/shimmer/recent_jobs_shimmer.dart';
 
 import '../../../../widgets/animation_widget.dart';
 import '../../controllers/saved_controller.dart';
@@ -15,8 +16,8 @@ class Body extends GetView<SavedController> {
     return Obx(
       () => Center(
         child: controller.savedJobs.when(
-          idle: () => Container(),
-          loading: () => const CircularProgressIndicator(),
+          idle: () => const RecentJobsShimmer(),
+          loading: () => const RecentJobsShimmer(),
           success: (data) {
             if (data!.isEmpty) return const NoSaving();
             return SavedJobs(jobs: data);

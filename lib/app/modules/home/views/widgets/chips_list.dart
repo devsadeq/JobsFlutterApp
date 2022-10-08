@@ -20,7 +20,6 @@ class ChipsList extends GetView<HomeController> {
           success: (positions) => ListView.builder(
             itemCount: positions!.length,
             padding: EdgeInsets.only(left: 16.w),
-            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemBuilder: (context, index) => Obx(
