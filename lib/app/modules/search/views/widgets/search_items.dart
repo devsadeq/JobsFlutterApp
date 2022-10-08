@@ -18,15 +18,12 @@ class SearchResults extends GetView<SearchController> {
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
         success: (results) => results!.isEmpty
-            ? Padding(
-                padding: EdgeInsets.only(top: 0.2.sh - 56.h),
-                child: const AnimationWidget(
-                  title: "No matching company found.",
-                  asset: "assets/empty.json",
-                  subtitle:
-                      "Please make sure your keywords are spelled correctly.",
-                ),
-              )
+            ? const AnimationWidget(
+              title: "No matching company found.",
+              asset: "assets/empty.json",
+              subtitle:
+                  "Please make sure your keywords are spelled correctly.",
+            )
             : ListView.builder(
                 itemCount: results.length,
                 shrinkWrap: true,
@@ -43,7 +40,11 @@ class SearchResults extends GetView<SearchController> {
                   ),
                 ),
               ),
-        failure: (e) => Center(child: Text(e!)),
+        failure: (e) => AnimationWidget(
+          asset: "assets/space.json",
+          title: e!,
+          onTryAgain: () {},
+        ),
       ),
     );
   }

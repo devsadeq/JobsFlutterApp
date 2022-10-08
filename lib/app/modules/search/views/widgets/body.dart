@@ -29,7 +29,7 @@ class Body extends GetView<SearchController> {
             onSuffixTap: () => controller.clearSearch(),
           ),
           SizedBox(height: 20.h),
-          const SearchResults(),
+          const Expanded(child: SearchResults()),
         ],
       ),
     );
