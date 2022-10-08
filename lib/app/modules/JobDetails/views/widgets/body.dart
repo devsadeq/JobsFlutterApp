@@ -9,8 +9,10 @@ import 'package:heroicons/heroicons.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/functions.dart';
+import '../../../../widgets/animation_widget.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_tag.dart';
+import '../../../../widgets/shimmer/job_details_shimmer.dart';
 import '../../controllers/job_details_controller.dart';
 import 'apply_bottom_sheet.dart';
 
@@ -24,7 +26,7 @@ class Body extends GetView<JobDetailsController> {
       child: Obx(
         () => controller.rxJob.when(
           idle: () => Container(),
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => const JobDetailsShimmer(),
           success: (job) => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -104,7 +106,11 @@ class Body extends GetView<JobDetailsController> {
             ],
           ),
           failure: (e) => Center(
-            child: Text(e!),
+            child: AnimationWidget(
+              title: e!,
+              asset: "assets/space.json",
+              onTryAgain: () {},
+            ),
           ),
         ),
       ),
