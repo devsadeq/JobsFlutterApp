@@ -13,7 +13,6 @@ class FeaturedJobShimmer extends StatelessWidget {
       child: ShimmerWidget(
         width: double.infinity,
         height: 170.h,
-        boxShape: BoxShape.rectangle,
       ),
     );
   }

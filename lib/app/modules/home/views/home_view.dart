@@ -1,9 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/core/values/strings.dart';
+import 'package:heroicons/heroicons.dart';
 
+import '../../../core/values/strings.dart';
 import '../../../widgets/custom_appbar.dart';
 import '../../root/controllers/root_controller.dart';
 import '../controllers/home_controller.dart';
@@ -24,9 +25,12 @@ class HomeView extends GetView<HomeController> {
               onTap: () => RootController.to.toggleDrawer(),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(25.r),
-                child: Image.network(
-                  AppStrings.avatarUrl,
-                  fit: BoxFit.cover,
+                child: CachedNetworkImage(
+                  imageUrl: AppStrings.avatarUrl,
+                  placeholder: (context, url) => Container(),
+                  errorWidget: (context, url, error) =>
+                      const HeroIcon(HeroIcons.exclamationCircle),
+                  height: 46.h,
                 ),
               ),
             ),

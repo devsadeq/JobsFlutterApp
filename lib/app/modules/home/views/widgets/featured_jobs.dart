@@ -61,9 +61,7 @@ class FeaturedJobs extends GetView<HomeController> {
             ),
           ],
         ),
-        failure: (e) => Center(
-          child: Text(e!),
-        ),
+        failure: (e) => const FeaturedJobShimmer(),
       ),
     );
   }

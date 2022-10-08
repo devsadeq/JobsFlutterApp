@@ -51,7 +51,7 @@ class RecentJobs extends GetView<HomeController> {
                 ),
               ),
             ),
-            failure: (String? reason) => Center(child: Text(reason!)),
+            failure: (String? reason) => const RecentJobsShimmer(),
           ),
         )
       ],
