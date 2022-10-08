@@ -48,9 +48,7 @@ class HomeController extends GetxController {
 
   void updateSelectedChipIndex(int index) {
     Get.printInfo(info: index.toString());
-    print("new index $index");
     _selectedChipIndex.value = index;
-    print("selected $selectedChipIndex");
   }
 
   updateIndicatorValue(newIndex, _) {

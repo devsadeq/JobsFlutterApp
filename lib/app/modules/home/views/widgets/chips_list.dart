@@ -30,7 +30,7 @@ class ChipsList extends GetView<HomeController> {
               ),
             ),
           ),
-          failure: (e) => Text(e!),
+          failure: (e) => const ChipsShimmer(),
         ),
       ),
     );
