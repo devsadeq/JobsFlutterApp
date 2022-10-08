@@ -29,6 +29,7 @@ class AppTheme {
     colorScheme: _lightColorScheme,
     elevatedButtonTheme: _lightElevatedButtonTheme,
     inputDecorationTheme: _inputDecorationTheme,
+    useMaterial3: true,
   );
 
   static final _lightTextTheme = Get.textTheme.copyWith(
