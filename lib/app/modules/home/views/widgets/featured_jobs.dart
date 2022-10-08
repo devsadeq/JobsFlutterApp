@@ -3,11 +3,12 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
-import 'package:jobs_flutter_app/app/routes/app_pages.dart';
-import 'package:jobs_flutter_app/app/utils/constants.dart';
-import 'package:jobs_flutter_app/app/widgets/custom_job_card.dart';
 
+import '../../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../../routes/app_pages.dart';
+import '../../../../utils/constants.dart';
+import '../../../../widgets/custom_job_card.dart';
+import '../../../../widgets/shimmer/featured_job_shimmer.dart';
 import '../../controllers/home_controller.dart';
 import 'section_header.dart';
 
@@ -19,9 +20,7 @@ class FeaturedJobs extends GetView<HomeController> {
     return Obx(
       () => controller.rxJobs.when(
         idle: () => Container(),
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        loading: () => const FeaturedJobShimmer(),
         success: (jobs) => Column(
           children: [
             const SectionHeader(title: "Featured Jobs"),
