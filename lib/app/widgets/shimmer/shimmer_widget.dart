@@ -8,12 +8,10 @@ class ShimmerWidget extends StatelessWidget {
     Key? key,
     required this.width,
     required this.height,
-    required this.boxShape,
     this.radius,
   }) : super(key: key);
   final double width;
   final double height;
-  final BoxShape boxShape;
   final double? radius;
 
   @override
@@ -25,7 +23,7 @@ class ShimmerWidget extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          shape: boxShape,
+          shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(radius ?? 14.r),
           color: Get.theme.colorScheme.tertiary.withOpacity(0.7),
         ),

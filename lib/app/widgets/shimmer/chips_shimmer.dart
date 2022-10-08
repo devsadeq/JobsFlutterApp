@@ -18,7 +18,6 @@ class ChipsShimmer extends StatelessWidget {
         child: ShimmerWidget(
           width: 100.w,
           height: 0.0,
-          boxShape: BoxShape.rectangle,
         ),
       ),
     );

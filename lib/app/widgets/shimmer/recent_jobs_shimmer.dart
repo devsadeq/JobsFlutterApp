@@ -16,7 +16,6 @@ class RecentJobsShimmer extends StatelessWidget {
         child: ShimmerWidget(
           width: double.infinity,
           height: 200.h,
-          boxShape: BoxShape.rectangle,
         ),
       ),
     );
