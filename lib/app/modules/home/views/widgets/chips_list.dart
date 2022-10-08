@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/home/controllers/home_controller.dart';
 
 import '../../../../widgets/custom_chip.dart';
+import '../../../../widgets/shimmer/chips_shimmer.dart';
+import '../../controllers/home_controller.dart';
 
 class ChipsList extends GetView<HomeController> {
   const ChipsList({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class ChipsList extends GetView<HomeController> {
       child: Obx(
         () => controller.rxPositions.when(
           idle: () => Container(),
-          loading: () => const CircularProgressIndicator(),
+          loading: () => const ChipsShimmer(),
           success: (positions) => ListView.builder(
             itemCount: positions!.length,
             padding: EdgeInsets.only(left: 16.w),
