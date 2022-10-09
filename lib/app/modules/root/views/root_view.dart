@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,13 +24,19 @@ class RootView extends GetView<RootController> {
           controller: _.zoomDrawerController,
           menuScreen: const MenuView(),
           mainScreen: const _MainScreen(),
-          borderRadius: 24.0,
+          borderRadius: 24.r,
           showShadow: true,
           angle: 0.0,
-          menuBackgroundColor: Get.theme.colorScheme.tertiary,
-          slideWidth: MediaQuery.of(context).size.width * 0.65,
+          menuBackgroundColor: Get.theme.backgroundColor,
+          slideWidth: 0.65.sw,
+          menuScreenWidth: 0.65.sw,
           openCurve: Curves.fastOutSlowIn,
           closeCurve: Curves.bounceIn,
+          style: DrawerStyle.style1,
+          mainScreenTapClose: true,
+          androidCloseOnBackTap: true,
+          openDragSensitivity: 200,
+          mainScreenOverlayColor: Colors.black.withOpacity(0.25),
         ),
       ),
     );
@@ -81,18 +88,35 @@ class _MainScreen extends GetView<RootController> {
 
   List<PersistentBottomNavBarItem> _getNavBarItems() {
     return [
-      _getNavBarItem("Home", HeroIcons.home),
-      _getNavBarItem("Search", HeroIcons.magnifyingGlass),
-      _getNavBarItem("Saved", HeroIcons.bookmark),
+      _getNavBarItem(
+        "Home",
+        HeroIcons.home,
+        () => controller.onHomeDoubleClick(),
+      ),
+      _getNavBarItem(
+        "Search",
+        HeroIcons.magnifyingGlass,
+        () {},
+      ),
+      _getNavBarItem(
+        "Saved",
+        HeroIcons.bookmark,
+        () {},
+      ),
     ];
   }
 
-  PersistentBottomNavBarItem _getNavBarItem(String title, HeroIcons icon) {
+  PersistentBottomNavBarItem _getNavBarItem(
+    String title,
+    HeroIcons icon,
+    void Function() onDoubleTap,
+  ) {
     return PersistentBottomNavBarItem(
       icon: HeroIcon(icon),
       title: title,
       activeColorPrimary: Get.theme.primaryColor,
       inactiveColorPrimary: Get.theme.colorScheme.secondary,
+      onSelectedTabPressWhenNoScreensPushed: onDoubleTap,
       textStyle: GoogleFonts.poppins(
         fontSize: 10.sp,
         fontWeight: FontWeight.normal,
