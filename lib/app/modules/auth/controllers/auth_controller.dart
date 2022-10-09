@@ -131,7 +131,7 @@ class AuthController extends GetxController {
   void _login() async {
     _rxLoginState.value = await _authRepository.login(
       dto: LoginInDto(
-        email: loginEmailController.text,
+        emailOrPhone: loginEmailController.text,
         password: loginPasswordController.text,
       ),
     );

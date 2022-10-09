@@ -13,6 +13,7 @@ class Body extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: controller.homeScrollController,
       child: Column(
         children: [
           SizedBox(height: 16.h),

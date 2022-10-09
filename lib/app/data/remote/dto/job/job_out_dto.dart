@@ -12,7 +12,7 @@ class JobOutDto implements IDto {
     this.description,
     this.location,
     this.workplace,
-    this.created,
+    this.createdAt,
   });
 
   JobOutDto.fromJson(dynamic json) {
@@ -24,7 +24,7 @@ class JobOutDto implements IDto {
     description = json['description'];
     location = json['location'];
     workplace = json['workplace'];
-    created = json['created'];
+    createdAt = json['created_at'];
   }
 
   String? id;
@@ -34,7 +34,7 @@ class JobOutDto implements IDto {
   String? description;
   dynamic location;
   dynamic workplace;
-  String? created;
+  String? createdAt;
 
   JobOutDto copyWith({
     String? id,
@@ -54,7 +54,7 @@ class JobOutDto implements IDto {
         description: description ?? this.description,
         location: location ?? this.location,
         workplace: workplace ?? this.workplace,
-        created: created ?? this.created,
+        createdAt: created ?? this.createdAt,
       );
 
   Map<String, dynamic> toJson() {
@@ -68,7 +68,7 @@ class JobOutDto implements IDto {
     map['description'] = description;
     map['location'] = location;
     map['workplace'] = workplace;
-    map['created'] = created;
+    map['created_at'] = createdAt;
     return map;
   }
 }

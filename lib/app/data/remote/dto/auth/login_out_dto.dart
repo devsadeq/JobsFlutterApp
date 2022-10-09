@@ -6,6 +6,7 @@ class LoginOutDto implements IDto {
     this.id,
     this.name,
     this.email,
+    this.role,
   });
 
   LoginOutDto.fromJson(dynamic json) {
@@ -13,12 +14,14 @@ class LoginOutDto implements IDto {
     id = json['id'];
     name = json['name'];
     email = json['email'];
+    role = json['role'];
   }
 
   Token? token;
   String? id;
   String? name;
   String? email;
+  String? role;
 
   LoginOutDto copyWith({
     Token? token,
@@ -41,6 +44,7 @@ class LoginOutDto implements IDto {
     map['id'] = id;
     map['name'] = name;
     map['email'] = email;
+    map['role'] = role;
     return map;
   }
 }

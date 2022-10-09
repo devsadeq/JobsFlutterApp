@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../data/remote/base/status.dart';
@@ -8,8 +9,12 @@ import '../../../data/remote/repositories/position_repository.dart';
 import '../../../di/locator.dart';
 
 class HomeController extends GetxController {
+  static HomeController get to => Get.find();
   final _jobRepository = getIt.get<JobRepository>();
   final _positionRepository = getIt.get<PositionRepository>();
+  final _homeScrollController = ScrollController();
+
+  ScrollController get homeScrollController => _homeScrollController;
 
   final RxInt _indicatorIndex = 0.obs;
 
@@ -69,5 +74,9 @@ class HomeController extends GetxController {
   Future<void> onRefresh() async {
     getPositions();
     getJobs();
+  }
+
+  void animateToStart(){
+    _homeScrollController.animateTo(0.0, duration: const Duration(seconds: 1), curve: Curves.easeOut);
   }
 }

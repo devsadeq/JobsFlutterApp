@@ -26,7 +26,7 @@ class JobsList extends GetView<CompanyProfileController> {
                 padding: EdgeInsets.only(bottom: 22.h),
                 child: CustomJobCard(
                   jobPosition: jobs[index].position,
-                  publishTime: jobs[index].created!,
+                  publishTime: jobs[index].createdAt!,
                   companyName: jobs[index].company!.name!,
                   employmentType: jobs[index].employmentType!,
                   location: jobs[index].location!,

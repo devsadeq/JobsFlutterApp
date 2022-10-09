@@ -1,9 +1,9 @@
 import 'package:dio/src/response.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
 
 import '../../../utils/constants.dart';
 import '../api/dio_client.dart';
 import '../base/iauth_service.dart';
+import '../base/idto.dart';
 
 class AuthService implements IAuthService<IDto> {
   final DioClient dioClient;
