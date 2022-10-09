@@ -24,7 +24,6 @@ class RootView extends GetView<RootController> {
           controller: _.zoomDrawerController,
           menuScreen: const MenuView(),
           mainScreen: const _MainScreen(),
-          borderRadius: 24.r,
           showShadow: true,
           angle: 0.0,
           menuBackgroundColor: Get.theme.backgroundColor,
@@ -62,7 +61,7 @@ class _MainScreen extends GetView<RootController> {
           blurRadius: 159,
           offset: const Offset(0, 4), // changes position of shadow
         ),
-      ]),
+      ],),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       itemAnimationProperties: const ItemAnimationProperties(
