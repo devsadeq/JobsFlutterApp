@@ -13,7 +13,12 @@ class SearchService extends ISearchService<IDto> {
   @override
   Future<Response> getAll({int? limit, int? offset, String? q}) async {
     try {
-      return await dioClient.post("${ApiRoutes.SEARCH}$q");
+      return await dioClient.get(
+        ApiRoutes.SEARCH,
+        queryParameters: {
+          "company_name": q,
+        },
+      );
     } catch (e) {
       rethrow;
     }

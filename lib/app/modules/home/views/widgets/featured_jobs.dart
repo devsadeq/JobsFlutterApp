@@ -72,7 +72,7 @@ class FeaturedJobs extends GetView<HomeController> {
               isFeatured: true,
               avatar: "${ApiRoutes.BASE_URL}${job.company!.image!}",
               companyName: job.company!.name!,
-              publishTime: job.created!,
+              publishTime: job.createdAt!,
               jobPosition: job.position,
               workplace: job.workplace,
               employmentType: job.employmentType,
