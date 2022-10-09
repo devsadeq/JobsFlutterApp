@@ -10,5 +10,5 @@ class ApiRoutes {
   static const CUSTOMER_REGISTER = "$_API/auth/customer_signup";
   static const LOGIN = "$_API/auth/login";
   static const CUSTOMERS = "$_API/customers";
-  static const SAVED_JOBS = "$CUSTOMERS/get_all_ saved_jobs/";
+  static const SAVED_JOBS = "$CUSTOMERS/get_all_saved__jobs/";
 }
