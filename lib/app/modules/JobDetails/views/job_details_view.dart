@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -18,11 +17,7 @@ class JobDetailsView extends GetView<JobDetailsController> {
         appBar: CustomAppBar(
           leading: IconButton(
             onPressed: () => Get.back(),
-            icon: HeroIcon(
-              HeroIcons.chevronLeft,
-              size: 24.w,
-              color: Get.theme.colorScheme.onBackground,
-            ),
+            icon: const HeroIcon(HeroIcons.chevronLeft),
           ),
         ),
         body: const Body(),
