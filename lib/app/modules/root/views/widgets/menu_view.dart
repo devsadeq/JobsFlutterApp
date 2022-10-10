@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:jobs_flutter_app/app/routes/app_pages.dart';
 
 import '../../../../core/values/strings.dart';
 import '../../../auth/controllers/auth_controller.dart';
@@ -62,7 +63,11 @@ class MenuView extends GetView<RootController> {
             ),
           ),
           SizedBox(height: 50.h),
-          const MenuItem(icon: HeroIcons.user, title: "Profile"),
+          MenuItem(
+            icon: HeroIcons.user,
+            title: "Profile",
+            onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
+          ),
           const MenuItem(icon: HeroIcons.bell, title: "Notifications"),
           const MenuItem(
             icon: HeroIcons.language,

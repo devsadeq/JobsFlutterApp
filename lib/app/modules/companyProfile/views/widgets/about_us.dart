@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-import '../../../../widgets/custom_company_card.dart';
+import '../../../../widgets/custom_info_card.dart';
 import '../../controllers/company_profile_controller.dart';
 
 class AboutUs extends GetView<CompanyProfileController> {
@@ -23,13 +23,13 @@ class AboutUs extends GetView<CompanyProfileController> {
             child: Column(
               children: [
                 SizedBox(height: 15.h),
-                CustomCompanyCard(
+                CustomInfoCard(
                   title: "About us",
                   icon: HeroIcons.userCircle,
                   body: Text(company!.description!),
                 ),
                 SizedBox(height: 15.h),
-                CustomCompanyCard(
+                CustomInfoCard(
                   title: "Location",
                   icon: HeroIcons.mapPin,
                   body: Column(

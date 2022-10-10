@@ -4,16 +4,20 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-class CustomCompanyCard extends StatelessWidget {
-  const CustomCompanyCard({
+class CustomInfoCard extends StatelessWidget {
+  const CustomInfoCard({
     Key? key,
     required this.body,
     required this.icon,
     required this.title,
+    this.action,
+    this.onActionTap,
   }) : super(key: key);
   final Widget body;
   final HeroIcons icon;
+  final HeroIcons? action;
   final String title;
+  final void Function()? onActionTap;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,13 @@ class CustomCompanyCard extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: Get.theme.colorScheme.onBackground,
                 ),
-              )
+              ),
+              const Spacer(),
+              if (action != null)
+                GestureDetector(
+                  onTap: onActionTap,
+                  child: HeroIcon(action!),
+                )
             ],
           ),
           SizedBox(height: 10.h),

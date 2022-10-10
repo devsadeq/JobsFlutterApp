@@ -8,8 +8,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     Key? key,
     this.leading,
     this.title,
+    this.actions,
   }) : super(key: key);
   final Widget? leading;
+  final List<Widget>? actions;
   final String? title;
 
   @override
@@ -30,6 +32,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             )
           : null,
       centerTitle: true,
+      actions: actions,
     );
   }
 

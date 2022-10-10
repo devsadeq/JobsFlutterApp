@@ -13,6 +13,7 @@ abstract class Routes {
   static const COMPANY_PROFILE = _Paths.COMPANY_PROFILE;
   static const JOB_DETAILS = _Paths.JOB_DETAILS;
   static const ROOT = _Paths.ROOT;
+  static const CUSTOMER_PROFILE = _Paths.CUSTOMER_PROFILE;
 }
 
 abstract class _Paths {
@@ -28,4 +29,5 @@ abstract class _Paths {
   static const COMPANY_PROFILE = '/company-profile';
   static const JOB_DETAILS = '/job_details';
   static const ROOT = '/root';
+  static const CUSTOMER_PROFILE = '/customer-profile';
 }
