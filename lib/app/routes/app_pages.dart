@@ -9,6 +9,8 @@ import '../modules/choose/bindings/choose_binding.dart';
 import '../modules/choose/views/choose_view.dart';
 import '../modules/companyProfile/bindings/company_profile_binding.dart';
 import '../modules/companyProfile/views/company_profile_view.dart';
+import '../modules/customerProfile/bindings/customer_profile_binding.dart';
+import '../modules/customerProfile/views/customer_profile_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/root/bindings/root_binding.dart';
@@ -77,6 +79,11 @@ class AppPages {
       name: _Paths.ROOT,
       page: () => const RootView(),
       binding: RootBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOMER_PROFILE,
+      page: () => const CustomerProfileView(),
+      binding: CustomerProfileBinding(),
     ),
   ];
 }
