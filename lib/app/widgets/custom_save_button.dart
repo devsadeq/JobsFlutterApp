@@ -68,11 +68,11 @@ class CustomSaveButtonState extends State<CustomSaveButton>
 
   void onTap() {
     if (widget.onTap != null) {
-      widget.onTap!(_isLiked ?? true).then((bool? isLiked) {
+      widget.onTap!(_isLiked).then((bool? isLiked) {
         _handleIsLikeChanged(isLiked);
       });
     } else {
-      _handleIsLikeChanged(!(_isLiked ?? true));
+      _handleIsLikeChanged(!(_isLiked));
     }
   }
 
