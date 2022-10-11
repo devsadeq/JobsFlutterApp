@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:heroicons/heroicons.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/custom_job_card.dart';
 import '../../../../widgets/shimmer/recent_jobs_shimmer.dart';
+import '../../../saved/controllers/saved_controller.dart';
 import '../../controllers/home_controller.dart';
 import 'section_header.dart';
 
@@ -39,6 +41,8 @@ class RecentJobs extends GetView<HomeController> {
                   location: jobs[index].location,
                   employmentType: jobs[index].employmentType,
                   isFeatured: false,
+                  actionIcon: HeroIcons.bookmark,
+                  isSaved: SavedController.to.isJobSaved(jobs[index].id!),
                   description: jobs[index].description!,
                   onTap: () => Get.toNamed(
                     Routes.JOB_DETAILS,
@@ -48,6 +52,8 @@ class RecentJobs extends GetView<HomeController> {
                     Routes.COMPANY_PROFILE,
                     arguments: jobs[index].company!.id,
                   ),
+                  onActionTap: (isSaved) =>
+                      controller.onSaveButtonTapped(isSaved, jobs[index].id!),
                 ),
               ),
             ),

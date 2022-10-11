@@ -3,6 +3,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:heroicons/heroicons.dart';
+import 'package:jobs_flutter_app/app/modules/saved/controllers/saved_controller.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
@@ -77,7 +79,11 @@ class FeaturedJobs extends GetView<HomeController> {
               workplace: job.workplace,
               employmentType: job.employmentType,
               location: job.location,
+              actionIcon: HeroIcons.bookmark,
+              isSaved: SavedController.to.isJobSaved(job.id!),
               onTap: () => Get.toNamed(Routes.JOB_DETAILS, arguments: job.id),
+              onActionTap: (isSaved) =>
+                  controller.onSaveButtonTapped(isSaved, job.id!),
             ))
         .toList()
         .getRange(0, 4)

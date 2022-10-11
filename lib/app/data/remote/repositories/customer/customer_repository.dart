@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../base/status.dart';
+import '../../dto/customer/toggle_save_out_dto.dart';
 import '../../dto/job/job_out_dto.dart';
 import '../../exceptions/dio_exceptions.dart';
 import '../../services/customer/i_customer_service.dart';
@@ -35,34 +36,18 @@ class CustomerRepository implements ICustomerRepository {
   }
 
   @override
-  Future<Status<bool>> saveJob({
+  Future<Status<ToggleSaveOutDto>> toggleSave({
     required String customerUuid,
     required String jobUuid,
   }) async {
     try {
-      final response = await service.saveJob(
+      final response = await service.toggleSave(
         customerUuid: customerUuid,
         jobUuid: jobUuid,
       );
-      if (response.statusCode == 200) return const Status.success(data: true);
-      return const Status.failure(reason: "Some thing wrong happen!");
-    } on DioError catch (e) {
-      final errMsg = DioExceptions.fromDioError(e).toString();
-      return Status.failure(reason: errMsg);
-    }
-  }
-
-  @override
-  Future<Status<bool>> unSaveJob({
-    required String customerUuid,
-    required String jobUuid,
-  }) async {
-    try {
-      final response = await service.saveJob(
-        customerUuid: customerUuid,
-        jobUuid: jobUuid,
-      );
-      if (response.statusCode == 200) return const Status.success(data: true);
+      if (response.statusCode == 200) {
+        return Status.success(data: ToggleSaveOutDto.fromJson(response.data));
+      }
       return const Status.failure(reason: "Some thing wrong happen!");
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();

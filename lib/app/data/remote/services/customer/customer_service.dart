@@ -16,7 +16,7 @@ class CustomerService implements ICustomerService {
     required String customerUuid,
   }) async {
     try {
-      return await dioClient.post(ApiRoutes.SAVED_JOBS, queryParameters: {
+      return await dioClient.get(ApiRoutes.SAVED_JOBS, queryParameters: {
         "limit": limit ?? 20,
         "offset": offset ?? 0,
         "customer_id": customerUuid,
@@ -27,26 +27,18 @@ class CustomerService implements ICustomerService {
   }
 
   @override
-  Future<Response> saveJob({
+  Future<Response> toggleSave({
     required String customerUuid,
     required String jobUuid,
   }) async {
     try {
-      return await dioClient
-          .post("${ApiRoutes.CUSTOMERS}/$customerUuid/$jobUuid");
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  @override
-  Future<Response> unSaveJob({
-    required String customerUuid,
-    required String jobUuid,
-  }) async {
-    try {
-      return await dioClient
-          .delete("${ApiRoutes.CUSTOMERS}/$customerUuid/$jobUuid");
+      return await dioClient.post(
+        ApiRoutes.TOGGLE_SAVE,
+        queryParameters: {
+          'customer_id': customerUuid,
+          'job_id': jobUuid,
+        },
+      );
     } catch (e) {
       rethrow;
     }

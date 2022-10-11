@@ -7,6 +7,7 @@ import '../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../data/remote/repositories/job_repository.dart';
 import '../../../data/remote/repositories/position_repository.dart';
 import '../../../di/locator.dart';
+import '../../saved/controllers/saved_controller.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
@@ -61,6 +62,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> getJobs() async {
+    await SavedController.to.getSavedJobs();
     final Status<List<JobOutDto>> state = await _jobRepository.getAll();
     _rxJobs.value = state;
   }
@@ -76,7 +78,14 @@ class HomeController extends GetxController {
     getJobs();
   }
 
-  void animateToStart(){
-    _homeScrollController.animateTo(0.0, duration: const Duration(seconds: 1), curve: Curves.easeOut);
+  void animateToStart() {
+    _homeScrollController.animateTo(0.0,
+        duration: const Duration(seconds: 1), curve: Curves.easeOut);
+  }
+
+  Future<bool?> onSaveButtonTapped(bool isSaved, String jobUuid) async {
+    final result = await SavedController.to.onSaveStateChange(isSaved, jobUuid);
+    if (result != null) SavedController.to.getSavedJobs();
+    return result;
   }
 }

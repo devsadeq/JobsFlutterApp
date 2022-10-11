@@ -2,12 +2,7 @@ import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
 import 'package:jobs_flutter_app/app/data/remote/base/status.dart';
 
 abstract class ICustomerRepository {
-  Future<Status<bool>> saveJob({
-    required String customerUuid,
-    required String jobUuid,
-  });
-
-  Future<Status<bool>> unSaveJob({
+  Future<Status<IDto>> toggleSave({
     required String customerUuid,
     required String jobUuid,
   });

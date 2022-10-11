@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:heroicons/heroicons.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../utils/constants.dart';
@@ -16,30 +17,31 @@ class SavedJobs extends GetView<SavedController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 20.h),
-        ListView.builder(
-          itemCount: jobs.length,
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) => Padding(
-            padding: EdgeInsets.only(bottom: 22.h),
-            child: CustomJobCard(
-              avatar: "${ApiRoutes.BASE_URL}${jobs[index].company!.image}",
-              companyName: jobs[index].company!.name!,
-              employmentType: jobs[index].employmentType,
-              jobPosition: jobs[index].position,
-              location: jobs[index].location,
-              // publishTime: jobs[index].created!,
-              publishTime: "2022-10-01T01:24:36.473Z",
-              workplace: jobs[index].workplace,
-              description: jobs[index].description,
-            ),
+    return ListView.builder(
+      itemCount: jobs.length,
+      scrollDirection: Axis.vertical,
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (context, index) => Padding(
+        padding: EdgeInsets.only(bottom: 22.h),
+        child: Dismissible(
+          key: UniqueKey(),
+          onDismissed: (DismissDirection direction) => jobs.removeAt(index),
+          child: CustomJobCard(
+            avatar: "${ApiRoutes.BASE_URL}${jobs[index].company!.image}",
+            companyName: jobs[index].company!.name!,
+            employmentType: jobs[index].employmentType,
+            jobPosition: jobs[index].position,
+            location: jobs[index].location,
+            actionIcon: HeroIcons.bookmark,
+            isSaved: true,
+            publishTime: jobs[index].createdAt!,
+            workplace: jobs[index].workplace,
+            description: jobs[index].description,
+            onActionTap: (isSaved) =>
+                controller.onSaveButtonTapped(isSaved, jobs[index].id!),
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }
