@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:heroicons/heroicons.dart';
+import 'package:jobs_flutter_app/app/modules/saved/controllers/saved_controller.dart';
 
 import '../../../../routes/app_pages.dart';
 import '../../../../utils/constants.dart';
@@ -31,13 +33,16 @@ class JobsList extends GetView<CompanyProfileController> {
                   employmentType: jobs[index].employmentType!,
                   location: jobs[index].location!,
                   workplace: jobs[index].workplace!,
-                  avatar:
-                      "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
+                  actionIcon: HeroIcons.bookmark,
+                  avatar: "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
                   description: jobs[index].description!,
                   onTap: () => Get.toNamed(
                     Routes.JOB_DETAILS,
                     arguments: jobs[index].id,
                   ),
+                  isSaved: SavedController.to.isJobSaved(jobs[index].id!),
+                  onActionTap: (isSaved) =>
+                      controller.onSaveButtonTapped(isSaved, jobs[index].id!),
                 ),
               ),
             ),

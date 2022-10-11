@@ -1,11 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:intl/intl.dart';
+
+import 'custom_save_button.dart';
 import 'custom_tag.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomJobCard extends StatelessWidget {
   const CustomJobCard({
@@ -20,8 +22,10 @@ class CustomJobCard extends StatelessWidget {
     required this.location,
     this.onAvatarTap,
     this.description,
-    this.onRightButtonTap,
+    this.onActionTap,
     this.onTap,
+    required this.actionIcon,
+    this.isSaved = false,
   }) : super(key: key);
   final bool isFeatured;
   final String avatar;
@@ -32,8 +36,10 @@ class CustomJobCard extends StatelessWidget {
   final String employmentType;
   final String location;
   final String? description;
+  final HeroIcons actionIcon;
+  final bool isSaved;
   final void Function()? onAvatarTap;
-  final void Function()? onRightButtonTap;
+  final Future<bool?> Function(bool)? onActionTap;
   final void Function()? onTap;
 
   @override
@@ -69,7 +75,9 @@ class CustomJobCard extends StatelessWidget {
               companyName: companyName,
               publishTime: strDate,
               onAvatarTap: onAvatarTap,
-              onRightButtonTap: onRightButtonTap,
+              onActionTap: onActionTap,
+              actionIcon: actionIcon,
+              isSaved: isSaved,
             ),
             SizedBox(height: 10.h),
             _CardJobPosition(
@@ -105,14 +113,18 @@ class _CardTile extends StatelessWidget {
     required this.companyName,
     required this.publishTime,
     this.onAvatarTap,
-    this.onRightButtonTap,
+    this.onActionTap,
+    required this.actionIcon,
+    required this.isSaved,
   }) : super(key: key);
   final bool isFeatured;
   final String avatar;
   final String companyName;
   final String publishTime;
   final void Function()? onAvatarTap;
-  final void Function()? onRightButtonTap;
+  final Future<bool?> Function(bool)? onActionTap;
+  final HeroIcons actionIcon;
+  final bool isSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -125,8 +137,9 @@ class _CardTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(50.r),
             child: CachedNetworkImage(
               imageUrl: avatar,
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(),
+              ),
               errorWidget: (context, url, error) =>
                   const HeroIcon(HeroIcons.exclamationCircle),
               height: 46.h,
@@ -172,16 +185,14 @@ class _CardTile extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        IconButton(
-          onPressed: onRightButtonTap ?? () {},
-          icon: HeroIcon(
-            HeroIcons.bookmark,
-            size: 24.w,
-            color: isFeatured
-                ? Get.theme.backgroundColor
-                : Get.theme.colorScheme.secondary,
-          ),
-        )
+        CustomSaveButton(
+          onTap: onActionTap,
+          isLiked: isSaved,
+          size: 24.w,
+          color: isFeatured
+              ? Get.theme.backgroundColor
+              : Get.theme.colorScheme.secondary,
+        ),
       ],
     );
   }

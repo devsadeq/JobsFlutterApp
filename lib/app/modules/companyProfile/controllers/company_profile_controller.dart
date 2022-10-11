@@ -7,6 +7,7 @@ import '../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../data/remote/repositories/company_repository.dart';
 import '../../../data/remote/repositories/job_repository.dart';
 import '../../../di/locator.dart';
+import '../../saved/controllers/saved_controller.dart';
 
 class CompanyProfileController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -52,5 +53,11 @@ class CompanyProfileController extends GetxController
   getCompanyJobs() async {
     final Status<List<JobOutDto>> jobs = await _jobsRepository.getAll();
     _rxJobs.value = jobs;
+  }
+
+  Future<bool?> onSaveButtonTapped(bool isSaved, String jobUuid) async {
+    final result = await SavedController.to.onSaveStateChange(isSaved, jobUuid);
+    if (result != null) SavedController.to.getSavedJobs();
+    return result;
   }
 }

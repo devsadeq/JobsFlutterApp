@@ -1,12 +1,7 @@
 import 'package:dio/src/response.dart';
 
 abstract class ICustomerService {
-  Future<Response> saveJob({
-    required String customerUuid,
-    required String jobUuid,
-  });
-
-  Future<Response> unSaveJob({
+  Future<Response> toggleSave({
     required String customerUuid,
     required String jobUuid,
   });
