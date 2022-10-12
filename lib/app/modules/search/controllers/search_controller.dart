@@ -28,12 +28,15 @@ class SearchController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    searchController.dispose();
   }
 
   getSearchResult() async {
-    final Status<List<SearchOutDto>> results =
-        await _searchRepository.getAll(q: searchController.text.trim());
-    _rxResults.value = results;
+    if (!searchController.text.isBlank!) {
+      final Status<List<SearchOutDto>> results =
+          await _searchRepository.getAll(q: searchController.text.trim());
+      _rxResults.value = results;
+    }
   }
 
   clearSearch() {
