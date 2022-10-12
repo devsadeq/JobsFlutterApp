@@ -26,7 +26,14 @@ class AboutUs extends GetView<CompanyProfileController> {
                 CustomInfoCard(
                   title: "About us",
                   icon: HeroIcons.userCircle,
-                  body: Text(company!.description!),
+                  body: Text(
+                    company!.description!,
+                    style: GoogleFonts.poppins(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w400,
+                      color: Get.theme.colorScheme.secondary,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 15.h),
                 CustomInfoCard(
