@@ -73,6 +73,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> getFeaturedJobs() async {
+    _rxFeaturedJobs.value = const Status.loading();
     await SavedController.to.getSavedJobs();
     final Status<List<JobOutDto>> state =
         await _jobRepository.getAll(isFeatured: true);
