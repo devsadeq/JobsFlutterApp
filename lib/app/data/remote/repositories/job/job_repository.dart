@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:jobs_flutter_app/app/data/remote/exceptions/dio_exceptions.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/status.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/irepository.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/iservice.dart';
 
-class JobRepository implements IRepository<JobOutDto> {
-  final IService service;
+import '../../base/idto.dart';
+import '../../base/status.dart';
+import '../../dto/job/job_out_dto.dart';
+import '../../exceptions/dio_exceptions.dart';
+import '../../services/job/i_job_service.dart';
+import 'i_job_repository.dart';
+
+class JobRepository implements IJobRepository<JobOutDto> {
+  final IJobService service;
 
   JobRepository({required this.service});
 
@@ -36,9 +37,21 @@ class JobRepository implements IRepository<JobOutDto> {
   }
 
   @override
-  Future<Status<List<JobOutDto>>> getAll({int? limit, int? offset}) async {
+  Future<Status<List<JobOutDto>>> getAll({
+    int? limit,
+    int? offset,
+    bool? isFeatured,
+    String? position,
+    String? companyId,
+  }) async {
     try {
-      final response = await service.getAll(limit: limit, offset: offset);
+      final response = await service.getAll(
+        limit: limit,
+        offset: offset,
+        isFeatured: isFeatured,
+        companyId: companyId,
+        position: position,
+      );
       final jobs = (response.data['items'] as List)
           .map((e) => JobOutDto.fromJson(e))
           .toList();

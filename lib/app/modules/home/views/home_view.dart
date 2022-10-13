@@ -38,9 +38,6 @@ class HomeView extends GetView<HomeController> {
           title: "Job Finder",
         ),
         body: const Body(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => controller.getJobs(),
-        ),
       ),
     );
   }

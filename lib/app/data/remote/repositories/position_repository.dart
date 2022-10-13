@@ -6,7 +6,7 @@ import '../dto/choices/Position_out_dto.dart';
 import '../exceptions/dio_exceptions.dart';
 
 class PositionRepository extends IChoiceRepository<PositionOutDto> {
-  final IService service;
+  final OldIJobService service;
 
   PositionRepository({required this.service});
 

@@ -54,7 +54,7 @@ class SavedController extends GetxController {
   Future<bool?> onSaveButtonTapped(bool isSaved, String jobUuid) async {
     final result = await onSaveStateChange(isSaved, jobUuid);
     if (result != null) {
-      HomeController.to.getJobs();
+      HomeController.to.getFeaturedJobs();
     }
     return result;
   }

@@ -1,11 +1,11 @@
 import 'package:dio/src/response.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/iservice.dart';
 
 import '../../../utils/constants.dart';
 import '../api/dio_client.dart';
+import '../base/idto.dart';
+import '../base/iservice.dart';
 
-class CompanyService implements IService<IDto> {
+class CompanyService implements OldIJobService<IDto> {
   final DioClient dioClient;
 
   CompanyService({required this.dioClient});

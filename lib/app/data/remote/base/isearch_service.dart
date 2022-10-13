@@ -3,7 +3,7 @@ import 'package:jobs_flutter_app/app/data/remote/base/iservice.dart';
 
 import 'idto.dart';
 
-abstract class ISearchService<T> implements IService<IDto> {
+abstract class ISearchService<T> implements OldIJobService<IDto> {
   @override
   Future<Response> create({required IDto dto}) {
     // TODO: implement create

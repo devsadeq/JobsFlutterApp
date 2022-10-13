@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../widgets/animation_widget.dart';
+import '../../../../widgets/custom_lottie.dart';
 import '../../../../widgets/shimmer/recent_jobs_shimmer.dart';
 import '../../controllers/saved_controller.dart';
 import 'no_saving.dart';
@@ -21,7 +21,7 @@ class Body extends GetView<SavedController> {
             if (data!.isEmpty) return const NoSaving();
             return SavedJobs(jobs: data);
           },
-          failure: (e) => AnimationWidget(
+          failure: (e) => CustomLottie(
             asset: "assets/space.json",
             repeat: true,
             title: e!,

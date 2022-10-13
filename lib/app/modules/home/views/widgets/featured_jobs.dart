@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:jobs_flutter_app/app/modules/saved/controllers/saved_controller.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/custom_job_card.dart';
 import '../../../../widgets/shimmer/featured_job_shimmer.dart';
+import '../../../saved/controllers/saved_controller.dart';
 import '../../controllers/home_controller.dart';
 import 'section_header.dart';
 
@@ -20,7 +20,7 @@ class FeaturedJobs extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => controller.rxJobs.when(
+      () => controller.featuredJobs.when(
         idle: () => Container(),
         loading: () => const FeaturedJobShimmer(),
         success: (jobs) => Column(
@@ -85,8 +85,8 @@ class FeaturedJobs extends GetView<HomeController> {
               onActionTap: (isSaved) =>
                   controller.onSaveButtonTapped(isSaved, job.id!),
             ))
-        .toList()
-        .getRange(0, 4)
         .toList();
+        // .getRange(0, 4)
+        // .toList();
   }
 }

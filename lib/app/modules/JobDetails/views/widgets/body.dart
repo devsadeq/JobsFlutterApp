@@ -9,7 +9,7 @@ import 'package:heroicons/heroicons.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../../utils/constants.dart';
 import '../../../../utils/functions.dart';
-import '../../../../widgets/animation_widget.dart';
+import '../../../../widgets/custom_lottie.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_tag.dart';
 import '../../../../widgets/shimmer/job_details_shimmer.dart';
@@ -106,7 +106,7 @@ class Body extends GetView<JobDetailsController> {
             ],
           ),
           failure: (e) => Center(
-            child: AnimationWidget(
+            child: CustomLottie(
               title: e!,
               asset: "assets/space.json",
               onTryAgain: () {},

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../../routes/app_pages.dart';
 import '../../../../utils/constants.dart';
-import '../../../../widgets/animation_widget.dart';
+import '../../../../widgets/custom_lottie.dart';
 import '../../controllers/search_controller.dart';
 import 'items_card.dart';
 
@@ -18,7 +18,7 @@ class SearchResults extends GetView<SearchController> {
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
         success: (results) => results!.isEmpty
-            ? const AnimationWidget(
+            ? const CustomLottie(
               title: "No matching company found.",
               asset: "assets/empty.json",
               subtitle:
@@ -40,7 +40,7 @@ class SearchResults extends GetView<SearchController> {
                   ),
                 ),
               ),
-        failure: (e) => AnimationWidget(
+        failure: (e) => CustomLottie(
           asset: "assets/space.json",
           title: e!,
           onTryAgain: () {},
