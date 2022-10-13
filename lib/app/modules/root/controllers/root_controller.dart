@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:jobs_flutter_app/app/modules/auth/controllers/auth_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
-import '../../../utils/dialogs.dart';
+import '../../../widgets/dialogs.dart';
 import '../../home/controllers/home_controller.dart';
 
 class RootController extends GetxController {

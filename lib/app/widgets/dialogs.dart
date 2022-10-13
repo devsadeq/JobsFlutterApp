@@ -107,7 +107,7 @@ class Dialogs {
       padding: EdgeInsets.only(bottom: 12.w),
       titleTextStyle: GoogleFonts.poppins(
         fontSize: 16.sp,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
         color: Get.theme.colorScheme.onBackground,
       ),
       descTextStyle: GoogleFonts.poppins(
