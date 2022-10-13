@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../utils/constants.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../controllers/company_profile_controller.dart';
 import 'company_tab_view.dart';
 import 'company_tap_bar.dart';

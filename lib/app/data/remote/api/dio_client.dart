@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../utils/constants.dart';
+import 'api_routes.dart';
 import 'dio_Interceptor.dart';
 
 class DioClient {

@@ -7,7 +7,7 @@ import 'package:heroicons/heroicons.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
-import '../../../../utils/constants.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../widgets/custom_job_card.dart';
 import '../../../../widgets/shimmer/featured_job_shimmer.dart';
 import '../../../saved/controllers/saved_controller.dart';

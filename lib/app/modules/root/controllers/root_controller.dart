@@ -1,7 +1,9 @@
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/auth/controllers/auth_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
+import '../../../widgets/dialogs.dart';
 import '../../home/controllers/home_controller.dart';
 
 class RootController extends GetxController {
@@ -30,7 +32,16 @@ class RootController extends GetxController {
     update();
   }
 
-  void onHomeDoubleClick(){
+  void onHomeDoubleClick() {
     HomeController.to.animateToStart();
+  }
+
+  void logout() {
+    Dialogs.questionDialog(
+      title: "Are you sure you want\nto logout?",
+      btnOkText: "Yes, logout",
+      btnCancelOnPress: () {},
+      btnOkOnPress: AuthController.to.logout,
+    );
   }
 }

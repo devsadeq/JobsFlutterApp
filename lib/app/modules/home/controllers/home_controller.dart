@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../widgets/snackbars.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/choices/Position_out_dto.dart';
@@ -30,7 +31,6 @@ class HomeController extends GetxController {
 
   Status<List<JobOutDto>> get recentJobs => _rxRecentJobs.value;
 
-  //TODO: Maybe delete second type will not effect.
   final Rx<Status<List<JobOutDto>>> _rxFeaturedJobs =
       Rx<Status<List<JobOutDto>>>(const Status.loading());
 
@@ -59,13 +59,11 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  // void updateSelectedChipIndex(int index, String title) {
-  //   _selectedChipIndex.value = index;
-  // }
-
   void updateChipTitle(String title) {
-    _rxChipTitle.value = title;
-    getRecentJobs();
+    if (chipTitle != title) {
+      _rxChipTitle.value = title;
+      getRecentJobs();
+    }
   }
 
   updateIndicatorValue(newIndex, _) {
@@ -73,6 +71,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> getFeaturedJobs() async {
+    _rxFeaturedJobs.value = const Status.loading();
     await SavedController.to.getSavedJobs();
     final Status<List<JobOutDto>> state =
         await _jobRepository.getAll(isFeatured: true);
@@ -85,13 +84,14 @@ class HomeController extends GetxController {
     final Status<List<JobOutDto>> state = await _jobRepository.getAll(
         position: chipTitle == "All" ? null : chipTitle);
     _rxRecentJobs.value = state;
+    recentJobs.whenOrNull(
+        failure: (e) => SnackBars.failure("Oops!", e.toString()));
   }
 
   Future<void> getPositions() async {
     final Status<List<PositionOutDto>> state =
         await _positionRepository.getAll();
     _rxPositions.value = state;
-    // positions.whenOrNull(success: (data) => _rxPositions.);
     insertAllPosition();
   }
 

@@ -40,6 +40,7 @@ class SavedController extends GetxController {
   }
 
   Future<void> getSavedJobs() async {
+    _rxSavedJobs.value = const Status.loading();
     final result = await _customerRepository.getAllSavedJobs(
         customerUuid: _authController.currentUser!.id!);
     _rxSavedJobs.value = result;
@@ -55,6 +56,7 @@ class SavedController extends GetxController {
     final result = await onSaveStateChange(isSaved, jobUuid);
     if (result != null) {
       HomeController.to.getFeaturedJobs();
+      HomeController.to.getRecentJobs();
     }
     return result;
   }

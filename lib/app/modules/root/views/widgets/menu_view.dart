@@ -7,7 +7,6 @@ import 'package:heroicons/heroicons.dart';
 import 'package:jobs_flutter_app/app/routes/app_pages.dart';
 
 import '../../../../core/values/strings.dart';
-import '../../../auth/controllers/auth_controller.dart';
 import '../../controllers/root_controller.dart';
 
 class MenuView extends GetView<RootController> {
@@ -83,7 +82,7 @@ class MenuView extends GetView<RootController> {
           MenuItem(
             icon: HeroIcons.arrowLeftOnRectangle,
             title: "Logout",
-            onTap: AuthController.to.logout,
+            onTap: controller.logout,
           ),
         ],
       ),
