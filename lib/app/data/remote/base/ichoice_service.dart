@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:jobs_flutter_app/app/data/remote/base/iservice.dart';
 
-abstract class IChoiceService<T> implements IService<T> {
+abstract class IChoiceService<T> implements OldIJobService<T> {
   Future<Response> create({required T dto}) {
     // TODO: implement create
     throw UnimplementedError();

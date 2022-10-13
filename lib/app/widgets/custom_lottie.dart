@@ -4,33 +4,37 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-class AnimationWidget extends StatelessWidget {
-  const AnimationWidget({
+class CustomLottie extends StatelessWidget {
+  const CustomLottie({
     Key? key,
     required this.title,
     this.onTryAgain,
     required this.asset,
     this.repeat = false,
     this.subtitle,
+    this.assetHeight,
+    this.padding,
   }) : super(key: key);
   final String title;
   final String? subtitle;
   final String asset;
   final bool repeat;
   final void Function()? onTryAgain;
+  final double? assetHeight;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(bottom: kToolbarHeight),
+        padding: padding ?? const EdgeInsets.only(bottom: kToolbarHeight),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             LottieBuilder.asset(
               asset,
-              height: 250.h,
+              height: assetHeight ?? 250.h,
               fit: BoxFit.contain,
               repeat: repeat,
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:jobs_flutter_app/app/widgets/custom_lottie.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
@@ -22,41 +23,49 @@ class RecentJobs extends GetView<HomeController> {
         const SectionHeader(title: "Recent Jobs"),
         SizedBox(height: 16.h),
         Obx(
-          () => controller.rxJobs.when(
+          () => controller.recentJobs.when(
             idle: () => Container(),
             loading: () => const RecentJobsShimmer(),
-            success: (List<JobOutDto>? jobs) => ListView.builder(
-              itemCount: jobs!.length,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => Padding(
-                padding: EdgeInsets.only(bottom: 16.w),
-                child: CustomJobCard(
-                  avatar: "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
-                  companyName: jobs[index].company!.name!,
-                  publishTime: jobs[index].createdAt!,
-                  jobPosition: jobs[index].position,
-                  workplace: jobs[index].workplace,
-                  location: jobs[index].location,
-                  employmentType: jobs[index].employmentType,
-                  isFeatured: false,
-                  actionIcon: HeroIcons.bookmark,
-                  isSaved: SavedController.to.isJobSaved(jobs[index].id!),
-                  description: jobs[index].description!,
-                  onTap: () => Get.toNamed(
-                    Routes.JOB_DETAILS,
-                    arguments: jobs[index].id,
+            success: (List<JobOutDto>? jobs) => jobs!.isNotEmpty
+                ? ListView.builder(
+                    itemCount: jobs.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) => Padding(
+                      padding: EdgeInsets.only(bottom: 16.w),
+                      child: CustomJobCard(
+                        avatar:
+                            "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
+                        companyName: jobs[index].company!.name!,
+                        publishTime: jobs[index].createdAt!,
+                        jobPosition: jobs[index].position,
+                        workplace: jobs[index].workplace,
+                        location: jobs[index].location,
+                        employmentType: jobs[index].employmentType,
+                        isFeatured: false,
+                        actionIcon: HeroIcons.bookmark,
+                        isSaved: SavedController.to.isJobSaved(jobs[index].id!),
+                        description: jobs[index].description!,
+                        onTap: () => Get.toNamed(
+                          Routes.JOB_DETAILS,
+                          arguments: jobs[index].id,
+                        ),
+                        onAvatarTap: () => Get.toNamed(
+                          Routes.COMPANY_PROFILE,
+                          arguments: jobs[index].company!.id,
+                        ),
+                        onActionTap: (isSaved) => controller.onSaveButtonTapped(
+                            isSaved, jobs[index].id!),
+                      ),
+                    ),
+                  )
+                : CustomLottie(
+                    title: "No jobs with this postion.",
+                    asset: "assets/empty.json",
+                    assetHeight: 200.h,
+                    padding: EdgeInsets.zero,
                   ),
-                  onAvatarTap: () => Get.toNamed(
-                    Routes.COMPANY_PROFILE,
-                    arguments: jobs[index].company!.id,
-                  ),
-                  onActionTap: (isSaved) =>
-                      controller.onSaveButtonTapped(isSaved, jobs[index].id!),
-                ),
-              ),
-            ),
             failure: (String? reason) => const RecentJobsShimmer(),
           ),
         )

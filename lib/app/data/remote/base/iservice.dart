@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-abstract class IService<T> {
+abstract class OldIJobService<T> {
   Future<Response> create({required T dto});
 
   Future<Response> getAll({int? limit, int? offset, String? q});

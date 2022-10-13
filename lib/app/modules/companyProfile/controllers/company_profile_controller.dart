@@ -5,7 +5,7 @@ import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/company/Company_out_dto.dart';
 import '../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../data/remote/repositories/company_repository.dart';
-import '../../../data/remote/repositories/job_repository.dart';
+import '../../../data/remote/repositories/job/job_repository.dart';
 import '../../../di/locator.dart';
 import '../../saved/controllers/saved_controller.dart';
 
@@ -51,7 +51,8 @@ class CompanyProfileController extends GetxController
   }
 
   getCompanyJobs() async {
-    final Status<List<JobOutDto>> jobs = await _jobsRepository.getAll();
+    final Status<List<JobOutDto>> jobs =
+        await _jobsRepository.getAll(companyId: uuid);
     _rxJobs.value = jobs;
   }
 

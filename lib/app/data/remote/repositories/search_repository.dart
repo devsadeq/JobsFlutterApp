@@ -7,7 +7,7 @@ import '../base/iservice.dart';
 import '../exceptions/dio_exceptions.dart';
 
 class SearchRepository extends ISearchRepository<SearchOutDto> {
-  final IService service;
+  final OldIJobService service;
 
   SearchRepository({required this.service});
 

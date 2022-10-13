@@ -5,11 +5,11 @@ import 'package:jobs_flutter_app/app/data/local/services/storage_service.dart';
 import 'package:jobs_flutter_app/app/data/remote/api/dio_client.dart';
 import 'package:jobs_flutter_app/app/data/remote/repositories/auth_repository.dart';
 import 'package:jobs_flutter_app/app/data/remote/repositories/company_repository.dart';
-import 'package:jobs_flutter_app/app/data/remote/repositories/job_repository.dart';
+import 'package:jobs_flutter_app/app/data/remote/repositories/job/job_repository.dart';
 import 'package:jobs_flutter_app/app/data/remote/repositories/search_repository.dart';
 import 'package:jobs_flutter_app/app/data/remote/services/auth_service.dart';
 import 'package:jobs_flutter_app/app/data/remote/services/comapny_service.dart';
-import 'package:jobs_flutter_app/app/data/remote/services/job_service.dart';
+import 'package:jobs_flutter_app/app/data/remote/services/job/job_service.dart';
 import 'package:jobs_flutter_app/app/data/remote/services/position_choice_service.dart';
 import 'package:jobs_flutter_app/app/data/remote/services/search_service.dart';
 

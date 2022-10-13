@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/iservice.dart';
-import '../../../utils/constants.dart';
-import '../api/dio_client.dart';
 
-import '../base/idto.dart';
+import '../../../../utils/constants.dart';
+import '../../api/dio_client.dart';
+import '../../base/idto.dart';
+import 'i_job_service.dart';
 
-class JobService extends IService<IDto> {
+class JobService implements IJobService {
   final DioClient dioClient;
 
   JobService({required this.dioClient});
@@ -20,11 +20,20 @@ class JobService extends IService<IDto> {
   }
 
   @override
-  Future<Response> getAll({int? limit, int? offset, String? q}) async {
+  Future<Response> getAll({
+    int? limit,
+    int? offset,
+    bool? isFeatured,
+    String? position,
+    String? companyId,
+  }) async {
     try {
       return await dioClient.get(ApiRoutes.JOBS, queryParameters: {
         "limit": limit ?? 20,
         "offset": offset ?? 0,
+        if (isFeatured != null) "is_featured": isFeatured,
+        if (position != null) "position": position,
+        if (companyId != null) "company_id": companyId,
       });
     } catch (e) {
       rethrow;

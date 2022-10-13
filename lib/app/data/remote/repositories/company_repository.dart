@@ -8,7 +8,7 @@ import '../base/iservice.dart';
 import '../exceptions/dio_exceptions.dart';
 
 class CompanyRepository implements IRepository<CompanyOutDto> {
-  final IService service;
+  final OldIJobService service;
 
   CompanyRepository({required this.service});
 

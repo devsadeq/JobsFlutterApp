@@ -14,7 +14,7 @@ class ChipsList extends GetView<HomeController> {
     return SizedBox(
       height: 0.1.sw,
       child: Obx(
-        () => controller.rxPositions.when(
+        () => controller.positions.when(
           idle: () => Container(),
           loading: () => const ChipsShimmer(),
           success: (positions) => ListView.builder(
@@ -25,8 +25,9 @@ class ChipsList extends GetView<HomeController> {
             itemBuilder: (context, index) => Obx(
               () => CustomChip(
                 title: positions[index].jobTitle!,
-                isActive: index == controller.selectedChipIndex,
-                onPressed: () => controller.updateSelectedChipIndex(index),
+                isActive: positions[index].jobTitle == controller.chipTitle,
+                onPressed: () =>
+                    controller.updateChipTitle(positions[index].jobTitle!),
               ),
             ),
           ),
