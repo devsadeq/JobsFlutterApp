@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/widgets/snackbars.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/choices/Position_out_dto.dart';
@@ -86,13 +87,14 @@ class HomeController extends GetxController {
     final Status<List<JobOutDto>> state = await _jobRepository.getAll(
         position: chipTitle == "All" ? null : chipTitle);
     _rxRecentJobs.value = state;
+    recentJobs.whenOrNull(
+        failure: (e) => SnackBars.failure("Oops!", e.toString()));
   }
 
   Future<void> getPositions() async {
     final Status<List<PositionOutDto>> state =
         await _positionRepository.getAll();
     _rxPositions.value = state;
-    // positions.whenOrNull(success: (data) => _rxPositions.);
     insertAllPosition();
   }
 
