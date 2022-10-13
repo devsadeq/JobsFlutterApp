@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/widgets/snackbars.dart';
+import '../../../widgets/snackbars.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/choices/Position_out_dto.dart';
@@ -31,7 +31,6 @@ class HomeController extends GetxController {
 
   Status<List<JobOutDto>> get recentJobs => _rxRecentJobs.value;
 
-  //TODO: Maybe delete second type will not effect.
   final Rx<Status<List<JobOutDto>>> _rxFeaturedJobs =
       Rx<Status<List<JobOutDto>>>(const Status.loading());
 
@@ -60,13 +59,11 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  // void updateSelectedChipIndex(int index, String title) {
-  //   _selectedChipIndex.value = index;
-  // }
-
   void updateChipTitle(String title) {
-    _rxChipTitle.value = title;
-    getRecentJobs();
+    if (chipTitle != title) {
+      _rxChipTitle.value = title;
+      getRecentJobs();
+    }
   }
 
   updateIndicatorValue(newIndex, _) {
