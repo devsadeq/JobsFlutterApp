@@ -1,7 +1,7 @@
 import 'package:dio/src/response.dart';
 import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
 
-import '../../../utils/constants.dart';
+import '../api/api_routes.dart';
 import '../api/dio_client.dart';
 import '../base/isearch_service.dart';
 

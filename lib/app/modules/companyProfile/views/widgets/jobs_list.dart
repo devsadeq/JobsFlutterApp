@@ -6,7 +6,7 @@ import 'package:jobs_flutter_app/app/modules/saved/controllers/saved_controller.
 import 'package:jobs_flutter_app/app/widgets/custom_lottie.dart';
 
 import '../../../../routes/app_pages.dart';
-import '../../../../utils/constants.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../widgets/custom_job_card.dart';
 import '../../controllers/company_profile_controller.dart';
 

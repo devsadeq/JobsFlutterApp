@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
-import '../../../../utils/constants.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../widgets/custom_job_card.dart';
 import '../../controllers/saved_controller.dart';
 

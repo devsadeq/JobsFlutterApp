@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
 import '../../../../routes/app_pages.dart';
-import '../../../../utils/constants.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../utils/functions.dart';
 import '../../../../widgets/custom_lottie.dart';
 import '../../../../widgets/custom_button.dart';

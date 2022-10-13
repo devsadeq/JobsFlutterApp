@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../../utils/constants.dart';
+import '../../api/api_routes.dart';
 import '../../api/dio_client.dart';
 import '../../base/idto.dart';
 import 'i_job_service.dart';
