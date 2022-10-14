@@ -18,7 +18,7 @@ class Validators {
 
   static final password = MultiValidator([
     RequiredValidator(errorText: "This field is required!"),
-    MinLengthValidator(6, errorText: "Required 6 digitalis at least.")
+    MinLengthValidator(8, errorText: "Required 6 digitalis at least.")
   ]);
 
   static final address = MultiValidator([
