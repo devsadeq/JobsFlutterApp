@@ -24,15 +24,10 @@ class AuthRepository implements IAuthRepository<Status<dynamic>> {
   Future<Status<LoginOutDto>> login({required IDto dto}) async {
     try {
       final response = await authService.login(dto: dto);
-      if (response.statusCode == 200) {
-        return Status.success(data: LoginOutDto.fromJson(response.data));
-      } else if (response.statusCode == 400 || response.statusCode == 404) {
-        return Status.failure(reason: response.data['error']);
-      }
-      return const Status.failure(reason: "Something went wrong!");
+      return Status.success(data: LoginOutDto.fromJson(response.data));
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
-      throw errMsg;
+      return Status.failure(reason: errMsg);
     }
   }
 
@@ -41,34 +36,25 @@ class AuthRepository implements IAuthRepository<Status<dynamic>> {
       {required IDto dto}) async {
     try {
       final response = await authService.registerCompany(dto: dto);
-      if (response.statusCode == 201) {
-        return Status.success(
-            data: RegisterCompanyOutDto.fromJson(response.data));
-      } else if (response.statusCode == 400 || response.statusCode == 403) {
-        return Status.failure(reason: response.data['error']);
-      }
-      return const Status.failure(reason: "Something went wrong!");
+      return Status.success(
+          data: RegisterCompanyOutDto.fromJson(response.data));
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
-      throw errMsg;
+      return Status.failure(reason: errMsg);
     }
   }
 
   @override
-  Future<Status<RegisterCustomerOutDto>> registerCustomer(
-      {required IDto dto}) async {
+  Future<Status<RegisterCustomerOutDto>> registerCustomer({
+    required IDto dto,
+  }) async {
     try {
       final response = await authService.registerCustomer(dto: dto);
-      if (response.statusCode == 201) {
-        return Status.success(
-            data: RegisterCustomerOutDto.fromJson(response.data));
-      } else if (response.statusCode == 400 || response.statusCode == 403) {
-        return Status.failure(reason: response.data['error']);
-      }
-      return const Status.failure(reason: "Something went wrong!");
+      return Status.success(
+          data: RegisterCustomerOutDto.fromJson(response.data));
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
-      throw errMsg;
+      return Status.failure(reason: errMsg);
     }
   }
 

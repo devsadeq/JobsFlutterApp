@@ -183,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  country_codes:
+    dependency: "direct main"
+    description:
+      name: country_codes
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
   crypto:
     dependency: transitive
     description:

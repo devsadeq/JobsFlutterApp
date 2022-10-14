@@ -36,6 +36,8 @@ class EmployerForm extends GetView<AuthController> {
             isRequired: true,
             textInputType: TextInputType.phone,
             isPhoneNumber: true,
+            onCountryChanged: controller.onCountryChanged,
+
           ),
           SizedBox(height: 15.h),
           CustomTextField(

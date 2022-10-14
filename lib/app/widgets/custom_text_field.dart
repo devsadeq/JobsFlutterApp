@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -28,6 +28,7 @@ class CustomTextField extends StatelessWidget {
   final HeroIcons? prefixIcon;
   final void Function()? onSuffixTap;
   final double prefixIconSize;
+  final void Function(Country)? onCountryChanged;
 
   const CustomTextField({
     Key? key,
@@ -53,6 +54,7 @@ class CustomTextField extends StatelessWidget {
     this.prefixIconSize = 24,
     this.onChanged,
     this.onSuffixTap,
+    this.onCountryChanged,
   }) : super(key: key);
 
   @override
@@ -110,12 +112,14 @@ class CustomTextField extends StatelessWidget {
                           splashColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onPressed: onSuffixTap ?? () {},
-                          icon: HeroIcon(suffixIcon!, size: suffixIconSize))
+                          icon: HeroIcon(suffixIcon!, size: suffixIconSize),
+                        )
                       : null,
                   prefixIcon: prefixIcon != null
                       ? IconButton(
                           onPressed: () {},
-                          icon: HeroIcon(prefixIcon!, size: prefixIconSize))
+                          icon: HeroIcon(prefixIcon!, size: prefixIconSize),
+                        )
                       : null,
                 ),
                 validator: validator,
@@ -127,11 +131,11 @@ class CustomTextField extends StatelessWidget {
             : IntlPhoneField(
                 controller: controller,
                 autofocus: autofocus,
-                initialCountryCode: Get.deviceLocale!.countryCode.toString(),
+                // initialCountryCode: Get.deviceLocale!.countryCode.toString(),
+                initialCountryCode: "IQ",
                 style: GoogleFonts.poppins(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,
-                  // color: const Color(0xff657786),
                 ),
                 showDropdownIcon: true,
                 flagsButtonPadding: EdgeInsets.only(left: 10.w),
@@ -139,6 +143,7 @@ class CustomTextField extends StatelessWidget {
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,
                 ),
+                onCountryChanged: onCountryChanged,
               ),
       ],
     );

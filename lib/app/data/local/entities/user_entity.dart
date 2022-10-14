@@ -6,6 +6,8 @@ class UserEntity implements IEntity {
   String? email;
   String? phoneNumber;
   String? token;
+  String? status;
+  String? role;
 
   UserEntity({
     required this.id,
@@ -13,6 +15,8 @@ class UserEntity implements IEntity {
     required this.email,
     required this.phoneNumber,
     required this.token,
+    required this.status,
+    required this.role,
   });
 
   @override
@@ -22,6 +26,8 @@ class UserEntity implements IEntity {
     email = map['email'];
     phoneNumber = map['phone'];
     token = map['token'];
+    status = map['status'];
+    role = map['role'];
   }
 
   @override
@@ -32,6 +38,8 @@ class UserEntity implements IEntity {
     map['email'] = email;
     map['phone'] = phoneNumber;
     map['token'] = token;
+    map['role'] = role;
+    map['status'] = status;
     return map;
   }
 }
