@@ -204,14 +204,6 @@ class AuthController extends GetxController {
     );
     registerCompanyState.whenOrNull(
       success: (data) {
-        _saveUserInStorage(
-            id: data!.company!.id,
-            token: data.token!.access,
-            name: data.company!.name,
-            email: data.company!.email,
-            phone: data.company!.phone,
-            role: "company",
-            status: "pending");
         Get.offAllNamed(Routes.WAITTING);
         _clearTextControllers();
       },
