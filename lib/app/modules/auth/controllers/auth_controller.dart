@@ -1,5 +1,7 @@
+import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl_phone_field/countries.dart';
 
 import '../../../data/local/entities/user_entity.dart';
 import '../../../data/remote/base/status.dart';
@@ -13,10 +15,12 @@ import '../../../data/remote/repositories/auth_repository.dart';
 import '../../../di/locator.dart';
 import '../../../domain/enums/user_type.dart';
 import '../../../routes/app_pages.dart';
+import '../../../widgets/snackbars.dart';
 
 class AuthController extends GetxController {
   static AuthController get to => Get.find();
   final _authRepository = getIt.get<AuthRepository>();
+  final CountryDetails details = CountryCodes.detailsForLocale();
 
   /*
   * Customer Form Fields.
@@ -49,6 +53,10 @@ class AuthController extends GetxController {
   * Rx
   * */
 
+  late final RxString _rxCountry;
+
+  String get country => _rxCountry.value;
+
   final Rxn<UserEntity> _rxnCurrentUser = Rxn<UserEntity>();
 
   UserEntity? get currentUser => _rxnCurrentUser.value;
@@ -78,6 +86,7 @@ class AuthController extends GetxController {
   void onInit() {
     super.onInit();
     _getCurrentUser();
+    _rxCountry = RxString(details.dialCode!);
   }
 
   @override
@@ -108,6 +117,10 @@ class AuthController extends GetxController {
         success: (data) => _rxnCurrentUser.value = UserEntity.fromMap(data));
   }
 
+  void onCountryChanged(Country country) {
+    _rxCountry.value = country.dialCode;
+  }
+
   void onLoginSubmit() {
     if (loginFormKey.currentState!.validate()) {
       _login();
@@ -135,16 +148,21 @@ class AuthController extends GetxController {
         password: loginPasswordController.text,
       ),
     );
-    loginState.whenOrNull(success: (data) {
-      _saveUserInStorage(
-        id: data!.id,
-        email: data.email,
-        name: data.name,
-        token: data.token!.access,
-      );
-      Get.offAllNamed(Routes.ROOT);
-      _clearTextControllers();
-    });
+    loginState.whenOrNull(
+      success: (data) {
+        _saveUserInStorage(
+          id: data!.id,
+          email: data.email,
+          name: data.name,
+          token: data.token!.access,
+          role: data.role,
+          status: data.status,
+        );
+        Get.offAllNamed(Routes.ROOT);
+        _clearTextControllers();
+      },
+      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+    );
   }
 
   void _registerCustomer() async {
@@ -153,19 +171,24 @@ class AuthController extends GetxController {
         name: customerFullNameController.text,
         email: customerEmailController.text,
         password: customerPasswordController.text,
-        phone: customerPhoneNumController.text,
+        phone: "$country${customerPhoneNumController.text}",
       ),
     );
-    registerCustomerState.whenOrNull(success: (data) {
-      _saveUserInStorage(
-        id: data!.customer!.id,
-        token: data.token!.access,
-        name: data.customer!.name,
-        email: data.customer!.email,
-        phone: data.customer!.phone,
-      );
-      Get.offAllNamed(Routes.ROOT);
-    });
+    registerCustomerState.whenOrNull(
+      success: (data) {
+        _saveUserInStorage(
+            id: data!.customer!.id,
+            token: data.token!.access,
+            name: data.customer!.name,
+            email: data.customer!.email,
+            phone: data.customer!.phone,
+            role: "CUSTOMER",
+            status: "APPROVED");
+        Get.offAllNamed(Routes.ROOT);
+        _clearTextControllers();
+      },
+      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+    );
   }
 
   void _registerCompany() async {
@@ -174,21 +197,26 @@ class AuthController extends GetxController {
         name: companyNameController.text,
         country: companyCountryController.text,
         address: companyAddressController.text,
-        phone: companyBusinessNumberController.text,
+        phone: "$country${companyBusinessNumberController.text}",
         email: companyBusinessEmailController.text,
         password: companyPasswordController.text,
       ),
     );
-    registerCompanyState.whenOrNull(success: (data) {
-      _saveUserInStorage(
-        id: data!.company!.id,
-        token: data.token!.access,
-        name: data.company!.name,
-        email: data.company!.email,
-        phone: data.company!.phone,
-      );
-      Get.offAllNamed(Routes.WAITTING);
-    });
+    registerCompanyState.whenOrNull(
+      success: (data) {
+        _saveUserInStorage(
+            id: data!.company!.id,
+            token: data.token!.access,
+            name: data.company!.name,
+            email: data.company!.email,
+            phone: data.company!.phone,
+            role: "company",
+            status: "pending");
+        Get.offAllNamed(Routes.WAITTING);
+        _clearTextControllers();
+      },
+      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+    );
   }
 
   void _saveUserInStorage({
@@ -197,6 +225,8 @@ class AuthController extends GetxController {
     String? name,
     String? phone,
     String? token,
+    String? role,
+    String? status,
   }) async {
     await _authRepository.writeStorage(
       key: 'user',
@@ -206,12 +236,13 @@ class AuthController extends GetxController {
         email: email,
         phoneNumber: phone,
         token: token,
+        role: role,
+        status: status,
       ),
     );
   }
 
   void toggleObscurePassword() {
-    print("tootle");
     _rxIsObscure.value = !isObscure;
   }
 
