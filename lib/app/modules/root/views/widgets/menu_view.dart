@@ -22,17 +22,20 @@ class MenuView extends GetView<RootController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(1000.r),
-                child: CachedNetworkImage(
-                  imageUrl: AppStrings.avatarUrl,
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(),
+              GestureDetector(
+                onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(1000.r),
+                  child: CachedNetworkImage(
+                    imageUrl: AppStrings.avatarUrl,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) => const HeroIcon(
+                      HeroIcons.exclamationCircle,
+                    ),
+                    height: 55.h,
                   ),
-                  errorWidget: (context, url, error) => const HeroIcon(
-                    HeroIcons.exclamationCircle,
-                  ),
-                  height: 55.h,
                 ),
               ),
               IconButton(
