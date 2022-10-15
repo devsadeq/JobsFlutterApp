@@ -1,13 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../data/remote/base/status.dart';
+import '../../../data/remote/dto/application/application_in_dto.dart';
 import '../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../data/remote/repositories/application/application_repository.dart';
 import '../../../data/remote/repositories/job/job_repository.dart';
 import '../../../di/locator.dart';
+import '../../../utils/functions.dart';
+import '../../../widgets/snackbars.dart';
+import '../../auth/controllers/auth_controller.dart';
+import '../views/widgets/submit_bottom_sheet.dart';
 
 class JobDetailsController extends GetxController {
   final String uuid = Get.arguments;
   final _jobRepository = getIt.get<JobRepository>();
+  final _applicationRepository = getIt.get<ApplicationRepository>();
 
   final Rx<Status<JobOutDto>> _rxJob =
       Rx<Status<JobOutDto>>(const Status.loading());
@@ -31,8 +39,25 @@ class JobDetailsController extends GetxController {
   }
 
   Future<void> getJobDetails() async {
-    final Status<JobOutDto> state =
-        await _jobRepository.get(uuid: uuid) as Status<JobOutDto>;
+    final Status<JobOutDto> state = await _jobRepository.get(uuid: uuid);
     _rxJob.value = state;
+  }
+
+  applyToJob(String jobId, String whyApply) async {
+    final result = await _applicationRepository.create(
+      dto: ApplicationInDto(
+        customerId: AuthController.to.currentUser!.id,
+        jobId: jobId,
+        whyApply: whyApply,
+      ),
+    );
+    result.whenOrNull(
+      success: (data) {
+        FocusManager.instance.primaryFocus?.unfocus();
+        Get.back();
+        popupBottomSheet(bottomSheetBody: const SubmitBottomSheet());
+      },
+      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+    );
   }
 }

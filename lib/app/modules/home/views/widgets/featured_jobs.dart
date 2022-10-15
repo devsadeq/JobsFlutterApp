@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
-import '../../../../data/remote/api/api_routes.dart';
 import '../../../../widgets/custom_job_card.dart';
 import '../../../../widgets/shimmer/featured_job_shimmer.dart';
 import '../../../saved/controllers/saved_controller.dart';
@@ -47,17 +47,14 @@ class FeaturedJobs extends GetView<HomeController> {
             ),
             SizedBox(height: 8.h),
             Obx(
-              () => DotsIndicator(
-                dotsCount: _getItems(jobs).length,
-                position: controller.indicatorIndex.toDouble(),
-                decorator: DotsDecorator(
-                  size: Size.square(8.w),
-                  activeSize: Size(20.w, 8.w),
-                  activeShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(26.r),
-                  ),
-                  activeColor: Get.theme.colorScheme.primary,
-                  color: const Color(0xffE4E5E7),
+              () => AnimatedSmoothIndicator(
+                count: _getItems(jobs).length,
+                activeIndex: controller.indicatorIndex,
+                effect: ScrollingDotsEffect(
+                  activeDotColor: Get.theme.colorScheme.primary,
+                  dotColor: const Color(0xffE4E5E7),
+                  dotHeight: 9.w,
+                  dotWidth: 9.w,
                 ),
               ),
             ),
@@ -86,7 +83,5 @@ class FeaturedJobs extends GetView<HomeController> {
                   controller.onSaveButtonTapped(isSaved, job.id!),
             ))
         .toList();
-        // .getRange(0, 4)
-        // .toList();
   }
 }

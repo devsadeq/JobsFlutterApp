@@ -158,6 +158,7 @@ class AuthController extends GetxController {
           role: data.role,
           status: data.status,
         );
+        _getCurrentUser();
         Get.offAllNamed(Routes.ROOT);
         _clearTextControllers();
       },
@@ -184,6 +185,7 @@ class AuthController extends GetxController {
             phone: data.customer!.phone,
             role: "CUSTOMER",
             status: "APPROVED");
+        _getCurrentUser();
         Get.offAllNamed(Routes.ROOT);
         _clearTextControllers();
       },

@@ -100,7 +100,7 @@ class Body extends GetView<JobDetailsController> {
               CustomButton(
                 title: "APPLY NOW",
                 onTap: () => popupBottomSheet(
-                  bottomSheetBody: const ApplyBottomSheetBody(),
+                  bottomSheetBody: ApplyBottomSheetBody(job.id!),
                 ),
               ),
             ],

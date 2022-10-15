@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -38,7 +39,7 @@ class CustomTag extends StatelessWidget {
           ),
           SizedBox(width: 5.w),
           Text(
-            title,
+            title.capitalize!,
             style: GoogleFonts.poppins(
               fontSize: 13.sp,
               fontWeight: FontWeight.w500,

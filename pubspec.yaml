@@ -14,14 +14,12 @@ dependencies:
   flutter_svg: 1.1.5
   lottie: 1.4.2
   carousel_slider: 4.1.1
-  dots_indicator: 2.1.0
   flutter_markdown: 0.6.12
   persistent_bottom_nav_bar_v2: 4.2.5
   dio: 4.0.6
   get_it: 7.2.0
   freezed_annotation: ^2.1.0
   json_annotation: ^4.7.0
-  liquid_pull_to_refresh: 3.0.1
   flutter_zoom_drawer: 3.0.3
   intl: 0.17.0
   get_storage: 2.0.3
@@ -32,6 +30,7 @@ dependencies:
   awesome_dialog: 3.0.2
   awesome_snackbar_content: 0.0.8
   country_codes: 2.2.0
+  smooth_page_indicator: 1.0.0+2
   flutter: 
     sdk: flutter
 
@@ -47,13 +46,12 @@ dev_dependencies:
 
 flutter_native_splash: 
   color: '#03A9F4'
+  color_dark: '#23A9F4'
   image: assets/logo.png
   image_dark: assets/logo.png
   android_12: 
     image: assets/logo.png
-    icon_background_color: '#ffffff'
-    image_dark: assets/logo.png
-    icon_background_color_dark: '#121212'
+    color_dark: '#23A9F4'
   web: false
 
 flutter: 

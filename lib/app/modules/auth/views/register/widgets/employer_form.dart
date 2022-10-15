@@ -48,6 +48,7 @@ class EmployerForm extends GetView<AuthController> {
             maxLines: 1,
             isRequired: true,
             textInputType: TextInputType.emailAddress,
+            validator: Validators.email,
           ),
           SizedBox(height: 15.h),
           CustomTextField(
@@ -79,6 +80,7 @@ class EmployerForm extends GetView<AuthController> {
               autofocus: false,
               isPassword: true,
               isRequired: true,
+              validator: Validators.password,
               obscureText: controller.isObscure,
               onSuffixTap: controller.toggleObscurePassword,
               suffixIcon:
