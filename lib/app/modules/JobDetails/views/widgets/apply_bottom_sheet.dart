@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-import '../../../../utils/functions.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_text_field.dart';
-import 'submit_bottom_sheet.dart';
+import '../../controllers/job_details_controller.dart';
 
-class ApplyBottomSheetBody extends StatelessWidget {
-  const ApplyBottomSheetBody({Key? key}) : super(key: key);
+class ApplyBottomSheetBody extends GetView<JobDetailsController> {
+  const ApplyBottomSheetBody(this.jobId, {Key? key}) : super(key: key);
+  final String jobId;
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +50,7 @@ class ApplyBottomSheetBody extends StatelessWidget {
         SizedBox(height: 30.h),
         CustomButton(
           title: "SUBMIT",
-          onTap: () {
-            FocusManager.instance.primaryFocus?.unfocus();
-            Navigator.pop(context);
-            Future.delayed(
-              const Duration(milliseconds: 500),
-              () => popupBottomSheet(
-                bottomSheetBody: const SubmitBottomSheet(),
-              ),
-            );
-          },
+          onTap: () => controller.applyToJob(jobId, "whyApply"),
         )
       ],
     );
