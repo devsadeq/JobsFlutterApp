@@ -2,10 +2,10 @@ name: jobs_flutter_app
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment:
+environment: 
   sdk: '>=2.17.6 <3.0.0'
 
-dependencies:
+dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.5
   google_fonts: 3.0.1
@@ -14,14 +14,12 @@ dependencies:
   flutter_svg: 1.1.5
   lottie: 1.4.2
   carousel_slider: 4.1.1
-  dots_indicator: 2.1.0
   flutter_markdown: 0.6.12
   persistent_bottom_nav_bar_v2: 4.2.5
   dio: 4.0.6
   get_it: 7.2.0
   freezed_annotation: ^2.1.0
   json_annotation: ^4.7.0
-  liquid_pull_to_refresh: 3.0.1
   flutter_zoom_drawer: 3.0.3
   intl: 0.17.0
   get_storage: 2.0.3
@@ -32,31 +30,32 @@ dependencies:
   awesome_dialog: 3.0.2
   awesome_snackbar_content: 0.0.8
   country_codes: 2.2.0
-  flutter:
+  smooth_page_indicator: 1.0.0+2
+  flutter: 
     sdk: flutter
 
-dev_dependencies:
+dev_dependencies: 
   build_runner: ^2.2.1
   flutter_lints: ^2.0.0
   freezed: ^2.1.1
   json_serializable: ^6.4.0
   flutter_native_splash: ^2.2.10+1
   logger: 1.1.0
-  flutter_test:
+  flutter_test: 
     sdk: flutter
 
-flutter_native_splash:
+flutter_native_splash: 
   color: '#03A9F4'
   color_dark: '#23A9F4'
   image: assets/logo.png
   image_dark: assets/logo.png
-  android_12:
+  android_12: 
     image: assets/logo.png
     color_dark: '#23A9F4'
   web: false
 
-flutter:
-  assets:
+flutter: 
+  assets: 
     - assets/
   uses-material-design: true
 
