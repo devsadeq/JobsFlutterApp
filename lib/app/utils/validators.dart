@@ -23,6 +23,6 @@ class Validators {
 
   static final address = MultiValidator([
     RequiredValidator(errorText: "This field is required!"),
-    MinLengthValidator(5, errorText: "Address is too short!")
+    MinLengthValidator(3, errorText: "Address is too short!")
   ]);
 }
