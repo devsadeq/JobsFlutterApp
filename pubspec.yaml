@@ -41,6 +41,7 @@ dev_dependencies:
   json_serializable: ^6.4.0
   flutter_native_splash: ^2.2.10+1
   logger: 1.1.0
+  device_preview: ^1.1.0
   flutter_test: 
     sdk: flutter
 
