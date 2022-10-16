@@ -1,8 +1,10 @@
 import 'package:country_codes/country_codes.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:device_preview/device_preview.dart';
 
 import 'app/core/theme/app_theme.dart';
 import 'app/di/locator.dart';
@@ -17,21 +19,26 @@ void main() async {
   await GetStorage.init();
   await CountryCodes.init();
   runApp(
-    ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) => GetMaterialApp(
-        locale: Get.locale,
-        debugShowCheckedModeBanner: false,
-        initialBinding: AuthBinding(),
-        home: Obx(
-          () => AuthController.to.currentUser != null
-              ? const RootView()
-              : const LoginView(),
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) => GetMaterialApp(
+          locale: Get.locale,
+          debugShowCheckedModeBanner: false,
+          initialBinding: AuthBinding(),
+          home: Obx(
+            () => AuthController.to.currentUser != null
+                ? const RootView()
+                : const LoginView(),
+          ),
+          getPages: AppPages.routes,
+          theme: AppTheme.lightTheme,
+          useInheritedMediaQuery: true,
+          builder: DevicePreview.appBuilder,
         ),
-        getPages: AppPages.routes,
-        theme: AppTheme.lightTheme,
       ),
     ),
   );
