@@ -68,6 +68,7 @@ class CustomJobCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             _CardTile(
               isFeatured: isFeatured,
@@ -79,19 +80,22 @@ class CustomJobCard extends StatelessWidget {
               actionIcon: actionIcon,
               isSaved: isSaved,
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 8.h),
             _CardJobPosition(
               isFeatured: isFeatured,
               jobPosition: jobPosition,
             ),
             if (!isFeatured) SizedBox(height: 5.h),
             if (!isFeatured) _CardJobDescription(description: description!),
-            SizedBox(height: 10.h),
-            _CardTags(
-              isFeatured: isFeatured,
-              employmentType: employmentType,
-              location: location,
-              workplace: workplace,
+            SizedBox(height: 8.h),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: _CardTags(
+                isFeatured: isFeatured,
+                employmentType: employmentType,
+                location: location,
+                workplace: workplace,
+              ),
             )
           ],
         ),
@@ -212,14 +216,17 @@ class _CardJobPosition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      jobPosition,
-      style: GoogleFonts.poppins(
-        fontSize: 13.sp,
-        fontWeight: FontWeight.w600,
-        color: isFeatured
-            ? Get.theme.backgroundColor
-            : Get.theme.colorScheme.onBackground,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Text(
+        jobPosition,
+        style: GoogleFonts.poppins(
+          // fontSize: 13.sp,
+          fontWeight: FontWeight.w600,
+          color: isFeatured
+              ? Get.theme.backgroundColor
+              : Get.theme.colorScheme.onBackground,
+        ),
       ),
     );
   }
