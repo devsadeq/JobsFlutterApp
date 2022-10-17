@@ -22,7 +22,6 @@ class Body extends GetView<CompanyProfileController> {
                 ProfileHeader(
                   avatar: "${ApiRoutes.BASE_URL}${company!.image!}",
                   name: company.name!,
-                  email: company.email ?? "",
                 ),
                 SizedBox(height: 10.h),
                 const CompanyTabBar(),
