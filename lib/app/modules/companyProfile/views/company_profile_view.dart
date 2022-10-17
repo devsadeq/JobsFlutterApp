@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -19,7 +18,6 @@ class CompanyProfileView extends GetView<CompanyProfileController> {
             onPressed: () => Get.back(),
             icon: HeroIcon(
               HeroIcons.chevronLeft,
-              size: 24.w,
               color: Get.theme.colorScheme.onBackground,
             ),
           ),
