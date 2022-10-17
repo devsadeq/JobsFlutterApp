@@ -22,7 +22,7 @@ class Body extends GetView<JobDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.w),
+      padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 16.w),
       child: Obx(
         () => controller.rxJob.when(
           idle: () => Container(),
@@ -36,7 +36,7 @@ class Body extends GetView<JobDetailsController> {
                   arguments: job!.company!.id,
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10000.0),
+                  borderRadius: BorderRadius.circular(10000.r),
                   child: CachedNetworkImage(
                     imageUrl: "${ApiRoutes.BASE_URL}${job!.company!.image}",
                     placeholder: (context, url) =>
