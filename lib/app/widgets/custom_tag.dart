@@ -22,7 +22,7 @@ class CustomTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 8.w),
+      margin: EdgeInsets.only(right: 6.w , top: 6.h),
       padding: EdgeInsets.all(8.w),
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -35,13 +35,13 @@ class CustomTag extends StatelessWidget {
           HeroIcon(
             icon,
             color: titleColor,
-            size: 16.w,
+            size: 15.w,
           ),
           SizedBox(width: 5.w),
           Text(
             title.capitalize!,
             style: GoogleFonts.poppins(
-              fontSize: 13.sp,
+              fontSize: 12.sp,
               fontWeight: FontWeight.w500,
               color: titleColor,
             ),

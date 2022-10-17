@@ -41,5 +41,27 @@ void main() async {
         ),
       ),
     ),
+
+    /*
+    * Without DevicePreview
+    * */
+    // ScreenUtilInit(
+    //   // designSize: const Size(375, 812),
+    //   designSize: Size(Get.width, Get.height),
+    //   minTextAdapt: true,
+    //   splitScreenMode: true,
+    //   builder: (_, child) => GetMaterialApp(
+    //     locale: Get.locale,
+    //     debugShowCheckedModeBanner: false,
+    //     initialBinding: AuthBinding(),
+    //     home: Obx(
+    //       () => AuthController.to.currentUser != null
+    //           ? const RootView()
+    //           : const LoginView(),
+    //     ),
+    //     getPages: AppPages.routes,
+    //     theme: AppTheme.lightTheme,
+    //   ),
+    // ),
   );
 }
