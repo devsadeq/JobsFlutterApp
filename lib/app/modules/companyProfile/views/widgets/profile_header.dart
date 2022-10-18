@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../core/values/strings.dart';
 import '../../../../widgets/custom_avatar.dart';
 import '../../controllers/company_profile_controller.dart';
 
@@ -33,14 +32,6 @@ class ProfileHeader extends GetView<CompanyProfileController> {
                 fontWeight: FontWeight.w700,
                 fontSize: 16.sp,
                 color: Get.theme.colorScheme.onBackground),
-          ),
-          SizedBox(height: 5.h),
-          Text(
-            AppStrings.CompanysField,
-            style: GoogleFonts.poppins(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w400,
-                color: Get.theme.colorScheme.secondary),
           ),
         ],
       ),
