@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:jobs_flutter_app/app/routes/app_pages.dart';
 
 import '../../../../core/values/strings.dart';
+import '../../../../routes/app_pages.dart';
+import '../../../auth/controllers/auth_controller.dart';
 import '../../controllers/root_controller.dart';
 
 class MenuView extends GetView<RootController> {
@@ -49,7 +50,7 @@ class MenuView extends GetView<RootController> {
           ),
           SizedBox(height: 5.h),
           Text(
-            "Sadeq Al-Mhana",
+            AuthController.to.currentUser!.name!.capitalize!,
             style: GoogleFonts.poppins(
               fontSize: 13.sp,
               fontWeight: FontWeight.w700,
@@ -57,7 +58,7 @@ class MenuView extends GetView<RootController> {
             ),
           ),
           Text(
-            "@sadeq@gmail.com",
+            AuthController.to.currentUser!.email!,
             style: GoogleFonts.poppins(
               fontSize: 13.sp,
               fontWeight: FontWeight.w400,
