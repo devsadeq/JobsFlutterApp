@@ -95,7 +95,7 @@ class _MainScreen extends GetView<RootController> {
       _getNavBarItem(
         "Search",
         HeroIcons.magnifyingGlass,
-        () {},
+            () => controller.onSearchDoubleClick(),
       ),
       _getNavBarItem(
         "Saved",
