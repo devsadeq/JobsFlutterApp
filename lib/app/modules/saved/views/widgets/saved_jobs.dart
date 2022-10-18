@@ -20,6 +20,7 @@ class SavedJobs extends GetView<SavedController> {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: jobs.length,
+      controller: controller.savedScrollController,
       scrollDirection: Axis.vertical,
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => Padding(

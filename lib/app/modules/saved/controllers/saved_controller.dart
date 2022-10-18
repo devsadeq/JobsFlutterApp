@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobs_flutter_app/app/modules/home/controllers/home_controller.dart';
 
@@ -13,6 +14,9 @@ class SavedController extends GetxController {
   final _customerRepository = getIt.get<CustomerRepository>();
   final _rootController = Get.find<RootController>();
   final _authController = AuthController.to;
+  final _savedScrollController = ScrollController();
+
+  ScrollController get savedScrollController => _savedScrollController;
 
   final Rx<Status<List<JobOutDto>>> _rxSavedJobs =
       Rx<Status<List<JobOutDto>>>(const Status.idle());
@@ -68,5 +72,10 @@ class SavedController extends GetxController {
     );
     final saved = result.whenOrNull(success: (data) => data!.saved);
     return saved;
+  }
+
+  void animateToStart() {
+    _savedScrollController.animateTo(0.0,
+        duration: const Duration(seconds: 1), curve: Curves.easeOut);
   }
 }
