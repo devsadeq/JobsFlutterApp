@@ -23,6 +23,7 @@ class CustomInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20.w),
+      margin: EdgeInsets.symmetric(vertical: 8.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.r),
         color: Colors.white,
@@ -34,14 +35,13 @@ class CustomInfoCard extends StatelessWidget {
             children: [
               HeroIcon(
                 icon,
-                size: 24,
                 color: Get.theme.colorScheme.primary,
               ),
               SizedBox(width: 10.w),
               Text(
                 title,
                 style: GoogleFonts.poppins(
-                  fontSize: 14.sp,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.w700,
                   color: Get.theme.colorScheme.onBackground,
                 ),

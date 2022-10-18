@@ -1,6 +1,8 @@
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
 import 'package:jobs_flutter_app/app/modules/auth/controllers/auth_controller.dart';
+import 'package:jobs_flutter_app/app/modules/saved/controllers/saved_controller.dart';
+import 'package:jobs_flutter_app/app/modules/search/controllers/search_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../../widgets/dialogs.dart';
@@ -34,6 +36,14 @@ class RootController extends GetxController {
 
   void onHomeDoubleClick() {
     HomeController.to.animateToStart();
+  }
+
+  void onSearchDoubleClick() {
+    SearchController.to.clearSearch();
+  }
+
+  void onSavedDoubleClick() {
+    SavedController.to.animateToStart();
   }
 
   void logout() {

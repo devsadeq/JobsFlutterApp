@@ -54,14 +54,16 @@ class _MainScreen extends GetView<RootController> {
       items: _getNavBarItems(),
       confineInSafeArea: true,
       navBarHeight: 56.h,
-      decoration: NavBarDecoration(boxShadow: [
-        BoxShadow(
-          color: Get.theme.colorScheme.secondary.withOpacity(.15),
-          spreadRadius: 0,
-          blurRadius: 159,
-          offset: const Offset(0, 4), // changes position of shadow
-        ),
-      ],),
+      decoration: NavBarDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Get.theme.colorScheme.secondary.withOpacity(.15),
+            spreadRadius: 0,
+            blurRadius: 159,
+            offset: const Offset(0, 4), // changes position of shadow
+          ),
+        ],
+      ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       itemAnimationProperties: const ItemAnimationProperties(
@@ -95,12 +97,12 @@ class _MainScreen extends GetView<RootController> {
       _getNavBarItem(
         "Search",
         HeroIcons.magnifyingGlass,
-        () {},
+        () => controller.onSearchDoubleClick(),
       ),
       _getNavBarItem(
         "Saved",
         HeroIcons.bookmark,
-        () {},
+        () => controller.onSavedDoubleClick(),
       ),
     ];
   }

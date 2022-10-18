@@ -7,6 +7,7 @@ import '../../../data/remote/repositories/search_repository.dart';
 import '../../../di/locator.dart';
 
 class SearchController extends GetxController {
+  static SearchController get to => Get.find();
   final _searchRepository = getIt.get<SearchRepository>();
   final searchController = TextEditingController();
 
@@ -43,4 +44,5 @@ class SearchController extends GetxController {
     searchController.clear();
     _rxResults.value = const Status.idle();
   }
+
 }
