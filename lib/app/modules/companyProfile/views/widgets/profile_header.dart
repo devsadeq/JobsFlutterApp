@@ -18,33 +18,31 @@ class ProfileHeader extends GetView<CompanyProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: [
-            CustomAvatar(
-              imageUrl: avatar,
-            ),
-            SizedBox(height: 5.h),
-            Text(
-              name,
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.sp,
-                  color: Get.theme.colorScheme.onBackground),
-            ),
-            SizedBox(height: 5.h),
-            Text(
-              AppStrings.CompanysField,
-              style: GoogleFonts.poppins(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Get.theme.colorScheme.secondary),
-            ),
-          ],
-        ),
+      width: double.infinity,
+      child: Column(
+        children: [
+          CustomAvatar(
+            imageUrl: avatar,
+          ),
+          SizedBox(height: 5.h),
+          Text(
+            name,
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+                color: Get.theme.colorScheme.onBackground),
+          ),
+          SizedBox(height: 5.h),
+          Text(
+            AppStrings.CompanysField,
+            style: GoogleFonts.poppins(
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w400,
+                color: Get.theme.colorScheme.secondary),
+          ),
+        ],
       ),
     );
   }
