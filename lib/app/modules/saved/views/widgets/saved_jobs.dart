@@ -5,6 +5,7 @@ import 'package:heroicons/heroicons.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../data/remote/api/api_routes.dart';
+import '../../../../routes/app_pages.dart';
 import '../../../../widgets/custom_job_card.dart';
 import '../../controllers/saved_controller.dart';
 
@@ -39,6 +40,14 @@ class SavedJobs extends GetView<SavedController> {
             description: jobs[index].description,
             onActionTap: (isSaved) =>
                 controller.onSaveButtonTapped(isSaved, jobs[index].id!),
+            onAvatarTap: () => Get.toNamed(
+              Routes.COMPANY_PROFILE,
+              arguments: jobs[index].company!.id,
+            ),
+            onTap: () => Get.toNamed(
+              Routes.JOB_DETAILS,
+              arguments: jobs[index].id,
+            ),
           ),
         ),
       ),
