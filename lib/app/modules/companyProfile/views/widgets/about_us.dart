@@ -23,7 +23,6 @@ class AboutUs extends GetView<CompanyProfileController> {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                SizedBox(height: 15.h),
                 CustomInfoCard(
                   title: "About Company",
                   icon: HeroIcons.userCircle,
@@ -36,7 +35,6 @@ class AboutUs extends GetView<CompanyProfileController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15.h),
                 CustomInfoCard(
                   title: "Website",
                   icon: HeroIcons.globeAlt,
@@ -53,7 +51,6 @@ class AboutUs extends GetView<CompanyProfileController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15.h),
                 CustomInfoCard(
                   title: "Head office",
                   icon: HeroIcons.mapPin,
@@ -66,7 +63,6 @@ class AboutUs extends GetView<CompanyProfileController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15.h),
                 CustomInfoCard(
                   title: "Type",
                   icon: HeroIcons.homeModern,
@@ -79,7 +75,6 @@ class AboutUs extends GetView<CompanyProfileController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15.h),
                 CustomInfoCard(
                   title: "Since",
                   icon: HeroIcons.cake,
