@@ -39,6 +39,10 @@ class FeaturedJobs extends GetView<HomeController> {
                 location: jobs[index].location,
                 actionIcon: HeroIcons.bookmark,
                 isSaved: SavedController.to.isJobSaved(jobs[index].id!),
+                onAvatarTap: () => Get.toNamed(
+                  Routes.COMPANY_PROFILE,
+                  arguments: jobs[index].company!.id,
+                ),
                 onTap: () =>
                     Get.toNamed(Routes.JOB_DETAILS, arguments: jobs[index].id),
                 onActionTap: (isSaved) =>
