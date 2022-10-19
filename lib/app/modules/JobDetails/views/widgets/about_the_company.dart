@@ -54,8 +54,8 @@ class AboutTheCompany extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           Divider(
-            color: Get.theme.colorScheme.onPrimary,
-            thickness: 0.5.h,
+            color: Get.theme.colorScheme.background,
+            thickness: 0.5,
           ),
           SizedBox(height: 8.h),
           Padding(
