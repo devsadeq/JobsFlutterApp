@@ -78,9 +78,23 @@ class Body extends GetView<JobDetailsController> {
                   ),
                 ),
               ],
+              centerTitle: true,
+              titleTextStyle: GoogleFonts.poppins(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w600,
+                color: Get.theme.backgroundColor,
+              ),
+              title: Padding(
+                padding:  EdgeInsets.symmetric(vertical: 6.h),
+                child: const Text(
+                  "Details",
+                ),
+              ),
               flexibleSpace: const FlexibleSpaceBar(
                 background: Header(),
+
               ),
+
             ),
             SliverToBoxAdapter(
               child: Column(
