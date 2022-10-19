@@ -12,60 +12,59 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding:
+          EdgeInsets.only(right: 16.w, left: 16.w, top: 50.h, bottom: 16.h),
       decoration: BoxDecoration(
         color: Get.theme.primaryColor,
       ),
-      child: Padding(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Senior UX Designer \nat Shell LLC",
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Senior UX Designer \nat Shell LLC",
+            style: GoogleFonts.poppins(
+              fontSize: 24.sp,
+              fontWeight: FontWeight.w600,
+              color: Get.theme.backgroundColor,
+            ),
+          ),
+          SizedBox(height: 4.h),
+          FittedBox(
+            child: Row(
+              children: [
+                CustomTag(
+                  title: "workplace",
+                  icon: HeroIcons.briefcase,
+                  backgroundColor: Colors.white.withOpacity(0.15),
+                  titleColor: Get.theme.backgroundColor,
+                ),
+                CustomTag(
+                  title: "employmentType",
+                  icon: HeroIcons.fire,
+                  backgroundColor: Colors.white.withOpacity(0.15),
+                  titleColor: Get.theme.backgroundColor,
+                ),
+                CustomTag(
+                  title: "location",
+                  icon: HeroIcons.mapPin,
+                  backgroundColor: Colors.white.withOpacity(0.15),
+                  titleColor: Get.theme.backgroundColor,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10.h),
+          Center(
+            child: Text(
+              "3 days left",
               style: GoogleFonts.poppins(
-                fontSize: 24.sp,
-                fontWeight: FontWeight.w600,
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w500,
                 color: Get.theme.backgroundColor,
               ),
             ),
-            SizedBox(height: 4.h),
-            FittedBox(
-              child: Row(
-                children: [
-                  CustomTag(
-                    title: "workplace",
-                    icon: HeroIcons.briefcase,
-                    backgroundColor: Colors.white.withOpacity(0.15),
-                    titleColor: Get.theme.backgroundColor,
-                  ),
-                  CustomTag(
-                    title: "employmentType",
-                    icon: HeroIcons.fire,
-                    backgroundColor: Colors.white.withOpacity(0.15),
-                    titleColor: Get.theme.backgroundColor,
-                  ),
-                  CustomTag(
-                    title: "location",
-                    icon: HeroIcons.mapPin,
-                    backgroundColor: Colors.white.withOpacity(0.15),
-                    titleColor: Get.theme.backgroundColor,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10.h),
-            Center(
-              child: Text(
-                "3 days left",
-                style: GoogleFonts.poppins(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Get.theme.backgroundColor,
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
