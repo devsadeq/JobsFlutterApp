@@ -12,7 +12,7 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.w),
+      // padding: EdgeInsets.all(6.w),
       margin: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -20,6 +20,7 @@ class Description extends StatelessWidget {
       ),
       child: Markdown(
         data: job.description!,
+        // padding: EdgeInsets.zero,
         selectable: true,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
