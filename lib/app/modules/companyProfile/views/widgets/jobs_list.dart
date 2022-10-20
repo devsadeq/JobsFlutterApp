@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -19,6 +20,7 @@ class JobsList extends GetView<CompanyProfileController> {
           loading: () => const CircularProgressIndicator(),
           success: (jobs) => jobs!.isNotEmpty
               ? ListView.builder(
+                  padding: EdgeInsets.only(top: 16.h),
                   itemCount: jobs.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
@@ -39,8 +41,8 @@ class JobsList extends GetView<CompanyProfileController> {
                       arguments: jobs[index].id,
                     ),
                     isSaved: SavedController.to.isJobSaved(jobs[index].id!),
-                    onActionTap: (isSaved) => controller.onSaveButtonTapped(
-                        isSaved, jobs[index].id!),
+                    onActionTap: (isSaved) =>
+                        controller.onSaveButtonTapped(isSaved, jobs[index].id!),
                   ),
                 )
               : const CustomLottie(
