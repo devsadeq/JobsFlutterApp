@@ -32,32 +32,29 @@ class RecentJobs extends GetView<HomeController> {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.only(bottom: 16.w),
-                      child: CustomJobCard(
-                        avatar:
-                            "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
-                        companyName: jobs[index].company!.name!,
-                        publishTime: jobs[index].createdAt!,
-                        jobPosition: jobs[index].position,
-                        workplace: jobs[index].workplace,
-                        location: jobs[index].location,
-                        employmentType: jobs[index].employmentType,
-                        isFeatured: false,
-                        actionIcon: HeroIcons.bookmark,
-                        isSaved: SavedController.to.isJobSaved(jobs[index].id!),
-                        description: jobs[index].description!,
-                        onTap: () => Get.toNamed(
-                          Routes.JOB_DETAILS,
-                          arguments: jobs[index].id,
-                        ),
-                        onAvatarTap: () => Get.toNamed(
-                          Routes.COMPANY_PROFILE,
-                          arguments: jobs[index].company!.id,
-                        ),
-                        onActionTap: (isSaved) => controller.onSaveButtonTapped(
-                            isSaved, jobs[index].id!),
+                    itemBuilder: (context, index) => CustomJobCard(
+                      avatar:
+                          "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
+                      companyName: jobs[index].company!.name!,
+                      publishTime: jobs[index].createdAt!,
+                      jobPosition: jobs[index].position,
+                      workplace: jobs[index].workplace,
+                      location: jobs[index].location,
+                      employmentType: jobs[index].employmentType,
+                      isFeatured: false,
+                      actionIcon: HeroIcons.bookmark,
+                      isSaved: SavedController.to.isJobSaved(jobs[index].id!),
+                      description: jobs[index].description!,
+                      onTap: () => Get.toNamed(
+                        Routes.JOB_DETAILS,
+                        arguments: jobs[index].id,
                       ),
+                      onAvatarTap: () => Get.toNamed(
+                        Routes.COMPANY_PROFILE,
+                        arguments: jobs[index].company!.id,
+                      ),
+                      onActionTap: (isSaved) => controller.onSaveButtonTapped(
+                          isSaved, jobs[index].id!),
                     ),
                   )
                 : CustomLottie(
