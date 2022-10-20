@@ -3,11 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
 
+import '../../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../../widgets/custom_save_button.dart';
+import '../../../saved/controllers/saved_controller.dart';
+import '../../controllers/job_details_controller.dart';
 import 'header.dart';
 
-class DetailsSliverAppBar extends StatelessWidget {
+class DetailsSliverAppBar extends GetView<JobDetailsController> {
   const DetailsSliverAppBar({Key? key, required this.job}) : super(key: key);
   final JobOutDto job;
 
@@ -53,9 +56,11 @@ class DetailsSliverAppBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.r),
               ),
             ),
-            child: const HeroIcon(
-              HeroIcons.bookmark,
-              color: Colors.white,
+            child: CustomSaveButton(
+              onTap: (isSaved) =>
+                  controller.onSaveButtonTapped(isSaved, job.id!),
+              isLiked: SavedController.to.isJobSaved(job.id!),
+              color: Get.theme.colorScheme.onPrimary,
             ),
           ),
         ),

@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:jobs_flutter_app/app/modules/JobDetails/controllers/job_details_controller.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../widgets/custom_tag.dart';
 
-class Header extends StatelessWidget {
+class Header extends GetView<JobDetailsController> {
   const Header({Key? key, required this.job}) : super(key: key);
   final JobOutDto job;
 

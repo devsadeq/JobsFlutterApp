@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/home/controllers/home_controller.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/application/application_in_dto.dart';
@@ -10,6 +11,7 @@ import '../../../di/locator.dart';
 import '../../../utils/functions.dart';
 import '../../../widgets/snackbars.dart';
 import '../../auth/controllers/auth_controller.dart';
+import '../../saved/controllers/saved_controller.dart';
 import '../views/widgets/submit_bottom_sheet.dart';
 
 class JobDetailsController extends GetxController {
@@ -72,5 +74,14 @@ class JobDetailsController extends GetxController {
       _rxSimilarJobs.value =
           await _jobRepository.getAll(position: data!.position);
     });
+  }
+
+  Future<bool?> onSaveButtonTapped(bool isSaved, String jobUuid) async {
+    final result = await SavedController.to.onSaveStateChange(isSaved, jobUuid);
+    if (result != null) {
+      HomeController.to.getFeaturedJobs();
+      HomeController.to.getRecentJobs();
+    }
+    return result;
   }
 }
