@@ -15,7 +15,7 @@ class AboutTheCompany extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16.w),
+      padding: EdgeInsets.symmetric(vertical: 12.w),
       margin: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: Get.theme.primaryColor,
@@ -31,7 +31,7 @@ class AboutTheCompany extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -52,14 +52,14 @@ class AboutTheCompany extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 4.h),
           Divider(
             color: Get.theme.colorScheme.background,
             thickness: 0.5,
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 4.h),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
             child: Row(
               children: [
                 CustomAvatar(
@@ -67,34 +67,41 @@ class AboutTheCompany extends StatelessWidget {
                   height: 40.h,
                 ),
                 SizedBox(width: 5.w),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      job.company!.name!,
-                      style: GoogleFonts.poppins(
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Get.theme.colorScheme.onPrimary,
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        job.company!.name!,
+                        style: GoogleFonts.poppins(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Get.theme.colorScheme.onPrimary,
+                        ),
                       ),
-                    ),
-                    Text(
-                      //TODO: Ask backend boys to add this field
-                      "Oil industry company",
-                      style: GoogleFonts.poppins(
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Get.theme.colorScheme.onPrimary,
+                      Text(
+                        //TODO: Ask backend boys to add this field
+                        "Oil industry company company company company",
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Get.theme.colorScheme.onPrimary,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                // const Spacer(),
+                SizedBox(width: 5.w),
+
                 Column(
                   children: [
                     HeroIcon(
                       HeroIcons.calendarDays,
                       color: Get.theme.colorScheme.onPrimary,
+                      // size: 20.w,
                     ),
                     Text(
                       //TODO: Ask backend boys to add this field
