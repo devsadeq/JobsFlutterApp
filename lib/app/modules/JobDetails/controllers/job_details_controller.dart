@@ -49,7 +49,7 @@ class JobDetailsController extends GetxController {
     getSimilarJobs();
   }
 
-  applyToJob(String jobId, String whyApply) async {
+  Future<void> applyToJob(String jobId, String whyApply) async {
     final result = await _applicationRepository.create(
       dto: ApplicationInDto(
         customerId: AuthController.to.currentUser!.id,
