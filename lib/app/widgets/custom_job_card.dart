@@ -51,7 +51,7 @@ class CustomJobCard extends StatelessWidget {
       onTap: onTap ?? () {},
       child: Container(
         padding: EdgeInsets.all(20.w),
-        margin: EdgeInsets.symmetric(horizontal: 16.w),
+        margin: EdgeInsets.only(right: 16.w, left: 16.w, bottom: 16.h),
         decoration: BoxDecoration(
           color: isFeatured ? Get.theme.colorScheme.secondary : Colors.white,
           borderRadius: BorderRadius.circular(14.r),
@@ -65,6 +65,15 @@ class CustomJobCard extends StatelessWidget {
                   ],
                 )
               : null,
+          boxShadow: [
+            BoxShadow(
+              color: isFeatured
+                  ? Get.theme.primaryColor.withOpacity(0.15)
+                  : Colors.grey.withOpacity(0.15),
+              blurRadius: isFeatured ? 10 : 20,
+              offset: const Offset(0, 10), // changes position of shadow
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

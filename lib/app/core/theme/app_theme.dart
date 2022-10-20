@@ -56,9 +56,9 @@ class AppTheme {
   static final _lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: blueColor,
-      elevation: 0.0,
+      elevation: 20,
       textStyle: _lightTextTheme.button,
-      shadowColor: blueColor.withOpacity(0.5),
+      shadowColor: blueColor.withOpacity(0.25),
       foregroundColor: backgroundColor,
       padding: EdgeInsets.all(16.w),
       shape: RoundedRectangleBorder(

@@ -13,14 +13,14 @@ class AboutUs extends GetView<CompanyProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Obx(
-        () => controller.rxCompany.when(
-          idle: () => Container(),
-          loading: () => const Center(child: CircularProgressIndicator()),
-          success: (company) => SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+    return Obx(
+      () => controller.rxCompany.when(
+        idle: () => Container(),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        success: (company) => SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.only(top: 16.h),
             child: Column(
               children: [
                 CustomInfoCard(
@@ -90,8 +90,8 @@ class AboutUs extends GetView<CompanyProfileController> {
               ],
             ),
           ),
-          failure: (e) => Center(child: Text(e!)),
         ),
+        failure: (e) => Center(child: Text(e!)),
       ),
     );
   }

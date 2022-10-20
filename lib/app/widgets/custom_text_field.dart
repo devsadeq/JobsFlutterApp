@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:intl_phone_field/countries.dart';
@@ -131,8 +132,7 @@ class CustomTextField extends StatelessWidget {
             : IntlPhoneField(
                 controller: controller,
                 autofocus: autofocus,
-                // initialCountryCode: Get.deviceLocale!.countryCode.toString(),
-                initialCountryCode: "IQ",
+                initialCountryCode: Get.deviceLocale!.countryCode.toString(),
                 style: GoogleFonts.poppins(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,

@@ -23,10 +23,17 @@ class CustomInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20.w),
-      margin: EdgeInsets.symmetric(vertical: 8.h),
+      margin: EdgeInsets.only(bottom: 16.h, right: 16.w, left: 16.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.r),
         color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.15),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

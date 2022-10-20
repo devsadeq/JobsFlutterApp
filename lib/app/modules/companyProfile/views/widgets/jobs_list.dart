@@ -20,32 +20,29 @@ class JobsList extends GetView<CompanyProfileController> {
           loading: () => const CircularProgressIndicator(),
           success: (jobs) => jobs!.isNotEmpty
               ? ListView.builder(
+                  padding: EdgeInsets.only(top: 16.h),
                   itemCount: jobs.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => Container(
-                    // padding: EdgeInsets.only(bottom: 22.h),
-                    margin: EdgeInsets.symmetric(vertical: 8.h),
-                    child: CustomJobCard(
-                      jobPosition: jobs[index].position,
-                      publishTime: jobs[index].createdAt!,
-                      companyName: jobs[index].company!.name!,
-                      employmentType: jobs[index].employmentType!,
-                      location: jobs[index].location!,
-                      workplace: jobs[index].workplace!,
-                      actionIcon: HeroIcons.bookmark,
-                      avatar:
-                          "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
-                      description: jobs[index].description!,
-                      onTap: () => Get.toNamed(
-                        Routes.JOB_DETAILS,
-                        arguments: jobs[index].id,
-                      ),
-                      isSaved: SavedController.to.isJobSaved(jobs[index].id!),
-                      onActionTap: (isSaved) => controller.onSaveButtonTapped(
-                          isSaved, jobs[index].id!),
+                  itemBuilder: (context, index) => CustomJobCard(
+                    jobPosition: jobs[index].position,
+                    publishTime: jobs[index].createdAt!,
+                    companyName: jobs[index].company!.name!,
+                    employmentType: jobs[index].employmentType!,
+                    location: jobs[index].location!,
+                    workplace: jobs[index].workplace!,
+                    actionIcon: HeroIcons.bookmark,
+                    avatar:
+                        "${ApiRoutes.BASE_URL}${jobs[index].company!.image!}",
+                    description: jobs[index].description!,
+                    onTap: () => Get.toNamed(
+                      Routes.JOB_DETAILS,
+                      arguments: jobs[index].id,
                     ),
+                    isSaved: SavedController.to.isJobSaved(jobs[index].id!),
+                    onActionTap: (isSaved) =>
+                        controller.onSaveButtonTapped(isSaved, jobs[index].id!),
                   ),
                 )
               : const CustomLottie(

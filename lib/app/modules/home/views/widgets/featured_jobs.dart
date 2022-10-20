@@ -49,9 +49,7 @@ class FeaturedJobs extends GetView<HomeController> {
                     controller.onSaveButtonTapped(isSaved, jobs[index].id!),
               ),
               options: CarouselOptions(
-                height: 1.sh/5,
-                // aspectRatio: 1.sw / 0.205.sh,
-                // aspectRatio: 10 / 5,
+                height: 1.sh/4.6,
                 viewportFraction: 1,
                 initialPage: 0,
                 onPageChanged: controller.updateIndicatorValue,
@@ -65,7 +63,7 @@ class FeaturedJobs extends GetView<HomeController> {
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            SizedBox(height: 8.h),
+            // SizedBox(height: 8.h),
             Obx(
               () => AnimatedSmoothIndicator(
                 count: jobs.length,
