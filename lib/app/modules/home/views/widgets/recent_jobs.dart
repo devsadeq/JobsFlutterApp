@@ -11,7 +11,7 @@ import '../../../../widgets/custom_job_card.dart';
 import '../../../../widgets/shimmer/recent_jobs_shimmer.dart';
 import '../../../saved/controllers/saved_controller.dart';
 import '../../controllers/home_controller.dart';
-import 'section_header.dart';
+import '../../../../widgets/section_header.dart';
 
 class RecentJobs extends GetView<HomeController> {
   const RecentJobs({Key? key}) : super(key: key);

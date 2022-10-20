@@ -7,10 +7,10 @@ class SectionHeader extends StatelessWidget {
   const SectionHeader({
     Key? key,
     required this.title,
-    this.subtitle = "See all",
+    this.actionTitle,
   }) : super(key: key);
   final String title;
-  final String subtitle;
+  final String? actionTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +27,15 @@ class SectionHeader extends StatelessWidget {
               color: Get.theme.colorScheme.onBackground,
             ),
           ),
-          Text(
-            subtitle,
-            style: GoogleFonts.poppins(
-              fontSize: 13.sp,
-              fontWeight: FontWeight.w400,
-              color: Get.theme.colorScheme.secondary,
+          if (actionTitle != null)
+            Text(
+              actionTitle!,
+              style: GoogleFonts.poppins(
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w400,
+                color: Get.theme.colorScheme.secondary,
+              ),
             ),
-          ),
         ],
       ),
     );

@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: Get.theme.elevatedButtonTheme.style,
-        child: Text(title),
+        child: FittedBox(child: Text(title)),
       ),
     );
   }

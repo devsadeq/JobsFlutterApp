@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heroicons/heroicons.dart';
 
-import '../../../widgets/custom_appbar.dart';
 import '../controllers/job_details_controller.dart';
 import 'widgets/body.dart';
+import 'widgets/details_bottom_nav_bar.dart';
 
 class JobDetailsView extends GetView<JobDetailsController> {
   const JobDetailsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: CustomAppBar(
-          leading: IconButton(
-            onPressed: () => Get.back(),
-            icon: const HeroIcon(HeroIcons.chevronLeft),
-          ),
-        ),
-        body: const Body(),
+        body: Body(),
+        bottomNavigationBar: DetailsBottomNavBar(),
       ),
     );
   }
