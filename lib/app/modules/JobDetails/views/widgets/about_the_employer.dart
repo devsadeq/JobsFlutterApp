@@ -9,8 +9,8 @@ import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../../widgets/custom_avatar.dart';
 
-class AboutTheCompany extends StatelessWidget {
-  const AboutTheCompany({Key? key, required this.job}) : super(key: key);
+class AboutTheEmployer extends StatelessWidget {
+  const AboutTheEmployer({Key? key, required this.job}) : super(key: key);
   final JobOutDto job;
 
   @override
