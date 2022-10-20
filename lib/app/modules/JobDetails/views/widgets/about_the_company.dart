@@ -71,7 +71,7 @@ class AboutTheCompany extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Shell LCC",
+                      job.company!.name!,
                       style: GoogleFonts.poppins(
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w500,
@@ -79,6 +79,7 @@ class AboutTheCompany extends StatelessWidget {
                       ),
                     ),
                     Text(
+                      //TODO: Ask backend boys to add this field
                       "Oil industry company",
                       style: GoogleFonts.poppins(
                         fontSize: 13.sp,
@@ -96,6 +97,7 @@ class AboutTheCompany extends StatelessWidget {
                       color: Get.theme.colorScheme.onPrimary,
                     ),
                     Text(
+                      //TODO: Ask backend boys to add this field
                       "Since 1975",
                       style: GoogleFonts.poppins(
                         fontSize: 13.sp,
