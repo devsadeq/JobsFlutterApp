@@ -29,7 +29,8 @@ class AboutTheCompany extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Get.theme.primaryColor.withOpacity(.25),
-              blurRadius: 20.r,
+              blurRadius: 20,
+              spreadRadius: 2,
               offset: const Offset(0, 10),
             ),
           ],
@@ -88,7 +89,7 @@ class AboutTheCompany extends StatelessWidget {
                         ),
                         Text(
                           //TODO: Ask backend boys to add this field
-                          "Oil industry company company company company",
+                          "Oil industry company",
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.poppins(
                             fontSize: 13.sp,

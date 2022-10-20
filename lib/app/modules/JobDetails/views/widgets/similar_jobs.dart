@@ -16,7 +16,6 @@ class SimilarJobs extends GetView<JobDetailsController> {
       children: [
         SizedBox(height: 20.h),
         const SectionHeader(title: "You may also like"),
-        SizedBox(height: 16.h),
         Obx(
           () => controller.similarJobs.when(
             idle: () => Container(),
@@ -26,18 +25,21 @@ class SimilarJobs extends GetView<JobDetailsController> {
             success: (data) => SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              child: Row(
-                children: List.generate(
-                  data!.length,
-                  (index) => SimilarJobCard(
-                    workplace: data[index].workplace,
-                    publishTime: data[index].createdAt!,
-                    location: data[index].location,
-                    jobPosition: data[index].position,
-                    companyName: data[index].company!.name!,
-                    employmentType: data[index].employmentType,
-                    avatar:
-                        "${ApiRoutes.BASE_URL}${data[index].company!.image}",
+              child: Padding(
+                padding:  EdgeInsets.only(right: 16.w),
+                child: Row(
+                  children: List.generate(
+                    data!.length,
+                    (index) => SimilarJobCard(
+                      workplace: data[index].workplace,
+                      publishTime: data[index].createdAt!,
+                      location: data[index].location,
+                      jobPosition: data[index].position,
+                      companyName: data[index].company!.name!,
+                      employmentType: data[index].employmentType,
+                      avatar:
+                          "${ApiRoutes.BASE_URL}${data[index].company!.image}",
+                    ),
                   ),
                 ),
               ),
@@ -47,7 +49,6 @@ class SimilarJobs extends GetView<JobDetailsController> {
             ),
           ),
         ),
-        SizedBox(height: 20.h),
       ],
     );
   }

@@ -41,10 +41,18 @@ class SimilarJobCard extends StatelessWidget {
       child: Container(
         width: 0.65.sw,
         padding: EdgeInsets.all(20.w),
-        margin: EdgeInsets.only(left: 16.w),
+        margin: EdgeInsets.only(left: 16.w, top: 16.h, bottom: 30.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(14.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 20,
+              spreadRadius: 2,
+              offset: const Offset(0, 10), // changes position of shadow
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
