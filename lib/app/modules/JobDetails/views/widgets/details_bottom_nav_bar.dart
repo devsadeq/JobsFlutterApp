@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/modules/JobDetails/controllers/job_details_controller.dart';
 
+import '../../../../utils/functions.dart';
 import '../../../../widgets/custom_button.dart';
+import 'apply_bottom_sheet.dart';
 
-class DetailsBottomNavBar extends StatelessWidget {
+class DetailsBottomNavBar extends GetView<JobDetailsController> {
   const DetailsBottomNavBar({Key? key}) : super(key: key);
 
   @override
@@ -28,8 +31,12 @@ class DetailsBottomNavBar extends StatelessWidget {
         ],
       ),
       child: CustomButton(
-        title: "Apply",
-        onTap: () {},
+        title: "APPLY NOW",
+        onTap: () => popupBottomSheet(
+          bottomSheetBody: ApplyBottomSheetBody(
+            controller.job.whenOrNull(success: (job) => job!.id!)!,
+          ),
+        ),
       ),
     );
   }
