@@ -49,7 +49,7 @@ class AboutTheCompany extends StatelessWidget {
                   ),
                   SizedBox(width: 5.w),
                   Text(
-                    "About The Company",
+                    "About The Employer",
                     style: GoogleFonts.poppins(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w500,
