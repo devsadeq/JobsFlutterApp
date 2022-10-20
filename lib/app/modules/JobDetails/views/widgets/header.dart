@@ -4,48 +4,57 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
+import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../widgets/custom_tag.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
+  const Header({Key? key, required this.job}) : super(key: key);
+  final JobOutDto job;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          EdgeInsets.only(right: 16.w, left: 16.w, top: 50.h, bottom: 16.h),
+      padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 60.h),
       decoration: BoxDecoration(
         color: Get.theme.primaryColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Senior UX Designer \nat Shell LLC",
+          RichText(
+              text: TextSpan(
             style: GoogleFonts.poppins(
               fontSize: 24.sp,
               fontWeight: FontWeight.w600,
               color: Get.theme.backgroundColor,
             ),
-          ),
+            children: [
+              TextSpan(text: job.position),
+              TextSpan(
+                text: '\nat ',
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w400),
+              ),
+              TextSpan(text: job.company!.name),
+            ],
+          )),
           SizedBox(height: 4.h),
           FittedBox(
             child: Row(
               children: [
                 CustomTag(
-                  title: "workplace",
+                  title: job.workplace,
                   icon: HeroIcons.briefcase,
                   backgroundColor: Colors.white.withOpacity(0.15),
                   titleColor: Get.theme.backgroundColor,
                 ),
                 CustomTag(
-                  title: "employmentType",
+                  title: job.employmentType,
                   icon: HeroIcons.fire,
                   backgroundColor: Colors.white.withOpacity(0.15),
                   titleColor: Get.theme.backgroundColor,
                 ),
                 CustomTag(
-                  title: "location",
+                  title: job.location,
                   icon: HeroIcons.mapPin,
                   backgroundColor: Colors.white.withOpacity(0.15),
                   titleColor: Get.theme.backgroundColor,
@@ -56,6 +65,7 @@ class Header extends StatelessWidget {
           SizedBox(height: 10.h),
           Center(
             child: Text(
+              // TODO: Tell backend boys to add this field
               "3 days left",
               style: GoogleFonts.poppins(
                 fontSize: 13.sp,

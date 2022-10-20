@@ -3,17 +3,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
 
 import 'header.dart';
 
 class DetailsSliverAppBar extends StatelessWidget {
-  const DetailsSliverAppBar({Key? key}) : super(key: key);
+  const DetailsSliverAppBar({Key? key, required this.job}) : super(key: key);
+  final JobOutDto job;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      expandedHeight: 215.h,
+      expandedHeight: 225.h,
       backgroundColor: Get.theme.primaryColor,
       pinned: true,
       leadingWidth: kToolbarHeight,
@@ -70,8 +72,8 @@ class DetailsSliverAppBar extends StatelessWidget {
           "Details",
         ),
       ),
-      flexibleSpace: const FlexibleSpaceBar(
-        background: Header(),
+      flexibleSpace: FlexibleSpaceBar(
+        background: Header(job: job),
       ),
     );
   }
