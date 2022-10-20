@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-import '../../../../routes/app_pages.dart';
 import '../../../../widgets/custom_button.dart';
 
 class SubmitBottomSheet extends StatelessWidget {
@@ -43,7 +42,7 @@ class SubmitBottomSheet extends StatelessWidget {
         SizedBox(height: 50.h),
         CustomButton(
           title: "Back To Home",
-          onTap: () => Get.offAndToNamed(Routes.ROOT),
+          onTap: () => Get.close(2),
         ),
       ],
     );
