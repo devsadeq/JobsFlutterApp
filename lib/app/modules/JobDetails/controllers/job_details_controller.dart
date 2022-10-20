@@ -20,7 +20,12 @@ class JobDetailsController extends GetxController {
   final Rx<Status<JobOutDto>> _rxJob =
       Rx<Status<JobOutDto>>(const Status.loading());
 
-  Status<JobOutDto> get rxJob => _rxJob.value;
+  Status<JobOutDto> get job => _rxJob.value;
+
+  final Rx<Status<List<JobOutDto>>> _rxSimilarJobs =
+      Rx<Status<List<JobOutDto>>>(const Status.loading());
+
+  Status<List<JobOutDto>> get similarJobs => _rxSimilarJobs.value;
 
   @override
   void onInit() {
@@ -41,6 +46,7 @@ class JobDetailsController extends GetxController {
   Future<void> getJobDetails() async {
     final Status<JobOutDto> state = await _jobRepository.get(uuid: uuid);
     _rxJob.value = state;
+    getSimilarJobs();
   }
 
   applyToJob(String jobId, String whyApply) async {
@@ -59,5 +65,12 @@ class JobDetailsController extends GetxController {
       },
       failure: (e) => SnackBars.failure("Oops!", e.toString()),
     );
+  }
+
+  Future<void> getSimilarJobs() async {
+    job.whenOrNull(success: (data) async {
+      _rxSimilarJobs.value =
+          await _jobRepository.getAll(position: data!.position);
+    });
   }
 }

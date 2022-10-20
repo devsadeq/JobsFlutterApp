@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-import '../../../../core/values/strings.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../widgets/section_header.dart';
+import '../../controllers/job_details_controller.dart';
 import 'slimilar_job_card.dart';
 
-class SimilarJobs extends StatelessWidget {
+class SimilarJobs extends GetView<JobDetailsController> {
   const SimilarJobs({Key? key}) : super(key: key);
 
   @override
@@ -15,56 +17,37 @@ class SimilarJobs extends StatelessWidget {
         SizedBox(height: 20.h),
         const SectionHeader(title: "You may also like"),
         SizedBox(height: 16.h),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
-          child: Row(
-            children: [
-              SimilarJobCard(
-                avatar: AppStrings.avatarUrl,
-                companyName: 'Facebook',
-                publishTime: '2021-08-01T00:00:00.000Z',
-                jobPosition: 'Full Stack Developer',
-                workplace: 'Remote',
-                employmentType: 'Full Time',
-                location: 'New York',
+        Obx(
+          () => controller.similarJobs.when(
+            idle: () => Container(),
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            success: (data) => SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: Row(
+                children: List.generate(
+                  data!.length,
+                  (index) => SimilarJobCard(
+                    workplace: data[index].workplace,
+                    publishTime: data[index].createdAt!,
+                    location: data[index].location,
+                    jobPosition: data[index].position,
+                    companyName: data[index].company!.name!,
+                    employmentType: data[index].employmentType,
+                    avatar:
+                        "${ApiRoutes.BASE_URL}${data[index].company!.image}",
+                  ),
+                ),
               ),
-              SimilarJobCard(
-                avatar: AppStrings.avatarUrl,
-                companyName: 'Facebook',
-                publishTime: '2021-08-01T00:00:00.000Z',
-                jobPosition: 'Full Stack Developer',
-                workplace: 'Remote',
-                employmentType: 'Full Time',
-                location: 'New York',
-              ),
-              SimilarJobCard(
-                avatar: AppStrings.avatarUrl,
-                companyName: 'Facebook',
-                publishTime: '2021-08-01T00:00:00.000Z',
-                jobPosition: 'Full Stack Developer',
-                workplace: 'Remote',
-                employmentType: 'Full Time',
-                location: 'New York',
-              ),
-            ],
+            ),
+            failure: (e) => Center(
+              child: Text(e!.toString()),
+            ),
           ),
         ),
         SizedBox(height: 20.h),
-        // ListView.builder(
-        //   itemCount: 3,
-        //   shrinkWrap: true,
-        //   scrollDirection: Axis.horizontal,
-        //   itemBuilder: (context, index) => const SimilarJobCard(
-        //     avatar: AppStrings.avatarUrl,
-        //     companyName: 'Facebook',
-        //     publishTime: '2021-08-01T00:00:00.000Z',
-        //     jobPosition: 'Full Stack Developer',
-        //     workplace: 'Remote',
-        //     employmentType: 'Full Time',
-        //     location: 'New York',
-        //   ),
-        // ),
       ],
     );
   }

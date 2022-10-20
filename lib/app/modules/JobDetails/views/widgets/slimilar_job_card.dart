@@ -50,16 +50,14 @@ class SimilarJobCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            _CardTile(
+            _CardHeader(
               avatar: avatar,
               companyName: companyName,
               publishTime: strDate,
               onAvatarTap: onAvatarTap,
             ),
             SizedBox(height: 8.h),
-            _CardJobPosition(
-              jobPosition: jobPosition,
-            ),
+            _CardJobPosition(jobPosition: jobPosition),
             SizedBox(height: 8.h),
             _CardTags(
               employmentType: employmentType,
@@ -73,13 +71,8 @@ class SimilarJobCard extends StatelessWidget {
   }
 }
 
-/*
-* Company name and avatar
-* Published time
-* Save Button
-* */
-class _CardTile extends StatelessWidget {
-  const _CardTile({
+class _CardHeader extends StatelessWidget {
+  const _CardHeader({
     Key? key,
     required this.avatar,
     required this.companyName,
@@ -148,9 +141,6 @@ class _CardTile extends StatelessWidget {
   }
 }
 
-/*
-* Job Position Text
-* */
 class _CardJobPosition extends StatelessWidget {
   const _CardJobPosition({
     Key? key,
@@ -171,9 +161,6 @@ class _CardJobPosition extends StatelessWidget {
   }
 }
 
-/*
-* Job tags
-* */
 class _CardTags extends StatelessWidget {
   const _CardTags({
     Key? key,
