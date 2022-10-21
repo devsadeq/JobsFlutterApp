@@ -18,9 +18,8 @@ class AboutUs extends GetView<CompanyProfileController> {
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
         success: (company) => SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.only(top: 16.h),
+            padding: EdgeInsets.only(top: 8.h),
             child: Column(
               children: [
                 CustomInfoCard(
