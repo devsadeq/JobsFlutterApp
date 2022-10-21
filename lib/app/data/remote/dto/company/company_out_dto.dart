@@ -1,4 +1,6 @@
-class CompanyOutDto {
+import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
+
+class CompanyOutDto implements IDto {
   CompanyOutDto({
     this.id,
     this.name,
