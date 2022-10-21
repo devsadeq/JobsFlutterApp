@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../data/remote/api/api_routes.dart';
+import '../../../../routes/app_pages.dart';
 import '../../../../widgets/section_header.dart';
 import '../../controllers/job_details_controller.dart';
 import 'slimilar_job_card.dart';
@@ -26,7 +27,7 @@ class SimilarJobs extends GetView<JobDetailsController> {
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding:  EdgeInsets.only(right: 16.w),
+                padding: EdgeInsets.only(right: 16.w),
                 child: Row(
                   children: List.generate(
                     data!.length,
@@ -39,6 +40,15 @@ class SimilarJobs extends GetView<JobDetailsController> {
                       employmentType: data[index].employmentType,
                       avatar:
                           "${ApiRoutes.BASE_URL}${data[index].company!.image}",
+                      onTap: () => Get.toNamed(
+                        Routes.COMPANY_PROFILE,
+                        arguments: data[index].company!.id,
+                        preventDuplicates: false,
+                      ),
+                      onAvatarTap: () => Get.toNamed(
+                        Routes.COMPANY_PROFILE,
+                        arguments: data[index].company!.id,
+                      ),
                     ),
                   ),
                 ),
