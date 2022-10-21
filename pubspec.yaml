@@ -32,6 +32,7 @@ dependencies:
   country_codes: 2.2.0
   smooth_page_indicator: 1.0.0+2
   url_launcher: 6.1.6
+  flutter_svg_provider: 1.0.3
   flutter: 
     sdk: flutter
 
