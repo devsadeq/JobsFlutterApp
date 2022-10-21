@@ -29,7 +29,7 @@ class CustomInfoCard extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.15),
+            color: Colors.grey.withOpacity(0.05),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),

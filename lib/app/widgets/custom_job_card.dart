@@ -76,7 +76,7 @@ class CustomJobCard extends StatelessWidget {
             BoxShadow(
               color: isFeatured
                   ? Get.theme.primaryColor.withOpacity(0.15)
-                  : Colors.grey.withOpacity(0.15),
+                  : Colors.grey.withOpacity(0.05),
               blurRadius: isFeatured ? 10 : 20,
               offset: const Offset(0, 10), // changes position of shadow
             ),
