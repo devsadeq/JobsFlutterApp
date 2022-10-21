@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
@@ -34,6 +35,10 @@ class AboutTheEmployer extends StatelessWidget {
               offset: const Offset(0, 10),
             ),
           ],
+          image:const  DecorationImage(
+            image: Svg('assets/header_bg.svg', color: Colors.white),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Column(
           children: [
