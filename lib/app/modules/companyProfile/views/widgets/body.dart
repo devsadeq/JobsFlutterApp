@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../data/remote/api/api_routes.dart';
 import '../../controllers/company_profile_controller.dart';
+import 'company_profile_sliver_app_bar.dart';
 import 'company_tab_view.dart';
-import 'company_tap_bar.dart';
-import 'profile_header.dart';
+import 'sliverPersistentHeaderDelegateImp.dart';
 
 class Body extends GetView<CompanyProfileController> {
   const Body({Key? key}) : super(key: key);
@@ -16,17 +16,42 @@ class Body extends GetView<CompanyProfileController> {
     return Obx(() => controller.rxCompany.when(
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
-        success: (company) => Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ProfileHeader(
-                  avatar: "${ApiRoutes.BASE_URL}${company!.image!}",
-                  name: company.name!,
-                ),
-                SizedBox(height: 10.h),
-                const CompanyTabBar(),
-                const CompanyTabView(),
-              ],
+        success: (company) => NestedScrollView(
+              headerSliverBuilder: (
+                BuildContext context,
+                bool innerBoxIsScrolled,
+              ) {
+                return <Widget>[
+                  CompanyProfileSliverAppBar(company: company!),
+                  SliverPersistentHeader(
+                    delegate: SliverPersistentHeaderDelegateImp(
+                      tabBar: TabBar(
+                        controller: controller.tabController,
+                        labelStyle: GoogleFonts.poppins(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        unselectedLabelStyle: GoogleFonts.poppins(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        labelColor: Get.theme.colorScheme.onPrimary,
+                        unselectedLabelColor: Get.theme.colorScheme.secondary,
+                        indicator: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: Get.theme.colorScheme.primary,
+                        ),
+                        tabs: const [
+                          Tab(text: "About us"),
+                          Tab(text: "Jobs"),
+                        ],
+                      ),
+                    ),
+                    pinned: true,
+                  ),
+                ];
+              },
+              body: const CompanyTabView(),
             ),
         failure: (e) => Text(e!)));
   }
