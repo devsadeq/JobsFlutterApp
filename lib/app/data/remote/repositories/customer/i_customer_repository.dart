@@ -12,4 +12,8 @@ abstract class ICustomerRepository {
     int? offset,
     required String customerUuid,
   });
+
+  Future<Status<IDto>> getProfile({
+    required String customerUuid,
+  });
 }

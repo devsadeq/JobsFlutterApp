@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import '../../dto/customer/customer_profile_out_dto.dart';
 
 import '../../base/status.dart';
 import '../../dto/customer/toggle_save_out_dto.dart';
@@ -49,6 +50,19 @@ class CustomerRepository implements ICustomerRepository {
         return Status.success(data: ToggleSaveOutDto.fromJson(response.data));
       }
       return const Status.failure(reason: "Some thing wrong happen!");
+    } on DioError catch (e) {
+      final errMsg = DioExceptions.fromDioError(e).toString();
+      return Status.failure(reason: errMsg);
+    }
+  }
+
+  @override
+  Future<Status<CustomerProfileOutDto>> getProfile({required String customerUuid}) async {
+    try {
+      final response = await service.getProfile(customerUuid: customerUuid);
+      return Status.success(
+        data: CustomerProfileOutDto.fromJson(response.data),
+      );
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();
       return Status.failure(reason: errMsg);
