@@ -71,8 +71,16 @@ class JobDetailsController extends GetxController {
 
   Future<void> getSimilarJobs() async {
     job.whenOrNull(success: (data) async {
-      _rxSimilarJobs.value =
-          await _jobRepository.getAll(position: data!.position);
+      /// Get similar jobs by position
+      final jobs = await _jobRepository.getAll(position: data!.position);
+
+      /// Remove the current job from the list
+      jobs.whenOrNull(
+          success: (data) =>
+              data!.removeWhere((element) => element.id == uuid));
+
+      /// Update the state
+      _rxSimilarJobs.value = jobs;
     });
   }
 
