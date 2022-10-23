@@ -24,9 +24,9 @@ class CustomerProfileSliverAppBar extends GetView<CustomerProfileController> {
       toolbarHeight: kToolbarHeight,
       leading: Padding(
         padding: EdgeInsets.all(6.w),
-        child: TextButton(
+        child: IconButton(
           onPressed: () => Get.back(),
-          style: TextButton.styleFrom(
+          style: IconButton.styleFrom(
             backgroundColor: Colors.white.withOpacity(0.2),
             padding: EdgeInsets.zero,
             minimumSize: Size.zero,
@@ -34,7 +34,7 @@ class CustomerProfileSliverAppBar extends GetView<CustomerProfileController> {
               borderRadius: BorderRadius.circular(8.r),
             ),
           ),
-          child: const HeroIcon(
+          icon: const HeroIcon(
             HeroIcons.chevronLeft,
             color: Colors.white,
           ),
@@ -52,6 +52,28 @@ class CustomerProfileSliverAppBar extends GetView<CustomerProfileController> {
           "Profile",
         ),
       ),
+      actions: [
+        Container(
+          width: 50.w,
+          height: 50.w,
+          padding: EdgeInsets.all(6.w),
+          child: IconButton(
+            onPressed: () {},
+            style: IconButton.styleFrom(
+              backgroundColor: Colors.white.withOpacity(0.2),
+              padding: EdgeInsets.zero,
+              minimumSize: Size.zero,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+            ),
+            icon: const HeroIcon(
+              HeroIcons.pencilSquare,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         background: Header(profile: profile),
       ),
