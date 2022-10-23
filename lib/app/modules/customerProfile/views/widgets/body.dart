@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/customer_profile_controller.dart';
@@ -16,26 +17,46 @@ class Body extends GetView<CustomerProfileController> {
           idle: () => const SizedBox(),
           loading: () => const Center(child: CircularProgressIndicator()),
           failure: (reason) => Center(child: Text(reason!)),
-          success: (profile) => NestedScrollView(
-            headerSliverBuilder: (
-              BuildContext context,
-              bool innerBoxIsScrolled,
-            ) {
-              return <Widget>[
-                CustomerProfileSliverAppBar(profile: profile!),
-              ];
-            },
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  AboutMe(description: profile!.description),
-                  Skills(skills: profile.skills),
-                  Languages(languages: profile.language),
-                ],
+          success: (profile) => CustomScrollView(
+            slivers: [
+              CustomerProfileSliverAppBar(profile: profile!),
+              SliverToBoxAdapter(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding:  EdgeInsets.only(top: 16.h),
+                    child: Column(
+                      children: [
+                        AboutMe(description: profile.description),
+                        Skills(skills: profile.skills),
+                        Languages(languages: profile.language),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
+
+          //     NestedScrollView(
+          //   headerSliverBuilder: (
+          //     BuildContext context,
+          //     bool innerBoxIsScrolled,
+          //   ) {
+          //     return <Widget>[
+          //       CustomerProfileSliverAppBar(profile: profile!),
+          //     ];
+          //   },
+          //   body: SingleChildScrollView(
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         AboutMe(description: profile!.description),
+          //         Skills(skills: profile.skills),
+          //         Languages(languages: profile.language),
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ));
   }
 }
