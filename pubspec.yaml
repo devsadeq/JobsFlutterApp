@@ -33,6 +33,7 @@ dependencies:
   smooth_page_indicator: 1.0.0+2
   url_launcher: 6.1.6
   flutter_svg_provider: 1.0.3
+  expandable: 5.0.1
   flutter: 
     sdk: flutter
 
