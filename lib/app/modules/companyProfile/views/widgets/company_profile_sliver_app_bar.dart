@@ -24,9 +24,9 @@ class CompanyProfileSliverAppBar extends GetView<CompanyProfileController> {
       toolbarHeight: kToolbarHeight,
       leading: Padding(
         padding: EdgeInsets.all(6.w),
-        child: TextButton(
+        child: IconButton(
           onPressed: () => Get.back(),
-          style: TextButton.styleFrom(
+          style: IconButton.styleFrom(
             backgroundColor: Colors.white.withOpacity(0.2),
             padding: EdgeInsets.zero,
             minimumSize: Size.zero,
@@ -34,7 +34,7 @@ class CompanyProfileSliverAppBar extends GetView<CompanyProfileController> {
               borderRadius: BorderRadius.circular(8.r),
             ),
           ),
-          child: const HeroIcon(
+          icon: const HeroIcon(
             HeroIcons.chevronLeft,
             color: Colors.white,
           ),
