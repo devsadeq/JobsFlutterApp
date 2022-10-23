@@ -1,10 +1,9 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
 import '../../../../widgets/custom_info_card.dart';
+import 'wrapped_chips.dart';
 
 class Skills extends StatelessWidget {
   const Skills({
@@ -15,31 +14,23 @@ class Skills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> shortSkills = List.from(skills!);
+    if (skills!.length > 4) {
+      shortSkills.removeRange(4, skills!.length);
+      shortSkills.add('+${skills!.length - shortSkills.length} more');
+    }
     return skills == null
         ? const SizedBox()
         : CustomInfoCard(
             icon: HeroIcons.userCircle,
             title: "Skills",
-            body: Wrap(
-              children: List.generate(
-                skills!.length,
-                (index) => Padding(
-                  padding: EdgeInsets.all(4.w),
-                  child: Chip(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    backgroundColor: Get.theme.colorScheme.background,
-                    labelPadding: EdgeInsets.all(8.w),
-                    label: Text(
-                      skills![index],
-                      style: GoogleFonts.poppins(
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Get.theme.colorScheme.secondary,
-                      ),
-                    ),
-                  ),
+            body: ExpandableNotifier(
+              child: Expandable(
+                collapsed: ExpandableButton(
+                  child: WrappedChips(list: shortSkills),
+                ),
+                expanded: ExpandableButton(
+                  child: WrappedChips(list: skills!),
                 ),
               ),
             ),
