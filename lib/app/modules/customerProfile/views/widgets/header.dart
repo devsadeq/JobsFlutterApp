@@ -27,7 +27,7 @@ class Header extends GetView<JobDetailsController> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: 40.h),
+        padding: EdgeInsets.only(top: 30.h),
         child: Column(
           children: [
             CustomAvatar(imageUrl: "${ApiRoutes.BASE_URL}${profile.image}"),
