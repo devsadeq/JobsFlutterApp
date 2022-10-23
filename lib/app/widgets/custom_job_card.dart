@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
@@ -55,6 +56,12 @@ class CustomJobCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: isFeatured ? Get.theme.colorScheme.secondary : Colors.white,
           borderRadius: BorderRadius.circular(14.r),
+          image: isFeatured
+              ? const DecorationImage(
+                  image: Svg('assets/header_bg.svg', color: Colors.white),
+                  fit: BoxFit.cover,
+                )
+              : null,
           gradient: isFeatured
               ? LinearGradient(
                   begin: Alignment.topLeft,
@@ -69,7 +76,7 @@ class CustomJobCard extends StatelessWidget {
             BoxShadow(
               color: isFeatured
                   ? Get.theme.primaryColor.withOpacity(0.15)
-                  : Colors.grey.withOpacity(0.15),
+                  : Colors.grey.withOpacity(0.05),
               blurRadius: isFeatured ? 10 : 20,
               offset: const Offset(0, 10), // changes position of shadow
             ),

@@ -43,4 +43,13 @@ class CustomerService implements ICustomerService {
       rethrow;
     }
   }
+
+  @override
+  Future<Response> getProfile({required String customerUuid}) async {
+    try {
+      return await dioClient.get("${ApiRoutes.CUSTOMERS}/$customerUuid");
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

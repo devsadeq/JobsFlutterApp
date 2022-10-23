@@ -24,7 +24,6 @@ class JobsList extends GetView<CompanyProfileController> {
                   itemCount: jobs.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => CustomJobCard(
                     jobPosition: jobs[index].position,
                     publishTime: jobs[index].createdAt!,

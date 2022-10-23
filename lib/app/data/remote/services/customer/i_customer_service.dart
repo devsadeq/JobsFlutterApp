@@ -11,4 +11,9 @@ abstract class ICustomerService {
     int? offset,
     required String customerUuid,
   });
+
+  Future<Response> getProfile({
+    required String customerUuid,
+  });
+
 }

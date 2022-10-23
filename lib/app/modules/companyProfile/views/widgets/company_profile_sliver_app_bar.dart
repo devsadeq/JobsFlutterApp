@@ -4,21 +4,20 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-import '../../../../data/remote/dto/job/job_out_dto.dart';
-import '../../../../widgets/custom_save_button.dart';
-import '../../../saved/controllers/saved_controller.dart';
-import '../../controllers/job_details_controller.dart';
+import '../../../../data/remote/dto/company/Company_out_dto.dart';
+import '../../controllers/company_profile_controller.dart';
 import 'header.dart';
 
-class DetailsSliverAppBar extends GetView<JobDetailsController> {
-  const DetailsSliverAppBar({Key? key, required this.job}) : super(key: key);
-  final JobOutDto job;
+class CompanyProfileSliverAppBar extends GetView<CompanyProfileController> {
+  const CompanyProfileSliverAppBar({Key? key, required this.company})
+      : super(key: key);
+  final CompanyOutDto company;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      expandedHeight: 225.h,
+      expandedHeight: 210.h,
       backgroundColor: Get.theme.primaryColor,
       pinned: true,
       leadingWidth: kToolbarHeight,
@@ -41,30 +40,6 @@ class DetailsSliverAppBar extends GetView<JobDetailsController> {
           ),
         ),
       ),
-      actions: [
-        Container(
-          width: 50.w,
-          height: 50.w,
-          padding: EdgeInsets.all(6.w),
-          child: IconButton(
-            onPressed: () => Get.back(),
-            style: IconButton.styleFrom(
-              backgroundColor: Colors.white.withOpacity(0.2),
-              padding: EdgeInsets.zero,
-              minimumSize: Size.zero,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-            ),
-            icon: CustomSaveButton(
-              onTap: (isSaved) =>
-                  controller.onSaveButtonTapped(isSaved, job.id!),
-              isLiked: SavedController.to.isJobSaved(job.id!),
-              color: Get.theme.colorScheme.onPrimary,
-            ),
-          ),
-        ),
-      ],
       centerTitle: true,
       titleTextStyle: GoogleFonts.poppins(
         fontSize: 18.sp,
@@ -74,11 +49,11 @@ class DetailsSliverAppBar extends GetView<JobDetailsController> {
       title: Padding(
         padding: EdgeInsets.symmetric(vertical: 6.h),
         child: const Text(
-          "Details",
+          "Company Profile",
         ),
       ),
       flexibleSpace: FlexibleSpaceBar(
-        background: Header(job: job),
+        background: Header(company: company),
       ),
     );
   }
