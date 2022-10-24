@@ -48,9 +48,7 @@ class CustomerProfileSliverAppBar extends GetView<CustomerProfileController> {
       ),
       title: Padding(
         padding: EdgeInsets.symmetric(vertical: 6.h),
-        child: const Text(
-          "Profile",
-        ),
+        child: const Text("Profile"),
       ),
       actions: [
         Container(
