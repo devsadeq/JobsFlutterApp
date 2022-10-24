@@ -19,12 +19,12 @@ class Skills extends StatelessWidget {
       shortSkills.removeRange(4, skills!.length);
       shortSkills.add('+${skills!.length - shortSkills.length} more');
     }
-    return skills == null
+    return skills == null || skills!.isEmpty
         ? const SizedBox()
         : CustomInfoCard(
-            icon: HeroIcons.userCircle,
+            icon: HeroIcons.sparkles,
             title: "Skills",
-            body: ExpandableNotifier(
+            child: ExpandableNotifier(
               child: Expandable(
                 collapsed: ExpandableButton(
                   child: WrappedChips(list: shortSkills),

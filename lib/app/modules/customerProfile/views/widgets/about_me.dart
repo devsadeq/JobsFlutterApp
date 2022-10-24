@@ -20,7 +20,7 @@ class AboutMe extends StatelessWidget {
         : CustomInfoCard(
             icon: HeroIcons.userCircle,
             title: "About me",
-            body: Text(
+            child: Text(
               description!,
               style: GoogleFonts.poppins(
                 fontSize: 13.sp,

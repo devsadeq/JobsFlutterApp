@@ -15,16 +15,16 @@ class Languages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> shortLanguages = List.from(languages!);
-    if (languages!.length > 4) {
-      shortLanguages.removeRange(4, languages!.length);
+    if (languages!.length > 6) {
+      shortLanguages.removeRange(6, languages!.length);
       shortLanguages.add('+${languages!.length - shortLanguages.length} more');
     }
-    return languages == null
+    return languages == null || languages!.isEmpty
         ? const SizedBox()
         : CustomInfoCard(
-            icon: HeroIcons.userCircle,
+            icon: HeroIcons.language,
             title: "Languages",
-            body: ExpandableNotifier(
+            child: ExpandableNotifier(
               child: Expandable(
                 collapsed: ExpandableButton(
                   child: WrappedChips(list: shortLanguages),

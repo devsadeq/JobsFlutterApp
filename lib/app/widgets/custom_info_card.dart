@@ -7,13 +7,13 @@ import 'package:heroicons/heroicons.dart';
 class CustomInfoCard extends StatelessWidget {
   const CustomInfoCard({
     Key? key,
-    required this.body,
+    required this.child,
     required this.icon,
     required this.title,
     this.action,
     this.onActionTap,
   }) : super(key: key);
-  final Widget body;
+  final Widget child;
   final HeroIcons icon;
   final HeroIcons? action;
   final String title;
@@ -67,7 +67,7 @@ class CustomInfoCard extends StatelessWidget {
             thickness: 1.5,
           ),
           SizedBox(height: 10.h),
-          body,
+          child,
         ],
       ),
     );

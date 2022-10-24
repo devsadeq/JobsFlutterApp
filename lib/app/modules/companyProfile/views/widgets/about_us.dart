@@ -25,7 +25,7 @@ class AboutUs extends GetView<CompanyProfileController> {
                 CustomInfoCard(
                   title: "About Company",
                   icon: HeroIcons.userCircle,
-                  body: Text(
+                  child: Text(
                     company!.description!,
                     style: GoogleFonts.poppins(
                       fontSize: 13.sp,
@@ -37,7 +37,7 @@ class AboutUs extends GetView<CompanyProfileController> {
                 CustomInfoCard(
                   title: "Website",
                   icon: HeroIcons.globeAlt,
-                  body: GestureDetector(
+                  child: GestureDetector(
                     onTap: () => launchUrl(Uri.parse("https://www.google.com")),
                     child: Text(
                       "https://www.google.com",
@@ -53,7 +53,7 @@ class AboutUs extends GetView<CompanyProfileController> {
                 CustomInfoCard(
                   title: "Head office",
                   icon: HeroIcons.mapPin,
-                  body: Text(
+                  child: Text(
                     "Mountain View, California, Amerika Serikat",
                     style: GoogleFonts.poppins(
                       fontSize: 13.sp,
@@ -65,7 +65,7 @@ class AboutUs extends GetView<CompanyProfileController> {
                 CustomInfoCard(
                   title: "Type",
                   icon: HeroIcons.homeModern,
-                  body: Text(
+                  child: Text(
                     "Multinational company",
                     style: GoogleFonts.poppins(
                       fontSize: 13.sp,
@@ -77,7 +77,7 @@ class AboutUs extends GetView<CompanyProfileController> {
                 CustomInfoCard(
                   title: "Since",
                   icon: HeroIcons.cake,
-                  body: Text(
+                  child: Text(
                     "1998",
                     style: GoogleFonts.poppins(
                       fontSize: 13.sp,
