@@ -10,6 +10,7 @@ class RecentJobsShimmer extends StatelessWidget {
     return ListView.builder(
       itemCount: 3,
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         margin: EdgeInsets.only(bottom: 16.w),
