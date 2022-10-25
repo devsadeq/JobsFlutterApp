@@ -28,6 +28,7 @@ class Dialogs {
   static Future<bool>? errorDialog({
     required String title,
     required String description,
+    String? btnOkText,
     required Function() btnOkOnPress,
   }) {
     AwesomeDialog(
@@ -36,10 +37,27 @@ class Dialogs {
       animType: AnimType.bottomSlide,
       title: title,
       desc: description,
-      btnOkText: AppStrings.DIALOG_BTN_OK,
-      btnCancelText: AppStrings.DIALOG_BTN_CANCEL,
+      btnOkText: btnOkText ?? btnOkText,
       btnOkOnPress: btnOkOnPress,
       headerAnimationLoop: false,
+      dialogBorderRadius: BorderRadius.circular(16.r),
+      buttonsBorderRadius: BorderRadius.circular(14.r),
+      padding: EdgeInsets.only(bottom: 12.w),
+      titleTextStyle: GoogleFonts.poppins(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w600,
+        color: Get.theme.colorScheme.onBackground,
+      ),
+      descTextStyle: GoogleFonts.poppins(
+        fontSize: 13.sp,
+        fontWeight: FontWeight.w400,
+        color: Get.theme.colorScheme.secondary,
+      ),
+      btnOkColor: Get.theme.primaryColor,
+      buttonsTextStyle: GoogleFonts.poppins(
+        fontSize: 13.sp,
+        fontWeight: FontWeight.w700,
+      ),
     ).show();
   }
 
