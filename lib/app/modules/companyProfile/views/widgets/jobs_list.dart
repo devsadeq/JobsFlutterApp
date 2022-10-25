@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -24,7 +23,6 @@ class JobsList extends GetView<CompanyProfileController> {
                   asset: "assets/empty.json",
                 )
               : ListView.builder(
-                  padding: EdgeInsets.only(top: 16.h),
                   itemCount: jobs.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,

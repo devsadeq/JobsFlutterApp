@@ -30,7 +30,7 @@ class CompanyProfileShimmer extends StatelessWidget {
               (index) => ShimmerWidget(
                 width: double.infinity,
                 height: 150.h,
-                margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                margin: EdgeInsets.only(right: 16.w, left: 16.w, bottom: 16.h),
               ),
             ),
           )
