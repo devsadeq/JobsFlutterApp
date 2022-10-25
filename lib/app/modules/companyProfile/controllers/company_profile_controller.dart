@@ -61,4 +61,9 @@ class CompanyProfileController extends GetxController
     if (result != null) SavedController.to.getSavedJobs();
     return result;
   }
+
+  void onRetry() {
+    getCompany();
+    getCompanyJobs();
+  }
 }
