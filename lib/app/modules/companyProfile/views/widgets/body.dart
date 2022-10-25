@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../widgets/custom_lottie.dart';
+import '../../../../widgets/shimmer/company_profile_shimmer.dart';
 import '../../controllers/company_profile_controller.dart';
 import 'company_profile_sliver_app_bar.dart';
 import 'company_tab_view.dart';
@@ -16,7 +17,7 @@ class Body extends GetView<CompanyProfileController> {
   Widget build(BuildContext context) {
     return Obx(() => controller.rxCompany.when(
           idle: () => Container(),
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => const CompanyProfileShimmer(),
           success: (company) => NestedScrollView(
             headerSliverBuilder: (
               BuildContext context,
