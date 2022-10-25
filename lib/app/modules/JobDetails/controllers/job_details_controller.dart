@@ -92,4 +92,9 @@ class JobDetailsController extends GetxController {
     }
     return result;
   }
+
+  void onRetry() {
+    _rxJob.value = const Status.loading();
+    getJobDetails();
+  }
 }

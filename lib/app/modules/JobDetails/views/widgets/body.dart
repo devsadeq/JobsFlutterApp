@@ -36,7 +36,7 @@ class Body extends GetView<JobDetailsController> {
           child: CustomLottie(
             title: e!,
             asset: "assets/space.json",
-            onTryAgain: () {},
+            onTryAgain: controller.onRetry,
           ),
         ),
       ),
