@@ -8,50 +8,56 @@ class JobDetailsShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        ShimmerWidget(
-          width: 104.h,
-          height: 104.h,
-          radius: 1000.r,
-        ),
-        SizedBox(height: 10.h),
-        ShimmerWidget(
-          width: 130.w,
-          height: 24.h,
-        ),
-        SizedBox(height: 10.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ShimmerWidget(
-              width: 100.w,
-              height: 32.h,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ShimmerWidget(
+            width: double.infinity,
+            height: 225.h,
+            radius: 0,
+          ),
+          SizedBox(height: 20.h),
+          ShimmerWidget(
+            width: double.infinity,
+            height: 300.h,
+            margin: EdgeInsets.symmetric(horizontal: 16.w),
+          ),
+          ShimmerWidget(
+            width: double.infinity,
+            height: 100.h,
+            margin: EdgeInsets.all(16.w),
+          ),
+          ShimmerWidget(
+            width: 200.w,
+            height: 20.h,
+            margin: EdgeInsets.symmetric(horizontal: 16.w),
+          ),
+          SizedBox(height: 16.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  child: Row(
+                    children: List.generate(
+                      2,
+                      (index) => ShimmerWidget(
+                        width: 0.65.sw,
+                        height: 200.h,
+                        margin: EdgeInsets.only(right: 16.w),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(width: 10.w),
-            ShimmerWidget(
-              width: 100.w,
-              height: 32.h,
-            ),
-            SizedBox(width: 10.w),
-            ShimmerWidget(
-              width: 100.w,
-              height: 32.h,
-            ),
-          ],
-        ),
-        SizedBox(height: 30.h),
-        ShimmerWidget(
-          width: double.infinity,
-          height: 300.h,
-        ),
-        const Spacer(),
-        ShimmerWidget(
-          width: double.infinity,
-          height: 50.h,
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

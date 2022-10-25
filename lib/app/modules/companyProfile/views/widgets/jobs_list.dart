@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -18,9 +17,12 @@ class JobsList extends GetView<CompanyProfileController> {
     return Obx(() => controller.rxJobs.when(
           idle: () => Container(),
           loading: () => const CircularProgressIndicator(),
-          success: (jobs) => jobs!.isNotEmpty
-              ? ListView.builder(
-                  padding: EdgeInsets.only(top: 16.h),
+          success: (jobs) => jobs == null || jobs.isEmpty
+              ? const CustomLottie(
+                  title: "This company has not jobs yet.",
+                  asset: "assets/empty.json",
+                )
+              : ListView.builder(
                   itemCount: jobs.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
@@ -43,10 +45,6 @@ class JobsList extends GetView<CompanyProfileController> {
                     onActionTap: (isSaved) =>
                         controller.onSaveButtonTapped(isSaved, jobs[index].id!),
                   ),
-                )
-              : const CustomLottie(
-                  title: "This company has not jobs yet.",
-                  asset: "assets/empty.json",
                 ),
           failure: (e) => Text(e!),
         ));

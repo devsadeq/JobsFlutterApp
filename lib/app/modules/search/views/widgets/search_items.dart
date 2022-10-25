@@ -21,7 +21,7 @@ class SearchResults extends GetView<SearchController> {
             ? const CustomLottie(
               title: "No matching company found.",
               asset: "assets/empty.json",
-              subtitle:
+              description:
                   "Please make sure your keywords are spelled correctly.",
             )
             : ListView.builder(
@@ -43,7 +43,7 @@ class SearchResults extends GetView<SearchController> {
         failure: (e) => CustomLottie(
           asset: "assets/space.json",
           title: e!,
-          onTryAgain: () {},
+          onTryAgain: controller.onRetry,
         ),
       ),
     );

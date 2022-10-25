@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/home/controllers/home_controller.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/application/application_in_dto.dart';
@@ -9,8 +8,10 @@ import '../../../data/remote/repositories/application/application_repository.dar
 import '../../../data/remote/repositories/job/job_repository.dart';
 import '../../../di/locator.dart';
 import '../../../utils/functions.dart';
+import '../../../widgets/dialogs.dart';
 import '../../../widgets/snackbars.dart';
 import '../../auth/controllers/auth_controller.dart';
+import '../../home/controllers/home_controller.dart';
 import '../../saved/controllers/saved_controller.dart';
 import '../views/widgets/submit_bottom_sheet.dart';
 
@@ -32,7 +33,7 @@ class JobDetailsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getJobDetails();
+    loadPage();
   }
 
   @override
@@ -71,15 +72,10 @@ class JobDetailsController extends GetxController {
 
   Future<void> getSimilarJobs() async {
     job.whenOrNull(success: (data) async {
-      /// Get similar jobs by position
       final jobs = await _jobRepository.getAll(position: data!.position);
-
-      /// Remove the current job from the list
       jobs.whenOrNull(
           success: (data) =>
               data!.removeWhere((element) => element.id == uuid));
-
-      /// Update the state
       _rxSimilarJobs.value = jobs;
     });
   }
@@ -91,5 +87,27 @@ class JobDetailsController extends GetxController {
       HomeController.to.getRecentJobs();
     }
     return result;
+  }
+
+  void loadPage() async {
+    await getJobDetails();
+    showDialogOnFailure();
+  }
+
+  void onRetry() async {
+    _rxJob.value = const Status.loading();
+    await getJobDetails();
+    showDialogOnFailure();
+  }
+
+  void showDialogOnFailure() {
+    if (job is Failure) {
+      Dialogs.spaceDialog(
+        description: (job as Failure).reason.toString(),
+        btnOkOnPress: onRetry,
+        dismissOnBackKeyPress: false,
+        dismissOnTouchOutside: false,
+      );
+    }
   }
 }

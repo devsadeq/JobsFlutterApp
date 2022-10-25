@@ -7,6 +7,7 @@ import '../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../data/remote/repositories/company_repository.dart';
 import '../../../data/remote/repositories/job/job_repository.dart';
 import '../../../di/locator.dart';
+import '../../../widgets/dialogs.dart';
 import '../../saved/controllers/saved_controller.dart';
 
 class CompanyProfileController extends GetxController
@@ -31,8 +32,7 @@ class CompanyProfileController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: 2, vsync: this);
-    getCompany();
-    getCompanyJobs();
+    loadPage();
   }
 
   @override
@@ -60,5 +60,29 @@ class CompanyProfileController extends GetxController
     final result = await SavedController.to.onSaveStateChange(isSaved, jobUuid);
     if (result != null) SavedController.to.getSavedJobs();
     return result;
+  }
+
+  void loadPage() async {
+    await getCompany();
+    await getCompanyJobs();
+    showDialogOnFailure();
+  }
+
+  void onRetry() async {
+    _rxCompany.value = const Status.loading();
+    await getCompany();
+    await getCompanyJobs();
+    showDialogOnFailure();
+  }
+
+  void showDialogOnFailure() {
+    if (rxCompany is Failure) {
+      Dialogs.spaceDialog(
+        description: (rxCompany as Failure).reason.toString(),
+        btnOkOnPress: onRetry,
+        dismissOnBackKeyPress: false,
+        dismissOnTouchOutside: false,
+      );
+    }
   }
 }

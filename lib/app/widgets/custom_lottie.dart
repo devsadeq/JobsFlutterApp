@@ -11,17 +11,21 @@ class CustomLottie extends StatelessWidget {
     this.onTryAgain,
     required this.asset,
     this.repeat = false,
-    this.subtitle,
+    this.description,
     this.assetHeight,
     this.padding,
+    this.titleStyle,
+    this.descriptionStyle,
   }) : super(key: key);
   final String title;
-  final String? subtitle;
+  final String? description;
   final String asset;
   final bool repeat;
   final void Function()? onTryAgain;
   final double? assetHeight;
   final EdgeInsetsGeometry? padding;
+  final TextStyle? titleStyle;
+  final TextStyle? descriptionStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -40,27 +44,28 @@ class CustomLottie extends StatelessWidget {
             ),
             Text(
               title,
-              style: GoogleFonts.poppins(
-                fontSize: 13.sp,
-                color: Get.theme.colorScheme.secondary,
-                fontWeight: FontWeight.w500,
-              ),
+              style: titleStyle ??
+                  GoogleFonts.poppins(
+                    fontSize: 13.sp,
+                    color: Get.theme.colorScheme.secondary,
+                    fontWeight: FontWeight.w500,
+                  ),
             ),
-            if (subtitle != null) SizedBox(height: 5.w),
-            if (subtitle != null)
+            if (description != null) SizedBox(height: 5.w),
+            if (description != null)
               Text(
-                subtitle!,
+                description!,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                  color: Get.theme.colorScheme.tertiary,
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: descriptionStyle ??
+                    GoogleFonts.poppins(
+                      color: Get.theme.colorScheme.tertiary,
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
               ),
-            SizedBox(height: 10.w),
             if (onTryAgain != null)
-              GestureDetector(
-                onTap: onTryAgain,
+              TextButton(
+                onPressed: onTryAgain,
                 child: Text(
                   "Try again",
                   style: GoogleFonts.poppins(

@@ -25,7 +25,7 @@ class Body extends GetView<SavedController> {
             asset: "assets/space.json",
             repeat: true,
             title: e!,
-            onTryAgain: () {},
+            onTryAgain: controller.onRetry,
           ),
         ),
       ),

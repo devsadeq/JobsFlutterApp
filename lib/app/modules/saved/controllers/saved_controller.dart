@@ -78,4 +78,8 @@ class SavedController extends GetxController {
     _savedScrollController.animateTo(0.0,
         duration: const Duration(seconds: 1), curve: Curves.easeOut);
   }
+
+  void onRetry() {
+    getSavedJobs();
+  }
 }

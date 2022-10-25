@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../widgets/shimmer/customer_profile_shimmer.dart';
 import '../../controllers/customer_profile_controller.dart';
 import 'about_me.dart';
 import 'customer_profile_sliver_app_bar.dart';
@@ -18,8 +19,8 @@ class Body extends GetView<CustomerProfileController> {
     return Obx(
       () => controller.profile.when(
         idle: () => const SizedBox(),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        failure: (reason) => Center(child: Text(reason!)),
+        loading: () => const CustomerProfileShimmer(),
+        failure: (err) => const CustomerProfileShimmer(),
         success: (profile) => CustomScrollView(
           slivers: [
             CustomerProfileSliverAppBar(profile: profile!),

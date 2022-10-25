@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../widgets/snackbars.dart';
+import 'package:jobs_flutter_app/app/widgets/dialogs.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/choices/Position_out_dto.dart';
@@ -44,9 +44,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getPositions();
-    getFeaturedJobs();
-    getRecentJobs();
+    _loadHome();
   }
 
   @override
@@ -84,29 +82,22 @@ class HomeController extends GetxController {
     final Status<List<JobOutDto>> state = await _jobRepository.getAll(
         position: chipTitle == "All" ? null : chipTitle);
     _rxRecentJobs.value = state;
-    recentJobs.whenOrNull(
-        failure: (e) => SnackBars.failure("Oops!", e.toString()));
   }
 
   Future<void> getPositions() async {
     final Status<List<PositionOutDto>> state =
         await _positionRepository.getAll();
     _rxPositions.value = state;
-    insertAllPosition();
+    _insertAllPosition();
   }
 
-  insertAllPosition() {
+  _insertAllPosition() {
     final allPosition = PositionOutDto(jobTitle: "All");
     final positionsList = positions.whenOrNull(success: (data) => data!);
     if (positionsList != null && !positionsList.contains(allPosition)) {
       positionsList.insert(0, allPosition);
       _rxPositions.value = Status.success(data: positionsList);
     }
-  }
-
-  Future<void> onRefresh() async {
-    getPositions();
-    getFeaturedJobs();
   }
 
   void animateToStart() {
@@ -118,5 +109,48 @@ class HomeController extends GetxController {
     final result = await SavedController.to.onSaveStateChange(isSaved, jobUuid);
     if (result != null) SavedController.to.getSavedJobs();
     return result;
+  }
+
+  void _loadHome() async {
+    await getPositions();
+    await getFeaturedJobs();
+    await getRecentJobs();
+    showDialogOnFailure();
+  }
+
+  void _onRetry() async {
+    if (positions is Failure) {
+      await getPositions();
+      showDialogOnFailure();
+    } else if (featuredJobs is Failure) {
+      await getFeaturedJobs();
+      showDialogOnFailure();
+    } else if (recentJobs is Failure) {
+      await getRecentJobs();
+      showDialogOnFailure();
+    }
+  }
+
+  void showDialogOnFailure() {
+    if (positions is Failure) {
+      _getErrDialog((positions as Failure).reason!);
+    } else if (featuredJobs is Failure) {
+      _getErrDialog((featuredJobs as Failure).reason!);
+    } else if (recentJobs is Failure) {
+      _getErrDialog((recentJobs as Failure).reason!);
+    }
+  }
+
+  void _getErrDialog(String msg) {
+    if (Get.isDialogOpen!) return;
+    Dialogs.spaceDialog(
+      description: msg,
+      dismissOnBackKeyPress: false,
+      dismissOnTouchOutside: false,
+      btnOkOnPress: () {
+        Get.back();
+        _onRetry();
+      },
+    );
   }
 }

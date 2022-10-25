@@ -36,6 +36,7 @@ void main() async {
           ),
           getPages: AppPages.routes,
           theme: AppTheme.lightTheme,
+          defaultTransition: Transition.cupertino,
           useInheritedMediaQuery: true,
           builder: DevicePreview.appBuilder,
         ),

@@ -20,12 +20,30 @@ class CustomAvatar extends StatelessWidget {
       borderRadius: BorderRadius.circular(radius ?? 10000.r),
       child: CachedNetworkImage(
         imageUrl: imageUrl,
-        placeholder: (context, url) => const Center(
-          child: CircularProgressIndicator(),
+        height: height ?? 80.h,
+        fit: BoxFit.contain,
+        placeholder: (context, url) => Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey[300],
+          ),
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
-        errorWidget: (context, url, error) =>
-            const HeroIcon(HeroIcons.exclamationCircle),
-        height: height ?? 84.h,
+        errorWidget: (context, url, error) => Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey[300],
+          ),
+          child: Center(
+            child: HeroIcon(
+              HeroIcons.exclamationCircle,
+              color: Colors.grey[500],
+              size: 0.5 * (height ?? 80.h),
+            ),
+          ),
+        ),
       ),
     );
   }
