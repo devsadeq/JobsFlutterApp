@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/widgets/shimmer/customer_profile_shimmer.dart';
 
-import '../../../../widgets/custom_lottie.dart';
+import '../../../../widgets/shimmer/customer_profile_shimmer.dart';
 import '../../controllers/customer_profile_controller.dart';
 import 'about_me.dart';
 import 'customer_profile_sliver_app_bar.dart';
@@ -21,12 +20,7 @@ class Body extends GetView<CustomerProfileController> {
       () => controller.profile.when(
         idle: () => const SizedBox(),
         loading: () => const CustomerProfileShimmer(),
-        failure: (reason) => CustomLottie(
-          asset: "assets/space.json",
-          repeat: true,
-          title: reason!,
-          onTryAgain: controller.onRetry,
-        ),
+        failure: (err) => const CustomerProfileShimmer(),
         success: (profile) => CustomScrollView(
           slivers: [
             CustomerProfileSliverAppBar(profile: profile!),
