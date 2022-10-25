@@ -38,4 +38,8 @@ class CustomerProfileController extends GetxController {
       _rxProfile.value = profile;
     });
   }
+
+  void onRetry() {
+    getProfile();
+  }
 }
