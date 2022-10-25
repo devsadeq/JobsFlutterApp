@@ -24,7 +24,8 @@ class AboutUs extends GetView<CompanyProfileController> {
                 ? const SizedBox()
                 : Column(
                     children: [
-                      if (company.description != null && company.description!.isNotEmpty)
+                      if (company.description != null &&
+                          company.description!.isNotEmpty)
                         CustomInfoCard(
                           title: "About Company",
                           icon: HeroIcons.userCircle,
