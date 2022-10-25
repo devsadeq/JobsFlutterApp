@@ -57,10 +57,9 @@ class CustomLottie extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            SizedBox(height: 10.w),
             if (onTryAgain != null)
-              GestureDetector(
-                onTap: onTryAgain,
+              TextButton(
+                onPressed: onTryAgain,
                 child: Text(
                   "Try again",
                   style: GoogleFonts.poppins(
