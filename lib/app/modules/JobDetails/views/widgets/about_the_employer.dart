@@ -35,7 +35,7 @@ class AboutTheEmployer extends StatelessWidget {
               offset: const Offset(0, 10),
             ),
           ],
-          image:const  DecorationImage(
+          image: const DecorationImage(
             image: Svg('assets/header_bg.svg', color: Colors.white),
             fit: BoxFit.cover,
           ),
@@ -113,7 +113,6 @@ class AboutTheEmployer extends StatelessWidget {
                       HeroIcon(
                         HeroIcons.calendarDays,
                         color: Get.theme.colorScheme.onPrimary,
-                        // size: 20.w,
                       ),
                       Text(
                         //TODO: Ask backend boys to add this field
