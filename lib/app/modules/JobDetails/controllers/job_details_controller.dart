@@ -105,8 +105,8 @@ class JobDetailsController extends GetxController {
       Dialogs.spaceDialog(
         description: (job as Failure).reason.toString(),
         btnOkOnPress: onRetry,
-        dismissOnBackKeyPress: true,
-        dismissOnTouchOutside: true,
+        dismissOnBackKeyPress: false,
+        dismissOnTouchOutside: false,
       );
     }
   }

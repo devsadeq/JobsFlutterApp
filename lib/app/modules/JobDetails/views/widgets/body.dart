@@ -17,6 +17,7 @@ class Body extends GetView<JobDetailsController> {
       () => controller.job.when(
         idle: () => Container(),
         loading: () => const JobDetailsShimmer(),
+        failure: (err) => const JobDetailsShimmer(),
         success: (job) => CustomScrollView(
           slivers: [
             DetailsSliverAppBar(job: job!),
@@ -31,7 +32,6 @@ class Body extends GetView<JobDetailsController> {
             )
           ],
         ),
-        failure: (err) => const JobDetailsShimmer(),
       ),
     );
   }
