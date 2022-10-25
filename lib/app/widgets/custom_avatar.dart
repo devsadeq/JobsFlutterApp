@@ -16,37 +16,32 @@ class CustomAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: imageUrl,
-      height: height ?? 80.h,
-      imageBuilder: (context, imageProvider) => Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          image: DecorationImage(
-            image: imageProvider,
-            fit: BoxFit.contain,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(radius ?? 10000.r),
+      child: CachedNetworkImage(
+        imageUrl: imageUrl,
+        height: height ?? 80.h,
+        fit: BoxFit.contain,
+        placeholder: (context, url) => Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey[300],
+          ),
+          child: const Center(
+            child: CircularProgressIndicator(),
           ),
         ),
-      ),
-      placeholder: (context, url) => Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey[300],
-        ),
-        child: const Center(
-          child: CircularProgressIndicator(),
-        ),
-      ),
-      errorWidget: (context, url, error) => Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey[300],
-        ),
-        child: Center(
-          child: HeroIcon(
-            HeroIcons.exclamationCircle,
-            color: Colors.grey[500],
-            size: 0.5 * (height ?? 80.h),
+        errorWidget: (context, url, error) => Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey[300],
+          ),
+          child: Center(
+            child: HeroIcon(
+              HeroIcons.exclamationCircle,
+              color: Colors.grey[500],
+              size: 0.5 * (height ?? 80.h),
+            ),
           ),
         ),
       ),
