@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 
@@ -30,6 +31,8 @@ class CustomSaveButtonState extends State<CustomSaveButton>
 
   bool? get isLiked => _isLiked;
 
+  bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
@@ -57,16 +60,27 @@ class CustomSaveButtonState extends State<CustomSaveButton>
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: onTap,
-      child: HeroIcon(
-        HeroIcons.bookmark,
-        style: _isLiked ? HeroIconStyle.solid : null,
-        size: widget.size,
-        color: widget.color,
-      ),
+      child: isLoading
+          ? SizedBox(
+              height: widget.size,
+              width: widget.size,
+              child: const Center(
+                child: CupertinoActivityIndicator(),
+              ),
+            )
+          : HeroIcon(
+              HeroIcons.bookmark,
+              style: _isLiked ? HeroIconStyle.solid : null,
+              size: widget.size,
+              color: widget.color,
+            ),
     );
   }
 
   void onTap() {
+    setState(() {
+      isLoading = true;
+    });
     if (widget.onTap != null) {
       widget.onTap!(_isLiked).then((bool? isLiked) {
         _handleIsLikeChanged(isLiked);
@@ -79,7 +93,9 @@ class CustomSaveButtonState extends State<CustomSaveButton>
   void _handleIsLikeChanged(bool? isLiked) {
     if (isLiked != null && isLiked != _isLiked) {
       _isLiked = isLiked;
-
+      setState(() {
+        isLoading = false;
+      });
       if (mounted) {
         setState(() {
           if (_isLiked) {
