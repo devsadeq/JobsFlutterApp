@@ -43,7 +43,7 @@ class SearchResults extends GetView<SearchController> {
         failure: (e) => CustomLottie(
           asset: "assets/space.json",
           title: e!,
-          onTryAgain: () {},
+          onTryAgain: controller.onRetry,
         ),
       ),
     );
