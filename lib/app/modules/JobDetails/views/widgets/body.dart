@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../widgets/custom_lottie.dart';
 import '../../../../widgets/shimmer/job_details_shimmer.dart';
 import '../../controllers/job_details_controller.dart';
 import 'about_the_employer.dart';
@@ -32,13 +31,7 @@ class Body extends GetView<JobDetailsController> {
             )
           ],
         ),
-        failure: (e) => Center(
-          child: CustomLottie(
-            title: e!,
-            asset: "assets/space.json",
-            onTryAgain: controller.onRetry,
-          ),
-        ),
+        failure: (err) => const JobDetailsShimmer(),
       ),
     );
   }
