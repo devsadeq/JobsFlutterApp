@@ -21,7 +21,7 @@ class ShimmerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Get.theme.primaryColor.withOpacity(0.4),
+      baseColor: Get.theme.primaryColor.withOpacity(0.38),
       highlightColor: Get.theme.colorScheme.background,
       child: Container(
         width: width,
@@ -30,7 +30,7 @@ class ShimmerWidget extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(radius ?? 14.r),
-          color: Get.theme.primaryColor.withOpacity(0.4),
+          color: Get.theme.primaryColor.withOpacity(0.38),
         ),
         child: child,
       ),
