@@ -118,15 +118,15 @@ class HomeController extends GetxController {
     showDialogOnFailure();
   }
 
-  void _onRetry() {
+  void _onRetry() async {
     if (positions is Failure) {
-      getPositions();
+      await getPositions();
       showDialogOnFailure();
     } else if (featuredJobs is Failure) {
-      getFeaturedJobs();
+      await getFeaturedJobs();
       showDialogOnFailure();
     } else if (recentJobs is Failure) {
-      getRecentJobs();
+      await getRecentJobs();
       showDialogOnFailure();
     }
   }

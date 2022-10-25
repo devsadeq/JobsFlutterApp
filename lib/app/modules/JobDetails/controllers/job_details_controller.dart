@@ -33,7 +33,7 @@ class JobDetailsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getJobDetails();
+    loadPage();
   }
 
   @override
@@ -50,7 +50,6 @@ class JobDetailsController extends GetxController {
     final Status<JobOutDto> state = await _jobRepository.get(uuid: uuid);
     _rxJob.value = state;
     getSimilarJobs();
-    showDialogOnFailure();
   }
 
   Future<void> applyToJob(String jobId, String whyApply) async {
@@ -90,19 +89,22 @@ class JobDetailsController extends GetxController {
     return result;
   }
 
-  void onRetry() {
+  void loadPage() async {
+    await getJobDetails();
+    showDialogOnFailure();
+  }
+
+  void onRetry() async {
     _rxJob.value = const Status.loading();
-    getJobDetails();
+    await getJobDetails();
+    showDialogOnFailure();
   }
 
   void showDialogOnFailure() {
     if (job is Failure) {
       Dialogs.spaceDialog(
         description: (job as Failure).reason.toString(),
-        btnOkOnPress: () {
-          Get.back();
-          onRetry();
-        },
+        btnOkOnPress: onRetry,
         dismissOnBackKeyPress: true,
         dismissOnTouchOutside: true,
       );
