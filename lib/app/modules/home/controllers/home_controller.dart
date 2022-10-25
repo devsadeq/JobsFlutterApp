@@ -143,12 +143,10 @@ class HomeController extends GetxController {
 
   void _getErrDialog(String msg) {
     if (Get.isDialogOpen!) return;
-    Dialogs.errorDialog(
-      title: "Oops!",
+    Dialogs.spaceDialog(
       description: msg,
       dismissOnBackKeyPress: false,
       dismissOnTouchOutside: false,
-      btnOkText: "Retry",
       btnOkOnPress: () {
         Get.back();
         _onRetry();
