@@ -98,5 +98,4 @@ class AboutUs extends GetView<CompanyProfileController> {
       ),
     );
   }
-  // null aw
 }
