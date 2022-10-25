@@ -45,4 +45,8 @@ class SearchController extends GetxController {
     _rxResults.value = const Status.idle();
   }
 
+  void onRetry() {
+    getSearchResult();
+  }
+
 }
