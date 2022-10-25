@@ -146,6 +146,8 @@ class HomeController extends GetxController {
     Dialogs.errorDialog(
       title: "Oops!",
       description: msg,
+      dismissOnBackKeyPress: false,
+      dismissOnTouchOutside: false,
       btnOkText: "Retry",
       btnOkOnPress: () {
         Get.back();
