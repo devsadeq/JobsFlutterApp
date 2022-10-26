@@ -6,7 +6,6 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
-  static const CHOOSE = _Paths.CHOOSE;
   static const WAITTING = _Paths.WAITTING;
   static const SEARCH = _Paths.SEARCH;
   static const SAVED = _Paths.SAVED;
@@ -22,7 +21,6 @@ abstract class _Paths {
   static const HOME = '/home';
   static const LOGIN = '/login';
   static const REGISTER = '/register';
-  static const CHOOSE = '/choose';
   static const WAITTING = '/waiting';
   static const SEARCH = '/search';
   static const SAVED = '/saved';
