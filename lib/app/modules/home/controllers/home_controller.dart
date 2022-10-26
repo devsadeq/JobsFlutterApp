@@ -70,7 +70,6 @@ class HomeController extends GetxController {
 
   Future<void> getFeaturedJobs() async {
     _rxFeaturedJobs.value = const Status.loading();
-    await SavedController.to.getSavedJobs();
     final Status<List<JobOutDto>> state =
         await _jobRepository.getAll(isFeatured: true);
     _rxFeaturedJobs.value = state;
@@ -78,7 +77,6 @@ class HomeController extends GetxController {
 
   Future<void> getRecentJobs() async {
     _rxRecentJobs.value = const Status.loading();
-    await SavedController.to.getSavedJobs();
     final Status<List<JobOutDto>> state = await _jobRepository.getAll(
         position: chipTitle == "All" ? null : chipTitle);
     _rxRecentJobs.value = state;
