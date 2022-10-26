@@ -16,25 +16,26 @@ class Body extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 29.w),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            SizedBox(height: 118.h),
-            const Header(title: AppStrings.welcomeBack),
-            SizedBox(height: 77.h),
-            const LoginForm(),
-            SizedBox(height: 77.h),
-            ButtonWithText(
-              btnLabel: AppStrings.loginBtn,
-              firstTextSpan: AppStrings.youDoNotHaveAnAccountYet,
-              secondTextSpan: AppStrings.signup,
-              onTap: () => controller.onLoginSubmit(),
-              onTextTap: () => Get.toNamed(Routes.CHOOSE),
-            ),
-          ],
-        ),
-      ),
+      child: CustomScrollView(slivers: [
+        SliverFillRemaining(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Header(title: AppStrings.welcomeBack),
+              SizedBox(height: 30.h),
+              const LoginForm(),
+              SizedBox(height: 50.h),
+              ButtonWithText(
+                btnLabel: AppStrings.loginBtn,
+                firstTextSpan: AppStrings.youDoNotHaveAnAccountYet,
+                secondTextSpan: AppStrings.signup,
+                onTap: () => controller.onLoginSubmit(),
+                onTextTap: () => Get.toNamed(Routes.CHOOSE),
+              ),
+            ],
+          ),
+        )
+      ]),
     );
   }
 }
