@@ -16,32 +16,42 @@ class CustomAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(radius ?? 10000.r),
-      child: CachedNetworkImage(
-        imageUrl: imageUrl,
-        height: height ?? 80.h,
-        fit: BoxFit.contain,
-        placeholder: (context, url) => Container(
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      height: height ?? 80.h,
+      fit: BoxFit.contain,
+      imageBuilder: (context, imageProvider) => ClipRRect(
+        borderRadius: BorderRadius.circular(radius ?? 10000),
+        child: Container(
+          height: height ?? 80.h,
+          width: height ?? 80.h,
           decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.grey[300],
-          ),
-          child: const Center(
-            child: CircularProgressIndicator(),
+            image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
-        errorWidget: (context, url, error) => Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.grey[300],
-          ),
-          child: Center(
-            child: HeroIcon(
-              HeroIcons.exclamationCircle,
-              color: Colors.grey[500],
-              size: 0.5 * (height ?? 80.h),
-            ),
+      ),
+      placeholder: (context, url) => Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.grey[300],
+        ),
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+      errorWidget: (context, url, error) => Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.grey[300],
+        ),
+        child: Center(
+          child: HeroIcon(
+            HeroIcons.exclamationCircle,
+            color: Colors.grey[500],
+            size: 0.5 * (height ?? 80.h),
           ),
         ),
       ),
