@@ -18,11 +18,13 @@ class SearchResults extends GetView<SearchController> {
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
         success: (results) => results!.isEmpty
-            ? const CustomLottie(
-              title: "No matching company found.",
-              asset: "assets/empty.json",
-              description:
-                  "Please make sure your keywords are spelled correctly.",
+            ? FittedBox(
+          child: const CustomLottie(
+                title: "No matching company found.",
+                asset: "assets/empty.json",
+                description:
+                    "Please make sure your keywords \nare spelled correctly.",
+              ),
             )
             : ListView.builder(
                 itemCount: results.length,
