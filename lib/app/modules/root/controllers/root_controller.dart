@@ -1,17 +1,15 @@
-import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/auth/controllers/auth_controller.dart';
-import 'package:jobs_flutter_app/app/modules/saved/controllers/saved_controller.dart';
-import 'package:jobs_flutter_app/app/modules/search/controllers/search_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../../widgets/dialogs.dart';
+import '../../auth/controllers/auth_controller.dart';
 import '../../home/controllers/home_controller.dart';
+import '../../saved/controllers/saved_controller.dart';
+import '../../search/controllers/search_controller.dart';
 
 class RootController extends GetxController {
   static RootController get to => Get.find();
   final persistentTabController = PersistentTabController(initialIndex: 0);
-  final zoomDrawerController = ZoomDrawerController();
 
   @override
   void onInit() {
@@ -27,11 +25,6 @@ class RootController extends GetxController {
   void onClose() {
     super.onClose();
     persistentTabController.dispose();
-  }
-
-  void toggleDrawer() {
-    zoomDrawerController.toggle?.call();
-    update();
   }
 
   void onHomeDoubleClick() {

@@ -5,6 +5,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:jobs_flutter_app/app/modules/root/controllers/drawer_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../home/views/home_view.dart';
@@ -18,7 +19,7 @@ class RootView extends GetView<RootController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<RootController>(
+    return GetBuilder<MyDrawerController>(
       builder: (_) => SafeArea(
         child: ZoomDrawer(
           controller: _.zoomDrawerController,
