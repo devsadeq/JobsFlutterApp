@@ -16,24 +16,24 @@ class Body extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    final userType = Get.arguments;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 29.w),
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(height: 50.h),
             const Header(title: AppStrings.createAnAccount),
             SizedBox(height: 30.h),
-            if (userType == UserType.CUSTOMER) const EmployeeForm(),
-            if (userType == UserType.COMPANY) const EmployerForm(),
+            if (controller.registerType == RegisterType.CUSTOMER)
+              const EmployeeForm(),
+            if (controller.registerType == RegisterType.COMPANY)
+              const EmployerForm(),
             SizedBox(height: 50.h),
             ButtonWithText(
               btnLabel: AppStrings.signup.toUpperCase(),
               firstTextSpan: AppStrings.alreadyHaveAnAccount,
               secondTextSpan: AppStrings.signIn,
-              onTap: () => controller.onRegisterSubmit(userType),
+              onTap:  controller.onRegisterSubmit,
               onTextTap: () => Get.offNamed(Routes.LOGIN),
             ),
             SizedBox(height: 50.h),

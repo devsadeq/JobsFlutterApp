@@ -1,4 +1,4 @@
-enum UserType {
+enum RegisterType {
   COMPANY,
   CUSTOMER,
   NOTSELECTED,

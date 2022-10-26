@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/values/strings.dart';
-import '../../../../../routes/app_pages.dart';
 import '../../../controllers/auth_controller.dart';
 import '../../widgets/button_with_text.dart';
 import '../../widgets/header.dart';
@@ -30,7 +29,7 @@ class Body extends GetView<AuthController> {
                 firstTextSpan: AppStrings.youDoNotHaveAnAccountYet,
                 secondTextSpan: AppStrings.signup,
                 onTap: () => controller.onLoginSubmit(),
-                onTextTap: () => Get.toNamed(Routes.CHOOSE),
+                onTextTap: controller.onSignUp,
               ),
             ],
           ),
