@@ -17,12 +17,13 @@ class SavedJobs extends GetView<SavedController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: jobs.length,
+    return AnimatedList(
+      key: controller.animatedListKey,
+      initialItemCount: jobs.length,
       controller: controller.savedScrollController,
       scrollDirection: Axis.vertical,
       physics: const BouncingScrollPhysics(),
-      itemBuilder: (context, index) => CustomJobCard(
+      itemBuilder: (context, index, animation) => CustomJobCard(
         avatar: "${ApiRoutes.BASE_URL}${jobs[index].company!.image}",
         companyName: jobs[index].company!.name!,
         employmentType: jobs[index].employmentType,
