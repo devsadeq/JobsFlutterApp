@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/modules/home/controllers/home_controller.dart';
+import 'package:heroicons/heroicons.dart';
 
+import '../../../data/remote/api/api_routes.dart';
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../data/remote/repositories/customer/customer_repository.dart';
 import '../../../di/locator.dart';
+import '../../../widgets/custom_job_card.dart';
 import '../../auth/controllers/auth_controller.dart';
+import '../../home/controllers/home_controller.dart';
 import '../../root/controllers/root_controller.dart';
 
 class SavedController extends GetxController {
@@ -15,6 +18,7 @@ class SavedController extends GetxController {
   final _rootController = Get.find<RootController>();
   final _authController = AuthController.to;
   final _savedScrollController = ScrollController();
+  final animatedListKey = GlobalKey<AnimatedListState>();
 
   ScrollController get savedScrollController => _savedScrollController;
 
@@ -58,7 +62,12 @@ class SavedController extends GetxController {
 
   Future<bool?> onSaveButtonTapped(bool isSaved, String jobUuid) async {
     final result = await onSaveStateChange(isSaved, jobUuid);
+    final savedList = (savedJobs as Success).data!;
     if (result != null) {
+      removeSavedJobFromAnimatedList(
+        savedList.indexWhere((job) => job.id == jobUuid),
+      );
+      if (savedList.isEmpty) getSavedJobs();
       HomeController.to.getFeaturedJobs();
       HomeController.to.getRecentJobs();
     }
@@ -81,5 +90,29 @@ class SavedController extends GetxController {
 
   void onRetry() {
     getSavedJobs();
+  }
+
+  void removeSavedJobFromAnimatedList(int index) {
+    final item = (savedJobs as Success).data![index];
+    (savedJobs as Success).data!.removeAt(index);
+    animatedListKey.currentState!.removeItem(index, (context, animation) {
+      return SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(1, 0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: CustomJobCard(
+          avatar: "${ApiRoutes.BASE_URL}${item.company!.image}",
+          companyName: item.company!.name!,
+          employmentType: item.employmentType,
+          jobPosition: item.position,
+          location: item.location,
+          actionIcon: HeroIcons.bookmark,
+          publishTime: item.createdAt!,
+          workplace: item.workplace,
+          description: item.description,
+        ),
+      );
+    });
   }
 }
