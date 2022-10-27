@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -7,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:intl/intl.dart';
 
+import 'custom_avatar.dart';
 import 'custom_save_button.dart';
 import 'custom_tag.dart';
 
@@ -153,17 +153,9 @@ class _CardTile extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: onAvatarTap ?? () {},
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(50.r),
-            child: CachedNetworkImage(
-              imageUrl: avatar,
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              errorWidget: (context, url, error) =>
-                  const HeroIcon(HeroIcons.exclamationCircle),
-              height: 46.h,
-            ),
+          child: CustomAvatar(
+            imageUrl: avatar,
+            height: 46.h,
           ),
         ),
         SizedBox(width: 5.w),

@@ -22,7 +22,6 @@ class Header extends StatelessWidget {
             color: const Color(0xff14171A),
           ),
         ),
-        SizedBox(height: 5.h),
       ],
     );
   }

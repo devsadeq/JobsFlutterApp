@@ -10,14 +10,12 @@ class CompanyTabView extends GetView<CompanyProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: TabBarView(
-        controller: controller.tabController,
-        children: const [
-          AboutUs(),
-          JobsList(),
-        ],
-      ),
+    return TabBarView(
+      controller: controller.tabController,
+      children: const [
+        AboutUs(),
+        JobsList(),
+      ],
     );
   }
 }

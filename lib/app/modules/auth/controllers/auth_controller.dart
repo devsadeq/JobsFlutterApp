@@ -15,7 +15,9 @@ import '../../../data/remote/repositories/auth_repository.dart';
 import '../../../di/locator.dart';
 import '../../../domain/enums/user_type.dart';
 import '../../../routes/app_pages.dart';
+import '../../../utils/functions.dart';
 import '../../../widgets/snackbars.dart';
+import '../views/login/widgets/choose_bottom_sheet.dart';
 
 class AuthController extends GetxController {
   static AuthController get to => Get.find();
@@ -82,6 +84,10 @@ class AuthController extends GetxController {
 
   bool get isObscure => _rxIsObscure.value;
 
+  final Rx<RegisterType> _rxRegisterType = Rx(RegisterType.NOTSELECTED);
+
+  RegisterType get registerType => _rxRegisterType.value;
+
   @override
   void onInit() {
     super.onInit();
@@ -118,7 +124,7 @@ class AuthController extends GetxController {
   }
 
   void onCountryChanged(Country country) {
-    _rxCountry.value = country.dialCode;
+    _rxCountry.value = "+${country.dialCode}";
   }
 
   void onLoginSubmit() {
@@ -127,8 +133,8 @@ class AuthController extends GetxController {
     }
   }
 
-  void onRegisterSubmit(UserType userType) {
-    if (userType == UserType.CUSTOMER &&
+  void onRegisterSubmit() {
+    if (registerType == RegisterType.CUSTOMER &&
         customerFormKey.currentState!.validate()) {
       _registerCustomer();
     } else if (companyFormKey.currentState!.validate()) {
@@ -162,7 +168,7 @@ class AuthController extends GetxController {
         Get.offAllNamed(Routes.ROOT);
         _clearTextControllers();
       },
-      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+      failure: showSnackBarOnFailure,
     );
   }
 
@@ -189,7 +195,7 @@ class AuthController extends GetxController {
         Get.offAllNamed(Routes.ROOT);
         _clearTextControllers();
       },
-      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+      failure: showSnackBarOnFailure,
     );
   }
 
@@ -209,7 +215,7 @@ class AuthController extends GetxController {
         Get.offAllNamed(Routes.WAITTING);
         _clearTextControllers();
       },
-      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+      failure: showSnackBarOnFailure,
     );
   }
 
@@ -253,5 +259,25 @@ class AuthController extends GetxController {
     companyCountryController.clear();
     companyAddressController.clear();
     companyPasswordController.clear();
+  }
+
+  void onSignUp() {
+    popupBottomSheet(
+      bottomSheetBody: const ChooseBottomSheetBody(),
+      isDismissible: true,
+      enableDrag: true,
+    );
+  }
+
+  void onSelectRegisterType(RegisterType type) {
+    if (type != RegisterType.NOTSELECTED) {
+      _rxRegisterType.value = type;
+      Get.offAllNamed(Routes.REGISTER);
+    }
+  }
+
+  void showSnackBarOnFailure(String? err) {
+    Get.closeAllSnackbars();
+    SnackBars.failure("Oops!", err.toString());
   }
 }

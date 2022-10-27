@@ -39,7 +39,7 @@ class SimilarJobCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap ?? () {},
       child: Container(
-        width: 0.65.sw,
+        width: 0.80.sw,
         padding: EdgeInsets.all(20.w),
         margin: EdgeInsets.only(left: 16.w, top: 16.h, bottom: 30.h),
         decoration: BoxDecoration(
@@ -182,27 +182,29 @@ class _CardTags extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        CustomTag(
-          title: workplace,
-          icon: HeroIcons.briefcase,
-          backgroundColor: Get.theme.backgroundColor,
-          titleColor: Get.theme.colorScheme.secondary,
-        ),
-        CustomTag(
-          title: employmentType,
-          icon: HeroIcons.fire,
-          backgroundColor: Get.theme.backgroundColor,
-          titleColor: Get.theme.colorScheme.secondary,
-        ),
-        CustomTag(
-          title: location,
-          icon: HeroIcons.mapPin,
-          backgroundColor: Get.theme.backgroundColor,
-          titleColor: Get.theme.colorScheme.secondary,
-        ),
-      ],
+    return FittedBox(
+      child: Row(
+        children: [
+          CustomTag(
+            title: workplace,
+            icon: HeroIcons.briefcase,
+            backgroundColor: Get.theme.backgroundColor,
+            titleColor: Get.theme.colorScheme.secondary,
+          ),
+          CustomTag(
+            title: employmentType,
+            icon: HeroIcons.fire,
+            backgroundColor: Get.theme.backgroundColor,
+            titleColor: Get.theme.colorScheme.secondary,
+          ),
+          CustomTag(
+            title: location,
+            icon: HeroIcons.mapPin,
+            backgroundColor: Get.theme.backgroundColor,
+            titleColor: Get.theme.colorScheme.secondary,
+          ),
+        ],
+      ),
     );
   }
 }

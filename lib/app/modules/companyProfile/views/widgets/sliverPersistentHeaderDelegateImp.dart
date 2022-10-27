@@ -41,10 +41,10 @@ class SliverPersistentHeaderDelegateImp extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => tabBar.preferredSize.height * 1.6;
+  double get maxExtent => tabBar.preferredSize.height * 1.5;
 
   @override
-  double get minExtent => tabBar.preferredSize.height * 1.6;
+  double get minExtent => tabBar.preferredSize.height * 1.5;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

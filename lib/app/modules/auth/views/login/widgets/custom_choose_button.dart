@@ -25,8 +25,9 @@ class CustomChooseButton extends StatelessWidget {
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.all(10.w),
-          backgroundColor: Get.theme.cardColor,
+          backgroundColor: Colors.white,
           foregroundColor: Get.theme.colorScheme.primary,
+          elevation: 0.0,
           side: BorderSide(
             color: Get.theme.colorScheme.primary,
             width: 1.5,
@@ -40,8 +41,9 @@ class CustomChooseButton extends StatelessWidget {
               height: 40.h,
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50.r),
-                  color: Get.theme.colorScheme.primary.withOpacity(0.1)),
+                borderRadius: BorderRadius.circular(50.r),
+                color: Get.theme.colorScheme.primary.withOpacity(0.1),
+              ),
               child: Center(
                 child: HeroIcon(
                   style: HeroIconStyle.solid,
@@ -53,10 +55,9 @@ class CustomChooseButton extends StatelessWidget {
             Text(
               title,
               style: GoogleFonts.poppins(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w700,
-                color: Get.theme.colorScheme.primary
-              ),
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w700,
+                  color: Get.theme.colorScheme.primary),
             ),
           ],
         ),
