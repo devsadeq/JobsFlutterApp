@@ -124,7 +124,7 @@ class AuthController extends GetxController {
   }
 
   void onCountryChanged(Country country) {
-    _rxCountry.value = country.dialCode;
+    _rxCountry.value = "+${country.dialCode}";
   }
 
   void onLoginSubmit() {
