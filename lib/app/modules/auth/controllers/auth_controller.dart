@@ -168,7 +168,7 @@ class AuthController extends GetxController {
         Get.offAllNamed(Routes.ROOT);
         _clearTextControllers();
       },
-      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+      failure: showSnackBarOnFailure,
     );
   }
 
@@ -195,7 +195,7 @@ class AuthController extends GetxController {
         Get.offAllNamed(Routes.ROOT);
         _clearTextControllers();
       },
-      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+      failure: showSnackBarOnFailure,
     );
   }
 
@@ -215,7 +215,7 @@ class AuthController extends GetxController {
         Get.offAllNamed(Routes.WAITTING);
         _clearTextControllers();
       },
-      failure: (e) => SnackBars.failure("Oops!", e.toString()),
+      failure: showSnackBarOnFailure,
     );
   }
 
@@ -274,5 +274,10 @@ class AuthController extends GetxController {
       _rxRegisterType.value = type;
       Get.offAllNamed(Routes.REGISTER);
     }
+  }
+
+  void showSnackBarOnFailure(String? err) {
+    Get.closeAllSnackbars();
+    SnackBars.failure("Oops!", err.toString());
   }
 }
