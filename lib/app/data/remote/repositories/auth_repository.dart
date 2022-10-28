@@ -9,7 +9,7 @@ import '../dto/auth/login_out_dto.dart';
 import '../dto/auth/register_company_out_dto.dart';
 import '../dto/auth/register_customer_out_dto.dart';
 import '../exceptions/dio_exceptions.dart';
-import '../services/auth_service.dart';
+import '../services/auth/auth_service.dart';
 
 class AuthRepository implements IAuthRepository<Status<dynamic>> {
   final AuthService authService;
