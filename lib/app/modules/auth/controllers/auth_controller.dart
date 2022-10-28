@@ -64,19 +64,18 @@ class AuthController extends GetxController {
   UserEntity? get currentUser => _rxnCurrentUser.value;
 
   final Rx<Status<RegisterCustomerOutDto>> _rxRegisterCustomerState =
-      Rx<Status<RegisterCustomerOutDto>>(const Status.idle());
+      Rx(const Status.idle());
 
   Status<RegisterCustomerOutDto> get registerCustomerState =>
       _rxRegisterCustomerState.value;
 
   final Rx<Status<RegisterCompanyOutDto>> _rxRegisterCompanyState =
-      Rx<Status<RegisterCompanyOutDto>>(const Status.idle());
+      Rx(const Status.idle());
 
   Status<RegisterCompanyOutDto> get registerCompanyState =>
       _rxRegisterCompanyState.value;
 
-  final Rx<Status<LoginOutDto>> _rxLoginState =
-      Rx<Status<LoginOutDto>>(const Status.idle());
+  final Rx<Status<LoginOutDto>> _rxLoginState = Rx(const Status.idle());
 
   Status<LoginOutDto> get loginState => _rxLoginState.value;
 
