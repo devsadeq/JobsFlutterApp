@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 
-import '../../base/i_choice_repository.dart';
 import '../../base/status.dart';
 import '../../dto/choices/Position_out_dto.dart';
 import '../../exceptions/dio_exceptions.dart';
 import '../../services/position/i_choice_service.dart';
+import 'i_choice_repository.dart';
 
 class PositionRepository extends IChoiceRepository<PositionOutDto> {
   final IChoiceService service;
