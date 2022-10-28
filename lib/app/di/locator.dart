@@ -5,19 +5,19 @@ import 'package:get_storage/get_storage.dart';
 import '../data/local/services/storage_service.dart';
 import '../data/remote/api/dio_client.dart';
 import '../data/remote/repositories/application/application_repository.dart';
-import '../data/remote/repositories/auth_repository.dart';
-import '../data/remote/repositories/company_repository.dart';
+import '../data/remote/repositories/auth/auth_repository.dart';
+import '../data/remote/repositories/company/company_repository.dart';
 import '../data/remote/repositories/customer/customer_repository.dart';
 import '../data/remote/repositories/job/job_repository.dart';
-import '../data/remote/repositories/position_repository.dart';
-import '../data/remote/repositories/search_repository.dart';
+import '../data/remote/repositories/position/position_repository.dart';
+import '../data/remote/repositories/search/search_repository.dart';
 import '../data/remote/services/application/application_service.dart';
-import '../data/remote/services/auth_service.dart';
-import '../data/remote/services/comapny_service.dart';
+import '../data/remote/services/auth/auth_service.dart';
+import '../data/remote/services/company/comapny_service.dart';
 import '../data/remote/services/customer/customer_service.dart';
 import '../data/remote/services/job/job_service.dart';
-import '../data/remote/services/position_choice_service.dart';
-import '../data/remote/services/search_service.dart';
+import '../data/remote/services/position/position_choice_service.dart';
+import '../data/remote/services/search/search_service.dart';
 
 final getIt = GetIt.instance;
 

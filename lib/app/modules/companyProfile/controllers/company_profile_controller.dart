@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/company/Company_out_dto.dart';
 import '../../../data/remote/dto/job/job_out_dto.dart';
-import '../../../data/remote/repositories/company_repository.dart';
+import '../../../data/remote/repositories/company/company_repository.dart';
 import '../../../data/remote/repositories/job/job_repository.dart';
 import '../../../di/locator.dart';
 import '../../../widgets/dialogs.dart';

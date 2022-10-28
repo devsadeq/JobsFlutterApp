@@ -11,7 +11,7 @@ import '../../../data/remote/dto/auth/register_company_dto.dart';
 import '../../../data/remote/dto/auth/register_company_out_dto.dart';
 import '../../../data/remote/dto/auth/register_customer_dto.dart';
 import '../../../data/remote/dto/auth/register_customer_out_dto.dart';
-import '../../../data/remote/repositories/auth_repository.dart';
+import '../../../data/remote/repositories/auth/auth_repository.dart';
 import '../../../di/locator.dart';
 import '../../../domain/enums/user_type.dart';
 import '../../../routes/app_pages.dart';

@@ -1,6 +1,6 @@
 import 'package:jobs_flutter_app/app/data/remote/base/idto.dart';
 
-import '../../local/base/i_entity.dart';
+import '../../../local/base/i_entity.dart';
 
 abstract class IAuthRepository<T> {
   Future<T> login({required IDto dto});
