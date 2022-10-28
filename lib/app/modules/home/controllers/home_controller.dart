@@ -6,7 +6,7 @@ import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/choices/Position_out_dto.dart';
 import '../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../data/remote/repositories/job/job_repository.dart';
-import '../../../data/remote/repositories/position_repository.dart';
+import '../../../data/remote/repositories/position/position_repository.dart';
 import '../../../di/locator.dart';
 import '../../saved/controllers/saved_controller.dart';
 

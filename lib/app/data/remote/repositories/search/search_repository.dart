@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/isearch_repository.dart';
-import 'package:jobs_flutter_app/app/data/remote/base/status.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/search/search_out_dto.dart';
 
-import '../base/iservice.dart';
-import '../exceptions/dio_exceptions.dart';
+import '../../base/status.dart';
+import '../../dto/search/search_out_dto.dart';
+import '../../exceptions/dio_exceptions.dart';
+import '../../services/search/i_search_service.dart';
+import 'i_search_repository.dart';
 
 class SearchRepository extends ISearchRepository<SearchOutDto> {
-  final OldIJobService service;
+  final ISearchService service;
 
   SearchRepository({required this.service});
 

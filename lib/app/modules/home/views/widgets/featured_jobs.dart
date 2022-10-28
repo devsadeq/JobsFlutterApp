@@ -49,7 +49,7 @@ class FeaturedJobs extends GetView<HomeController> {
                     controller.onSaveButtonTapped(isSaved, jobs[index].id!),
               ),
               options: CarouselOptions(
-                height: 1.sh/4.6,
+                height: 1.sh/4.4,
                 viewportFraction: 1,
                 initialPage: 0,
                 onPageChanged: controller.updateIndicatorValue,

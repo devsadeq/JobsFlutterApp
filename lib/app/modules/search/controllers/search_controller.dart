@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/search/search_out_dto.dart';
-import '../../../data/remote/repositories/search_repository.dart';
+import '../../../data/remote/repositories/search/search_repository.dart';
 import '../../../di/locator.dart';
 
 class SearchController extends GetxController {

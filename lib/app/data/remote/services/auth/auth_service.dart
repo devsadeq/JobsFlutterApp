@@ -1,9 +1,9 @@
 import 'package:dio/src/response.dart';
 
-import '../api/api_routes.dart';
-import '../api/dio_client.dart';
-import '../base/iauth_service.dart';
-import '../base/idto.dart';
+import '../../api/api_routes.dart';
+import '../../api/dio_client.dart';
+import 'i_auth_service.dart';
+import '../../base/idto.dart';
 
 class AuthService implements IAuthService<IDto> {
   final DioClient dioClient;
