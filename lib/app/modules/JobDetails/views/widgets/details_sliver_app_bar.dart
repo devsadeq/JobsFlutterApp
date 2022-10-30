@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
 import '../../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../../utils/functions.dart';
 import '../../../../widgets/custom_save_button.dart';
 import '../../../saved/controllers/saved_controller.dart';
 import '../../controllers/job_details_controller.dart';
@@ -26,7 +27,10 @@ class DetailsSliverAppBar extends GetView<JobDetailsController> {
       leading: Padding(
         padding: EdgeInsets.all(6.w),
         child: IconButton(
-          onPressed: () => Get.back(),
+          onPressed: () {
+            Get.back();
+            setDefaultStatusBar();
+          },
           style: IconButton.styleFrom(
             backgroundColor: Colors.white.withOpacity(0.2),
             padding: EdgeInsets.zero,

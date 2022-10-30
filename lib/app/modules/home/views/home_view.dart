@@ -15,30 +15,28 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Get.theme.backgroundColor,
-        appBar: CustomAppBar(
-          leading: Padding(
-            padding: EdgeInsets.only(left: 16.w, bottom: 8.w, top: 8.w),
-            child: GestureDetector(
-              onTap: () => MyDrawerController.to.toggleDrawer(),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(25.r),
-                child: CachedNetworkImage(
-                  imageUrl: AppStrings.avatarUrl,
-                  placeholder: (context, url) => Container(),
-                  errorWidget: (context, url, error) =>
-                      const HeroIcon(HeroIcons.exclamationCircle),
-                  height: 46.h,
-                ),
+    return Scaffold(
+      backgroundColor: Get.theme.backgroundColor,
+      appBar: CustomAppBar(
+        leading: Padding(
+          padding: EdgeInsets.only(left: 16.w, bottom: 8.w, top: 8.w),
+          child: GestureDetector(
+            onTap: () => MyDrawerController.to.toggleDrawer(),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(25.r),
+              child: CachedNetworkImage(
+                imageUrl: AppStrings.avatarUrl,
+                placeholder: (context, url) => Container(),
+                errorWidget: (context, url, error) =>
+                    const HeroIcon(HeroIcons.exclamationCircle),
+                height: 46.h,
               ),
             ),
           ),
-          title: "Job Finder",
         ),
-        body: const Body(),
+        title: "Job Finder",
       ),
+      body: const SafeArea(child: Body()),
     );
   }
 }

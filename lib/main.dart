@@ -1,8 +1,10 @@
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:jobs_flutter_app/app/utils/functions.dart';
 
 import 'app/core/theme/app_theme.dart';
 import 'app/di/locator.dart';
@@ -18,6 +20,7 @@ void main() async {
   await GetStorage.init();
   await CountryCodes.init();
   Get.put<MyDrawerController>(MyDrawerController());
+  setDefaultStatusBar();
   runApp(
     // DevicePreview(
     //   enabled: !kReleaseMode,

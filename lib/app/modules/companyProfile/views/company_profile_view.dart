@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controllers/company_profile_controller.dart';
@@ -9,11 +10,15 @@ class CompanyProfileView extends GetView<CompanyProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Get.theme.backgroundColor,
-        body: const Body(),
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Get.theme.primaryColor,
+        statusBarIconBrightness: Brightness.light,
       ),
+    );
+    return Scaffold(
+      backgroundColor: Get.theme.backgroundColor,
+      body: const SafeArea(child: Body()),
     );
   }
 }

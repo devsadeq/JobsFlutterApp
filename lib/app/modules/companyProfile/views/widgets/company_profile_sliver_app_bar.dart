@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
 import '../../../../data/remote/dto/company/Company_out_dto.dart';
+import '../../../../utils/functions.dart';
 import '../../controllers/company_profile_controller.dart';
 import 'header.dart';
 
@@ -25,7 +26,10 @@ class CompanyProfileSliverAppBar extends GetView<CompanyProfileController> {
       leading: Padding(
         padding: EdgeInsets.all(6.w),
         child: IconButton(
-          onPressed: () => Get.back(),
+          onPressed: () {
+            Get.back();
+            setDefaultStatusBar();
+          },
           style: IconButton.styleFrom(
             backgroundColor: Colors.white.withOpacity(0.2),
             padding: EdgeInsets.zero,

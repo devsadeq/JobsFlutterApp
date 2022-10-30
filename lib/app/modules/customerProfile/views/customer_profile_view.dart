@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controllers/customer_profile_controller.dart';
@@ -9,9 +10,13 @@ class CustomerProfileView extends GetView<CustomerProfileController> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Get.theme.primaryColor,
+      statusBarIconBrightness: Brightness.light,
+    ));
     return Scaffold(
       backgroundColor: Get.theme.backgroundColor,
-      body: const Body(),
+      body: const SafeArea(child: Body()),
     );
   }
 }
