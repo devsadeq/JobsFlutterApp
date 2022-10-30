@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -25,5 +26,12 @@ popupBottomSheet({
     isScrollControlled: true,
     backgroundColor: Colors.white,
   );
+}
+
+void setDefaultStatusBar() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Color(0xffF5F8FA),
+    statusBarIconBrightness: Brightness.dark,
+  ));
 }
 
