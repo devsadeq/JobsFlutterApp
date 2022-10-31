@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controllers/job_details_controller.dart';
@@ -10,12 +11,20 @@ class JobDetailsView extends GetView<JobDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Body(),
-        bottomNavigationBar: DetailsBottomNavBar(),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(
+          statusBarColor: Get.theme.primaryColor,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+        child: const SafeArea(
+          child: Body(),
+        ),
       ),
+      bottomNavigationBar: const DetailsBottomNavBar(),
     );
   }
 }

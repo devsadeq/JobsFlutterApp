@@ -1,12 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:heroicons/heroicons.dart';
 
-import '../../../core/values/strings.dart';
+import '../../../data/remote/api/api_routes.dart';
 import '../../../widgets/custom_appbar.dart';
-import '../../root/controllers/drawer_controller.dart';
+import '../../../widgets/custom_avatar.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/body.dart';
 
@@ -22,15 +20,16 @@ class HomeView extends GetView<HomeController> {
           leading: Padding(
             padding: EdgeInsets.only(left: 16.w, bottom: 8.w, top: 8.w),
             child: GestureDetector(
-              onTap: () => MyDrawerController.to.toggleDrawer(),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(25.r),
-                child: CachedNetworkImage(
-                  imageUrl: AppStrings.avatarUrl,
-                  placeholder: (context, url) => Container(),
-                  errorWidget: (context, url, error) =>
-                      const HeroIcon(HeroIcons.exclamationCircle),
-                  height: 46.h,
+              onTap: () => Scaffold.of(context).openDrawer(),
+              child: Obx(
+                () => controller.customerAvatar.when(
+                  idle: () => const SizedBox(),
+                  loading: () => const SizedBox(),
+                  success: (data) => CustomAvatar(
+                    imageUrl: "${ApiRoutes.BASE_URL}$data",
+                    height: 46.h,
+                  ),
+                  failure: (error) => const SizedBox(),
                 ),
               ),
             ),

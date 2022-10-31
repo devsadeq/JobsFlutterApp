@@ -19,7 +19,7 @@ class Header extends GetView<JobDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 50.h),
+      padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 30.h),
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: Svg('assets/header_bg.svg', color: Colors.white),

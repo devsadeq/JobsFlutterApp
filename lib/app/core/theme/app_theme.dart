@@ -56,7 +56,7 @@ class AppTheme {
   static final _lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: blueColor,
-      elevation: 20,
+      elevation: 10,
       textStyle: _lightTextTheme.button,
       shadowColor: blueColor.withOpacity(0.25),
       foregroundColor: backgroundColor,

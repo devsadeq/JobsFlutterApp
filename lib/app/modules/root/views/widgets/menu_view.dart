@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -6,10 +5,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-import '../../../../core/values/strings.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../../widgets/custom_avatar.dart';
 import '../../../auth/controllers/auth_controller.dart';
-import '../../controllers/drawer_controller.dart';
+import '../../../home/controllers/home_controller.dart';
 import '../../controllers/root_controller.dart';
 
 class MenuView extends GetView<RootController> {
@@ -17,41 +17,43 @@ class MenuView extends GetView<RootController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const _Header(),
-        SizedBox(height: 20.h),
-        MenuItem(
-          icon: HeroIcons.user,
-          title: "Profile",
-          onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
-        ),
-        const MenuItem(icon: HeroIcons.bell, title: "Notifications"),
-        const MenuItem(
-          icon: HeroIcons.language,
-          title: "Language",
-          subtitle: "English",
-        ),
-        const MenuItem(
-          icon: HeroIcons.sun,
-          title: "Theme",
-          subtitle: "Light",
-        ),
-        const Spacer(),
-        MenuItem(
-          icon: HeroIcons.arrowLeftOnRectangle,
-          title: "Logout",
-          onTap: controller.logout,
-          textColor: Get.theme.errorColor,
-        ),
-        SizedBox(height: 20.h),
-      ],
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const _Header(),
+          SizedBox(height: 20.h),
+          MenuItem(
+            icon: HeroIcons.user,
+            title: "Profile",
+            onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
+          ),
+          const MenuItem(icon: HeroIcons.bell, title: "Notifications"),
+          const MenuItem(
+            icon: HeroIcons.language,
+            title: "Language",
+            subtitle: "English",
+          ),
+          const MenuItem(
+            icon: HeroIcons.sun,
+            title: "Theme",
+            subtitle: "Light",
+          ),
+          const Spacer(),
+          MenuItem(
+            icon: HeroIcons.arrowLeftOnRectangle,
+            title: "Logout",
+            onTap: controller.logout,
+            textColor: Get.theme.errorColor,
+          ),
+          SizedBox(height: 20.h),
+        ],
+      ),
     );
   }
 }
 
-class _Header extends GetView<MyDrawerController> {
+class _Header extends GetView<RootController> {
   const _Header({Key? key}) : super(key: key);
 
   @override
@@ -75,22 +77,20 @@ class _Header extends GetView<MyDrawerController> {
               children: [
                 GestureDetector(
                   onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(1000.r),
-                    child: CachedNetworkImage(
-                      imageUrl: AppStrings.avatarUrl,
-                      placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(),
+                  child: Obx(
+                    () => HomeController.to.customerAvatar.when(
+                      idle: () => const SizedBox(),
+                      loading: () => const SizedBox(),
+                      success: (data) => CustomAvatar(
+                        imageUrl: "${ApiRoutes.BASE_URL}$data",
+                        height: 55.h,
                       ),
-                      errorWidget: (context, url, error) => const HeroIcon(
-                        HeroIcons.exclamationCircle,
-                      ),
-                      height: 55.h,
+                      failure: (error) => const SizedBox(),
                     ),
                   ),
                 ),
                 IconButton(
-                  onPressed: controller.zoomDrawerController.close,
+                  onPressed: () => Scaffold.of(context).closeDrawer(),
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
                   style: IconButton.styleFrom(

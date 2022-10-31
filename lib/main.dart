@@ -1,5 +1,6 @@
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,7 +10,6 @@ import 'app/di/locator.dart';
 import 'app/modules/auth/bindings/auth_binding.dart';
 import 'app/modules/auth/controllers/auth_controller.dart';
 import 'app/modules/auth/views/login/login_view.dart';
-import 'app/modules/root/controllers/drawer_controller.dart';
 import 'app/modules/root/views/root_view.dart';
 import 'app/routes/app_pages.dart';
 
@@ -17,7 +17,10 @@ void main() async {
   setupLocator();
   await GetStorage.init();
   await CountryCodes.init();
-  Get.put<MyDrawerController>(MyDrawerController());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(
     // DevicePreview(
     //   enabled: !kReleaseMode,
