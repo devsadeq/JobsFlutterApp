@@ -17,6 +17,10 @@ void main() async {
   setupLocator();
   await GetStorage.init();
   await CountryCodes.init();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(
     // DevicePreview(
     //   enabled: !kReleaseMode,
