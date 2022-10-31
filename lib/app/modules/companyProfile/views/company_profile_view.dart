@@ -10,15 +10,16 @@ class CompanyProfileView extends GetView<CompanyProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Get.theme.primaryColor,
-        statusBarIconBrightness: Brightness.light,
-      ),
-    );
     return Scaffold(
       backgroundColor: Get.theme.backgroundColor,
-      body: const SafeArea(child: Body()),
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle(
+            statusBarColor: Get.theme.primaryColor,
+            statusBarIconBrightness: Brightness.light,
+            systemNavigationBarColor: Colors.white,
+            systemNavigationBarIconBrightness: Brightness.dark,
+          ),
+          child: const SafeArea(child: Body())),
     );
   }
 }

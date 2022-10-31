@@ -11,16 +11,20 @@ class JobDetailsView extends GetView<JobDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Get.theme.primaryColor,
-        statusBarIconBrightness: Brightness.light,
-      ),
-    );
-    return const Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(child: Body()),
-      bottomNavigationBar: DetailsBottomNavBar(),
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(
+          statusBarColor: Get.theme.primaryColor,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+        child: const SafeArea(
+          child: Body(),
+        ),
+      ),
+      bottomNavigationBar: const DetailsBottomNavBar(),
     );
   }
 }

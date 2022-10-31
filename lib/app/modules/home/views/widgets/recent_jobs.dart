@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:jobs_flutter_app/app/widgets/custom_lottie.dart';
 
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../data/remote/dto/job/job_out_dto.dart';
 import '../../../../routes/app_pages.dart';
-import '../../../../data/remote/api/api_routes.dart';
 import '../../../../widgets/custom_job_card.dart';
+import '../../../../widgets/custom_lottie.dart';
+import '../../../../widgets/section_header.dart';
 import '../../../../widgets/shimmer/recent_jobs_shimmer.dart';
 import '../../../saved/controllers/saved_controller.dart';
 import '../../controllers/home_controller.dart';
-import '../../../../widgets/section_header.dart';
 
 class RecentJobs extends GetView<HomeController> {
   const RecentJobs({Key? key}) : super(key: key);

@@ -10,13 +10,17 @@ class CustomerProfileView extends GetView<CustomerProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Get.theme.primaryColor,
-      statusBarIconBrightness: Brightness.light,
-    ));
     return Scaffold(
       backgroundColor: Get.theme.backgroundColor,
-      body: const SafeArea(child: Body()),
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(
+          statusBarColor: Get.theme.primaryColor,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Get.theme.backgroundColor,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+        child: const SafeArea(child: Body()),
+      ),
     );
   }
 }

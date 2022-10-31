@@ -9,7 +9,6 @@ import 'package:heroicons/heroicons.dart';
 import '../../../../core/values/strings.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../auth/controllers/auth_controller.dart';
-import '../../controllers/drawer_controller.dart';
 import '../../controllers/root_controller.dart';
 
 class MenuView extends GetView<RootController> {
@@ -51,7 +50,7 @@ class MenuView extends GetView<RootController> {
   }
 }
 
-class _Header extends GetView<MyDrawerController> {
+class _Header extends GetView<RootController> {
   const _Header({Key? key}) : super(key: key);
 
   @override

@@ -28,10 +28,13 @@ popupBottomSheet({
   );
 }
 
-void setDefaultStatusBar() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Color(0xffF5F8FA),
-    statusBarIconBrightness: Brightness.dark,
-  ));
+void setDefaultStatusBarColor() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+    ),
+  );
 }
-

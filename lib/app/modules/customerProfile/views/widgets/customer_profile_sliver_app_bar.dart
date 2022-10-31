@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:jobs_flutter_app/app/utils/functions.dart';
 
 import '../../../../data/remote/dto/customer/customer_profile_out_dto.dart';
 import '../../controllers/customer_profile_controller.dart';
@@ -26,10 +25,7 @@ class CustomerProfileSliverAppBar extends GetView<CustomerProfileController> {
       leading: Padding(
         padding: EdgeInsets.all(6.w),
         child: IconButton(
-          onPressed: () {
-            Get.back();
-            setDefaultStatusBar();
-          },
+          onPressed: () => Get.back(),
           style: IconButton.styleFrom(
             backgroundColor: Colors.white.withOpacity(0.2),
             padding: EdgeInsets.zero,

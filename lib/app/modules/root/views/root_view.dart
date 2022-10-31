@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:jobs_flutter_app/app/modules/root/controllers/drawer_controller.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 import '../../home/views/home_view.dart';
@@ -19,24 +19,32 @@ class RootView extends GetView<RootController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MyDrawerController>(
-      builder: (_) => SafeArea(
-        child: ZoomDrawer(
-          controller: _.zoomDrawerController,
-          menuScreen: const MenuView(),
-          mainScreen: const _MainScreen(),
-          showShadow: true,
-          angle: 0.0,
-          menuBackgroundColor: Get.theme.backgroundColor,
-          slideWidth: 0.65.sw,
-          menuScreenWidth: 0.65.sw,
-          openCurve: Curves.fastOutSlowIn,
-          closeCurve: Curves.bounceIn,
-          style: DrawerStyle.style1,
-          mainScreenTapClose: true,
-          androidCloseOnBackTap: true,
-          openDragSensitivity: 200,
-          mainScreenOverlayColor: Colors.black.withOpacity(0.25),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Get.theme.backgroundColor,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+      child: GetBuilder<RootController>(
+        builder: (_) => SafeArea(
+          child: ZoomDrawer(
+            controller: _.zoomDrawerController,
+            menuScreen: const MenuView(),
+            mainScreen: const _MainScreen(),
+            showShadow: true,
+            angle: 0.0,
+            menuBackgroundColor: Get.theme.backgroundColor,
+            slideWidth: 0.65.sw,
+            menuScreenWidth: 0.65.sw,
+            openCurve: Curves.fastOutSlowIn,
+            closeCurve: Curves.bounceIn,
+            style: DrawerStyle.style1,
+            mainScreenTapClose: true,
+            androidCloseOnBackTap: true,
+            openDragSensitivity: 200,
+            mainScreenOverlayColor: Colors.black.withOpacity(0.25),
+          ),
         ),
       ),
     );
