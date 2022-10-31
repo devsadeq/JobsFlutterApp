@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:jobs_flutter_app/app/core/values/strings.dart';
 
 import '../../../../routes/app_pages.dart';
 import '../../../../data/remote/api/api_routes.dart';
@@ -18,13 +19,11 @@ class SearchResults extends GetView<SearchController> {
         idle: () => Container(),
         loading: () => const Center(child: CircularProgressIndicator()),
         success: (results) => results!.isEmpty
-            ? const FittedBox(
-                child: CustomLottie(
-                  title: "No matching company found.",
-                  asset: "assets/empty.json",
-                  description:
-                      "Please make sure your keywords \nare spelled correctly.",
-                ),
+            ? CustomLottie(
+                title: AppStrings.NO_RESULT,
+                asset: "assets/empty.json",
+                description:AppStrings.NO_RESULT_DES,
+                assetHeight: 200.h,
               )
             : ListView.builder(
                 itemCount: results.length,

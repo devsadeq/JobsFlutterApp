@@ -97,4 +97,12 @@ class AppStrings {
   static const DIALOG_BTN_OK = "Ok";
   static const DIALOG_BTN_CANCEL = "Cancel";
   static const DIALOG_BTN_APPROVE = "Sure";
+
+  /*
+  * Search Strings
+  * */
+  static const NO_RESULT = "No results found";
+  static const NO_RESULT_DES =
+      "We couldn't find any results for your search. \nPleas try again.";
+  static const SEARCH_HINT = "Search for companies";
 }
