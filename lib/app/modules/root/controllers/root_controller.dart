@@ -1,4 +1,3 @@
-import 'package:flutter_zoom_drawer/config.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
@@ -47,12 +46,5 @@ class RootController extends GetxController {
       btnCancelOnPress: () {},
       btnOkOnPress: AuthController.to.logout,
     );
-  }
-
-  final zoomDrawerController = ZoomDrawerController();
-
-  void toggleDrawer() {
-    zoomDrawerController.toggle?.call();
-    update();
   }
 }

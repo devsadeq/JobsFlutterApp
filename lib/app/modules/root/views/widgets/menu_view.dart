@@ -16,36 +16,38 @@ class MenuView extends GetView<RootController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const _Header(),
-        SizedBox(height: 20.h),
-        MenuItem(
-          icon: HeroIcons.user,
-          title: "Profile",
-          onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
-        ),
-        const MenuItem(icon: HeroIcons.bell, title: "Notifications"),
-        const MenuItem(
-          icon: HeroIcons.language,
-          title: "Language",
-          subtitle: "English",
-        ),
-        const MenuItem(
-          icon: HeroIcons.sun,
-          title: "Theme",
-          subtitle: "Light",
-        ),
-        const Spacer(),
-        MenuItem(
-          icon: HeroIcons.arrowLeftOnRectangle,
-          title: "Logout",
-          onTap: controller.logout,
-          textColor: Get.theme.errorColor,
-        ),
-        SizedBox(height: 20.h),
-      ],
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const _Header(),
+          SizedBox(height: 20.h),
+          MenuItem(
+            icon: HeroIcons.user,
+            title: "Profile",
+            onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
+          ),
+          const MenuItem(icon: HeroIcons.bell, title: "Notifications"),
+          const MenuItem(
+            icon: HeroIcons.language,
+            title: "Language",
+            subtitle: "English",
+          ),
+          const MenuItem(
+            icon: HeroIcons.sun,
+            title: "Theme",
+            subtitle: "Light",
+          ),
+          const Spacer(),
+          MenuItem(
+            icon: HeroIcons.arrowLeftOnRectangle,
+            title: "Logout",
+            onTap: controller.logout,
+            textColor: Get.theme.errorColor,
+          ),
+          SizedBox(height: 20.h),
+        ],
+      ),
     );
   }
 }
@@ -89,7 +91,7 @@ class _Header extends GetView<RootController> {
                   ),
                 ),
                 IconButton(
-                  onPressed: controller.zoomDrawerController.close,
+                  onPressed: () => Scaffold.of(context).closeDrawer(),
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
                   style: IconButton.styleFrom(
