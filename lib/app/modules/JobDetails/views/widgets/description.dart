@@ -3,7 +3,8 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
+
+import '../../../../data/remote/dto/job/job_out_dto.dart';
 
 class Description extends StatelessWidget {
   const Description({Key? key, required this.job}) : super(key: key);
