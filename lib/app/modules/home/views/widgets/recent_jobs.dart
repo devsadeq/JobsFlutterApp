@@ -58,7 +58,7 @@ class RecentJobs extends GetView<HomeController> {
                     ),
                   )
                 : CustomLottie(
-                    title: "No jobs with this postion.",
+                    title: "No jobs found with this position",
                     asset: "assets/empty.json",
                     assetHeight: 200.h,
                     padding: EdgeInsets.zero,
