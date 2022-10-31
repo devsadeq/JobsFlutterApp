@@ -7,11 +7,6 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/devsadeq/JobsFlutterApp">
-    <img src="assets/logo.svg" alt="Logo" width="80" height="80">
-  </a>
 
 <h3 align="center">Flutter Jobs Finder</h3>
 
