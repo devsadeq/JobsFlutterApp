@@ -57,11 +57,25 @@ class CustomerRepository implements ICustomerRepository {
   }
 
   @override
-  Future<Status<CustomerProfileOutDto>> getProfile({required String customerUuid}) async {
+  Future<Status<CustomerProfileOutDto>> getProfile(
+      {required String customerUuid}) async {
     try {
       final response = await service.getProfile(customerUuid: customerUuid);
       return Status.success(
         data: CustomerProfileOutDto.fromJson(response.data),
+      );
+    } on DioError catch (e) {
+      final errMsg = DioExceptions.fromDioError(e).toString();
+      return Status.failure(reason: errMsg);
+    }
+  }
+
+  @override
+  Future<Status<String>> getAvatar({required String customerUuid}) async {
+    try {
+      final response = await service.getProfile(customerUuid: customerUuid);
+      return Status.success(
+        data: CustomerProfileOutDto.fromJson(response.data).image,
       );
     } on DioError catch (e) {
       final errMsg = DioExceptions.fromDioError(e).toString();

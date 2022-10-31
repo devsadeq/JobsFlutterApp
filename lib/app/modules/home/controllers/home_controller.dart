@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jobs_flutter_app/app/widgets/dialogs.dart';
 
 import '../../../data/remote/base/status.dart';
 import '../../../data/remote/dto/choices/Position_out_dto.dart';
 import '../../../data/remote/dto/job/job_out_dto.dart';
+import '../../../data/remote/repositories/customer/customer_repository.dart';
 import '../../../data/remote/repositories/job/job_repository.dart';
 import '../../../data/remote/repositories/position/position_repository.dart';
 import '../../../di/locator.dart';
+import '../../../widgets/dialogs.dart';
+import '../../auth/controllers/auth_controller.dart';
 import '../../saved/controllers/saved_controller.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
   final _jobRepository = getIt.get<JobRepository>();
   final _positionRepository = getIt.get<PositionRepository>();
+  final _customerRepository = getIt.get<CustomerRepository>();
   final _homeScrollController = ScrollController();
 
   ScrollController get homeScrollController => _homeScrollController;
@@ -40,6 +43,11 @@ class HomeController extends GetxController {
       Rx<Status<List<PositionOutDto>>>(const Status.loading());
 
   Status<List<PositionOutDto>> get positions => _rxPositions.value;
+
+  final Rx<Status<String>> _rxCustomerAvatar =
+      Rx<Status<String>>(const Status.loading());
+
+  Status<String> get customerAvatar => _rxCustomerAvatar.value;
 
   @override
   void onInit() {
@@ -112,6 +120,7 @@ class HomeController extends GetxController {
   }
 
   void _loadHome() async {
+    await getCustomerAvatar();
     await getPositions();
     await getFeaturedJobs();
     await getRecentJobs();
@@ -152,5 +161,12 @@ class HomeController extends GetxController {
         _onRetry();
       },
     );
+  }
+
+  Future<void> getCustomerAvatar() async {
+    final Status<String> state = await _customerRepository.getAvatar(
+      customerUuid: AuthController.to.currentUser!.id!,
+    );
+    if (state is Success) _rxCustomerAvatar.value = state;
   }
 }

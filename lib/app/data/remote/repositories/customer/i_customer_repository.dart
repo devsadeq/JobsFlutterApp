@@ -13,7 +13,7 @@ abstract class ICustomerRepository {
     required String customerUuid,
   });
 
-  Future<Status<IDto>> getProfile({
-    required String customerUuid,
-  });
+  Future<Status<IDto>> getProfile({required String customerUuid});
+
+  Future<Status<String>> getAvatar({required String customerUuid});
 }

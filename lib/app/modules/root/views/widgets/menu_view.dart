@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -6,9 +5,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heroicons/heroicons.dart';
 
-import '../../../../core/values/strings.dart';
+import '../../../../data/remote/api/api_routes.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../../widgets/custom_avatar.dart';
 import '../../../auth/controllers/auth_controller.dart';
+import '../../../home/controllers/home_controller.dart';
 import '../../controllers/root_controller.dart';
 
 class MenuView extends GetView<RootController> {
@@ -76,17 +77,15 @@ class _Header extends GetView<RootController> {
               children: [
                 GestureDetector(
                   onTap: () => Get.toNamed(Routes.CUSTOMER_PROFILE),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(1000.r),
-                    child: CachedNetworkImage(
-                      imageUrl: AppStrings.avatarUrl,
-                      placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(),
+                  child: Obx(
+                    () => HomeController.to.customerAvatar.when(
+                      idle: () => const SizedBox(),
+                      loading: () => const SizedBox(),
+                      success: (data) => CustomAvatar(
+                        imageUrl: "${ApiRoutes.BASE_URL}$data",
+                        height: 55.h,
                       ),
-                      errorWidget: (context, url, error) => const HeroIcon(
-                        HeroIcons.exclamationCircle,
-                      ),
-                      height: 55.h,
+                      failure: (error) => const SizedBox(),
                     ),
                   ),
                 ),
