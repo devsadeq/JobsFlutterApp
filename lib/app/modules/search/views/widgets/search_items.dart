@@ -31,7 +31,7 @@ class SearchResults extends GetView<SearchController> {
                 scrollDirection: Axis.vertical,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) => Padding(
-                  padding: EdgeInsets.only(bottom: 22.h),
+                  padding: EdgeInsets.only(bottom: 16.h),
                   child: SearchItem(
                     avatar: "${ApiRoutes.BASE_URL}${results[index].image}",
                     title: results[index].name!,

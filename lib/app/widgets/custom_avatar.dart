@@ -34,6 +34,8 @@ class CustomAvatar extends StatelessWidget {
         ),
       ),
       placeholder: (context, url) => Container(
+        height: height ?? 80.h,
+        width: height ?? 80.h,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.grey[300],
@@ -43,6 +45,8 @@ class CustomAvatar extends StatelessWidget {
         ),
       ),
       errorWidget: (context, url, error) => Container(
+        height: height ?? 80.h,
+        width: height ?? 80.h,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.grey[300],

@@ -40,6 +40,7 @@ class SimilarJobCard extends StatelessWidget {
       onTap: onTap ?? () {},
       child: Container(
         width: 0.80.sw,
+        height: 165.h,
         padding: EdgeInsets.all(20.w),
         margin: EdgeInsets.only(left: 16.w, top: 16.h, bottom: 30.h),
         decoration: BoxDecoration(

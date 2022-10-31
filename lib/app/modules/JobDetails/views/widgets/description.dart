@@ -3,7 +3,8 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobs_flutter_app/app/data/remote/dto/job/job_out_dto.dart';
+
+import '../../../../data/remote/dto/job/job_out_dto.dart';
 
 class Description extends StatelessWidget {
   const Description({Key? key, required this.job}) : super(key: key);
@@ -26,6 +27,11 @@ class Description extends StatelessWidget {
           p: GoogleFonts.poppins(
             fontSize: 13.sp,
             fontWeight: FontWeight.w400,
+            color: Get.theme.colorScheme.onBackground,
+          ),
+          h2: GoogleFonts.poppins(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w700,
             color: Get.theme.colorScheme.onBackground,
           ),
         ),

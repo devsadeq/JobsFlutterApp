@@ -22,6 +22,7 @@ class RootView extends GetView<RootController> {
         width: 0.65.sw,
         child: const MenuView(),
       ),
+      drawerEdgeDragWidth: 0.0,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
           statusBarColor: Get.theme.backgroundColor,
