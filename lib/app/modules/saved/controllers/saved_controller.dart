@@ -67,8 +67,6 @@ class SavedController extends GetxController {
       removeSavedJobFromAnimatedList(
         savedList.indexWhere((job) => job.id == jobUuid),
       );
-      // delay one second to show animation
-      await Future.delayed(const Duration(seconds: 1));
       if (savedList.isEmpty) getSavedJobs();
       HomeController.to.getFeaturedJobs();
       HomeController.to.getRecentJobs();
