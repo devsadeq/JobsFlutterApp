@@ -28,6 +28,11 @@ class Description extends StatelessWidget {
             fontWeight: FontWeight.w400,
             color: Get.theme.colorScheme.onBackground,
           ),
+          h2: GoogleFonts.poppins(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w700,
+            color: Get.theme.colorScheme.onBackground,
+          ),
         ),
       ),
     );
