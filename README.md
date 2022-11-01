@@ -49,17 +49,6 @@ It's built with the following technologies:
 * [![Url Launcher][Url Launcher]][Url Launcher-url]
 * [![Intl][Intl]][Intl-url]
 
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-_To get a local copy up and running follow these simple steps._
-
-### Prerequisites
-
-_Make sure you have Flutter installed on your machine. If not, follow the instructions on the
-official Flutter website._
-
 ### Screenshots
 
   <a href="https://github.com/devsadeq/JobsFlutterApp">
@@ -77,6 +66,18 @@ official Flutter website._
    <img src="assets/screenshots/screenshot (12).png" width="25%">
    <img src="assets/screenshots/screenshot (13).png" width="25%">
   </a>
+
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+_To get a local copy up and running follow these simple steps._
+
+### Prerequisites
+
+_Make sure you have Flutter installed on your machine. If not, follow the instructions on the
+official Flutter website._
 
 ### Installation
 
