@@ -1,7 +1,10 @@
-
 <!-- PROJECT LOGO -->
-
-<h3 align="center">Flutter Jobs Finder</h3>
+<br />
+<div align="center">
+  <a href="https://github.com/devsadeq/JobsFlutterApp">
+    <img src="assets/screenshots/cover.png" alt="Logo">
+  </a>
+<h1 align="center">Flutter Jobs Finder</h1>
 
   <p align="center">
     A Flutter App to find jobs in your area
@@ -25,13 +28,12 @@ Flutter Jobs Finder is a Flutter App to find jobs in your area.
 - You can also view the details of each job and apply for it.
 - Companies can also post jobs and view the list of applicants (working on it).
 - Backend is built with Django and MySQL.
-- The app is built with Flutter and Dart.
-- The app is built with MVC architecture.
-- The app is built with GetX state management.
+- The app is built with Flutter and Dart, MVC architecture with GetX state management.
 
 It's MVP (Minimum Viable Product) and it's still under development.
 
 ### Built With
+
 It's built with the following technologies:
 
 * [![Flutter][Flutter]][Flutter-url]
@@ -55,10 +57,26 @@ _To get a local copy up and running follow these simple steps._
 
 ### Prerequisites
 
-_Make sure you have Flutter installed on your machine. If not, follow the instructions on the official Flutter website._
+_Make sure you have Flutter installed on your machine. If not, follow the instructions on the
+official Flutter website._
 
 ### Screenshots
 
+  <a href="https://github.com/devsadeq/JobsFlutterApp">
+    <img src="assets/screenshots/screenshot (1).png" width="25%">
+   <img src="assets/screenshots/screenshot (2).png" width="25%">
+   <img src="assets/screenshots/screenshot (3).png" width="25%">
+   <img src="assets/screenshots/screenshot (4).png" width="25%">
+   <img src="assets/screenshots/screenshot (5).png" width="25%">
+   <img src="assets/screenshots/screenshot (6).png" width="25%">
+   <img src="assets/screenshots/screenshot (7).png" width="25%">
+   <img src="assets/screenshots/screenshot (8).png" width="25%">
+   <img src="assets/screenshots/screenshot (9).png" width="25%">
+   <img src="assets/screenshots/screenshot (10).png" width="25%">
+   <img src="assets/screenshots/screenshot (11).png" width="25%">
+   <img src="assets/screenshots/screenshot (12).png" width="25%">
+   <img src="assets/screenshots/screenshot (13).png" width="25%">
+  </a>
 
 ### Installation
 
@@ -72,7 +90,6 @@ _Make sure you have Flutter installed on your machine. If not, follow the instru
    ```sh
    flutter pub get 
    ```
-
 
 <!-- CONTACT -->
 
