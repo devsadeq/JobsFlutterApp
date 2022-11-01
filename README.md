@@ -9,7 +9,7 @@
   <p align="center">
     A Flutter App to find jobs in your area
     <br />
-    <a href="https://github.com/devsadeq/JobsFlutterApp/graphs">View Demo</a>
+    <a href="https://github.com/devsadeq/JobsFlutterApp/">View Demo</a>
     ·
     <a href="https://github.com/devsadeq/JobsFlutterApp/issues">Report Bug</a>
     ·
