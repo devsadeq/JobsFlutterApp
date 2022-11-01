@@ -9,8 +9,8 @@ class RootBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<RootController>(() => RootController());
-    Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<SearchController>(() => SearchController());
-    Get.lazyPut<SavedController>(() => SavedController());
+    Get.put<HomeController>(HomeController());
+    Get.put<SearchController>(SearchController());
+    Get.put<SavedController>(SavedController());
   }
 }
