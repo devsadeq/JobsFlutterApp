@@ -22,33 +22,6 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   runApp(
-    // DevicePreview(
-    //   enabled: !kReleaseMode,
-    //   builder: (context) => ScreenUtilInit(
-    //     designSize: const Size(375, 812),
-    //     minTextAdapt: true,
-    //     splitScreenMode: true,
-    //     builder: (_, child) => GetMaterialApp(
-    //       locale: Get.locale,
-    //       debugShowCheckedModeBanner: false,
-    //       initialBinding: AuthBinding(),
-    //       home: Obx(
-    //         () => AuthController.to.currentUser != null
-    //             ? const RootView()
-    //             : const LoginView(),
-    //       ),
-    //       getPages: AppPages.routes,
-    //       theme: AppTheme.lightTheme,
-    //       defaultTransition: Transition.cupertino,
-    //       useInheritedMediaQuery: true,
-    //       builder: DevicePreview.appBuilder,
-    //     ),
-    //   ),
-    // ),
-
-    /*
-    * Without DevicePreview
-    * */
     ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
