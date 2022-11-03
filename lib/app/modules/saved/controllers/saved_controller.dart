@@ -43,7 +43,7 @@ class SavedController extends GetxController {
     super.onClose();
   }
 
-  jumpToHome() {
+  Future<void> jumpToHome() async {
     _rootController.persistentTabController.jumpToTab(0);
   }
 
