@@ -64,8 +64,10 @@ class CustomSaveButtonState extends State<CustomSaveButton>
           ? SizedBox(
               height: widget.size,
               width: widget.size,
-              child: const Center(
-                child: CupertinoActivityIndicator(),
+              child: Center(
+                child: CupertinoActivityIndicator(
+                  color: widget.color,
+                ),
               ),
             )
           : HeroIcon(
