@@ -33,7 +33,7 @@ class Body extends GetView<AuthController> {
               btnLabel: AppStrings.signup.toUpperCase(),
               firstTextSpan: AppStrings.alreadyHaveAnAccount,
               secondTextSpan: AppStrings.signIn,
-              onTap:  controller.onRegisterSubmit,
+              onTap: controller.onRegisterSubmit,
               onTextTap: () => Get.offNamed(Routes.LOGIN),
             ),
             SizedBox(height: 50.h),

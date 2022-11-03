@@ -28,7 +28,7 @@ class Body extends GetView<AuthController> {
                 btnLabel: AppStrings.loginBtn,
                 firstTextSpan: AppStrings.youDoNotHaveAnAccountYet,
                 secondTextSpan: AppStrings.signup,
-                onTap: () => controller.onLoginSubmit(),
+                onTap: controller.onLoginSubmit,
                 onTextTap: controller.onSignUp,
               ),
             ],

@@ -126,18 +126,19 @@ class AuthController extends GetxController {
     _rxCountry.value = "+${country.dialCode}";
   }
 
-  void onLoginSubmit() {
+  Future<void> onLoginSubmit() async {
     if (loginFormKey.currentState!.validate()) {
-      _login();
+      await _login();
     }
   }
 
-  void onRegisterSubmit() {
+  Future<void> onRegisterSubmit() async {
     if (registerType == RegisterType.CUSTOMER &&
         customerFormKey.currentState!.validate()) {
-      _registerCustomer();
-    } else if (companyFormKey.currentState!.validate()) {
-      _registerCompany();
+      await _registerCustomer();
+    } else if (registerType == RegisterType.COMPANY &&
+        companyFormKey.currentState!.validate()) {
+      await _registerCompany();
     }
   }
 
@@ -146,7 +147,7 @@ class AuthController extends GetxController {
     result.whenOrNull(success: (data) => Get.offAllNamed(Routes.LOGIN));
   }
 
-  void _login() async {
+  Future<void> _login() async {
     _rxLoginState.value = await _authRepository.login(
       dto: LoginInDto(
         emailOrPhone: loginEmailController.text,
@@ -171,7 +172,7 @@ class AuthController extends GetxController {
     );
   }
 
-  void _registerCustomer() async {
+  Future<void> _registerCustomer() async {
     _rxRegisterCustomerState.value = await _authRepository.registerCustomer(
       dto: RegisterCustomerDto(
         name: customerFullNameController.text,
@@ -198,7 +199,7 @@ class AuthController extends GetxController {
     );
   }
 
-  void _registerCompany() async {
+  Future<void> _registerCompany() async {
     _rxRegisterCompanyState.value = await _authRepository.registerCompany(
       dto: RegisterCompanyDto(
         name: companyNameController.text,
