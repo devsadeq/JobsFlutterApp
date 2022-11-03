@@ -64,6 +64,8 @@ class AppTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14.r),
       ),
+      disabledBackgroundColor: blueColor,
+      disabledForegroundColor: backgroundColor,
     ),
   );
 

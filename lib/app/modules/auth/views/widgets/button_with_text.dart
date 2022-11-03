@@ -17,7 +17,7 @@ class ButtonWithText extends StatelessWidget {
   final String btnLabel;
   final String firstTextSpan;
   final String secondTextSpan;
-  final void Function() onTap;
+  final Future<void> Function() onTap;
   final void Function() onTextTap;
 
   @override

@@ -12,10 +12,11 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: EdgeInsets.all(29.w),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 250.h),
           Text(
             AppStrings.thankYou,
             style: GoogleFonts.poppins(
@@ -38,16 +39,13 @@ class Body extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
-              color: Get.theme.colorScheme.tertiary,
+              color: Get.theme.colorScheme.secondary,
             ),
           ),
-          SizedBox(height: 210.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 29.w),
-            child: CustomButton(
-              title: AppStrings.exit,
-              onTap: () => SystemNavigator.pop(),
-            ),
+          SizedBox(height: 100.h),
+          CustomButton(
+            title: AppStrings.exit,
+            onTap: () => SystemNavigator.pop(),
           ),
         ],
       ),

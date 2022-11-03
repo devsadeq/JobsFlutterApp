@@ -4,11 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jobs_flutter_app/app/modules/root/controllers/root_controller.dart';
-import 'package:jobs_flutter_app/app/modules/saved/controllers/saved_controller.dart';
-import 'package:jobs_flutter_app/app/routes/app_pages.dart';
-import 'package:jobs_flutter_app/app/widgets/custom_button.dart';
+
 import '../../../../core/values/strings.dart';
+import '../../../../widgets/custom_button.dart';
+import '../../controllers/saved_controller.dart';
 
 class NoSaving extends GetView<SavedController> {
   const NoSaving({Key? key}) : super(key: key);
@@ -45,7 +44,7 @@ class NoSaving extends GetView<SavedController> {
           padding: EdgeInsets.symmetric(horizontal: 80.w),
           child: CustomButton(
             title: "FIND A JOB",
-            onTap: () => controller.jumpToHome(),
+            onTap: controller.jumpToHome,
           ),
         )
       ],

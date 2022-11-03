@@ -9,8 +9,9 @@ import 'custom_lottie.dart';
 
 class Dialogs {
   static Future<bool>? warningDialog({
-    required String title,
-    required String description,
+    String? title = AppStrings.DIALOG_QUESTION_TITLE,
+    String? description,
+    String? btnOkText = AppStrings.DIALOG_BTN_APPROVE,
     required Function() btnOkOnPress,
   }) {
     AwesomeDialog(
@@ -19,10 +20,14 @@ class Dialogs {
       animType: AnimType.bottomSlide,
       title: title,
       desc: description,
-      btnOkText: AppStrings.DIALOG_BTN_OK,
-      btnCancelText: AppStrings.DIALOG_BTN_CANCEL,
+      btnOkText: btnOkText,
+      showCloseIcon: true,
       btnOkOnPress: btnOkOnPress,
       headerAnimationLoop: false,
+      dialogBorderRadius: BorderRadius.circular(16.r),
+      buttonsBorderRadius: BorderRadius.circular(14.r),
+      padding: EdgeInsets.only(bottom: 12.w),
+      btnOkColor: Get.theme.colorScheme.primary,
     ).show();
   }
 

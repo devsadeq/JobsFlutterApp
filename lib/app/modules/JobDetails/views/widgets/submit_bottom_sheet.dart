@@ -42,7 +42,7 @@ class SubmitBottomSheet extends StatelessWidget {
         SizedBox(height: 50.h),
         CustomButton(
           title: "Back To Home",
-          onTap: () => Get.close(2),
+          onTap: () async => Get.close(2),
         ),
       ],
     );
