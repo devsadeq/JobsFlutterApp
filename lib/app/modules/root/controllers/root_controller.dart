@@ -40,10 +40,9 @@ class RootController extends GetxController {
   }
 
   void logout() {
-    Dialogs.questionDialog(
-      title: "Are you sure you want\nto logout?",
-      btnOkText: "Yes, logout",
-      btnCancelOnPress: () {},
+    Dialogs.warningDialog(
+      title: "You are about to logout",
+      btnOkText: "Logout",
       btnOkOnPress: AuthController.to.logout,
     );
   }
