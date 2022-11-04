@@ -5,9 +5,6 @@ import 'package:get/get.dart';
 
 import '../widgets/custom_bottom_sheet.dart';
 
-/*
-* Reusable Function that Popup a Bottom Sheet
-* */
 popupBottomSheet({
   required Widget bottomSheetBody,
   bool? isDismissible,
