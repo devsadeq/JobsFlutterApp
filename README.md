@@ -124,8 +124,6 @@ LinkedIn: [https://www.linkedin.com/in/devsadeq/](https://www.linkedin.com/in/de
 
 [linkedin-url]: https://www.linkedin.com/in/devsadeq/
 
-[product-screenshot]: assets/logo.svg
-
 [Flutter]: https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white
 
 [Flutter-url]: https://flutter.dev/
