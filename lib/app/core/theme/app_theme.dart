@@ -6,14 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   const AppTheme._();
 
-  // Light Theme Colors.
   static Color backgroundColor = const Color(0xffF5F8FA);
   static Color blueColor = const Color(0xff1DA1F2);
   static Color blackColor = const Color(0xff14171A);
   static Color darkGrayColor = const Color(0xff657786);
   static Color lightGrayColor = const Color(0xffAAB8C2);
-
-  // static Color lightGrayColor2 = const Color(0xffE1E8ED);
   static Color errorColor = const Color(0xffFB4747);
   static Color whiteColor = const Color(0xffffffff);
 
