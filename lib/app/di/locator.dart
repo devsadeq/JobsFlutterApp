@@ -22,35 +22,43 @@ import '../data/remote/services/search/search_service.dart';
 final getIt = GetIt.instance;
 
 Future<void> setupLocator() async {
-  // Dio
+  /// Dio Client
   getIt.registerSingleton(Dio());
   getIt.registerSingleton(DioClient(getIt<Dio>()));
-  // Storage
+
+  /// Storage Service
   getIt.registerSingleton(GetStorage());
   getIt.registerSingleton(StorageService(getIt<GetStorage>()));
-  // Job
+
+  /// Job Service & Repository
   getIt.registerSingleton(JobService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(JobRepository(service: getIt<JobService>()));
-  // Position Choices
+
+  /// Position Service & Repository
   getIt.registerSingleton(PositionChoiceService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(
       PositionRepository(service: getIt<PositionChoiceService>()));
-  // Search
+
+  /// Search Service & Repository
   getIt.registerSingleton(SearchService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(SearchRepository(service: getIt<SearchService>()));
-  // Company
+
+  /// Company Service & Repository
   getIt.registerSingleton(CompanyService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(CompanyRepository(service: getIt<CompanyService>()));
-  // Customer
+
+  /// Customer Service & Repository
   getIt.registerSingleton(CustomerService(dioClient: getIt<DioClient>()));
-  getIt
-      .registerSingleton(CustomerRepository(service: getIt<CustomerService>()));
-  // Auth
+  getIt.registerSingleton(CustomerRepository(service: getIt<CustomerService>()));
+
+  /// Auth Service & Repository
   getIt.registerSingleton(AuthService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(AuthRepository(
-      authService: getIt<AuthService>(),
-      storageService: getIt<StorageService>()));
-  // Application
+    authService: getIt<AuthService>(),
+    storageService: getIt<StorageService>(),
+  ));
+
+  /// Job Application Service & Repository
   getIt.registerSingleton(ApplicationService(dioClient: getIt<DioClient>()));
   getIt.registerSingleton(
       ApplicationRepository(service: getIt<ApplicationService>()));
